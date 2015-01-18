@@ -40,5 +40,15 @@ public class Frills extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void buzzerOn()
+    {
+    	buzzer.set(Relay.Value.kForward);
+    }
+    
+    public void buzzerOff()
+    {
+    	buzzer.set(Relay.Value.kOff);
+    }
 }
 
