@@ -18,7 +18,7 @@ import org.usfirst.frc330.Robot;
 /**
  *
  */
-public class  ShiftHigh extends BBCommand {
+public class ShiftHigh extends BBCommand {
 
     public ShiftHigh() {
         // Use requires() here to declare subsystem dependencies
@@ -32,6 +32,7 @@ public class  ShiftHigh extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.chassis.shiftHigh();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -40,7 +41,7 @@ public class  ShiftHigh extends BBCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

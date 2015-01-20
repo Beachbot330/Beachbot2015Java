@@ -12,8 +12,12 @@
 package org.usfirst.frc330.commands;	
 
 
+import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.command.BBCommand;
+
 import org.usfirst.frc330.Robot;
+import org.usfirst.frc330.constants.ArmPos;
 
 /**
  *
@@ -51,4 +55,6 @@ public class  SetPickupPosition extends BBCommand {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+
+
 }
