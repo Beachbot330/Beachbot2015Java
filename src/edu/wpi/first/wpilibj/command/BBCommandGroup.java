@@ -20,17 +20,17 @@ public class BBCommandGroup extends CommandGroup {
     
 	void _initialize(){
 		super._initialize();
-		//Robot.logger(this.getClass().getName() + " initialized"); //Todo:update
+		Robot.logger.println(this.getClass().getName() + " initialized");
 	}
 
 	void _end(){
 		super._end();
-		//Robot.logger(this.getClass().getName() + " ended"); //Todo:update
+		Robot.logger.println(this.getClass().getName() + " ended");
 	}
 	
 	void _interrupted(){
 		super._interrupted();
-		//Robot.logger(this.getClass().getName() + " interrupted"); //Todo:update
+		Robot.logger.println(this.getClass().getName() + " interrupted");
 	}
     
 }
