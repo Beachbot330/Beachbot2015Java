@@ -37,9 +37,12 @@ public class RobotMap {
     public static Encoder pickuppickupEncoder;
     public static SpeedController pickuppickupLiftLeft;
     public static SpeedController pickuppickupLiftRight;
+    public static Solenoid pickuptotePincher;
     public static Relay frillsbuzzer;
     public static DigitalOutput frillslights;
-    public static DoubleSolenoid armmast;
+    public static AnalogInput armmastPot;
+    public static SpeedController armmastRight;
+    public static SpeedController armmastLeft;
     public static AnalogInput armarmPot;
     public static SpeedController armarmLeft;
     public static SpeedController armarmRight;
@@ -96,14 +99,23 @@ public class RobotMap {
         pickuppickupLiftRight = new Victor(5);
         LiveWindow.addActuator("Pickup", "pickupLiftRight", (Victor) pickuppickupLiftRight);
         
+        pickuptotePincher = new Solenoid(0, 6);
+        LiveWindow.addActuator("Pickup", "totePincher", pickuptotePincher);
+        
         frillsbuzzer = new Relay(0);
         LiveWindow.addActuator("Frills", "buzzer", frillsbuzzer);
         
         frillslights = new DigitalOutput(6);
         LiveWindow.addActuator("Frills", "lights", frillslights);
         
-        armmast = new DoubleSolenoid(0, 1, 2);      
-        LiveWindow.addActuator("Arm", "mast", armmast);
+        armmastPot = new AnalogInput(3);
+        LiveWindow.addSensor("Arm", "mastPot", armmastPot);
+        
+        armmastRight = new Talon(11);
+        LiveWindow.addActuator("Arm", "mastRight", (Talon) armmastRight);
+        
+        armmastLeft = new Talon(10);
+        LiveWindow.addActuator("Arm", "mastLeft", (Talon) armmastLeft);
         
         armarmPot = new AnalogInput(1);
         LiveWindow.addSensor("Arm", "armPot", armarmPot);
