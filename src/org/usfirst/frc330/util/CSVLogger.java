@@ -6,20 +6,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
-import edu.wpi.first.wpilibj.Timer;
-
-public class Logger {
+public class CSVLogger {
+	LinkedHashMap<String,CSVLoggable> table;
+	
 	private File roboRIOFile, usbFile;
 	private BufferedWriter roboRIOWriter, usbWriter;
 	private String m_roboRIOPath, m_usbPath, m_filePrefix;
 	private GregorianCalendar calendar = new java.util.GregorianCalendar();
-	private java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+	private java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS");
 	private Date date;
 	boolean usbWorking = true;
 	
-	
-	public Logger(String roboRIOPath, String usbPath, String filePrefix) {
+	public CSVLogger(String roboRIOPath, String usbPath, String filePrefix) {
+		table = new LinkedHashMap<String,CSVLoggable>();
 		m_roboRIOPath = roboRIOPath;
 		m_usbPath = usbPath;
 		m_filePrefix = filePrefix;
@@ -30,7 +32,7 @@ public class Logger {
 
 		roboRIOFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(System.currentTimeMillis()));
 		usbFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(System.currentTimeMillis()));
-		System.out.println("Logger: " + sdf.format(date));
+		System.out.println("CSV Date: " + sdf.format(date));
 		
 		try {
 			usbWriter = new BufferedWriter(new FileWriter(usbFile));
@@ -47,35 +49,50 @@ public class Logger {
 
 	}
 	
-	public Logger() {
-		this("/home/lvuser", "/media/sda1", "BB2015_Log");
+	public CSVLogger() {
+		this("/home/lvuser", "/media/sda1", "BB2015_CSV");
 	}
 	
-	public void updateDate() {
-		boolean success;
-		if (calendar.get(calendar.YEAR) < 2015) {
-			calendar.setTimeInMillis(System.currentTimeMillis() - (long)(Timer.getFPGATimestamp()*1000));
-			date = calendar.getTime();
-			
-			if (calendar.get(calendar.YEAR) >= 2015) {
-				File tempFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(date));
-				System.out.println(sdf.format(date));
-				success = roboRIOFile.renameTo(tempFile);
-				System.out.println("RoboRIO File Renamed: " + success + " " + sdf.format(date));
-				tempFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(date));
-				success = usbFile.renameTo(tempFile);
-				usbWorking &= success;
-				System.out.println("USB File Renamed: " + success + " " + sdf.format(date));
+	public void add(String name, CSVLoggable data) {
+		table.put(name, data);
+	}
+
+	public void writeHeader() {
+		String header = "Time, ";
+		for (String key : table.keySet()) {
+			header = header + key + ", ";
+		}
+		header = header + "\r\n";
+		
+		if (usbWorking) {
+	    	try {
+				usbWriter.write(header);
+			} catch (IOException e) {
+				usbWorking = false;
+				e.printStackTrace();
 			}
 		}
+		else {
+			try {
+				roboRIOWriter.write(header);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
 	}
 	
-	public void println(String data) {
-		data = sdf.format(System.currentTimeMillis()) + " "  + data + "\r\n";
+	String data;
+	public void writeData() {
+		data = sdf.format(System.currentTimeMillis()) + ", ";
+		for (CSVLoggable key : table.values()) {
+			data = data + key.get() + ", ";
+		}
+		data = data + "\r\n";
+		
 		if (usbWorking) {
 	    	try {
 				usbWriter.write(data);
-				usbWriter.flush();
 			} catch (IOException e) {
 				usbWorking = false;
 				e.printStackTrace();
@@ -84,11 +101,11 @@ public class Logger {
 		else {
 			try {
 				roboRIOWriter.write(data);
-				roboRIOWriter.flush();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     	}
 	}
+	
 }
