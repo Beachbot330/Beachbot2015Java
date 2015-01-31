@@ -9,6 +9,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import org.usfirst.frc330.Robot;
+
 public class CSVLogger {
 	LinkedHashMap<String,CSVLoggable> table;
 	

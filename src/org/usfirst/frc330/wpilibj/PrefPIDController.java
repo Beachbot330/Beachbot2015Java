@@ -108,13 +108,13 @@ public class PrefPIDController extends PIDController{
         {
             
             p = Preferences.getInstance().getDouble(name + "P", p);
-//            System.out.println(name+"P exists. P=" + p);
+//            Robot.Logger.println(name+"P exists. P=" + p);
         }
         else 
         {
             Preferences.getInstance().putDouble(name+"P", p);
             saveNeeded = true;
-//            System.out.println(name+"P does not exist.");
+//            Robot.Logger.println(name+"P does not exist.");
         }
         
         if (Preferences.getInstance().containsKey(name + "I"))
@@ -163,7 +163,7 @@ public class PrefPIDController extends PIDController{
         Preferences.getInstance().putDouble(name+"D", getD());
         Preferences.getInstance().putDouble(name+"F", getF());
         Preferences.getInstance().save();
-//        System.out.println("Saved PID Preferences: " + this.name);
+//        Robot.Logger.println("Saved PID Preferences: " + this.name);
     }
     
     public String getGainName() {
@@ -194,10 +194,10 @@ public class PrefPIDController extends PIDController{
 //                boolean prevSave = false;
 //
 //                public void valueChanged(ITable table, String key, Object value, boolean isNew) {
-////                    System.out.println(key + " changed");
+////                    Robot.Logger.println(key + " changed");
 //                    if (key.equals("save"))
 //                    {
-////                        System.out.println("prevSave: " + prevSave + "curSave: " + ((Boolean) value).booleanValue());
+////                        Robot.Logger.println("prevSave: " + prevSave + "curSave: " + ((Boolean) value).booleanValue());
 //                        if (((Boolean) value).booleanValue())
 //                        {
 //                            if (prevSave == false)
