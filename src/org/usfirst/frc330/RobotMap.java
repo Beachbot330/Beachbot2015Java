@@ -39,11 +39,11 @@ public class RobotMap {
     public static SpeedController chassischassisRightDrive1;
     public static SpeedController chassischassisRightDrive2;
     public static DualSpeedController chassischassisRightDrive;
-    public static Encoder pickuppickupEncoder;
-    public static Solenoid pickuptotePincher;
-    public static SpeedController pickuppickupLiftLeft;
-    public static SpeedController pickuppickupLiftRight;
-    public static DualSpeedController pickuppickupLift;
+    public static Encoder liftliftEncoder;
+    public static Solenoid lifttotePincher;
+    public static SpeedController liftliftLeft;
+    public static SpeedController liftliftRight;
+    public static DualSpeedController liftLift;
     public static Relay frillsbuzzer;
     public static DigitalOutput frillslights;
     public static DigitalInput frillspracticeRobot;
@@ -55,6 +55,7 @@ public class RobotMap {
     public static SpeedController armarmLeft;
     public static SpeedController armarmRight;
     public static DualSpeedController armarm;
+    public static Solenoid armmastLock;
     public static Solenoid handhandLeft;
     public static Solenoid handhandCenter;
     public static Solenoid handhandRight;
@@ -76,7 +77,7 @@ public class RobotMap {
         chassiscompressor = new Compressor(0);
         
         
-        chassispressureSensor = new AnalogInput(2);
+        chassispressureSensor = new AnalogInput(3);
         LiveWindow.addSensor("Chassis", "pressureSensor", chassispressureSensor);
         
         chassisdriveTrainEncoderL = new Encoder(4, 5, false, EncodingType.k4X);
@@ -105,21 +106,21 @@ public class RobotMap {
         chassischassisRightDrive = new DualSpeedController(chassischassisRightDrive1, chassischassisRightDrive2, true, true);
         LiveWindow.addActuator("Chassis", "chassisRightDrive", chassischassisRightDrive);
         
-        pickuppickupEncoder = new Encoder(0, 1, false, EncodingType.k4X);
-        LiveWindow.addSensor("Pickup", "pickupEncoder", pickuppickupEncoder);
-        pickuppickupEncoder.setDistancePerPulse(1.0);
-        pickuppickupEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
-        pickuptotePincher = new Solenoid(0, 6);
-        LiveWindow.addActuator("Pickup", "totePincher", pickuptotePincher);
+        liftliftEncoder = new Encoder(0, 1, false, EncodingType.k4X);
+        LiveWindow.addSensor("Lift", "liftEncoder", liftliftEncoder);
+        liftliftEncoder.setDistancePerPulse(1.0);
+        liftliftEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+        lifttotePincher = new Solenoid(0, 2);
+        LiveWindow.addActuator("Lift", "totePincher", lifttotePincher);
         
-        pickuppickupLiftLeft = new Victor(4);
-        LiveWindow.addActuator("Pickup", "pickupLiftLeft", (Victor) pickuppickupLiftLeft);
+        liftliftLeft = new Victor(4);
+        LiveWindow.addActuator("Lift", "liftLeft", (Victor) liftliftLeft);
         
-        pickuppickupLiftRight = new Victor(5);
-        LiveWindow.addActuator("Pickup", "pickupLiftRight", (Victor) pickuppickupLiftRight);
+        liftliftRight = new Victor(5);
+        LiveWindow.addActuator("Lift", "liftRight", (Victor) liftliftRight);
         
-        pickuppickupLift = new DualSpeedController(pickuppickupLiftLeft, pickuppickupLiftRight, false, true);
-        LiveWindow.addActuator("Pickup", "pickupLift", pickuppickupLift);
+        liftLift = new DualSpeedController(liftliftLeft, liftliftRight, false, true);
+        LiveWindow.addActuator("Lift", "Lift", liftLift);
         
         frillsbuzzer = new Relay(0);
         LiveWindow.addActuator("Frills", "buzzer", frillsbuzzer);
@@ -130,7 +131,7 @@ public class RobotMap {
         frillspracticeRobot = new DigitalInput(9);
         LiveWindow.addSensor("Frills", "practiceRobot", frillspracticeRobot);
         
-        armmastPot = new AnalogInput(3);
+        armmastPot = new AnalogInput(2);
         LiveWindow.addSensor("Arm", "mastPot", armmastPot);
         
         armarmPot = new AnalogInput(1);
@@ -153,6 +154,9 @@ public class RobotMap {
         
         armarm = new DualSpeedController(armarmLeft, armarmRight, false, true);
         LiveWindow.addActuator("Arm", "arm", armarm);
+        
+        armmastLock = new Solenoid(0, 1);
+        LiveWindow.addActuator("Arm", "mastLock", armmastLock);
         
         handhandLeft = new Solenoid(0, 3);
         LiveWindow.addActuator("Hand", "handLeft", handhandLeft);
