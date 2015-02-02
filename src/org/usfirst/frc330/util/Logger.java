@@ -41,8 +41,8 @@ public class Logger {
     	calendar.setTimeInMillis(System.currentTimeMillis());
     	date = calendar.getTime();
 
-		roboRIOFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(date));
-		usbFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(date));
+		roboRIOFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
+		usbFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
 		
 		
 		try {

@@ -95,57 +95,55 @@ public class Chassis extends Subsystem {
 
         driveTrainEncoderL.setDistancePerPulse(distanceperpulse);
         driveTrainEncoderR.setDistancePerPulse(distanceperpulse);
+    	CSVLoggable temp = new CSVLoggable() {
+			public double get() { return driveTrainEncoderL.getDistance(); }
+    	};
+    	Robot.csvLogger.add("DriveTrainEncoderDistanceL", temp);
     	
-    	Robot.csvLogger.add("DriveTrainEncoderDistanceL", new CSVLoggable() {
-			public double get() {
-				return driveTrainEncoderL.getDistance();
-			}  		
-    	});
-    	Robot.csvLogger.add("DriveTrainEncoderDistanceR", new CSVLoggable() {
-			public double get() {
-				return driveTrainEncoderR.getDistance();
-			}  		
-    	});
-    	Robot.csvLogger.add("DriveTrainEncoderRateL", new CSVLoggable() {
-			public double get() {
-				return driveTrainEncoderL.getRate();
-			}  		
-    	});
-    	Robot.csvLogger.add("DriveTrainEncoderRateR", new CSVLoggable() {
-			public double get() {
-				return driveTrainEncoderR.getRate();
-			}  		
-    	});
-    	Robot.csvLogger.add("DriveTrainLeft", new CSVLoggable() {
-			public double get() {
-				return chassisLeftDrive.get();
-			}  		
-    	});
-    	Robot.csvLogger.add("DriveTrainRight", new CSVLoggable() {
-			public double get() {
-				return chassisRightDrive.get();
-			}  		
-    	});
-    	Robot.csvLogger.add("ChassisAngle", new CSVLoggable() {
-			public double get() {
-				return imu.getYaw();
-			}  		
-    	});
-    	Robot.csvLogger.add("ChassisX", new CSVLoggable() {
-			public double get() {
-				return getX();
-			}  		
-    	});
-    	Robot.csvLogger.add("ChassisY", new CSVLoggable() {
-			public double get() {
-				return getY();
-			}  		
-    	});
-    	Robot.csvLogger.add("Pressure", new CSVLoggable() {
-			public double get() {
-				return getPressure();
-			}  		
-    	});
+    	temp = new CSVLoggable() {
+			public double get() { return driveTrainEncoderR.getDistance(); }
+    	};
+    	Robot.csvLogger.add("DriveTrainEncoderDistanceR", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return driveTrainEncoderL.getRate(); }  		
+    	};
+    	Robot.csvLogger.add("DriveTrainEncoderRateL", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return driveTrainEncoderR.getRate(); }  		
+    	};
+    	Robot.csvLogger.add("DriveTrainEncoderRateR", temp);    	
+
+    	temp = new CSVLoggable() {
+			public double get() { return chassisLeftDrive.get(); }  		
+    	};
+    	Robot.csvLogger.add("DriveTrainLeft", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return chassisRightDrive.get(); }  		
+    	};
+    	Robot.csvLogger.add("DriveTrainRight", temp); 
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return imu.getYaw(); }  		
+    	};    	
+    	Robot.csvLogger.add("ChassisAngle", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return getX(); }  		
+    	};     	
+    	Robot.csvLogger.add("ChassisX", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return getY(); }  		
+    	};      	
+    	Robot.csvLogger.add("ChassisY", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return getPressure(); }  		
+    	};  
+    	Robot.csvLogger.add("Pressure", temp);
     }
     
     // Put methods for controlling this subsystem
@@ -273,12 +271,6 @@ public class Chassis extends Subsystem {
         prevRightEncoderDistance = rightEncoderDistance;
     }
     
-    public void calcPeriodic()
-    {
-        calcXY();
-        pidDrive();
-        counter++;
-    }
     public double getX() {
         return x;
     }

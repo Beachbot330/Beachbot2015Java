@@ -51,5 +51,9 @@ public class Frills extends Subsystem {
     {
     	buzzer.set(Relay.Value.kOff);
     }
+    
+    public boolean isPracticeRobot() {
+    	return !practiceRobot.get();
+    }
 }
 

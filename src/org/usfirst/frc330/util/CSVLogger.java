@@ -32,8 +32,8 @@ public class CSVLogger {
     	calendar.setTimeInMillis(System.currentTimeMillis());
     	date = calendar.getTime();
 
-		roboRIOFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(System.currentTimeMillis()));
-		usbFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(System.currentTimeMillis()));
+		roboRIOFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".csv");
+		usbFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".csv");
 		System.out.println("CSV Date: " + sdf.format(date));
 		
 		try {

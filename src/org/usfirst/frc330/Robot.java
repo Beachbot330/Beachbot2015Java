@@ -95,7 +95,7 @@ public class Robot extends IterativeRobot {
 
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
-        chassis.calcPeriodic();
+        chassis.calcXY();
     	csvLogger.writeData();
     }
 
@@ -112,7 +112,8 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        chassis.calcPeriodic();
+        chassis.calcXY();
+        chassis.pidDrive();
     	csvLogger.writeData();
     }
 
@@ -131,7 +132,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        chassis.calcPeriodic();
+        chassis.calcXY();
+        chassis.pidDrive();
     	csvLogger.writeData();
     }
     
@@ -144,9 +146,11 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        chassis.calcXY();
+        csvLogger.writeData();
     }
     
     public static boolean isPracticerobot() {
-        return (!RobotMap.practiceRobot.get());
+        return (!frills.isPracticeRobot());
     }
 }
