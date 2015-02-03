@@ -13,7 +13,7 @@ package org.usfirst.frc330.commands.commandgroups;
 import org.usfirst.frc330.commands.DriveDistance;
 import org.usfirst.frc330.commands.SetLiftPosition;
 import org.usfirst.frc330.commands.ShiftLow;
-import org.usfirst.frc330.constants.PickupPos;
+import org.usfirst.frc330.constants.LiftPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
@@ -40,7 +40,7 @@ public class DropOffAndDrive extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addParallel(new ShiftLow());
-    	addSequential(new SetLiftPosition(PickupPos.dropOff));
+    	addSequential(new SetLiftPosition(LiftPos.dropOff));
     	addSequential(new DriveDistance());
     }
 }

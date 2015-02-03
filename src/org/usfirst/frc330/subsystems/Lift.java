@@ -15,12 +15,13 @@ import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.commands.*;
 import org.usfirst.frc330.constants.ArmPos;
-import org.usfirst.frc330.constants.PickupPos;
+import org.usfirst.frc330.constants.LiftPos;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
 
+import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -60,13 +61,22 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput{
     
 	public Lift() {
         super();
-        liftPID = new PIDController(	PickupPos.proportional,
-						        		PickupPos.integral,
-						        		PickupPos.derivitive ,this,this);
+        liftPID = new PIDController(	LiftPos.proportional,
+						        		LiftPos.integral,
+						        		LiftPos.derivitive ,this,this);
         
-        liftPID.setAbsoluteTolerance(ArmPos.tolerance);
-        SmartDashboard.putData("ArmPID", liftPID);
-        SmartDashboard.putBoolean("ArmOverride", false);
+        liftPID.setAbsoluteTolerance(LiftPos.tolerance);
+        SmartDashboard.putData("LiftPID", liftPID);
+
+    	CSVLoggable temp = new CSVLoggable() {
+			public double get() { return getPosition(); }
+    	};
+    	Robot.csvLogger.add("LiftEncoder", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return lift.get(); }
+    	};
+    	Robot.csvLogger.add("LiftOutput", temp);
     }
     
     public double getPosition()
@@ -108,11 +118,11 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput{
     }
     
     public void set(double output){
-        if (output > 0 && getPosition() > PickupPos.lowerLimit) // Todo: Check this logic
+        if (output > 0 && getPosition() > LiftPos.lowerLimit) // Todo: Check this logic
         {
         	lift.set(0);
         }
-        else if (output < 0 && getPosition() < PickupPos.upperLimit)// Todo: Check this logic
+        else if (output < 0 && getPosition() < LiftPos.upperLimit)// Todo: Check this logic
         {
         	lift.set(0);
         }
