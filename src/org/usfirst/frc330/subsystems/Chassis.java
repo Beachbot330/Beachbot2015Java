@@ -95,6 +95,7 @@ public class Chassis extends Subsystem {
 
         driveTrainEncoderL.setDistancePerPulse(distanceperpulse);
         driveTrainEncoderR.setDistancePerPulse(distanceperpulse);
+        
     	CSVLoggable temp = new CSVLoggable() {
 			public double get() { return driveTrainEncoderL.getDistance(); }
     	};

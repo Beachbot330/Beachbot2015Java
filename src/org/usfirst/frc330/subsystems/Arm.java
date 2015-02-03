@@ -139,17 +139,15 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{
     public void set(double output){
         if (output > 0 && getArmPosition() > ArmPos.rearLimit) // Todo: Check this logic
         {
-            armLeft.set(0);
-            armRight.set(0);
+            arm.set(0);
         }
         else if (output < 0 && getArmPosition() < ArmPos.frontLimit)// Todo: Check this logic
         {
-            armLeft.set(0);
-            armRight.set(0);
+            arm.set(0);
         }
         else
         {
-            armLeft.set(output);
+            arm.set(output);
             //armRight.set(-output); // Todo: check polarity and then re-enable
         }
     }
