@@ -65,11 +65,14 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{
         armPID.setAbsoluteTolerance(ArmPos.tolerance);
         SmartDashboard.putData("ArmPID", armPID);
         SmartDashboard.putBoolean("ArmOverride", false);
+        
+        Robot.logger.println("Arm Front Limit: " + getArmFrontLimit());
+        Robot.logger.println("Arm Rear Limit: " + getArmRearLimit());
     }
     
     public double getAngle()
     {
-    	return armPot.getAverageVoltage();
+    	return (getArmRearLimit() - getArmFrontLimit()) / (ArmPos.rearLimitAngle - ArmPos.frontLimitAngle) * (armPot.getAverageVoltage()-getArmFrontLimit());
     }
     
     public void setAngle(double position)
@@ -82,7 +85,7 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{
 	}
 
 	public double pidGet() {
-		return getArmPosition();
+		return getAngle();
 	}
     
 	public void setArmFrontLimit()
@@ -111,6 +114,24 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{
         Preferences.getInstance().save();
 	}
 	
+	public double getArmRearLimit() {
+		String name;
+        if (Robot.isPracticerobot())
+            name = "PracticeArmFrontLimit";
+        else
+            name = "CompetitionArmFrontLimit";
+		return Preferences.getInstance().getDouble(name, ArmPos.rearLimit);
+	}
+	
+	public double getArmFrontLimit() {
+		String name;
+        if (Robot.isPracticerobot())
+            name = "PracticeArmRearLimit";
+        else
+            name = "CompetitionArmRearLimit";
+		return Preferences.getInstance().getDouble(name, ArmPos.rearLimit);
+	}
+	
     public synchronized double getSetpoint() {
         return armPID.getSetpoint();
     }
@@ -131,17 +152,12 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{
         armPID.disable();
     }
     
-    public double getArmPosition()
-    {
-        return armPot.getAverageVoltage(); // Todo: Scale
-    }
-    
     public void set(double output){
-        if (output > 0 && getArmPosition() > ArmPos.rearLimit) // Todo: Check this logic
+        if (output > 0 && getAngle() > ArmPos.rearLimit) // Todo: Check this logic
         {
             arm.set(0);
         }
-        else if (output < 0 && getArmPosition() < ArmPos.frontLimit)// Todo: Check this logic
+        else if (output < 0 && getAngle() < ArmPos.frontLimit)// Todo: Check this logic
         {
             arm.set(0);
         }
