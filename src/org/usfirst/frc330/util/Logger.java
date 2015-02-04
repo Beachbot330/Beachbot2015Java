@@ -58,8 +58,10 @@ public class Logger {
 			e.printStackTrace();
 		}
 		
+		File programFile = new File("/home/lvuser/FRCUserProgram.jar");
+		
 		println("Logger filename: " + m_filePrefix + "_" + sdf.format(date));
-
+		println("Program date: " + sdf.format(programFile.lastModified()));
 	}
 	
 	/**
@@ -71,7 +73,7 @@ public class Logger {
 	
 	/**
 	 * rename the files if the driver station has connected and updated the date. 
-	 * Currently this checkes whether the date changed from before 2015 to 2015 or later.
+	 * Currently this checks whether the date changed from before 2015 to 2015 or later.
 	 * This logic may need to change in the future.
 	 * Should be called occasionally, for example in disabledInit.
 	 */
