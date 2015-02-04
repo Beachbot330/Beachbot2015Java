@@ -72,12 +72,24 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{
     
     public double getAngle()
     {
-    	return (getArmRearLimit() - getArmFrontLimit()) / (ArmPos.rearLimitAngle - ArmPos.frontLimitAngle) * (armPot.getAverageVoltage()-getArmFrontLimit());
+    	double sensorRange = getArmRearLimit() - getArmFrontLimit();
+    	double angleRange = ArmPos.rearLimitAngle - ArmPos.frontLimitAngle;
+    	double angleToMast = angleRange/sensorRange * (armPot.getAverageVoltage() - getArmFrontLimit()) + ArmPos.frontLimitAngle;
+    	double alpha = Math.sin(Math.toRadians(getMastAngle())) * ArmPos.mastLength;
+    	return angleToMast - 90 - Math.toDegrees(alpha);
+
     }
     
     public void setAngle(double position)
     {
     	armPID.setSetpoint(position);
+    }
+    
+    public double getMastAngle()
+    {
+    	double sensorRange = getMastRearLimit() - getMastFrontLimit();
+    	double angleRange = ArmPos.rearMastLimitAngle - ArmPos.frontMastLimitAngle;
+    	return angleRange/sensorRange * (mastPot.getAverageVoltage() - getMastFrontLimit()) + ArmPos.frontMastLimitAngle;
     }
 
 	public void pidWrite(double output) {
@@ -114,6 +126,32 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{
         Preferences.getInstance().save();
 	}
 	
+	public void setMastFrontLimit()
+	{        
+        String name;
+        
+        if (Robot.isPracticerobot())
+            name = "PracticeMastFrontLimit";
+        else
+            name = "CompetitionMastFrontLimit";
+        
+        Preferences.getInstance().putDouble(name, mastPot.getAverageVoltage());
+        Preferences.getInstance().save();
+    }
+	
+	public void setMastRearLimit()
+	{
+        String name;
+        
+        if (Robot.isPracticerobot())
+            name = "PracticeMastRearLimit";
+        else
+            name = "CompetitionMastRearLimit";
+        
+        Preferences.getInstance().putDouble(name, mastPot.getAverageVoltage());
+        Preferences.getInstance().save();
+	}
+	
 	public double getArmRearLimit() {
 		String name;
         if (Robot.isPracticerobot())
@@ -130,6 +168,24 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{
         else
             name = "CompetitionArmRearLimit";
 		return Preferences.getInstance().getDouble(name, ArmPos.rearLimit);
+	}
+	
+	public double getMastRearLimit() {
+		String name;
+        if (Robot.isPracticerobot())
+            name = "PracticeMastFrontLimit";
+        else
+            name = "CompetitionMastFrontLimit";
+		return Preferences.getInstance().getDouble(name, ArmPos.mastRearLimit);
+	}
+	
+	public double getMastFrontLimit() {
+		String name;
+        if (Robot.isPracticerobot())
+            name = "PracticeMastRearLimit";
+        else
+            name = "CompetitionMastRearLimit";
+		return Preferences.getInstance().getDouble(name, ArmPos.mastRearLimit);
 	}
 	
     public synchronized double getSetpoint() {

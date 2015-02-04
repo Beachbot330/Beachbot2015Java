@@ -20,7 +20,9 @@ import org.usfirst.frc330.Robot;
  *
  */
 public class  BuzzerBeep extends BBCommand {
+	
 	Timer timeyWhimey = new Timer();
+	
     public BuzzerBeep() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
