@@ -283,7 +283,7 @@ public class Chassis extends Subsystem {
     {
     	driveTrainEncoderL.reset();
     	driveTrainEncoderR.reset();
-        imu.zeroYaw();;
+        imu.zeroYaw();
         setXY(0,0);
         this.prevLeftEncoderDistance = 0;
         this.prevRightEncoderDistance = 0;
@@ -291,6 +291,14 @@ public class Chassis extends Subsystem {
     
     public double getAngle() {
     	return imu.getYaw();
+    }
+    
+    public double getLeftDistance() {
+    	return driveTrainEncoderL.getDistance();
+    }
+    
+    public double getRightDistance() {
+    	return driveTrainEncoderR.getDistance();
     }
 }
 

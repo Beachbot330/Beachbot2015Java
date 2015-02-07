@@ -98,6 +98,7 @@ public class  DriveDistance extends BBCommand {
         {
             Robot.chassis.stopDrive();
         }
+        Robot.logger.println("DriveDistance Setpoint: " + leftDistance + "Left: " + Robot.chassis.getLeftDistance() + "Right: " + Robot.chassis.getRightDistance(), false);
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
