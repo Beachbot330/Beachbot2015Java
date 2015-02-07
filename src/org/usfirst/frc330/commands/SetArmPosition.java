@@ -48,8 +48,8 @@ public class  SetArmPosition extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.arm.setAngle(angle);
-    	Robot.arm.setAbsoluteTolerance(tolerance);
+    	Robot.arm.setArmAngle(angle);
+    	Robot.arm.setArmAbsoluteTolerance(tolerance);
     	if (timeout >= 0.0)
     		{setTimeout(timeout);}
     	else
@@ -62,7 +62,7 @@ public class  SetArmPosition extends BBCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return (Robot.arm.onTarget() || isTimedOut());
+    	return (Robot.arm.onArmTarget() || isTimedOut());
     }
 
     // Called once after isFinished returns true
