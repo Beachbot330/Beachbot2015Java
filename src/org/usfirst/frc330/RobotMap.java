@@ -91,7 +91,7 @@ public class RobotMap {
         chassischassisLeftDrive2 = new VictorSP(1);
         LiveWindow.addActuator("Chassis", "chassisLeftDrive2", (VictorSP) chassischassisLeftDrive2);
         
-        chassischassisLeftDrive = new DualSpeedController(chassischassisLeftDrive1, chassischassisLeftDrive2, false, false);
+        chassischassisLeftDrive = new DualSpeedController(chassischassisLeftDrive1, chassischassisLeftDrive2, true, true);
         LiveWindow.addActuator("Chassis", "chassisLeftDrive", chassischassisLeftDrive);
         
         chassischassisRightDrive1 = new VictorSP(2);
@@ -100,7 +100,7 @@ public class RobotMap {
         chassischassisRightDrive2 = new VictorSP(3);
         LiveWindow.addActuator("Chassis", "chassisRightDrive2", (VictorSP) chassischassisRightDrive2);
         
-        chassischassisRightDrive = new DualSpeedController(chassischassisRightDrive1, chassischassisRightDrive2, true, true);
+        chassischassisRightDrive = new DualSpeedController(chassischassisRightDrive1, chassischassisRightDrive2, false, false);
         LiveWindow.addActuator("Chassis", "chassisRightDrive", chassischassisRightDrive);
         
         liftliftEncoder = new Encoder(0, 1, false, EncodingType.k4X);
