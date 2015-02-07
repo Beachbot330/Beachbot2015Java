@@ -146,7 +146,7 @@ Children:
         Name: chassisLeftDrive2
       Properties:
         Motor2 Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Motor2 Inverted, validators: null, value: false}
+          name: Motor2 Inverted, validators: null, value: true}
         Motor2: !!robotbuilder.data.properties.ChildSelectionProperty
           default: 1
           name: Motor2
@@ -160,7 +160,7 @@ Children:
           validators: &id011 [DualSpeedController, ChildDropdownSelected]
           value: Chassis chassisLeftDrive1
         Motor1 Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Motor1 Inverted, validators: null, value: false}
+          name: Motor1 Inverted, validators: null, value: true}
       Base: Dual Speed Controller
       Name: chassisLeftDrive
     - Children:
@@ -198,7 +198,7 @@ Children:
         Name: chassisRightDrive2
       Properties:
         Motor2 Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Motor2 Inverted, validators: null, value: true}
+          name: Motor2 Inverted, validators: null, value: false}
         Motor2: !!robotbuilder.data.properties.ChildSelectionProperty
           default: 1
           name: Motor2
@@ -212,12 +212,12 @@ Children:
           validators: *id011
           value: Chassis chassisRightDrive1
         Motor1 Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Motor1 Inverted, validators: null, value: true}
+          name: Motor1 Inverted, validators: null, value: false}
       Base: Dual Speed Controller
       Name: chassisRightDrive
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: TankDrive}
     Base: Subsystem
     Name: Chassis
   - Children:
@@ -991,7 +991,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Joe-XPS13-W7\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\James\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ..\}
   Default Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {
     default: None, name: Default Autonomous Command, type: Command, validators: null,
