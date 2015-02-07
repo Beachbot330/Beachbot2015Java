@@ -61,6 +61,9 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput{
     
 	public Lift() {
         super();
+        
+        liftEncoder.setDistancePerPulse(LiftPos.liftLength/LiftPos.encoderTurns/LiftPos.encoderPPR);
+        
         liftPID = new PIDController(	LiftPos.proportional,
 						        		LiftPos.integral,
 						        		LiftPos.derivitive ,this,this);
@@ -81,7 +84,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput{
     
     public double getPosition()
     {	
-    	return liftEncoder.getDistance();  //Todo: scale to inches
+    	return liftEncoder.getDistance();
     }
     
     public void setPosition(double position)
@@ -129,7 +132,6 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput{
         else
         {
         	lift.set(output);
-            //pickupLiftRight.set(-output); // Todo: check polarity and then re-enable
         }
     }
 }
