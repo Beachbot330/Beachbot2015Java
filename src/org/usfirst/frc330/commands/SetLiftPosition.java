@@ -54,6 +54,7 @@ public class  SetLiftPosition extends BBCommand {
 			{setTimeout(timeout);}
 		else
 			{setTimeout(9999999);}
+    	Robot.logger.println("SetLiftPositition Starting Position: " + Robot.lift.getPosition() + " Setpoint: " + position);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -67,10 +68,12 @@ public class  SetLiftPosition extends BBCommand {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.logger.println("SetLiftPosition Setpoint: " + position + " Ending Position: " + Robot.lift.getPosition());
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

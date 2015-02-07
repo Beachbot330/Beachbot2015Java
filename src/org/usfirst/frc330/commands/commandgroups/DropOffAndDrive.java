@@ -11,6 +11,7 @@
 
 package org.usfirst.frc330.commands.commandgroups;
 import org.usfirst.frc330.commands.DriveDistance;
+import org.usfirst.frc330.commands.DriveDistanceAtRelAngle_NoTurn;
 import org.usfirst.frc330.commands.SetLiftPosition;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.constants.LiftPos;
@@ -41,6 +42,6 @@ public class DropOffAndDrive extends BBCommandGroup {
         // arm.
     	addParallel(new ShiftLow());
     	addSequential(new SetLiftPosition(LiftPos.dropOff));
-    	addSequential(new DriveDistance());
+    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-24, 0));
     }
 }

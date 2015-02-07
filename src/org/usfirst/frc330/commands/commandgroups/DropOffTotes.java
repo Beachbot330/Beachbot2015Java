@@ -10,6 +10,9 @@
 
 
 package org.usfirst.frc330.commands.commandgroups;
+import org.usfirst.frc330.commands.SetLiftPosition;
+import org.usfirst.frc330.constants.LiftPos;
+
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
 /**
@@ -34,5 +37,6 @@ public class DropOffTotes extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addSequential(new SetLiftPosition(LiftPos.dropOff));
     }
 }
