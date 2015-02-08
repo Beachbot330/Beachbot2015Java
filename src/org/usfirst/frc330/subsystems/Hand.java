@@ -53,7 +53,13 @@ public class Hand extends Subsystem {
     }
     
     public void setAngle(double angle){
-    	
+    	//Todo: implement
     }
+    
+    public double getAngle(){
+    	//Todo: implement
+    	return 0.0;
+    }
+    
 }
 
