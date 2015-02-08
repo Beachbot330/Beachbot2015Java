@@ -147,7 +147,7 @@ public class OI {
 
         SmartDashboard.putData("CenterGrabberOpen", new CenterGrabberOpen());
 
-        SmartDashboard.putData("CneterGrabberClose", new CneterGrabberClose());
+        SmartDashboard.putData("CenterGrabberClose", new CenterGrabberClose());
 
         SmartDashboard.putData("RightGrabberOpen", new RightGrabberOpen());
 

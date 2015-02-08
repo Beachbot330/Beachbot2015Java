@@ -329,6 +329,17 @@ public class Arm extends Subsystem {
     
     public synchronized void disableMast() {
         mastPID.disable();
-    } 
+    }
+    
+    boolean isFront;
+
+	public boolean getIsFront() {
+		return isFront;
+	}
+
+	public void setIsFront(boolean isFront) {
+		this.isFront = isFront;
+	}
+    
 }
 

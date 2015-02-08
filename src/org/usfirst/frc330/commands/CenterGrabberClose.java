@@ -18,9 +18,9 @@ import org.usfirst.frc330.Robot;
 /**
  *
  */
-public class  CneterGrabberClose extends BBCommand {
+public class  CenterGrabberClose extends BBCommand {
 
-    public CneterGrabberClose() {
+    public CenterGrabberClose() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
