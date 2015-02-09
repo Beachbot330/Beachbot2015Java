@@ -71,6 +71,38 @@ public class Hand extends Subsystem {
 	public void setVerticalHandAngle(double verticalHandAngle) {
 		this.verticalHandAngle = verticalHandAngle;
 	}
-    
+	
+	// ///////////////////////////////////////
+	// Hand (Grabber) Open and Close Functions
+	// ///////////////////////////////////////
+	public void closeHandLeft()
+	{
+		handLeft.set(true);
+	}
+	
+	public void openHandLeft()
+	{
+		handLeft.set(false);
+	}
+	
+	public void closeHandRight()
+	{
+		handRight.set(true);
+	}
+	
+	public void openHandRight()
+	{
+		handRight.set(false);
+	}
+	
+	public void closeHandCenter()
+	{
+		handCenter.set(true);
+	}
+	
+	public void openHandCenter()
+	{
+		handCenter.set(false);
+	}
 }
 
