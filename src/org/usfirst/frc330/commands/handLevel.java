@@ -36,7 +36,10 @@ public class  handLevel extends BBCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.hand.setAngle(180-(Robot.arm.getArmAngle()));
+    	if(Robot.hand.isHandLevelActivated())
+    	{
+    		Robot.hand.setAngle(180-(Robot.arm.getArmAngle()));
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
