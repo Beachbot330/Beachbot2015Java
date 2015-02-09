@@ -226,10 +226,10 @@ public class Arm extends Subsystem {
     {
     	double sensorRange = getArmRearLimit() - getArmFrontLimit();
     	double angleRange  = ArmPos.rearLimitAngle - ArmPos.frontLimitAngle;
-    	double angleToMast = angleRange/sensorRange * (armPot.getAverageVoltage() - getArmFrontLimit()) + ArmPos.frontLimitAngle;
-    	double alpha       = Math.sin(Math.toRadians(getMastAngle())) * ArmPos.mastLength;
+    	double angleFromMast = angleRange/sensorRange * (armPot.getAverageVoltage() - getArmFrontLimit()) + ArmPos.frontLimitAngle;
+    	double angleFromHorizon = -(180 - getMastAngle() - angleFromMast);
     	
-    	return angleToMast - 90 - Math.toDegrees(alpha);
+    	return angleFromHorizon;
     }
     
     public double getMastAngle()

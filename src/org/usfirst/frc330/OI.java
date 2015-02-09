@@ -124,10 +124,8 @@ public class OI {
         shiftHigh_1.whileHeld(new ShiftHigh());
         dropOffAndDrive_hold2 = new JoystickButton(driverL, 2);
         dropOffAndDrive_hold2.whileHeld(new DropOffAndDrive());
-        
-        debug1 = new TwoJoystickButton(driverL, 1, 2);
-        debug1.whenPressed(new DebugOne(), new DebugTwo());
-       
+
+	    
         // SmartDashboard Buttons
         SmartDashboard.putData("SetWristPosition", new SetWristPosition());
 

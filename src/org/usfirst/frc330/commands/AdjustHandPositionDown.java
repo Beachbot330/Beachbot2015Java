@@ -12,8 +12,11 @@
 package org.usfirst.frc330.commands;	
 
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.BBCommand;
+
 import org.usfirst.frc330.Robot;
+import org.usfirst.frc330.constants.HandConst;
 
 /**
  *
@@ -36,6 +39,9 @@ public class  AdjustHandPositionDown extends BBCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double handAngle = Robot.hand.getVerticalHandAngle();
+    	handAngle = handAngle - HandConst.vertAdjustRate * (Robot.oi.armJoystick.getAxis(Joystick.AxisType.kZ)-1)/2;
+    	Robot.hand.setVerticalHandAngle(handAngle);
     }
 
     // Make this return true when this Command no longer needs to run execute()
