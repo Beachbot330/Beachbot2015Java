@@ -121,11 +121,11 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput{
     }
     
     public void set(double output){
-        if (output > 0 && getPosition() > LiftPos.lowerLimit) // Todo: Check this logic
+        if (output > 0 && getPosition() < LiftPos.lowerLimit) // Todo: Check this logic
         {
         	lift.set(0);
         }
-        else if (output < 0 && getPosition() < LiftPos.upperLimit)// Todo: Check this logic
+        else if (output < 0 && getPosition() > LiftPos.upperLimit)// Todo: Check this logic
         {
         	lift.set(0);
         }
