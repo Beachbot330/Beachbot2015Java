@@ -44,9 +44,9 @@ public class RobotMap {
     public static SpeedController liftliftLeft;
     public static SpeedController liftliftRight;
     public static DualSpeedController liftLift;
-    public static Relay frillsbuzzer;
     public static DigitalOutput frillslights;
     public static DigitalInput frillspracticeRobot;
+    public static DigitalOutput frillsbuzzer;
     public static AnalogInput armmastPot;
     public static AnalogInput armarmPot;
     public static SpeedController armmastRight;
@@ -120,14 +120,14 @@ public class RobotMap {
         liftLift = new DualSpeedController(liftliftLeft, liftliftRight, false, true);
         LiveWindow.addActuator("Lift", "Lift", liftLift);
         
-        frillsbuzzer = new Relay(0);
-        LiveWindow.addActuator("Frills", "buzzer", frillsbuzzer);
-        
         frillslights = new DigitalOutput(8);
         LiveWindow.addActuator("Frills", "lights", frillslights);
         
         frillspracticeRobot = new DigitalInput(9);
         LiveWindow.addSensor("Frills", "practiceRobot", frillspracticeRobot);
+        
+        frillsbuzzer = new DigitalOutput(2);
+        LiveWindow.addActuator("Frills", "buzzer", frillsbuzzer);
         
         armmastPot = new AnalogInput(2);
         LiveWindow.addSensor("Arm", "mastPot", armmastPot);

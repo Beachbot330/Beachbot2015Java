@@ -21,8 +21,6 @@ import org.usfirst.frc330.Robot;
  */
 public class  BuzzerBeep extends BBCommand {
 	
-	Timer timeyWhimey = new Timer();
-	
     public BuzzerBeep() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -35,8 +33,6 @@ public class  BuzzerBeep extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	timeyWhimey.reset();
-    	timeyWhimey.start();
     	Robot.frills.buzzerOn();
     }
 
@@ -46,7 +42,7 @@ public class  BuzzerBeep extends BBCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timeyWhimey.hasPeriodPassed(1.0);
+        return false;
     }
 
     // Called once after isFinished returns true
