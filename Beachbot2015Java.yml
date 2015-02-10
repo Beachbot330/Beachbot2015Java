@@ -632,6 +632,16 @@ Children:
         name: Default Command, type: Command, validators: null, value: handLevel}
     Base: Subsystem
     Name: Hand
+  - Children:
+    - Children: []
+      Properties: {}
+      Base: PowerDistributionPanel
+      Name: PDP
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+    Base: Subsystem
+    Name: PowerDP
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -1265,7 +1275,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\allenpeters\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Joe-XPS13-W7\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ..\}
   Default Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {
     default: None, name: Default Autonomous Command, type: Command, validators: null,
