@@ -11,10 +11,12 @@
 
 package org.usfirst.frc330.subsystems;
 
+import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.RobotMap;
+import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.commands.*;
-import edu.wpi.first.wpilibj.*;
 
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -37,5 +39,46 @@ public class PowerDP extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    public PowerDP() {
+    	CSVLoggable temp = new CSVLoggable() {
+			public double get() { return getTemperature(); }
+    	};
+    	Robot.csvLogger.add("PDPTemperature", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return getTotalCurrent(); }
+    	};
+    	Robot.csvLogger.add("PDPTotalCurrent", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return getTotalPower(); }
+    	};
+    	Robot.csvLogger.add("PDPTotalPower", temp);
+    }
+
+    /////////////////////////////////////////////////////////////
+    // SET methods
+    /////////////////////////////////////////////////////////////     
+    
+    /////////////////////////////////////////////////////////////
+    // GET methods
+    /////////////////////////////////////////////////////////////  
+    public double getTemperature(){ 
+    	return pDP.getTemperature();
+    }
+    
+    public double getTotalCurrent() {
+    	return pDP.getTotalCurrent();
+    }
+    
+    public double getCurrent(int channel) {
+    	return pDP.getCurrent(channel);
+    }
+    
+    public double getTotalPower() {
+    	return pDP.getTotalPower();
+    }
+    
 }
 
