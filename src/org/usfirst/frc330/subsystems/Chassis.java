@@ -150,6 +150,26 @@ public class Chassis extends Subsystem {
 			public double get() { return getShift(); }  		
     	};  
     	Robot.csvLogger.add("Shift", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getChassisLeftDrive1Current(); }
+    	};
+    	Robot.csvLogger.add("LeftDrive1Current", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getChassisLeftDrive2Current(); }
+    	};
+    	Robot.csvLogger.add("LeftDrive2Current", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getChassisRightDrive1Current(); }
+    	};
+    	Robot.csvLogger.add("RightDrive1Current", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getChassisRightDrive2Current(); }
+    	};
+    	Robot.csvLogger.add("RightDrive2Current", temp);
     }
     
     // Put methods for controlling this subsystem

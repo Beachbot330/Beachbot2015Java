@@ -85,6 +85,16 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput{
 			public double get() { return getTotePinch(); }
     	};
     	Robot.csvLogger.add("TotePincher", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getLiftLeftCurrent(); }
+    	};
+    	Robot.csvLogger.add("LiftLeftCurrent", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getLiftRightCurrent(); }
+    	};
+    	Robot.csvLogger.add("LiftRightCurrent", temp);
     }
 	
 	public double getTotePinch() {
@@ -142,6 +152,22 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput{
         	lift.set(0);
         }
         else if (output < 0 && getPosition() > LiftPos.upperLimit)// Todo: Check this logic
+        {
+        	lift.set(0);
+        }
+        else if (output > 0 && Robot.powerDP.getLiftLeftCurrent() < LiftPos.currentLowerLimit)
+        {
+        	lift.set(0);
+        }
+        else if (output < 0 && Robot.powerDP.getLiftLeftCurrent() > LiftPos.currentUpperLimit)
+        {
+        	lift.set(0);
+        }
+        else if (output > 0 && Robot.powerDP.getLiftRightCurrent() < LiftPos.currentLowerLimit)
+        {
+        	lift.set(0);
+        }
+        else if (output < 0 && Robot.powerDP.getLiftRightCurrent() > LiftPos.currentUpperLimit)
         {
         	lift.set(0);
         }

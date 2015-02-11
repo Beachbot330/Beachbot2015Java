@@ -24,4 +24,8 @@ public final class LiftPos {
 	public static final double encoderTurns =   12.5;
 	public static final double liftLength   =   45.0;
 	public static final int encoderPPR      =   64;
+	
+	//Current
+	public static final double currentLowerLimit = -50;
+	public static final double currentUpperLimit = 50;
 }

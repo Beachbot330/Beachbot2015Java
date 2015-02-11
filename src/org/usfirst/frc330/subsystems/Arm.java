@@ -157,6 +157,47 @@ public class Arm extends Subsystem {
 			public double get() { return getMastPotAvgVoltage(); }
     	};
     	Robot.csvLogger.add("MastPotAvgVoltage", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getArmLeftCurrent(); }
+    	};
+    	Robot.csvLogger.add("ArmLeftCurrent", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getArmRightCurrent(); }
+    	};
+    	Robot.csvLogger.add("ArmRightCurrent", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getMastLeftCurrent(); }
+    	};
+    	Robot.csvLogger.add("MastLeftCurrent", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getMastRightCurrent(); }
+    	};
+    	Robot.csvLogger.add("MastRightCurrent", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return armLeft.get(); }
+    	};
+    	Robot.csvLogger.add("ArmLeftOutput", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return armRight.get(); }
+    	};
+    	Robot.csvLogger.add("ArmRightOutput", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return mastLeft.get(); }
+    	};
+    	Robot.csvLogger.add("MastLeftOutput", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return mastRight.get(); }
+    	};
+    	Robot.csvLogger.add("MastRightOutput", temp);
+    	
     }
     
 	/////////////////////////////////////////////////////////////
@@ -176,6 +217,22 @@ public class Arm extends Subsystem {
         {
             arm.set(0);
         }
+        else if (output > 0 && Robot.powerDP.getArmLeftCurrent() < ArmPos.currentLowerLimit)
+        {
+            arm.set(0);
+        }
+        else if (output < 0 && Robot.powerDP.getArmLeftCurrent() > ArmPos.currentUpperLimit)
+        {
+            arm.set(0);
+        }
+        else if (output > 0 && Robot.powerDP.getArmRightCurrent() < ArmPos.currentLowerLimit)
+        {
+            arm.set(0);
+        }
+        else if (output < 0 && Robot.powerDP.getArmRightCurrent() > ArmPos.currentUpperLimit)
+        {
+            arm.set(0);
+        }
         else
         {
             arm.set(output);
@@ -191,6 +248,22 @@ public class Arm extends Subsystem {
             mast.set(0);
         }
         else if (output < 0 && getMastAngle() < MastPos.frontLimit)// Todo: Check this logic
+        {
+            mast.set(0);
+        }
+        else if (output > 0 && Robot.powerDP.getMastLeftCurrent() < MastPos.currentLowerLimit)
+        {
+            mast.set(0);
+        }
+        else if (output < 0 && Robot.powerDP.getMastLeftCurrent() > MastPos.currentUpperLimit)
+        {
+            mast.set(0);
+        }
+        else if (output > 0 && Robot.powerDP.getMastRightCurrent() < MastPos.currentLowerLimit)
+        {
+            mast.set(0);
+        }
+        else if (output < 0 && Robot.powerDP.getMastRightCurrent() > MastPos.currentUpperLimit)
         {
             mast.set(0);
         }

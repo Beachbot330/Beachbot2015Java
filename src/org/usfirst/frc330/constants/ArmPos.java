@@ -28,4 +28,8 @@ public final class ArmPos {
 	//Lengths
 	public static final double mastLength      = 22.0; 	//inches
 	public static final double armLength       = 44.0; 	//inches
+	
+	//Current
+	public static final double currentLowerLimit = -50;
+	public static final double currentUpperLimit = 50;
 }	

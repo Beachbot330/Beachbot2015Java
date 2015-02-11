@@ -11,9 +11,12 @@
 
 package org.usfirst.frc330.subsystems;
 
+import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.commands.*;
+import org.usfirst.frc330.constants.ArmPos;
 import org.usfirst.frc330.constants.HandConst;
+import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
 
 import edu.wpi.first.wpilibj.*;
@@ -41,6 +44,19 @@ public class Hand extends Subsystem {
     public Hand() {
     	super();
     	
+    	/////////////////////////////////////////////////////////////////
+    	// LOG IT!
+    	
+    	CSVLoggable temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getWristLeftCurrent(); }
+    	};
+    	Robot.csvLogger.add("WristLeftCurrent", temp);
+    	
+    	temp = new CSVLoggable() {
+    		public double get() { return Robot.powerDP.getWristRightCurrent(); }
+    	};
+    	Robot.csvLogger.add("WristRightCurrent", temp);
+    	
     }
     
     // Put methods for controlling this subsystem
@@ -55,6 +71,31 @@ public class Hand extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    
+    public void setWrist(double output){
+        if (output > 0 && Robot.powerDP.getWristLeftCurrent() < HandConst.currentLowerLimit)
+        {
+        	wrist.set(0);
+        }
+        else if (output < 0 && Robot.powerDP.getWristLeftCurrent() > HandConst.currentUpperLimit)
+        {
+        	wrist.set(0);
+        }
+        else if (output > 0 && Robot.powerDP.getWristRightCurrent() < HandConst.currentLowerLimit)
+        {
+        	wrist.set(0);
+        }
+        else if (output < 0 && Robot.powerDP.getWristRightCurrent() > HandConst.currentUpperLimit)
+        {
+        	wrist.set(0);
+        }
+        else
+        {
+        	wrist.set(output);
+        }
+    }
+    
     
     public void setAngle(double angle){
     	//Todo: implement

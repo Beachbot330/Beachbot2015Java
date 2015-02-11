@@ -26,4 +26,7 @@ public final class MastPos {
 	public static final double frontLimitAngle = 90.0;
 	public static final double rearLimitAngle  = 120.0;
 	
+	//Current
+	public static final double currentUpperLimit = 50;
+	public static final double currentLowerLimit = -50;
 }
