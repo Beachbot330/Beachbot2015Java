@@ -100,12 +100,14 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     }
 	
 	public double getTotePinch() {
-		boolean returnVal = false;
-		returnVal = totePincher.get();
+		DoubleSolenoid.Value pincherState = totePincher.get();
 		
-		if(returnVal) {
+		if (pincherState == DoubleSolenoid.Value.kForward)
+		{
 			return 1.0;
-		} else {
+		} 
+		else
+		{
 			return 0.0;
 		}
 	}

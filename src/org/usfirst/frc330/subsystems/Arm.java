@@ -413,12 +413,12 @@ public class Arm extends Subsystem {
 	//    0.0 == FALSE
 	// TODO: get() in CSVlogger should take any value
 	public double getMastLock() {
-		boolean returnVal = false;
-		returnVal = mastLock.get();
-		
-		if(returnVal) {
+		if(mastLock.get() == DoubleSolenoid.Value.kForward) 
+		{
 			return 1.0;
-		} else {
+		} 
+		else 
+		{
 			return 0.0;
 		}
 	}

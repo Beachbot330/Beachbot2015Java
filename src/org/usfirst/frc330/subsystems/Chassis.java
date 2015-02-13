@@ -23,6 +23,7 @@ import com.kauailabs.nav6.frc.IMU;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
@@ -187,16 +188,16 @@ public class Chassis extends Subsystem {
     
     public void shiftHigh()
     {
-    	shift.set(true);
+    	shift.set(DoubleSolenoid.Value.kForward);
     }
     
     public void shiftLow()
     {
-    	shift.set(false);
+    	shift.set(DoubleSolenoid.Value.kReverse); //TODO: Check this
     }
     
     public boolean isHighGear() {
-    	return shift.get();
+    	return (shift.get() == DoubleSolenoid.Value.kForward);
     }
     
     public double getPressure() {
@@ -345,10 +346,8 @@ public class Chassis extends Subsystem {
  	//    0.0 == FALSE
  	// TODO: get() in CSVlogger should take any value
  	public double getShift() {
- 		boolean returnVal = false;
- 		returnVal = shift.get();
- 		
- 		if(returnVal) {
+ 		if(shift.get() == DoubleSolenoid.Value.kForward)
+ 		{
  			return 1.0;
  		} else {
  			return 0.0;

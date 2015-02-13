@@ -18,4 +18,8 @@ public final class HandConst {
 	// Current
 	public static final double currentLowerLimit = -50;
 	public static final double currentUpperLimit = 50;
+	
+	// Limits Defaults
+	public static final double frontLimit      = 1.0;
+	public static final double rearLimit       = -1.0;
 }	
