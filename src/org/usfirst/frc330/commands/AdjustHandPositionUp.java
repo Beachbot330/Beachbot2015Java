@@ -35,6 +35,10 @@ public class  AdjustHandPositionUp extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	if(!Robot.hand.isHandLevelActivated())
+    	{
+    		Robot.hand.setHandLevelActivated(true);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
