@@ -13,6 +13,8 @@ package org.usfirst.frc330.commands;
 
 
 import edu.wpi.first.wpilibj.command.BBCommand;
+import edu.wpi.first.wpilibj.command.Scheduler;
+
 import org.usfirst.frc330.Robot;
 
 /**
@@ -35,6 +37,12 @@ public class  KillAll extends BBCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.hand.setHandLevelActivated(false);
+    	Scheduler.getInstance().removeAll();
+    	Robot.chassis.stopDrive();
+    	Robot.arm.stopArm();
+    	Robot.lift.stopLift();
+    	Robot.hand.stopHand();
     }
 
     // Make this return true when this Command no longer needs to run execute()

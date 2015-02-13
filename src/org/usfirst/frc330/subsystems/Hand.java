@@ -97,8 +97,11 @@ public class Hand extends Subsystem {
     }
     
     
-    public void setAngle(double angle){
-    	//Todo: implement
+    public void setAngle(double angle)
+    {
+    	double sensorRange = getHandRearLimit() - getHandFrontLimit();
+    	double angleRange = HandConst.rearLimitAngle - HandConst.frontLimitAngle;
+    	double angleFromArm = sensorRange/angleRange * wristPot.getAverageVoltage()
     }
     
     public double getAngle(){
@@ -156,6 +159,12 @@ public class Hand extends Subsystem {
 
 	public void setHandLevelActivated(boolean handLevelActivated) {
 		this.handLevelActivated = handLevelActivated;
+	}
+
+	public void stopHand() 
+	{
+		
+		
 	}
 }
 
