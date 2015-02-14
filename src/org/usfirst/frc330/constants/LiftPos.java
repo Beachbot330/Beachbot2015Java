@@ -7,23 +7,23 @@ public final class LiftPos {
 	public static final double tolerance =			 0.1;
 	
 	// PID Constants
-	public static final double proportional =		 0.0;
-	public static final double integral =			 0.0;
-	public static final double derivitive =			 0.0;
+	public static final double proportional =		 0.3;		//AP, SP 2-14
+	public static final double integral =			 0.000;		//AP, SP 2-14
+	public static final double derivitive =			 0.001;		//AP, SP 2-14
 	
-	// Values are in inches from the ground
+	// Values are in inches from the physical hardstop
 	public static final double dropOff = 		5.0;
 	public static final double carry =			15.0;
 	public static final double load2 = 			22.0;
 	public static final double intake = 		35.0;
 	public static final double stack3 = 		39.0;
 	
-	public static final double lowerLimit = 	1.0;
-	public static final double upperLimit = 	37.5;
+	public static final double lowerLimit = 	1.25;   //AP, SP 2-14
+	public static final double upperLimit = 	37.0;   //AP, SP 2-14
 	
-	public static final double encoderTurns =   9.8;
-	public static final double liftLength   =   38.5;
-	public static final int encoderPPR      =   64;
+	public static final double encoderTurns =   9.8;   //JR 2-13
+	public static final double liftLength   =   38.5;  //JR 2-13
+	public static final int encoderPPR      =   64;   //JR 2-13
 	
 	//Current
 	public static final double currentLowerLimit = -50;

@@ -94,15 +94,16 @@ public class Chassis extends Subsystem {
         final double distanceperpulse = Math.PI*ChassisConst.wheelDiameter/ChassisConst.PulseperRevolution /
         		ChassisConst.encoderGearRatio/ChassisConst.gearRatio * ChassisConst.Fudgefactor;
 
+        driveTrainEncoderR.setReverseDirection(false);
         driveTrainEncoderL.setDistancePerPulse(distanceperpulse);
         driveTrainEncoderR.setDistancePerPulse(distanceperpulse);
         
-    	CSVLoggable temp = new CSVLoggable() {
+    	CSVLoggable temp = new CSVLoggable(true) {
 			public double get() { return driveTrainEncoderL.getDistance(); }
     	};
     	Robot.csvLogger.add("DriveTrainEncoderDistanceL", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return driveTrainEncoderR.getDistance(); }
     	};
     	Robot.csvLogger.add("DriveTrainEncoderDistanceR", temp);
@@ -127,7 +128,7 @@ public class Chassis extends Subsystem {
     	};
     	Robot.csvLogger.add("DriveTrainRight", temp); 
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return imu.getYaw(); }  		
     	};    	
     	Robot.csvLogger.add("ChassisAngle", temp);
@@ -142,17 +143,17 @@ public class Chassis extends Subsystem {
     	};      	
     	Robot.csvLogger.add("ChassisY", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return getPressure(); }  		
     	};  
     	Robot.csvLogger.add("Pressure", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return getShift(); }  		
     	};  
     	Robot.csvLogger.add("Shift", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
     		public double get() { return Robot.powerDP.getChassisLeftDrive1Current(); }
     	};
     	Robot.csvLogger.add("LeftDrive1Current", temp);
@@ -162,7 +163,7 @@ public class Chassis extends Subsystem {
     	};
     	Robot.csvLogger.add("LeftDrive2Current", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
     		public double get() { return Robot.powerDP.getChassisRightDrive1Current(); }
     	};
     	Robot.csvLogger.add("RightDrive1Current", temp);

@@ -79,7 +79,7 @@ public class RobotMap {
         LiveWindow.addSensor("Chassis", "driveTrainEncoderL", chassisdriveTrainEncoderL);
         chassisdriveTrainEncoderL.setDistancePerPulse(1.0);
         chassisdriveTrainEncoderL.setPIDSourceParameter(PIDSourceParameter.kRate);
-        chassisdriveTrainEncoderR = new Encoder(6, 7, false, EncodingType.k4X);
+        chassisdriveTrainEncoderR = new Encoder(6, 7, true, EncodingType.k4X);
         LiveWindow.addSensor("Chassis", "driveTrainEncoderR", chassisdriveTrainEncoderR);
         chassisdriveTrainEncoderR.setDistancePerPulse(1.0);
         chassisdriveTrainEncoderR.setPIDSourceParameter(PIDSourceParameter.kRate);

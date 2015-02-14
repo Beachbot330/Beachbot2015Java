@@ -84,12 +84,12 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     	};
     	Robot.csvLogger.add("LiftOutput", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return getTotePinch(); }
     	};
     	Robot.csvLogger.add("TotePincher", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
     		public double get() { return Robot.powerDP.getLiftLeftCurrent(); }
     	};
     	Robot.csvLogger.add("LiftLeftCurrent", temp);
@@ -152,11 +152,12 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     }
     
     public void set(double output){
-        if (output > 0 && getPosition() < LiftPos.lowerLimit) // Todo: Check this logic
+    	System.out.println("Output: " + output);
+        if (output > 0 && getPosition() > LiftPos.upperLimit)
         {
         	lift.set(0);
         }
-        else if (output < 0 && getPosition() > LiftPos.upperLimit)// Todo: Check this logic
+        else if (output < 0 && getPosition() < LiftPos.lowerLimit)
         {
         	lift.set(0);
         }
@@ -188,6 +189,16 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
 		{
 			liftPID.reset();
 		}
+	}
+	
+	public void closeTotePincher()
+	{
+		totePincher.set(DoubleSolenoid.Value.kForward);
+	}
+	
+	public void openTotePincher()
+	{
+		totePincher.set(DoubleSolenoid.Value.kReverse);
 	}
 }
 

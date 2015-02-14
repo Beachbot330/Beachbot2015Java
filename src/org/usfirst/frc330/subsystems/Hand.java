@@ -125,32 +125,32 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	// ///////////////////////////////////////
 	public void closeHandLeft()
 	{
-		handLeft.set(DoubleSolenoid.Value.kForward);
+		handLeft.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void openHandLeft()
 	{
-		handLeft.set(DoubleSolenoid.Value.kReverse);
+		handLeft.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public void closeHandRight()
 	{
-		handRight.set(DoubleSolenoid.Value.kForward);
+		handRight.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void openHandRight()
 	{
-		handRight.set(DoubleSolenoid.Value.kReverse);
+		handRight.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public void closeHandCenter()
 	{
-		handCenter.set(DoubleSolenoid.Value.kForward);
+		handCenter.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void openHandCenter()
 	{
-		handCenter.set(DoubleSolenoid.Value.kReverse);
+		handCenter.set(DoubleSolenoid.Value.kForward);
 	}
 
 	// //////////////////////////////////////
