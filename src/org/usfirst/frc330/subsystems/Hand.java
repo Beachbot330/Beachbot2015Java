@@ -170,7 +170,6 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 		{
 			wristPID.disable();
 		}
-		
 	}
 
 	public void pidWrite(double output) {

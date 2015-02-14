@@ -531,6 +531,42 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{ //TODO: is t
         	arm.set(output);
         }
     }
+    
+    //////////////////////////
+    // Other Methods
+    //////////////////////////
+    public void manualArm() {
+        double armCommand = Robot.oi.armJoystick.getY() * 0.75;
+        if (armCommand < 0) 
+            armCommand = -(armCommand*armCommand);
+        else
+            armCommand = armCommand*armCommand;
+        if (Math.abs(armCommand) > 0.10)
+        {
+            if (armPID.isEnable())
+                armPID.disable();
+            if (getArmAngle() > ArmPos.frontStateRearLimitAngle && armCommand > 0 && this.getIsFront() == true)
+            	set(0);
+            else if (getArmAngle() < ArmPos.frontLimitAngle && armCommand < 0 && this.getIsFront() == true)
+                set(0);
+            else if (getArmAngle() > ArmPos.rearLimitAngle && armCommand > 0 && this.getIsFront() == false)
+                set(0);
+            else if (getArmAngle() < ArmPos.rearStateFrontLimitAngle && armCommand < 0 && this.getIsFront() == false)
+                set(0);
+            else
+                set(armCommand);
+            //TODO: add current limiting
+        }
+        else if (!armPID.isEnable())
+        {
+            armPID.setSetpoint(this.getArmAngle());
+            armPID.enable();
+        }  
+    }
+    
+    public synchronized boolean isEnable() {
+        return armPID.isEnable();
+    }
 		
 }
 

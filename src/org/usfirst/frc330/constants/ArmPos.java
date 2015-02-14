@@ -21,9 +21,12 @@ public final class ArmPos {
 	public static final double rearLimit       = -1.0;
 	
 	//Angles
-	public static final double frontLimitAngle = -30.0;
-	public static final double rearLimitAngle  = 210.0;
-	public static final double vertical        = 0.0;
+	public static final double frontLimitAngle = 			-30.0;
+	public static final double rearStateFrontLimitAngle = 	 20.0;
+	public static final double verticalAngle = 	  			 90.0;
+	public static final double frontStateRearLimitAngle =	120.0;
+	public static final double rearLimitAngle  = 			210.0;
+	
 	
 	//Lengths
 	//public static final double mastLength      = 22.0; 	//inches
