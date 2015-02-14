@@ -16,7 +16,7 @@ public final class ArmPos {
 	public static final double integral        = 0.0;
 	public static final double derivitive      = 0.0;
 	
-	// Limits Defaults
+	// Analog Pot Limits- Defaults
 	public static final double frontLimit      = 1.0;
 	public static final double rearLimit       = -1.0;
 	
@@ -26,8 +26,8 @@ public final class ArmPos {
 	public static final double vertical        = 0.0;
 	
 	//Lengths
-	public static final double mastLength      = 22.0; 	//inches
-	public static final double armLength       = 44.0; 	//inches
+	//public static final double mastLength      = 22.0; 	//inches
+	//public static final double armLength       = 44.0; 	//inches
 	
 	//Current
 	public static final double currentLowerLimit = -50;

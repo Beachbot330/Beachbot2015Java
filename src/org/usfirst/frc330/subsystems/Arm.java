@@ -16,6 +16,7 @@ import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.commands.ManualArm;
 import org.usfirst.frc330.constants.ArmPos;
+import org.usfirst.frc330.constants.LiftPos;
 import org.usfirst.frc330.constants.MastPos;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
 
@@ -26,7 +27,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class Arm extends Subsystem {
+public class Arm extends Subsystem implements PIDSource, PIDOutput{ //TODO: is this supposed to be a PIDsource and output? How does that work with 2 PIDs?
 	
 	protected PIDController armPID;
 	protected PIDController mastPID;
@@ -490,6 +491,46 @@ public class Arm extends Subsystem {
 			mastPID.reset();
 		}
 	}
+
+	public void pidWrite(double output) {
+		set(output);		
+	}
+
+	public double pidGet() {
+		return getArmAngle();
+	}
+	
+    public void set(double output){
+        if (output > 0 && getArmAngle() < ArmPos.frontLimitAngle)
+        {
+        	arm.set(0);
+        }
+        else if (output < 0 && getArmAngle() > ArmPos.rearLimitAngle)
+        {
+        	arm.set(0);
+        }
+        //TODO: Update this code for the arm
+//        else if (output > 0 && Robot.powerDP.getLiftLeftCurrent() < LiftPos.currentLowerLimit)
+//        {
+//        	arm.set(0);
+//        }
+//        else if (output < 0 && Robot.powerDP.getLiftLeftCurrent() > LiftPos.currentUpperLimit)
+//        {
+//        	arm.set(0);
+//        }
+//        else if (output > 0 && Robot.powerDP.getLiftRightCurrent() < LiftPos.currentLowerLimit)
+//        {
+//        	arm.set(0);
+//        }
+//        else if (output < 0 && Robot.powerDP.getLiftRightCurrent() > LiftPos.currentUpperLimit)
+//        {
+//        	arm.set(0);
+//        }
+        else
+        {
+        	arm.set(output);
+        }
+    }
 		
 }
 
