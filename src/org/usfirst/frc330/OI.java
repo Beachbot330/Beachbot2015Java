@@ -131,8 +131,6 @@ public class OI {
 
         SmartDashboard.putData("ShiftHigh", new ShiftHigh());
 
-        SmartDashboard.putData("SetHand", new SetHand());
-
         SmartDashboard.putData("StackThree", new StackThree());
 
         SmartDashboard.putData("ReceiveTote", new ReceiveTote());

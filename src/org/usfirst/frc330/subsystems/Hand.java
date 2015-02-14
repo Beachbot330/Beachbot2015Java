@@ -211,5 +211,13 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
         	wrist.set(output);
         }
     }
+    
+	public void setAbsoluteTolerance(double absvalue) {
+		wristPID.setAbsoluteTolerance(absvalue);
+	}
+	
+    public synchronized boolean onTarget() {
+        return wristPID.onTarget();
+    }
 }
 
