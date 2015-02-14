@@ -125,8 +125,6 @@ public class OI {
 
 	    
         // SmartDashboard Buttons
-        SmartDashboard.putData("SetWristPosition", new SetWristPosition());
-
         SmartDashboard.putData("ShiftLow", new ShiftLow());
 
         SmartDashboard.putData("ShiftHigh", new ShiftHigh());
