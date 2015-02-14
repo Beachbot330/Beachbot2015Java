@@ -348,7 +348,7 @@ Children:
       Name: Lift
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: ManualLift}
     Base: Subsystem
     Name: Lift
   - Children:
@@ -1352,7 +1352,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\allenpeters\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Joe-XPS13-W7\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ..\}
   Default Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {
     default: None, name: Default Autonomous Command, type: Command, validators: null,

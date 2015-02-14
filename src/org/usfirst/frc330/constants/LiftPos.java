@@ -18,11 +18,11 @@ public final class LiftPos {
 	public static final double intake = 		35.0;
 	public static final double stack3 = 		39.0;
 	
-	public static final double lowerLimit = 	-1.0;
-	public static final double upperLimit = 	44.0;
+	public static final double lowerLimit = 	1.0;
+	public static final double upperLimit = 	37.5;
 	
-	public static final double encoderTurns =   12.5;
-	public static final double liftLength   =   45.0;
+	public static final double encoderTurns =   9.8;
+	public static final double liftLength   =   38.5;
 	public static final int encoderPPR      =   64;
 	
 	//Current
