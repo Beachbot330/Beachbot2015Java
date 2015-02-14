@@ -14,6 +14,7 @@ package org.usfirst.frc330.subsystems;
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.commands.TankDrive;
+import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
 import org.usfirst.frc330.wpilibj.DummyPIDOutput;
@@ -76,23 +77,22 @@ public class Chassis extends Subsystem {
         leftDriveOutput = new DummyPIDOutput();
         rightDriveOutput = new DummyPIDOutput();
         
-        gyroPID = new MultiPrefPIDController(0.11,0,0,imu,gyroOutput,"gyro");
-        leftDrivePID = new MultiPrefPIDController(0.2,0,0,driveTrainEncoderL,leftDriveOutput,"leftDrive");
-        rightDrivePID = new MultiPrefPIDController(0.2,0,0,driveTrainEncoderR,rightDriveOutput,"rightDrive");
+        gyroPID = new MultiPrefPIDController(ChassisConst.gyroProportionalLow,ChassisConst.gyroIntegralLow,ChassisConst.gyroDerivitiveLow,
+        		imu,gyroOutput,"gyro");
+        leftDrivePID = new MultiPrefPIDController(ChassisConst.proportionalLow,ChassisConst.integralLow,ChassisConst.derivitiveLow,
+        		driveTrainEncoderL,leftDriveOutput,"leftDrive");
+        rightDrivePID = new MultiPrefPIDController(ChassisConst.proportionalLow,ChassisConst.integralLow,ChassisConst.derivitiveLow,
+        		driveTrainEncoderR,rightDriveOutput,"rightDrive");
         
-        leftDrivePID.setOutputRange(-0.8, 0.8);
-        rightDrivePID.setOutputRange(-0.8, 0.8);
+        leftDrivePID.setOutputRange(-ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutput);
+        rightDrivePID.setOutputRange(-ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutput);
         
         SmartDashboard.putData("gyroPID", gyroPID);
         SmartDashboard.putData("leftDrivePID", leftDrivePID);
         SmartDashboard.putData("rightDrivePID", rightDrivePID);
         
-        final double diameter = 6;
-        final double PulseperRevolution = 250;
-        final double encoderGearRatio = 3;
-        final double gearRatio = 54.0/30.0;
-        final double Fudgefactor = 1.0;
-        final double distanceperpulse = Math.PI*diameter/PulseperRevolution/encoderGearRatio/gearRatio * Fudgefactor;
+        final double distanceperpulse = Math.PI*ChassisConst.wheelDiameter/ChassisConst.PulseperRevolution /
+        		ChassisConst.encoderGearRatio/ChassisConst.gearRatio * ChassisConst.Fudgefactor;
 
         driveTrainEncoderL.setDistancePerPulse(distanceperpulse);
         driveTrainEncoderR.setDistancePerPulse(distanceperpulse);

@@ -21,4 +21,19 @@ public final class ChassisConst {
 	public static final double proportionalHigh = 0.0;
 	public static final double integralHigh     = 0.0;
 	public static final double derivitiveHigh   = 0.0;
+	
+	public static final double gyroProportionalLow  = 0.0;
+	public static final double gyroIntegralLow      = 0.0;
+	public static final double gyroDerivitiveLow    = 0.0;
+	
+	public static final double gyroProportionalHigh = 0.0;
+	public static final double gyroIntegralHigh     = 0.0;
+	public static final double gyroDerivitiveHigh   = 0.0;
+	
+	//Enocoder Distance Constants
+    public static final double wheelDiameter = 6;
+    public static final double PulseperRevolution = 250;
+    public static final double encoderGearRatio = 3;
+    public static final double gearRatio = 54.0/30.0;
+    public static final double Fudgefactor = 1.0;
 }
