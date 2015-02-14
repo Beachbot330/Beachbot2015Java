@@ -348,7 +348,7 @@ Children:
       Name: Lift
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: ManualLift}
+        name: Default Command, type: Command, validators: null, value: None}
     Base: Subsystem
     Name: Lift
   - Children:
