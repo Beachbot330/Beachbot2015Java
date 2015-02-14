@@ -7,12 +7,19 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 import org.usfirst.frc330.Robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class CSVLogger {
 	LinkedHashMap<String,CSVLoggable> table;
+	
+	public static final int SDUpdateRate = 10; //send data every SDUpdateRate call (10 = 5hz).
 	
 	private File roboRIOFile, usbFile;
 	private BufferedWriter roboRIOWriter, usbWriter;
@@ -61,6 +68,7 @@ public class CSVLogger {
 
 	public void writeHeader() {
 		String header = "Time, ";
+		
 		for (String key : table.keySet()) {
 			header = header + key + ", ";
 		}
@@ -85,10 +93,21 @@ public class CSVLogger {
 	}
 	
 	String data;
+	private int counter = 0;
 	public void writeData() {
+
+		counter++;
+		if (counter == SDUpdateRate)
+			counter = 0;
 		data = sdf.format(System.currentTimeMillis()) + ", ";
-		for (CSVLoggable key : table.values()) {
-			data = data + key.get() + ", ";
+	    Set<?> set = table.entrySet();
+	    Iterator<?> i = set.iterator();
+	    while(i.hasNext()) {
+	    	Map.Entry me = (Map.Entry)i.next();
+			data = data + ((CSVLoggable) me.getValue()).get() + ", ";
+			if (((CSVLoggable)me.getValue()).isSendToSmartDashboard() && (counter % SDUpdateRate == 0)) {
+				SmartDashboard.putNumber((String)me.getKey(), ((CSVLoggable) me.getValue()).get());
+			}
 		}
 		data = data + "\r\n";
 		
