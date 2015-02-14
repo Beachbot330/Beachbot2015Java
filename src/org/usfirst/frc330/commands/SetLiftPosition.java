@@ -13,9 +13,8 @@ package org.usfirst.frc330.commands;
 
 
 import edu.wpi.first.wpilibj.command.BBCommand;
-
 import org.usfirst.frc330.Robot;
-import org.usfirst.frc330.constants.ArmPos;
+import org.usfirst.frc330.constants.LiftPos;
 
 /**
  *
@@ -26,7 +25,7 @@ public class  SetLiftPosition extends BBCommand {
 	double tolerance;
 	
 	public SetLiftPosition(double position) {
-		this(position, ArmPos.tolerance, -1.0);
+		this(position, LiftPos.tolerance, -1.0);
 	}
 	
 	public SetLiftPosition(double position, double tolerance){
