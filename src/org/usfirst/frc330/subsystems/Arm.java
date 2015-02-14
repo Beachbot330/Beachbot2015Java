@@ -135,12 +135,12 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{ //TODO: is t
     	};
     	Robot.csvLogger.add("MastRearLimit", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return getArmAngle(); }
     	};
     	Robot.csvLogger.add("ArmAngle", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return getMastAngle(); }
     	};
     	Robot.csvLogger.add("MastAngle", temp);
@@ -369,7 +369,7 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{ //TODO: is t
             name = "PracticeArmFrontLimit";
         else
             name = "CompetitionArmFrontLimit";
-		return Preferences.getInstance().getDouble(name, ArmPos.rearLimit);
+		return Preferences.getInstance().getDouble(name, ArmPos.frontLimit);
 	}
 	
 	public double getArmFrontLimit() {
@@ -396,7 +396,7 @@ public class Arm extends Subsystem implements PIDSource, PIDOutput{ //TODO: is t
             name = "PracticeMastRearLimit";
         else
             name = "CompetitionMastRearLimit";
-		return Preferences.getInstance().getDouble(name, MastPos.rearLimit);
+		return Preferences.getInstance().getDouble(name, MastPos.frontLimit);
 	}
 	
 	public double getArmPotAvgVoltage() {
