@@ -39,11 +39,11 @@ public class RobotMap {
     public static SpeedController chassischassisRightDrive2;
     public static DualSpeedController chassischassisRightDrive;
     public static DoubleSolenoid chassisshift;
-    public static Encoder liftliftEncoder;
     public static DoubleSolenoid lifttotePincher;
     public static SpeedController liftliftLeft;
     public static SpeedController liftliftRight;
     public static DualSpeedController liftLift;
+    public static AnalogInput liftliftPot;
     public static DigitalOutput frillslights;
     public static DigitalInput frillspracticeRobot;
     public static DigitalOutput frillsbuzzer;
@@ -104,10 +104,6 @@ public class RobotMap {
         chassisshift = new DoubleSolenoid(1, 0, 1);      
         LiveWindow.addActuator("Chassis", "shift", chassisshift);
         
-        liftliftEncoder = new Encoder(0, 1, false, EncodingType.k4X);
-        LiveWindow.addSensor("Lift", "liftEncoder", liftliftEncoder);
-        liftliftEncoder.setDistancePerPulse(1.0);
-        liftliftEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
         lifttotePincher = new DoubleSolenoid(1, 3, 2);      
         LiveWindow.addActuator("Lift", "totePincher", lifttotePincher);
         
@@ -119,6 +115,9 @@ public class RobotMap {
         
         liftLift = new DualSpeedController(liftliftLeft, liftliftRight, false, true);
         LiveWindow.addActuator("Lift", "Lift", liftLift);
+        
+        liftliftPot = new AnalogInput(4);
+        LiveWindow.addSensor("Lift", "liftPot", liftliftPot);
         
         frillslights = new DigitalOutput(8);
         LiveWindow.addActuator("Frills", "lights", frillslights);

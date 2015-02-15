@@ -21,9 +21,8 @@ public final class LiftPos {
 	public static final double lowerLimit = 	1.25;   //AP, SP 2-14
 	public static final double upperLimit = 	37.0;   //AP, SP 2-14
 	
-	public static final double encoderTurns =   9.8;   //JR 2-13
-	public static final double liftLength   =   38.5;  //JR 2-13
-	public static final int encoderPPR      =   64;   //JR 2-13
+	public static final double bottomLimitHeight = 0; //JR 2-14
+	public static final double topLimitHeight = 38.5; //JR 2-14
 	
 	//Current
 	public static final double currentLowerLimit = -50;
