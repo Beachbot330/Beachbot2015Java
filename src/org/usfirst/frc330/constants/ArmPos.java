@@ -12,7 +12,7 @@ public final class ArmPos {
 	public static final double tolerance       = 0.1;
 	
 	// PID Constants
-	public static final double proportional    = 0.0;
+	public static final double proportional    = 0.05;
 	public static final double integral        = 0.0;
 	public static final double derivitive      = 0.0;
 	
@@ -20,12 +20,16 @@ public final class ArmPos {
 	public static final double frontLimit      = 1.0;
 	public static final double rearLimit       = -1.0;
 	
+	//Calibration Angles (Relative to Mast)
+	public static final double frontCalAngle = 			49.0; //Angle from the mast     AP 2-14
+	public static final double rearCalAngle  = 			311.0; //Angle from the mast     AP 2-14
+	
 	//Angles
-	public static final double frontLimitAngle = 			-30.0;
-	public static final double rearStateFrontLimitAngle = 	 20.0;
+	public static final double frontLimitAngle =			-39.0; // AP 2-14
+	public static final double rearStateFrontLimitAngle = 	73.78; // AP 2-14
 	public static final double verticalAngle = 	  			 90.0;
-	public static final double frontStateRearLimitAngle =	120.0;
-	public static final double rearLimitAngle  = 			210.0;
+	public static final double frontStateRearLimitAngle =	105.6;  //AP 2-14
+	public static final double rearLimitAngle = 			222.5;  //AP 2-14
 	
 	
 	//Lengths

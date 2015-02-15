@@ -1,0 +1,171 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="ToggleSideSet" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="108"/>
+	</widget>
+	<widget field="ManualArm" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="74"/>
+	</widget>
+	<widget field="CalibrateWristRearLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="4" y="688"/>
+	</widget>
+	<widget field="CalibrateWristFrontLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="665"/>
+	</widget>
+	<widget field="CalibrateMastRearLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="6" y="717"/>
+	</widget>
+	<widget field="CalibrateMastFrontLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="3" y="741"/>
+	</widget>
+	<widget field="CalibrateArmRearLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="10" y="770"/>
+	</widget>
+	<widget field="CalibrateArmFrontLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="7" y="793"/>
+	</widget>
+	<widget field="CloseZachStacker" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="623" y="592"/>
+	</widget>
+	<widget field="OpenZachStacker" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="623" y="615"/>
+	</widget>
+	<widget field="ManualLift" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="40"/>
+	</widget>
+	<widget field="LiftLeftCurrent" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="623" y="791"/>
+	</widget>
+	<widget field="TotePincher" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="812" y="805"/>
+	</widget>
+	<widget field="RightDrive1Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="533" y="273"/>
+	</widget>
+	<widget field="LeftDrive1Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="536" y="250"/>
+	</widget>
+	<widget field="Shift" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="371" y="237"/>
+	</widget>
+	<widget field="Pressure" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="251" y="349"/>
+	</widget>
+	<widget field="ChassisAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="259" y="10"/>
+	</widget>
+	<widget field="DriveTrainEncoderDistanceR" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="607" y="222"/>
+	</widget>
+	<widget field="DriveTrainEncoderDistanceL" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="607" y="199"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.RobotPreferences">
+		<location x="1300" y="0"/>
+		<height>828</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="621" y="5"/>
+		<width>219</width>
+		<height>16</height>
+	</static-widget>
+	<widget field="RightGrabberOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="248" y="502"/>
+	</widget>
+	<widget field="ShiftLow" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="244" y="262"/>
+	</widget>
+	<widget field="LeftGrabberOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="255" y="442"/>
+	</widget>
+	<widget field="ShiftHigh" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="243" y="229"/>
+	</widget>
+	<widget field="SwitchArmSide" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="905" y="55"/>
+	</widget>
+	<widget field="MastPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+		<location x="1075" y="200"/>
+	</widget>
+	<widget field="DropOffTotes" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="796" y="679"/>
+	</widget>
+	<widget field="Autonomous mode chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="1117" y="646"/>
+	</widget>
+	<widget field="gyroPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+		<location x="382" y="47"/>
+	</widget>
+	<widget field="ArmPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+		<location x="1069" y="45"/>
+	</widget>
+	<widget field="rightDrivePID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+		<location x="667" y="45"/>
+	</widget>
+	<widget field="OpenAllGrabbers" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="257" y="529"/>
+	</widget>
+	<widget field="CenterGrabberOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="240" y="473"/>
+	</widget>
+	<widget field="CarryTotes" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="804" y="771"/>
+	</widget>
+	<widget field="ReceiveTote" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="800" y="743"/>
+	</widget>
+	<widget field="LoadSecondTote" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="787" y="711"/>
+	</widget>
+	<widget field="LiftPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+		<location x="648" y="651"/>
+	</widget>
+	<widget field="KillAll" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="7" y="6"/>
+	</widget>
+	<widget field="RightGrabberClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="447" y="502"/>
+	</widget>
+	<widget field="LeftGrabberClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="455" y="444"/>
+	</widget>
+	<widget field="SetMastStretch" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="913" y="222"/>
+	</widget>
+	<widget field="CenterGrabberClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="440" y="471"/>
+	</widget>
+	<widget field="BuzzerBeepTimed" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="918" y="485"/>
+	</widget>
+	<widget field="AdjustHandPositionDown" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="273" y="406"/>
+	</widget>
+	<widget field="StackThree" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="807" y="648"/>
+	</widget>
+	<widget field="leftDrivePID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+		<location x="531" y="45"/>
+	</widget>
+	<widget field="MastAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="919" y="286"/>
+	</widget>
+	<widget field="ArmAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="921" y="118"/>
+	</widget>
+	<widget field="LiftEncoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="493" y="688"/>
+	</widget>
+	<widget field="MastOverride" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="910" y="258"/>
+	</widget>
+	<widget field="ArmOverride" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="908" y="92"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+	<hidden field="rightDrivegainName"/>
+	<hidden field="leftDrivegainName"/>
+	<hidden field="gyrogainName"/>
+</xml>

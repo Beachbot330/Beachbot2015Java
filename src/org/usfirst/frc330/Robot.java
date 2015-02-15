@@ -163,6 +163,6 @@ public class Robot extends IterativeRobot {
     }
     
     public static boolean isPracticerobot() {
-        return (!frills.isPracticeRobot());
+        return (frills.isPracticeRobot());
     }
 }

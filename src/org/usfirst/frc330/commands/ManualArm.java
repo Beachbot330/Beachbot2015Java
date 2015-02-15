@@ -47,7 +47,7 @@ public class  ManualArm extends BBCommand {
     // Called once after isFinished returns true
     protected void end() {
     	if (!Robot.arm.isEnable()) {
-          Robot.arm.set(0);
+          Robot.arm.setArm(0);
     	}
     }
 
