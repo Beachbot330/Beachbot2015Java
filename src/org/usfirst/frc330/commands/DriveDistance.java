@@ -24,18 +24,13 @@ public class  DriveDistance extends BBCommand {
 	double leftDistance, rightDistance, tolerance, maxOutput;
     boolean stopAtEnd = false;
     
-    public DriveDistance()
-    {
-        this(0,0,0,false, ChassisConst.defaultMaxOutput);
-    }
-    
     public DriveDistance(double distance) {
-        this(distance, 0, 0, false, ChassisConst.defaultMaxOutput);
+        this(distance, 0, 15, false, ChassisConst.defaultMaxOutput);
     }
     
     public DriveDistance(double distance, double tolerance)
     {
-        this(distance, tolerance, 0, false, ChassisConst.defaultMaxOutput);
+        this(distance, tolerance, 15, false, ChassisConst.defaultMaxOutput);
     }
     
     public DriveDistance(double distance, double tolerance, double timeout, boolean stopAtEnd)

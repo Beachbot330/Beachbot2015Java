@@ -44,11 +44,7 @@ public class Chassis extends Subsystem {
     AnalogInput pressureSensor = RobotMap.chassispressureSensor;
     Encoder driveTrainEncoderL = RobotMap.chassisdriveTrainEncoderL;
     Encoder driveTrainEncoderR = RobotMap.chassisdriveTrainEncoderR;
-    SpeedController chassisLeftDrive1 = RobotMap.chassischassisLeftDrive1;
-    SpeedController chassisLeftDrive2 = RobotMap.chassischassisLeftDrive2;
     DualSpeedController chassisLeftDrive = RobotMap.chassischassisLeftDrive;
-    SpeedController chassisRightDrive1 = RobotMap.chassischassisRightDrive1;
-    SpeedController chassisRightDrive2 = RobotMap.chassischassisRightDrive2;
     DualSpeedController chassisRightDrive = RobotMap.chassischassisRightDrive;
     DoubleSolenoid shift = RobotMap.chassisshift;
 
@@ -309,6 +305,8 @@ public class Chassis extends Subsystem {
         this.prevRightEncoderDistance = 0;
     }
     
+    
+    
     /////////////////////////////////////////////////////////////
     // SET methods
     /////////////////////////////////////////////////////////////
@@ -347,7 +345,7 @@ public class Chassis extends Subsystem {
  	//    0.0 == FALSE
  	// TODO: get() in CSVlogger should take any value
  	public double getShift() {
- 		if(shift.get() == DoubleSolenoid.Value.kForward)
+ 		if(isHighGear())
  		{
  			return 1.0;
  		} else {
