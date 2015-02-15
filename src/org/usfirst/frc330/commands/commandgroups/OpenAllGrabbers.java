@@ -10,6 +10,10 @@
 
 
 package org.usfirst.frc330.commands.commandgroups;
+import org.usfirst.frc330.commands.CenterGrabberOpen;
+import org.usfirst.frc330.commands.LeftGrabberOpen;
+import org.usfirst.frc330.commands.RightGrabberOpen;
+
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
 /**
@@ -34,5 +38,8 @@ public class OpenAllGrabbers extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addParallel(new LeftGrabberOpen());
+    	addParallel(new RightGrabberOpen());
+    	addSequential(new CenterGrabberOpen());
     }
 }
