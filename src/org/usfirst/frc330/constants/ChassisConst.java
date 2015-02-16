@@ -30,7 +30,7 @@ public final class ChassisConst {
 	public static final double gyroIntegralHigh     = 0.0;
 	public static final double gyroDerivitiveHigh   = 0.0;
 	
-	//Enocoder Distance Constants
+	//Encoder Distance Constants
     public static final double wheelDiameter = 6;
     public static final double PulseperRevolution = 360;
     public static final double encoderGearRatio = 3;

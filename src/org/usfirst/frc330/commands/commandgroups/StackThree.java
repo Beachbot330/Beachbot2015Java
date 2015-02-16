@@ -10,6 +10,8 @@
 
 
 package org.usfirst.frc330.commands.commandgroups;
+import org.usfirst.frc330.commands.CloseZachStacker;
+import org.usfirst.frc330.commands.OpenZachStacker;
 import org.usfirst.frc330.commands.SetLiftPosition;
 import org.usfirst.frc330.constants.LiftPos;
 
@@ -37,6 +39,8 @@ public class StackThree extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addSequential(new OpenZachStacker());
     	addSequential(new SetLiftPosition(LiftPos.stack3));
+    	addSequential(new CloseZachStacker());
     }
 }

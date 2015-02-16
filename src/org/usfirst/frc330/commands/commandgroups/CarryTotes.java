@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc330.commands.commandgroups;
+import org.usfirst.frc330.commands.CloseZachStacker;
 import org.usfirst.frc330.commands.SetLiftPosition;
 import org.usfirst.frc330.constants.LiftPos;
 
@@ -38,5 +39,6 @@ public class CarryTotes extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new SetLiftPosition(LiftPos.carry));
+    	addSequential(new CloseZachStacker());
     }
 }
