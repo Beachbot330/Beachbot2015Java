@@ -18,7 +18,7 @@ public final class LiftPos {
 	public static final double intake = 		35.0;
 	public static final double stack3 = 		39.0;
 	
-	public static final double lowerLimit = 	1.25;   //AP, SP 2-14
+	public static final double lowerLimit = 	0.25;   //JR, SP 2-15
 	public static final double upperLimit = 	37.0;   //AP, SP 2-14
 	
 	public static final double bottomLimitHeight = 0; //JR 2-14

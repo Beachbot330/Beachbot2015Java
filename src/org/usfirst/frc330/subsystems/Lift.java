@@ -114,7 +114,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     public double getPosition()
     {	
     	double sensorRange = getLiftTopLimit() - getLiftBottomLimit();
-    	double heightRange  = LiftPos.bottomLimitHeight - LiftPos.topLimitHeight;
+    	double heightRange  =  LiftPos.topLimitHeight - LiftPos.bottomLimitHeight;
     	
     	return heightRange/sensorRange * (liftPot.getAverageVoltage() - getLiftBottomLimit()) + LiftPos.bottomLimitHeight;
     }
