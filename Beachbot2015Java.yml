@@ -822,9 +822,9 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenReleased
       Base: Joystick Button
-      Name: LoadSecondTote_hold3
+      Name: LoadSecondTote_rel3
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -846,9 +846,9 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whenReleased
+          value: whileHeld
       Base: Joystick Button
-      Name: ReceiveTote_rel3
+      Name: ReceiveTote_held3
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,

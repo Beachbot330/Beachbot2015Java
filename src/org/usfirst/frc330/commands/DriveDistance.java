@@ -67,8 +67,8 @@ public class  DriveDistance extends BBCommand {
              Robot.chassis.leftDrivePID.setGainName(ChassisConst.DriveHighName);
              Robot.chassis.rightDrivePID.setGainName(ChassisConst.DriveHighName);
         }
-        Robot.chassis.leftDrivePID.setSetpoint(leftDistance);
-        Robot.chassis.rightDrivePID.setSetpoint(rightDistance);
+        Robot.chassis.leftDrivePID.setSetpoint(leftDistance+Robot.chassis.getLeftDistance());
+        Robot.chassis.rightDrivePID.setSetpoint(rightDistance+Robot.chassis.getRightDistance());
         Robot.chassis.leftDrivePID.setAbsoluteTolerance(tolerance);
         Robot.chassis.rightDrivePID.setAbsoluteTolerance(tolerance);
         Robot.chassis.leftDrivePID.setOutputRange(-maxOutput, maxOutput);

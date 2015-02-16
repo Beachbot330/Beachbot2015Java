@@ -67,8 +67,8 @@ public class OI {
     public Joystick driverL;
     public JoystickButton dropOffTotes_hold2;
     public JoystickButton carryTotes_rel2;
-    public JoystickButton loadSecondTote_hold3;
-    public JoystickButton receiveTote_rel3;
+    public JoystickButton loadSecondTote_rel3;
+    public JoystickButton receiveTote_held3;
     public JoystickButton stackThree_5;
     public JoystickButton manualLift_hold4;
     public JoystickButton shiftLow_1;
@@ -108,10 +108,10 @@ public class OI {
         manualLift_hold4.whileHeld(new ManualLift());
         stackThree_5 = new JoystickButton(driverR, 5);
         stackThree_5.whenPressed(new StackThree());
-        receiveTote_rel3 = new JoystickButton(driverR, 3);
-        receiveTote_rel3.whenReleased(new ReceiveTote());
-        loadSecondTote_hold3 = new JoystickButton(driverR, 3);
-        loadSecondTote_hold3.whileHeld(new LoadSecondTote());
+        receiveTote_held3 = new JoystickButton(driverR, 3);
+        receiveTote_held3.whileHeld(new ReceiveTote());
+        loadSecondTote_rel3 = new JoystickButton(driverR, 3);
+        loadSecondTote_rel3.whenReleased(new LoadSecondTote());
         carryTotes_rel2 = new JoystickButton(driverR, 2);
         carryTotes_rel2.whenReleased(new CarryTotes());
         dropOffTotes_hold2 = new JoystickButton(driverR, 2);

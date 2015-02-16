@@ -10,11 +10,14 @@
 
 
 package org.usfirst.frc330.commands.commandgroups;
+import org.usfirst.frc330.commands.DriveDistance;
 import org.usfirst.frc330.commands.OpenZachStacker;
 import org.usfirst.frc330.commands.SetLiftPosition;
+import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.constants.LiftPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -38,7 +41,11 @@ public class ReceiveTote extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addSequential(new ShiftLow());
     	addSequential(new OpenZachStacker());
-    	addSequential(new SetLiftPosition(LiftPos.intake));
+    	addParallel(new SetLiftPosition(LiftPos.intake));
+    	addSequential(new WaitCommand(0.1));
+    	addSequential(new DriveDistance(-2,0.5));
+    	addSequential(new WaitCommand(200));
     }
 }
