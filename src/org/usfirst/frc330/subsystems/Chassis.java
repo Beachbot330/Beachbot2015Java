@@ -189,16 +189,16 @@ public class Chassis extends Subsystem {
     
     public void shiftHigh()
     {
-    	shift.set(DoubleSolenoid.Value.kForward);
+    	shift.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void shiftLow()
     {
-    	shift.set(DoubleSolenoid.Value.kReverse); //TODO: Check this
+    	shift.set(DoubleSolenoid.Value.kForward); //TODO: Check this
     }
     
     public boolean isHighGear() {
-    	return (shift.get() == DoubleSolenoid.Value.kForward);
+    	return (shift.get() == DoubleSolenoid.Value.kReverse);
     }
     
     public double getPressure() {
