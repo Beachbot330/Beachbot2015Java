@@ -85,51 +85,51 @@ public class PowerDP extends Subsystem {
     //Get motor current methods
     
     public double getChassisLeftDrive1Current() {
-    	return pDP.getCurrent(0);
-    }
-    
-    public double getChassisLeftDrive2Current() {
     	return pDP.getCurrent(1);
     }
     
-    public double getChassisRightDrive1Current() {
+    public double getChassisLeftDrive2Current() {
     	return pDP.getCurrent(2);
     }
     
+    public double getChassisRightDrive1Current() {
+    	return pDP.getCurrent(13);
+    }
+    
     public double getChassisRightDrive2Current() {
-    	return pDP.getCurrent(3);
+    	return pDP.getCurrent(14);
     }
     
     public double getLiftLeftCurrent() {
-    	return pDP.getCurrent(4);
-    }
-    
-    public double getLiftRightCurrent() {
-    	return pDP.getCurrent(5);
-    }
-    
-    public double getArmLeftCurrent() {
     	return pDP.getCurrent(6);
     }
     
-    public double getArmRightCurrent() {
-    	return pDP.getCurrent(7);
-    }
-    
-    public double getWristLeftCurrent() {
-    	return pDP.getCurrent(8);
-    }
-    
-    public double getWristRightCurrent() {
+    public double getLiftRightCurrent() {
     	return pDP.getCurrent(9);
     }
     
-    public double getMastLeftCurrent() {
+    public double getArmLeftCurrent() {
+    	return pDP.getCurrent(5);
+    }
+    
+    public double getArmRightCurrent() {
     	return pDP.getCurrent(10);
     }
     
-    public double getMastRightCurrent() {
+    public double getWristLeftCurrent() {
+    	return pDP.getCurrent(4);
+    }
+    
+    public double getWristRightCurrent() {
     	return pDP.getCurrent(11);
+    }
+    
+    public double getMastLeftCurrent() {
+    	return pDP.getCurrent(0);
+    }
+    
+    public double getMastRightCurrent() {
+    	return pDP.getCurrent(5);
     }
     
 }
