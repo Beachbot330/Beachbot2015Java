@@ -166,9 +166,9 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 
 	public void stopHand() 
 	{
-		if(wristPID.isEnable())
+//		if(wristPID.isEnable()) //TODO renable after PID implemented.
 		{
-			wristPID.disable();
+//			wristPID.disable();
 		}
 	}
 
