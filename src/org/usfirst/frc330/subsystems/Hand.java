@@ -36,8 +36,6 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     DoubleSolenoid handLeft = RobotMap.handhandLeft;
     DoubleSolenoid handCenter = RobotMap.handhandCenter;
     DoubleSolenoid handRight = RobotMap.handhandRight;
-    SpeedController wristLeft = RobotMap.handwristLeft;
-    SpeedController wristRight = RobotMap.handwristRight;
     DualSpeedController wrist = RobotMap.handwrist;
     AnalogInput wristPot = RobotMap.handwristPot;
 
@@ -46,10 +44,23 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     public Hand() {
     	super();
     	
+    	wristPID = new PIDController(HandConst.proportional,
+				   HandConst.integral,
+				   HandConst.derivitive,this,this);
+    	wristPID.setAbsoluteTolerance(HandConst.tolerance);
+    	
     	/////////////////////////////////////////////////////////////////
     	// LOG IT!
     	
-    	CSVLoggable temp = new CSVLoggable() {
+    	CSVLoggable temp = new CSVLoggable(true) {
+    		public double get() { return getAngleFromArm(); }
+    	};
+    	Robot.csvLogger.add("WristAngleFromArm", temp);
+    	temp = new CSVLoggable() {
+    		public double get() { return wrist.get(); }
+    	};
+    	Robot.csvLogger.add("WristOutput", temp);
+    	temp = new CSVLoggable() {
     		public double get() { return Robot.powerDP.getWristLeftCurrent(); }
     	};
     	Robot.csvLogger.add("WristLeftCurrent", temp);
@@ -74,43 +85,62 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    
-    public void setWrist(double output){
-        if (output > 0 && Robot.powerDP.getWristLeftCurrent() < HandConst.currentLowerLimit)
-        {
-        	wrist.set(0);
-        }
-        else if (output < 0 && Robot.powerDP.getWristLeftCurrent() > HandConst.currentUpperLimit)
-        {
-        	wrist.set(0);
-        }
-        else if (output > 0 && Robot.powerDP.getWristRightCurrent() < HandConst.currentLowerLimit)
-        {
-        	wrist.set(0);
-        }
-        else if (output < 0 && Robot.powerDP.getWristRightCurrent() > HandConst.currentUpperLimit)
-        {
-        	wrist.set(0);
-        }
-        else
-        {
-        	wrist.set(output);
-        }
-    }
-    
-    
     public void setAngle(double angle)
     {
     	//TODO: Finish Implementation
-    	//double sensorRange = getHandRearLimit() - getHandFrontLimit();
-    	//double angleRange = HandConst.rearLimitAngle - HandConst.frontLimitAngle;
-    	//double angleFromArm = sensorRange/angleRange * wristPot.getAverageVoltage()- getHandFrontLimit()) + HandConst.frontLimitAngle;
+
     }
     
-    public double getAngle(){
-    	//Todo: implement
-    	return 0.0;
+    public double getAngleFromArm(){
+    	double sensorRange = getHandRearLimit() - getHandFrontLimit();
+    	double angleRange = HandConst.rearLimitAngle - HandConst.frontLimitAngle;
+    	double angleFromArm = sensorRange/angleRange * (wristPot.getAverageVoltage()- getHandFrontLimit()) + HandConst.frontLimitAngle;
+    	return angleFromArm;
     }
+    
+    public void setHandFrontLimit()
+	{        
+        String name;
+        
+        if (Robot.isPracticerobot())
+            name = "PracticeHandFrontLimit";
+        else
+            name = "CompetitionHandFrontLimit";
+        
+        Preferences.getInstance().putDouble(name, wristPot.getAverageVoltage());
+        Preferences.getInstance().save();
+    }
+	
+	public void setHandRearLimit()
+	{
+        String name;
+        
+        if (Robot.isPracticerobot())
+            name = "PracticeHandRearLimit";
+        else
+            name = "CompetitionHandRearLimit";
+        
+        Preferences.getInstance().putDouble(name, wristPot.getAverageVoltage());
+        Preferences.getInstance().save();
+	}
+	
+    public double getHandFrontLimit() {
+		String name;
+        if (Robot.isPracticerobot())
+            name = "PracticeHandFrontLimit";
+        else
+            name = "CompetitionHandFrontLimit";
+		return Preferences.getInstance().getDouble(name, HandConst.frontLimit);
+	}
+	
+	public double getHandRearLimit() {
+		String name;
+        if (Robot.isPracticerobot())
+            name = "PracticeArmHandLimit";
+        else
+            name = "CompetitionHandRearLimit";
+		return Preferences.getInstance().getDouble(name, HandConst.rearLimit);
+	}
 
 	public double getVerticalHandAngle() {
 		return verticalHandAngle;
@@ -166,9 +196,9 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 
 	public void stopHand() 
 	{
-//		if(wristPID.isEnable()) //TODO renable after PID implemented.
+		if(wristPID.isEnable())
 		{
-//			wristPID.disable();
+			wristPID.disable();
 		}
 	}
 
@@ -177,34 +207,34 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	}
 
 	public double pidGet() {
-		return getAngle();
+		return getAngleFromArm();
 	}
 	
     public void set(double output){
-        if (output > 0 && getAngle() < HandConst.frontLimitAngle)
+        if (output > 0 && getAngleFromArm() < HandConst.frontLimitAngle)
         {
         	wrist.set(0);
         }
-        else if (output < 0 && getAngle() > HandConst.rearLimitAngle)
+        else if (output < 0 && getAngleFromArm() > HandConst.rearLimitAngle)
         {
         	wrist.set(0);
         }
         //TODO: Update this code for the wrist
-//        else if (output > 0 && Robot.powerDP.getLiftLeftCurrent() < LiftPos.currentLowerLimit)
+//        if (output > 0 && Robot.powerDP.getWristLeftCurrent() < HandConst.currentLowerLimit)
 //        {
-//        	arm.set(0);
+//        	wrist.set(0);
 //        }
-//        else if (output < 0 && Robot.powerDP.getLiftLeftCurrent() > LiftPos.currentUpperLimit)
+//        else if (output < 0 && Robot.powerDP.getWristLeftCurrent() > HandConst.currentUpperLimit)
 //        {
-//        	arm.set(0);
+//        	wrist.set(0);
 //        }
-//        else if (output > 0 && Robot.powerDP.getLiftRightCurrent() < LiftPos.currentLowerLimit)
+//        else if (output > 0 && Robot.powerDP.getWristRightCurrent() < HandConst.currentLowerLimit)
 //        {
-//        	arm.set(0);
+//        	wrist.set(0);
 //        }
-//        else if (output < 0 && Robot.powerDP.getLiftRightCurrent() > LiftPos.currentUpperLimit)
+//        else if (output < 0 && Robot.powerDP.getWristRightCurrent() > HandConst.currentUpperLimit)
 //        {
-//        	arm.set(0);
+//        	wrist.set(0);
 //        }
         else
         {
