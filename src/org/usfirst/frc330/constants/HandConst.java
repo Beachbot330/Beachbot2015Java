@@ -27,6 +27,6 @@ public final class HandConst {
 	public static final double rearLimit       = -1.0;
 	
 	//Angles
-	public static final double frontLimitAngle = -30.0;
-	public static final double rearLimitAngle  = 210.0;
+	public static final double frontLimitAngle = 72;
+	public static final double rearLimitAngle  = 285.0;
 }	

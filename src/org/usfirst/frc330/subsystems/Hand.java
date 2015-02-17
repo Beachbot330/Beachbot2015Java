@@ -64,7 +64,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     	Robot.csvLogger.add("WristAngleFromArm", temp);
     	
     	temp = new CSVLoggable(true) {
-    		public double get() { return getAngleFromArm() + Robot.arm.getArmAngle(); }
+    		public double get() { return getWristAngle(); }
     	};
     	Robot.csvLogger.add("WristAngle", temp);
     	
@@ -82,7 +82,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     		public double get() { return Robot.powerDP.getWristRightCurrent(); }
     	};
     	Robot.csvLogger.add("WristRightCurrent", temp);
-    	
+
     }
     
     // Put methods for controlling this subsystem
@@ -107,7 +107,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     public double getAngleFromArm(){
     	double sensorRange = getHandRearLimit() - getHandFrontLimit();
     	double angleRange = HandConst.rearLimitAngle - HandConst.frontLimitAngle;
-    	double angleFromArm = sensorRange/angleRange * (wristPot.getAverageVoltage()- getHandFrontLimit()) + HandConst.frontLimitAngle;
+    	double angleFromArm = angleRange/sensorRange * (wristPot.getAverageVoltage()- getHandFrontLimit()) + HandConst.frontLimitAngle;
     	return angleFromArm;
     }
     
@@ -220,15 +220,15 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	}
 
 	public double pidGet() {
-		return getAngleFromArm();
+		return getWristAngle();
 	}
 	
     public void set(double output){
-        if (output > 0 && getAngleFromArm() < HandConst.frontLimitAngle)
+        if (output < 0 && getAngleFromArm() < (HandConst.frontLimitAngle + 10))
         {
         	wrist.set(0);
         }
-        else if (output < 0 && getAngleFromArm() > HandConst.rearLimitAngle)
+        else if (output > 0 && getAngleFromArm() > (HandConst.rearLimitAngle-10))
         {
         	wrist.set(0);
         }
@@ -261,6 +261,35 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	
     public synchronized boolean onTarget() {
         return wristPID.onTarget();
+    }
+
+    public double getWristAngle()
+    {
+    	return -(180 - getAngleFromArm() - Robot.arm.getArmAngle());
+    }
+    
+	public void manualWrist()
+	{
+        double wristCommand = Robot.oi.driverL.getY();
+        if (wristCommand < 0) 
+            wristCommand = -(wristCommand*wristCommand);
+        else
+            wristCommand = wristCommand*wristCommand;
+        if (Math.abs(wristCommand) > 0.05)
+        {
+        	if (wristPID.isEnable())
+                wristPID.disable();
+        	set(wristCommand);
+        }
+        else if (!wristPID.isEnable())
+        {
+            wristPID.setSetpoint(this.getWristAngle());
+            wristPID.enable();
+        }  
+	}
+	
+    public synchronized boolean isEnabled() {
+        return wristPID.isEnable();
     }
 }
 
