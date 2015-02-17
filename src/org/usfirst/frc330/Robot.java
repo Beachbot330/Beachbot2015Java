@@ -87,6 +87,9 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Autonomous mode chooser", autoChooser);
         csvLogger.writeHeader();
         logger.println("Robot Init");
+        
+        Command beep = new BuzzerBeepTimed();
+        beep.start();
     }
 
     /**
