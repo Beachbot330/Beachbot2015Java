@@ -38,7 +38,7 @@ public class  handLevel extends BBCommand {
     protected void execute() {
     	if(Robot.hand.isHandLevelActivated())
     	{
-    		Robot.hand.setAngle(180-(Robot.arm.getArmAngle()));
+    		Robot.hand.setAngle(0);
     	}
     }
 

@@ -95,7 +95,7 @@ public class Arm extends Subsystem {
         // Arm PIDController object
         armPID = new PIDController(ArmPos.proportional,
         						   ArmPos.integral,
-        						   ArmPos.derivitive,armPIDSource,armPIDOutput);
+        						   ArmPos.derivitive,armPIDSource,armPIDOutput, 0.01);
         armPID.setAbsoluteTolerance(ArmPos.tolerance);
         
         // Mast PIDController object

@@ -49,7 +49,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     	
     	wristPID = new PIDController(HandConst.proportional,
 				   HandConst.integral,
-				   HandConst.derivitive,this,this);
+				   HandConst.derivitive,this,this, 0.01);
     	wristPID.setAbsoluteTolerance(HandConst.tolerance);
     	
     	SmartDashboard.putData("WristPID", wristPID);
@@ -100,8 +100,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     
     public void setAngle(double angle)
     {
-    	//TODO: Finish Implementation
-
+    	
     }
     
     public double getAngleFromArm(){
