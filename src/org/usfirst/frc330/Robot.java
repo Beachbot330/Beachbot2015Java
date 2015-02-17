@@ -87,6 +87,9 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Autonomous mode chooser", autoChooser);
         csvLogger.writeHeader();
         logger.println("Robot Init");
+        
+        Command beep = new BuzzerBeepTimed(0.75);
+        beep.start();
     }
 
     /**
@@ -132,6 +135,8 @@ public class Robot extends IterativeRobot {
         logger.println("Teleop Init");
     	logger.updateDate();
     	decideStates();
+    	Command beep= new BuzzerBeepTimed(1.25);
+    	beep.start();
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove

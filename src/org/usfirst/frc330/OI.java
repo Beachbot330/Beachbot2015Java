@@ -165,7 +165,7 @@ public class OI {
 
         SmartDashboard.putData("KillAll", new KillAll());
 
-        SmartDashboard.putData("BuzzerBeepTimed", new BuzzerBeepTimed());
+        SmartDashboard.putData("BuzzerBeepTimed", new BuzzerBeepTimed(0.5));
 
         SmartDashboard.putData("OpenZachStacker", new OpenZachStacker());
 
