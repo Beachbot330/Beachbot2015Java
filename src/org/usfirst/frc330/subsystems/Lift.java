@@ -196,35 +196,45 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
         liftPID.disable();
     }
     
+    boolean hitLimit = false;
     public void set(double output){
-    	System.out.println("Output: " + output);
+    	
         if (output > 0 && getPosition() > LiftPos.upperLimit)
         {
+        	if (hitLimit == false)
+        		Robot.logger.println("Hit Lift upper limit. Position: " + getPosition() + " Limit: " + LiftPos.upperLimit, true);
+        	hitLimit = true;
         	lift.set(0);
         }
         else if (output < 0 && getPosition() < LiftPos.lowerLimit)
         {
+        	if (hitLimit == false)
+        		Robot.logger.println("Hit Lift lower limit. Postion: " + getPosition() + " Limit: " + LiftPos.lowerLimit, true);
+        	hitLimit = true;
         	lift.set(0);
         }
-        else if (output > 0 && Robot.powerDP.getLiftLeftCurrent() < LiftPos.currentLowerLimit)
+        else if (output > 0 && (Robot.powerDP.getLiftLeftCurrent() < LiftPos.currentLowerLimit) || 
+        		(Robot.powerDP.getLiftRightCurrent() < LiftPos.currentLowerLimit))
         {
+        	if (hitLimit == false)
+        		Robot.logger.println("Hit Lift down current limit. Left Current: " + Robot.powerDP.getLiftLeftCurrent() + 
+        				" Right Current: " + Robot.powerDP.getLiftRightCurrent() +" Limit: " + LiftPos.currentLowerLimit, true);
+        	hitLimit = true;
         	lift.set(0);
         }
-        else if (output < 0 && Robot.powerDP.getLiftLeftCurrent() > LiftPos.currentUpperLimit)
+        else if (output < 0 && (Robot.powerDP.getLiftLeftCurrent() > LiftPos.currentUpperLimit) || 
+        		(Robot.powerDP.getLiftRightCurrent() > LiftPos.currentUpperLimit))
         {
-        	lift.set(0);
-        }
-        else if (output > 0 && Robot.powerDP.getLiftRightCurrent() < LiftPos.currentLowerLimit)
-        {
-        	lift.set(0);
-        }
-        else if (output < 0 && Robot.powerDP.getLiftRightCurrent() > LiftPos.currentUpperLimit)
-        {
+        	if (hitLimit == false)
+        		Robot.logger.println("Hit Lift up current limit. Left Current: " + Robot.powerDP.getLiftLeftCurrent() + 
+        				" Right Current: " + Robot.powerDP.getLiftRightCurrent() +" Limit: " + LiftPos.currentUpperLimit, true);
+        	hitLimit = true;
         	lift.set(0);
         }
         else
         {
         	lift.set(output);
+        	hitLimit = false;
         }
     }
 
