@@ -21,6 +21,7 @@ import org.usfirst.frc330.wpilibj.DualSpeedController;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -50,6 +51,9 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 				   HandConst.integral,
 				   HandConst.derivitive,this,this);
     	wristPID.setAbsoluteTolerance(HandConst.tolerance);
+    	
+    	SmartDashboard.putData("WristPID", wristPID);
+        SmartDashboard.putBoolean("WristOverride", false);
     	
     	/////////////////////////////////////////////////////////////////
     	// LOG IT!
