@@ -60,7 +60,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     	temp = new CSVLoggable(true) {
     		public double get() { return getAngleFromArm() + Robot.arm.getArmAngle(); }
     	};
-    	Robot.csvLogger.add("WristAngleFromArm", temp);
+    	Robot.csvLogger.add("WristAngle", temp);
     	
     	temp = new CSVLoggable() {
     		public double get() { return wrist.get(); }
