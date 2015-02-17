@@ -32,6 +32,7 @@ public class  CalibrateWristRearLimit extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.hand.setHandRearLimit();
     }
 
     // Called repeatedly when this Command is scheduled to run
