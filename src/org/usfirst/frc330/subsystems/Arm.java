@@ -414,6 +414,9 @@ public class Arm extends Subsystem {
 		}
 	}
 	
+	public double getArmOutput() {
+		return arm.get();
+	}
 
 	/////////////////////////////////////////////////////////////
 	// PID Stuff

@@ -13,6 +13,7 @@ public final class HandConst {
 	public static final double proportional    = 0.02;
 	public static final double integral        = 0.0;
 	public static final double derivitive      = 0.0;
+	public static final double feedForward     = 2.5;	//value to divide arm by to set wrist speed (feedForward)
 	
 	// Vertical Hand
 	public static final double defaultVerticalHandAngle = -90;

@@ -215,7 +215,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	}
 
 	public void pidWrite(double output) {
-		set(output);
+		set(output + Robot.arm.getArmOutput()/HandConst.FeedForward);
 	}
 
 	public double pidGet() {
