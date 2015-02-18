@@ -11,7 +11,11 @@
 
 package org.usfirst.frc330.commands.autocommands;
 import org.usfirst.frc330.commands.DriveDistance;
+import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
+import org.usfirst.frc330.commands.DriveWaypoint;
 import org.usfirst.frc330.commands.ShiftLow;
+import org.usfirst.frc330.commands.TurnGyroAbs;
+import org.usfirst.frc330.commands.TurnGyroWaypoint;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
@@ -38,6 +42,10 @@ public class JoeTest extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new ShiftLow());
-    	addSequential(new DriveDistance(60));
+//    	addSequential(new DriveDistanceAtAbsAngle(60,2.0,0.0,15,false));
+//    	addSequential(new DriveDistanceAtAbsAngle(36,2,90,15,false));
+    	addSequential(new DriveWaypoint(0,60,1,15,false));
+    	addSequential(new TurnGyroWaypoint(60,60,1));
+    	addSequential(new DriveWaypoint(60,60,1,15,false));
     }
 }
