@@ -10,6 +10,10 @@
 
 
 package org.usfirst.frc330.commands.commandgroups;
+
+import org.usfirst.frc330.commands.*;
+import org.usfirst.frc330.conditionalWrappers.*;
+
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
 /**
@@ -34,5 +38,11 @@ public class SwitchArmSide extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	addSequential(new ArmSwitchStartPosition());
+    	addSequential(new ArmSwitchWristToLimit());
+    	addParallel(new ArmSwitchWrist());
+    	addSequential(new ToggleSideSet());
+    	addSequential(new ArmSwitchStopPosition());
     }
 }
