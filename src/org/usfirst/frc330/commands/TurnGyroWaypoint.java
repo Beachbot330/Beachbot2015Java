@@ -11,9 +11,12 @@ import org.usfirst.frc330.Robot;
  */
 public class TurnGyroWaypoint extends TurnGyroAbs {
     double x, y;
-    public TurnGyroWaypoint()
+    public TurnGyroWaypoint(double x, double y, double tolerance)
     {
-        super(0,0,0,true,true);
+        super(0,0,tolerance,true,true);
+        this.x=x;
+        this.y=y;
+        
     }
 
     protected void initialize() {

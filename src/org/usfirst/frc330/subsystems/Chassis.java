@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -73,12 +74,21 @@ public class Chassis extends Subsystem {
             LiveWindow.addSensor("Chassis", "Gyro", imu);
         }
         
+        PIDSource gyroSource = new PIDSource() {
+
+			@Override
+			public double pidGet() {
+				return getAngle();
+			}
+        	
+        };
+        
         gyroOutput = new DummyPIDOutput();
         leftDriveOutput = new DummyPIDOutput();
         rightDriveOutput = new DummyPIDOutput();
         
         gyroPID = new MultiPrefPIDController(ChassisConst.gyroProportionalLow,ChassisConst.gyroIntegralLow,ChassisConst.gyroDerivitiveLow,
-        		imu,gyroOutput,"gyro");
+        		gyroSource,gyroOutput,"gyro");
         leftDrivePID = new MultiPrefPIDController(ChassisConst.proportionalLow,ChassisConst.integralLow,ChassisConst.derivitiveLow,
         		driveTrainEncoderL,leftDriveOutput,"leftDrive");
         rightDrivePID = new MultiPrefPIDController(ChassisConst.proportionalLow,ChassisConst.integralLow,ChassisConst.derivitiveLow,
@@ -129,16 +139,16 @@ public class Chassis extends Subsystem {
     	Robot.csvLogger.add("DriveTrainRight", temp); 
     	
     	temp = new CSVLoggable(true) {
-			public double get() { return imu.getYaw(); }  		
+			public double get() { return getAngle(); }  		
     	};    	
     	Robot.csvLogger.add("ChassisAngle", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return getX(); }  		
     	};     	
     	Robot.csvLogger.add("ChassisX", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return getY(); }  		
     	};      	
     	Robot.csvLogger.add("ChassisY", temp);
@@ -232,8 +242,8 @@ public class Chassis extends Subsystem {
         }
         else
         {
-            left = this.left+leftDriveOutput.getOutput() - gyroOutput.getOutput();
-            right = this.right+rightDriveOutput.getOutput() + gyroOutput.getOutput();
+            left = this.left+leftDriveOutput.getOutput() + gyroOutput.getOutput();
+            right = this.right+rightDriveOutput.getOutput() - gyroOutput.getOutput();
             drive(left, right);
             this.left = 0;
             this.right = 0;

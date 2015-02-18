@@ -16,6 +16,8 @@ public class DriveWaypoint extends DriveDistanceAtAbsAngle {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         super(0,0,tolerance,timeout, stopAtEnd);
+        this.x=x;
+        this.y=y;
     }
 
     protected void initialize() {
