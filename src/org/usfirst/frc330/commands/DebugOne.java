@@ -10,11 +10,11 @@
 package org.usfirst.frc330.commands;
 import org.usfirst.frc330.Robot;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.BBCommand;
 /**
  *
  */
-public class  DebugOne extends Command {
+public class  DebugOne extends BBCommand {
     public DebugOne() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -29,10 +29,12 @@ public class  DebugOne extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+    	Robot.logger.println("Time since init: " + this.timeSinceInitialized());
+        return this.timeSinceInitialized()>3;
     }
     // Called once after isFinished returns true
     protected void end() {

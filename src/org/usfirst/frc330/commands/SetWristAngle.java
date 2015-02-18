@@ -20,20 +20,20 @@ import org.usfirst.frc330.constants.HandConst;
 /**
  *
  */
-public class  SetHand extends BBCommand {
+public class  SetWristAngle extends BBCommand {
 	double angle;
 	double timeout;
 	double tolerance;
     
-	public SetHand(double angle) {
+	public SetWristAngle(double angle) {
 		this(angle, HandConst.tolerance, -1.0);
 	}
 	
-	public SetHand(double angle, double tolerance){
+	public SetWristAngle(double angle, double tolerance){
 		this(angle, tolerance, -1.0);
 	}
 	
-	public SetHand(double angle, double tolerance, double timeout) {
+	public SetWristAngle(double angle, double tolerance, double timeout) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 

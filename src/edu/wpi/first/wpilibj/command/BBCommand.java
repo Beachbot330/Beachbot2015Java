@@ -12,7 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class BBCommand extends Command {
-
+	
+	boolean m_initialized = false;
+	
 	/* (non-Javadoc)
 	 * @see edu.wpi.first.wpilibj.command.Command#initialize()
 	 */
@@ -61,15 +63,21 @@ public class BBCommand extends Command {
 	void _initialize(){
 		super._initialize();
 		Robot.logger.println(this.getClass().getName() + " initialized", false);
+		m_initialized = true;
 	}
 
 	void _end(){
 		super._end();
 		Robot.logger.println(this.getClass().getName() + " ended", false);
+		m_initialized = false;
 	}
 	
 	void _interrupted(){
 		super._interrupted();
 		Robot.logger.println(this.getClass().getName() + " interrupted", false);
+	}
+	
+	public boolean isInitialized() {
+		return m_initialized;
 	}
 }
