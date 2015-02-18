@@ -1,10 +1,37 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="WristOverride" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="405" y="377"/>
+	</widget>
+	<widget field="ConditoinalWrapperTest" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="507"/>
+	</widget>
+	<widget field="WristAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="620" y="362"/>
+	</widget>
+	<widget field="ManualWrist" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="452"/>
+	</widget>
+	<widget field="CalibrateLiftBottomLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="2" y="643"/>
+	</widget>
+	<widget field="WristPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+		<location x="631" y="411"/>
+	</widget>
+	<widget field="WristAngleFromArm" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="578" y="384"/>
+	</widget>
+	<widget field="LiftPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="499" y="716"/>
+	</widget>
+	<widget field="CalibrateLiftTopLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="17" y="621"/>
+	</widget>
 	<widget field="ToggleSideSet" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="108"/>
 	</widget>
 	<widget field="ManualArm" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="74"/>
+		<location x="924" y="141"/>
 	</widget>
 	<widget field="CalibrateWristRearLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="4" y="688"/>
@@ -31,7 +58,7 @@
 		<location x="623" y="615"/>
 	</widget>
 	<widget field="ManualLift" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="40"/>
+		<location x="514" y="672"/>
 	</widget>
 	<widget field="LiftLeftCurrent" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="623" y="791"/>
@@ -49,7 +76,7 @@
 		<location x="371" y="237"/>
 	</widget>
 	<widget field="Pressure" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="251" y="349"/>
+		<location x="147" y="330"/>
 	</widget>
 	<widget field="ChassisAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="259" y="10"/>
@@ -153,9 +180,6 @@
 	<widget field="ArmAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="921" y="118"/>
 	</widget>
-	<widget field="LiftEncoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="493" y="688"/>
-	</widget>
 	<widget field="MastOverride" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="910" y="258"/>
 	</widget>
@@ -166,6 +190,7 @@
 <live-window>
 </live-window>
 	<hidden field="rightDrivegainName"/>
+	<hidden field="LiftEncoder"/>
 	<hidden field="leftDrivegainName"/>
 	<hidden field="gyrogainName"/>
 </xml>
