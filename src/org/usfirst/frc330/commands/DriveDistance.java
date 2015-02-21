@@ -22,6 +22,7 @@ import org.usfirst.frc330.constants.ChassisConst;
 public class  DriveDistance extends BBCommand {
 
 	double leftDistance, rightDistance, tolerance, maxOutput;
+	double origDistance;
     boolean stopAtEnd = false;
     
     public DriveDistance(double distance) {
@@ -53,6 +54,7 @@ public class  DriveDistance extends BBCommand {
         setTimeout(timeout);
         this.stopAtEnd = stopAtEnd;
         this.maxOutput = maxOutput;
+        origDistance = distance;
     }
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -94,6 +96,8 @@ public class  DriveDistance extends BBCommand {
             Robot.chassis.stopDrive();
         }
         Robot.logger.println("DriveDistance Setpoint: " + leftDistance + "Left: " + Robot.chassis.getLeftDistance() + "Right: " + Robot.chassis.getRightDistance(), false);
+        this.leftDistance = origDistance;
+        this.rightDistance = origDistance;
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run

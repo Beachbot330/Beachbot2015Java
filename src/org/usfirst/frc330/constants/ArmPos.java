@@ -9,7 +9,7 @@ public final class ArmPos {
 	private ArmPos(){}
 	
 	// Tolerance
-	public static final double tolerance       = 0.1;
+	public static final double tolerance       = 0.5;
 	
 	// PID Constants
 	public static final double proportional    = 0.05;

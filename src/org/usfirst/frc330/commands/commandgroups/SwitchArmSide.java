@@ -15,6 +15,7 @@ import org.usfirst.frc330.commands.*;
 import org.usfirst.frc330.conditionalWrappers.*;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -41,8 +42,9 @@ public class SwitchArmSide extends BBCommandGroup {
     	
     	addSequential(new ArmSwitchStartPosition());
     	addSequential(new ArmSwitchWristToLimit());
-    	addParallel(new ArmSwitchWrist());
     	addSequential(new ToggleSideSet());
+    	addParallel(new ArmSwitchWrist());
+    	//addSequential(new WaitCommand(0.1));
     	addSequential(new ArmSwitchStopPosition());
     }
 }

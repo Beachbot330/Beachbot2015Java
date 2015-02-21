@@ -100,7 +100,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     
     public void setAngle(double angle)
     {
-    	
+    	wristPID.setSetpoint(angle);
     }
     
     public double getAngleFromArm(){
@@ -215,7 +215,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	}
 
 	public void pidWrite(double output) {
-		set(output + Robot.arm.getArmOutput()/HandConst.feedForward);
+		set(output - Robot.arm.getArmOutput()/HandConst.feedForward);
 	}
 
 	public double pidGet() {

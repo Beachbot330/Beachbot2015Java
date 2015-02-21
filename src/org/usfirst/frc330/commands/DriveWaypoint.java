@@ -64,6 +64,7 @@ public class DriveWaypoint extends DriveDistanceAtAbsAngle {
             while (robotAngle < calcAngle)
                 calcAngle -= 360;
         }
+        Robot.logger.println("DriveWaypoint x: " + x + " y: " + y + " curX: " + curX + " curY: " + curY);
         Robot.logger.println("DriveWaypoint distance: " + calcDistance + " angle: " + calcAngle);
     }
 
