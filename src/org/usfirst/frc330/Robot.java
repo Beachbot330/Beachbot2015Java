@@ -88,6 +88,11 @@ public class Robot extends IterativeRobot {
         csvLogger.writeHeader();
         logger.println("Robot Init");
         
+        if (isPracticeRobot())
+        	logger.println("Practice Robot Detected");
+        else
+        	logger.println("Comeptition Robot Detected");
+        
         Command beep = new BuzzerBeepTimed(0.75);
         beep.start();
     }
@@ -173,7 +178,7 @@ public class Robot extends IterativeRobot {
         csvLogger.writeData();
     }
     
-    public static boolean isPracticerobot() {
+    public static boolean isPracticeRobot() {
         return (frills.isPracticeRobot());
     }
 }

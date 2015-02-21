@@ -121,7 +121,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     
 	public double getLiftTopLimit() {
 		String name;
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeLiftTopLimit";
         else
             name = "CompetitionLiftTopLimit";
@@ -130,7 +130,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
 	
 	public double getLiftBottomLimit() {
 		String name;
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeLiftBottomLimit";
         else
             name = "CompetitionLiftBottomLimit";
@@ -141,7 +141,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
 	{        
         String name;
         
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeLiftBottomLimit";
         else
             name = "CompetitionLiftBottomLimit";
@@ -154,7 +154,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
 	{
         String name;
         
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeLiftTopLimit";
         else
             name = "CompetitionLiftTopLimit";

@@ -114,7 +114,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	{        
         String name;
         
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeHandFrontLimit";
         else
             name = "CompetitionHandFrontLimit";
@@ -127,7 +127,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	{
         String name;
         
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeHandRearLimit";
         else
             name = "CompetitionHandRearLimit";
@@ -138,7 +138,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	
     public double getHandFrontLimit() {
 		String name;
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeHandFrontLimit";
         else
             name = "CompetitionHandFrontLimit";
@@ -147,7 +147,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	
 	public double getHandRearLimit() {
 		String name;
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeArmHandLimit";
         else
             name = "CompetitionHandRearLimit";

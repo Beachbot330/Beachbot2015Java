@@ -280,7 +280,7 @@ public class Arm extends Subsystem {
 	{        
         String name;
         
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeArmFrontLimit";
         else
             name = "CompetitionArmFrontLimit";
@@ -293,7 +293,7 @@ public class Arm extends Subsystem {
 	{
         String name;
         
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeArmRearLimit";
         else
             name = "CompetitionArmRearLimit";
@@ -306,7 +306,7 @@ public class Arm extends Subsystem {
 	{        
         String name;
         
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeMastFrontLimit";
         else
             name = "CompetitionMastFrontLimit";
@@ -319,7 +319,7 @@ public class Arm extends Subsystem {
 	{
         String name;
         
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeMastRearLimit";
         else
             name = "CompetitionMastRearLimit";
@@ -355,7 +355,7 @@ public class Arm extends Subsystem {
     
     public double getArmFrontLimit() {
 		String name;
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeArmFrontLimit";
         else
             name = "CompetitionArmFrontLimit";
@@ -364,7 +364,7 @@ public class Arm extends Subsystem {
 	
 	public double getArmRearLimit() {
 		String name;
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeArmRearLimit";
         else
             name = "CompetitionArmRearLimit";
@@ -373,7 +373,7 @@ public class Arm extends Subsystem {
 	
 	public double getMastFrontLimit() {
 		String name;
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeMastFrontLimit";
         else
             name = "CompetitionMastFrontLimit";
@@ -382,7 +382,7 @@ public class Arm extends Subsystem {
 	
 	public double getMastRearLimit() {
 		String name;
-        if (Robot.isPracticerobot())
+        if (Robot.isPracticeRobot())
             name = "PracticeMastRearLimit";
         else
             name = "CompetitionMastRearLimit";
