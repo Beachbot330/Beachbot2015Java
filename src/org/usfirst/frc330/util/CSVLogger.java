@@ -14,6 +14,7 @@ import java.util.Set;
 
 import org.usfirst.frc330.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class CSVLogger {
@@ -92,28 +93,42 @@ public class CSVLogger {
     	}
 	}
 	
-	String data;
+//	String data;
 	private int counter = 0;
+	CSVLoggable value;
+	StringBuilder b = new StringBuilder(1000);
+	double test;
 	public void writeData() {
-
+//		double executeTime=0;
+		b.setLength(0);
+		
 		counter++;
 		if (counter == SDUpdateRate)
 			counter = 0;
-		data = sdf.format(System.currentTimeMillis()) + ", ";
-	    Set<?> set = table.entrySet();
-	    Iterator<?> i = set.iterator();
-	    while(i.hasNext()) {
-	    	Map.Entry me = (Map.Entry)i.next();
-			data = data + ((CSVLoggable) me.getValue()).get() + ", ";
-			if (((CSVLoggable)me.getValue()).isSendToSmartDashboard() && (counter % SDUpdateRate == 0)) {
-				SmartDashboard.putNumber((String)me.getKey(), ((CSVLoggable) me.getValue()).get());
+		b.append(sdf.format(System.currentTimeMillis()));
+		b.append(", ");
+
+//		executeTime = Timer.getFPGATimestamp();		
+		for(Map.Entry<String, CSVLoggable> me : table.entrySet()){
+
+			value = ((CSVLoggable) me.getValue());
+			test = value.get();
+			b.append(test);
+			b.append(", ");
+			if (value.isSendToSmartDashboard() && (counter % SDUpdateRate == 0)) {
+				SmartDashboard.putNumber((String)me.getKey(), value.get());
 			}
 		}
-		data = data + "\r\n";
+//		executeTime = Timer.getFPGATimestamp() - executeTime;
+//		System.out.println("Log write time: " + executeTime);		
+
+		
+		b.append("\r\n");
 		
 		if (usbWorking) {
 	    	try {
-				usbWriter.write(data);
+				usbWriter.write(b.toString());
+
 			} catch (IOException e) {
 				usbWorking = false;
 				e.printStackTrace();
@@ -121,12 +136,13 @@ public class CSVLogger {
 		}
 		else {
 			try {
-				roboRIOWriter.write(data);
+				roboRIOWriter.write(b.toString());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     	}
+
 	}
 	
 }

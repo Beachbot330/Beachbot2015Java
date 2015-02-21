@@ -67,69 +67,69 @@ public class PowerDP extends Subsystem {
     // GET methods
     /////////////////////////////////////////////////////////////  
     public double getTemperature(){ 
-    	return pDP.getTemperature();
+    	return 0 /*pDP.getTemperature()*/;
     }
-    
+    //TODO renable current and test speed.
     public double getTotalCurrent() {
-    	return pDP.getTotalCurrent();
+    	return 0/*pDP.getTotalCurrent() */;
     }
     
     public double getCurrent(int channel) {
-    	return pDP.getCurrent(channel);
+    	return 0/*pDP.getCurrent(channel)*/;
     }
     
     public double getTotalPower() {
-    	return pDP.getTotalPower();
+    	return 0/*pDP.getTotalPower()*/;
     }
     
     //Get motor current methods
     
     public double getChassisLeftDrive1Current() {
-    	return pDP.getCurrent(1);
+    	return 0/*pDP.getCurrent(1)*/;
     }
     
     public double getChassisLeftDrive2Current() {
-    	return pDP.getCurrent(2);
+    	return 0/*pDP.getCurrent(2)*/;
     }
     
     public double getChassisRightDrive1Current() {
-    	return pDP.getCurrent(13);
+    	return 0/*pDP.getCurrent(13)*/;
     }
     
     public double getChassisRightDrive2Current() {
-    	return pDP.getCurrent(14);
+    	return 0/*pDP.getCurrent(14)*/;
     }
     
     public double getLiftLeftCurrent() {
-    	return pDP.getCurrent(6);
+    	return 0/*pDP.getCurrent(6)*/;
     }
     
     public double getLiftRightCurrent() {
-    	return pDP.getCurrent(9);
+    	return 0/*pDP.getCurrent(9)*/;
     }
     
     public double getArmLeftCurrent() {
-    	return pDP.getCurrent(5);
+    	return 0/*pDP.getCurrent(5)*/;
     }
     
     public double getArmRightCurrent() {
-    	return pDP.getCurrent(10);
+    	return 0/*pDP.getCurrent(10)*/;
     }
     
     public double getWristLeftCurrent() {
-    	return pDP.getCurrent(4);
+    	return 0/*pDP.getCurrent(4)*/;
     }
     
     public double getWristRightCurrent() {
-    	return pDP.getCurrent(11);
+    	return 0/*pDP.getCurrent(11)*/;
     }
     
     public double getMastLeftCurrent() {
-    	return pDP.getCurrent(0);
+    	return 0/*pDP.getCurrent(0)*/;
     }
     
     public double getMastRightCurrent() {
-    	return pDP.getCurrent(5);
+    	return 0/*pDP.getCurrent(5)*/;
     }
     
 }

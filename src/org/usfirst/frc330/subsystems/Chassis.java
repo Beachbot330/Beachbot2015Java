@@ -159,7 +159,7 @@ public class Chassis extends Subsystem {
     	Robot.csvLogger.add("Pressure", temp);
     	
     	temp = new CSVLoggable(true) {
-			public double get() { return getShift(); }  		
+			public double get() { return 0/*getShift()*/; }  		
     	};  
     	Robot.csvLogger.add("Shift", temp);
     	

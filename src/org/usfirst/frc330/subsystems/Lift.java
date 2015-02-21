@@ -83,7 +83,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     	Robot.csvLogger.add("LiftOutput", temp);
     	
     	temp = new CSVLoggable(true) {
-			public double get() { return getTotePinch(); }
+			public double get() { return 0/*getTotePinch()*/; } //TODO renable after cache
     	};
     	Robot.csvLogger.add("TotePincher", temp);
     	
