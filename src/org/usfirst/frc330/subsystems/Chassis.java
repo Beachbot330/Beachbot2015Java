@@ -101,7 +101,13 @@ public class Chassis extends Subsystem {
         SmartDashboard.putData("leftDrivePID", leftDrivePID);
         SmartDashboard.putData("rightDrivePID", rightDrivePID);
         
-        final double distanceperpulse = Math.PI*ChassisConst.wheelDiameter/ChassisConst.PulseperRevolution /
+        double pulsePerRevolution;
+        if (Robot.isPracticeRobot())
+        	pulsePerRevolution = ChassisConst.practicePulsePerRevolution;
+        else
+        	pulsePerRevolution = ChassisConst.pulsePerRevolution;
+        
+        final double distanceperpulse = Math.PI*ChassisConst.wheelDiameter/pulsePerRevolution /
         		ChassisConst.encoderGearRatio/ChassisConst.gearRatio * ChassisConst.Fudgefactor;
 
         driveTrainEncoderR.setReverseDirection(false);

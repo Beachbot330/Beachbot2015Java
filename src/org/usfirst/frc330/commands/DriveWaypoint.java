@@ -9,7 +9,7 @@ import org.usfirst.frc330.Robot;
  * This will drive the robot forwards to a waypoint on the field based on its 
  * original starting position.
  */
-public class DriveWaypoint extends DriveDistanceAtAbsAngle {
+public class DriveWaypoint extends DriveDistanceAtAbsAngle_NoTurn {
     double x,y;
 
     public DriveWaypoint(double x, double y, double tolerance, double timeout, boolean stopAtEnd) {
@@ -66,6 +66,11 @@ public class DriveWaypoint extends DriveDistanceAtAbsAngle {
         }
         Robot.logger.println("DriveWaypoint x: " + x + " y: " + y + " curX: " + curX + " curY: " + curY);
         Robot.logger.println("DriveWaypoint distance: " + calcDistance + " angle: " + calcAngle);
+        
+        leftDistance = calcDistance;
+        rightDistance = calcDistance;
+        angle = calcAngle;
+        
     }
 
 }
