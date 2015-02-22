@@ -14,6 +14,7 @@ import org.usfirst.frc330.commands.DriveDistance;
 import org.usfirst.frc330.commands.OpenZachStacker;
 import org.usfirst.frc330.commands.SetLiftPosition;
 import org.usfirst.frc330.commands.ShiftLow;
+import org.usfirst.frc330.commands.TankDrive;
 import org.usfirst.frc330.constants.LiftPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
@@ -42,7 +43,8 @@ public class LoadSecondTote extends BBCommandGroup {
         // arm.
     	addSequential(new ShiftLow());
     	addSequential(new OpenZachStacker());
-    	addSequential(new DriveDistance(2,0.5,1, true));
+    	addSequential(new DriveDistance(2,0.5,0.5, true));
+//    	addSequential(new TankDrive());
     	addSequential(new SetLiftPosition(LiftPos.load2));
     	
     }

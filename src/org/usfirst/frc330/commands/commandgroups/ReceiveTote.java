@@ -45,6 +45,6 @@ public class ReceiveTote extends BBCommandGroup {
     	addSequential(new OpenZachStacker());
     	addParallel(new SetLiftPosition(LiftPos.intake));
     	addSequential(new WaitCommand(0.1));
-    	addSequential(new DriveDistance(-2,0.5,1,true));
+    	addSequential(new DriveDistance(-2,0.5,0.5,true));
     }
 }
