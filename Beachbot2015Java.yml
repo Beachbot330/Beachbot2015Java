@@ -676,7 +676,7 @@ Children:
       Name: wristPot
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: handLevel}
+        name: Default Command, type: Command, validators: null, value: None}
     Base: Subsystem
     Name: Hand
   - Children:

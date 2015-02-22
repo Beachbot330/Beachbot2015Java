@@ -22,7 +22,6 @@ import org.usfirst.frc330.constants.HandConst;
  *
  */
 public class  AdjustHandPositionDown extends BBCommand {
-
     public AdjustHandPositionDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -35,16 +34,13 @@ public class  AdjustHandPositionDown extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if(!Robot.hand.isHandLevelActivated())
-    	{
-    		Robot.hand.setHandLevelActivated(true);
-    	}
+    	Robot.hand.setHandLevelActivated(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double handAngle = Robot.hand.getVerticalHandAngle();
-    	handAngle = handAngle - HandConst.vertAdjustRate * (Robot.oi.armJoystick.getAxis(Joystick.AxisType.kZ)-1)/2;
+    	handAngle = handAngle - HandConst.vertAdjustRate * 3*(Robot.oi.armJoystick.getAxis(Joystick.AxisType.kZ)-1);
     	Robot.hand.setVerticalHandAngle(handAngle);
     }
 
