@@ -13,7 +13,7 @@ public class TurnGyroWaypoint extends TurnGyroAbs {
     double x, y;
     public TurnGyroWaypoint(double x, double y, double tolerance)
     {
-        super(0,0,tolerance,true,true);
+        super(0,tolerance,15,false,true);
         this.x=x;
         this.y=y;
         

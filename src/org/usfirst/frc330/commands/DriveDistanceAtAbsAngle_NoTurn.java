@@ -29,8 +29,8 @@ public class  DriveDistanceAtAbsAngle_NoTurn extends DriveDistance{
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-    	leftDistance = leftDistance + Robot.chassis.getLeftDistance();
-        rightDistance = rightDistance + Robot.chassis.getRightDistance();
+//    	leftDistance = leftDistance + Robot.chassis.getLeftDistance();
+//        rightDistance = rightDistance + Robot.chassis.getRightDistance();
         super.initialize();
         if (Robot.chassis.isHighGear())
         {

@@ -15,7 +15,7 @@ public class DriveWaypoint extends DriveDistanceAtAbsAngle_NoTurn {
     public DriveWaypoint(double x, double y, double tolerance, double timeout, boolean stopAtEnd) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        super(0,0,tolerance,timeout, stopAtEnd);
+        super(0,tolerance,0,timeout, stopAtEnd);
         this.x=x;
         this.y=y;
     }
