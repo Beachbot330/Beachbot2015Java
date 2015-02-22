@@ -77,6 +77,11 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     	};
     	Robot.csvLogger.add("LiftPosition", temp);
     	
+    	temp = new CSVLoggable(true) {
+			public double get() { return liftPot.getAverageVoltage(); }
+    	};
+    	Robot.csvLogger.add("LiftPot", temp);
+    	
     	temp = new CSVLoggable() {
 			public double get() { return lift.get(); }
     	};
@@ -125,7 +130,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
             name = "PracticeLiftTopLimit";
         else
             name = "CompetitionLiftTopLimit";
-		return Preferences.getInstance().getDouble(name, LiftPos.topLimitHeight);
+		return Preferences.getInstance().getDouble(name, 5);
 	}
 	
 	public double getLiftBottomLimit() {
@@ -134,7 +139,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
             name = "PracticeLiftBottomLimit";
         else
             name = "CompetitionLiftBottomLimit";
-		return Preferences.getInstance().getDouble(name, LiftPos.bottomLimitHeight);
+		return Preferences.getInstance().getDouble(name, 0);
 	}
 	
 	public void setLiftBottomLimit()
@@ -165,6 +170,10 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     
     public void setPosition(double position)
     {
+    	if (position > LiftPos.upperLimit)
+    		position = LiftPos.upperLimit;
+    	else if (position < LiftPos.lowerLimit)
+    		position = LiftPos.lowerLimit;
     	liftPID.setSetpoint(position);
     }
 
