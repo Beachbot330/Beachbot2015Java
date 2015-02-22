@@ -68,6 +68,11 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     	};
     	Robot.csvLogger.add("WristAngle", temp);
     	
+    	temp = new CSVLoggable(true) {
+    		public double get() { return wristPot.getAverageVoltage(); }
+    	};
+    	Robot.csvLogger.add("WristPot", temp);
+    	
     	temp = new CSVLoggable() {
     		public double get() { return wrist.get(); }
     	};
@@ -142,16 +147,16 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
             name = "PracticeHandFrontLimit";
         else
             name = "CompetitionHandFrontLimit";
-		return Preferences.getInstance().getDouble(name, HandConst.frontLimit);
+		return Preferences.getInstance().getDouble(name, 0);
 	}
 	
 	public double getHandRearLimit() {
 		String name;
         if (Robot.isPracticeRobot())
-            name = "PracticeArmHandLimit";
+            name = "PracticeHandRearLimit";
         else
             name = "CompetitionHandRearLimit";
-		return Preferences.getInstance().getDouble(name, HandConst.rearLimit);
+		return Preferences.getInstance().getDouble(name, 5);
 	}
 
 	public double getVerticalHandAngle() {
