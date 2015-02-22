@@ -38,8 +38,8 @@ public class OpenAllGrabbers extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new LeftGrabberOpen());
-    	addParallel(new RightGrabberOpen());
+    	addSequential(new LeftGrabberOpen());
+    	addSequential(new RightGrabberOpen());
     	addSequential(new CenterGrabberOpen());
     }
 }
