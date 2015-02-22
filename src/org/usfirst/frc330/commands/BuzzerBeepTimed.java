@@ -25,6 +25,10 @@ public class  BuzzerBeepTimed extends BBCommand {
 	Timer timeyWhimey = new Timer();
 	double time;
 	
+	public BuzzerBeepTimed() {
+		this(0.5);
+	}
+	
     public BuzzerBeepTimed(double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
