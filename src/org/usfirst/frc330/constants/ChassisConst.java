@@ -12,6 +12,7 @@ public final class ChassisConst {
 	// PID MaxOutputs
 	public static final double backupThrottle   = 0.5;
 	public static final double defaultMaxOutput = 0.8;
+	public static final double defaultMaxOutputStep = 0.1;
 	
 	// PID Constants
 	public static final double proportionalLow  = 0.0;

@@ -21,26 +21,26 @@ import org.usfirst.frc330.constants.ChassisConst;
  */
 public class  DriveDistance extends BBCommand {
 
-	double leftDistance, rightDistance, tolerance, maxOutput;
+	double leftDistance, rightDistance, tolerance, maxOutput, maxOutputStep, maxOutputMax;
 	double origDistance;
     boolean stopAtEnd = false;
     
     public DriveDistance(double distance) {
-        this(distance, 0, 15, false, ChassisConst.defaultMaxOutput);
+        this(distance, 0, 15, false, ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutputStep);
     }
     
     public DriveDistance(double distance, double tolerance)
     {
-        this(distance, tolerance, 15, false, ChassisConst.defaultMaxOutput);
+        this(distance, tolerance, 15, false, ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutputStep);
     }
     
     public DriveDistance(double distance, double tolerance, double timeout, boolean stopAtEnd)
     {
-    	this(distance, tolerance, timeout, false, ChassisConst.defaultMaxOutput);
+    	this(distance, tolerance, timeout, false, ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutputStep);
     }
     
     public DriveDistance(	double distance, double tolerance,
-    						double timeout, boolean stopAtEnd, double maxOutput) {
+    						double timeout, boolean stopAtEnd, double maxOutput, double maxOutputStep) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	
@@ -53,8 +53,10 @@ public class  DriveDistance extends BBCommand {
         this.tolerance = tolerance;
         setTimeout(timeout);
         this.stopAtEnd = stopAtEnd;
-        this.maxOutput = maxOutput;
+        this.maxOutputMax = maxOutput;
         origDistance = distance;
+        this.maxOutputStep = maxOutputStep;
+        this.maxOutput = maxOutputStep;
     }
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -80,6 +82,12 @@ public class  DriveDistance extends BBCommand {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	maxOutput += maxOutputStep;
+    	if (maxOutput >= maxOutputMax) 
+    		maxOutput = maxOutputMax;
+    	Robot.chassis.leftDrivePID.setOutputRange(-maxOutput, maxOutput);
+        Robot.chassis.rightDrivePID.setOutputRange(-maxOutput, maxOutput);
+   
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
