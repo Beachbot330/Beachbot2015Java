@@ -17,7 +17,7 @@ public final class HandConst {
 	
 	// Vertical Hand
 	public static final double defaultVerticalHandAngle = -90;
-	public static final double vertAdjustRate 			= .2;
+	public static final double vertAdjustRate 			= 1;
 	
 	// Current
 	public static final double currentLowerLimit = -50;

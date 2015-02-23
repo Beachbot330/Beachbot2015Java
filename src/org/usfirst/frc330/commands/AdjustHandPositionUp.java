@@ -40,9 +40,9 @@ public class  AdjustHandPositionUp extends BBCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double handAngle = Robot.hand.getVerticalHandAngle();
-    	handAngle = handAngle + HandConst.vertAdjustRate * 3*(Robot.oi.armJoystick.getAxis(Joystick.AxisType.kZ)-1);
-    	Robot.hand.setVerticalHandAngle(handAngle);
+    	double handAngle = Robot.hand.getSetpoint();
+    	handAngle = handAngle + HandConst.vertAdjustRate * (Robot.oi.armJoystick.getAxis(Joystick.AxisType.kZ)-1)/2;
+    	Robot.hand.setAngle(handAngle);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1171,6 +1171,30 @@ Children:
           value: whenPressed
       Base: Joystick Button
       Name: HandLevel_9
+    - Children: []
+      Properties:
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: ArmJoystick}
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id024
+          default: '1'
+          name: Button
+          validators: null
+          value: '7'
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id025
+          value: HandDown
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id026
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenPressed
+      Base: Joystick Button
+      Name: HandDown_7
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id027
@@ -1518,6 +1542,14 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: ManualWrist
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Hand}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: HandDown
   Properties: {}
   Base: Commands
   Name: Commands
