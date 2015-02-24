@@ -43,7 +43,7 @@ public class LoadSecondTote extends BBCommandGroup {
         // arm.
     	addSequential(new ShiftLow());
     	addSequential(new OpenZachStacker());
-    	addSequential(new DriveDistance(2,0.5,0.5, true));
+//    	addSequential(new DriveDistance(2,0.5,0.5, true));
 //    	addSequential(new TankDrive());
     	addSequential(new SetLiftPosition(LiftPos.load2));
     	
