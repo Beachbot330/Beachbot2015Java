@@ -271,6 +271,11 @@ public class Mast extends Subsystem {
 			mastPID.reset();
 		}
 	}
+	
+	public void softDriveForward()
+	{
+		mast.set(MastPos.softDrive);
+	}
 }
 
 

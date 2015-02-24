@@ -1,5 +1,29 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="HandDown" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="226"/>
+	</widget>
+	<widget field="rightDrivegainName" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="205"/>
+	</widget>
+	<widget field="gyrogainName" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="184"/>
+	</widget>
+	<widget field="leftDrivegainName" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="163"/>
+	</widget>
+	<widget field="ChassisX" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="142"/>
+	</widget>
+	<widget field="ChassisY" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="82"/>
+	</widget>
+	<widget field="WristPot" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="61"/>
+	</widget>
+	<widget field="LiftPot" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="40"/>
+	</widget>
 	<widget field="WristOverride" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="405" y="377"/>
 	</widget>
@@ -189,8 +213,4 @@
 </dashboard>
 <live-window>
 </live-window>
-	<hidden field="rightDrivegainName"/>
-	<hidden field="LiftEncoder"/>
-	<hidden field="leftDrivegainName"/>
-	<hidden field="gyrogainName"/>
 </xml>

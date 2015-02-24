@@ -36,6 +36,10 @@ public class  HoldMast extends BBCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if (!Robot.mast.isMastEnable())
+    	{
+    		Robot.mast.softDriveForward();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
