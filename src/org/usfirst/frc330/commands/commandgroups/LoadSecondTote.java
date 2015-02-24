@@ -45,11 +45,11 @@ public class LoadSecondTote extends BBCommandGroup {
     	addSequential(new OpenZachStacker());
     	addSequential(new DriveDistance(2,0.5,0.5, true));
 //    	addSequential(new TankDrive());
-//    	addSequential(new SetLiftPosition(LiftPos.load2));
+    	addSequential(new SetLiftPosition(LiftPos.load2));
     	
     }
-    public void end() {
-    	super.end();
-    	new SetLiftPosition(LiftPos.load2).start();
-    }
+//    public void end() {
+//    	super.end();
+//    	new SetLiftPosition(LiftPos.load2).start();
+//    }
 }
