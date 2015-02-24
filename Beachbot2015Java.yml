@@ -377,71 +377,9 @@ Children:
           default: '0'
           name: Input Channel (Analog)
           validators: *id023
-          value: '2'
-      Base: Analog Input
-      Name: mastPot
-    - Children: []
-      Properties:
-        Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id022
-          default: '0'
-          name: Input Channel (Analog)
-          validators: *id023
           value: '1'
       Base: Analog Input
       Name: armPot
-    - Children:
-      - Children: []
-        Properties:
-          Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id009
-            default: Talon
-            name: Type
-            validators: null
-            value: Talon
-          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id010
-            default: '0'
-            name: Output Channel (PWM)
-            validators: *id011
-            value: '11'
-        Base: Speed Controller
-        Name: mastRight
-      - Children: []
-        Properties:
-          Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id009
-            default: Talon
-            name: Type
-            validators: null
-            value: Talon
-          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id010
-            default: '0'
-            name: Output Channel (PWM)
-            validators: *id011
-            value: '10'
-        Base: Speed Controller
-        Name: mastLeft
-      Properties:
-        Motor2 Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Motor2 Inverted, validators: null, value: true}
-        Motor2: !!robotbuilder.data.properties.ChildSelectionProperty
-          default: 1
-          name: Motor2
-          type: PIDOutput
-          validators: *id012
-          value: Arm mastRight
-        Motor1: !!robotbuilder.data.properties.ChildSelectionProperty
-          default: 0
-          name: Motor1
-          type: PIDOutput
-          validators: *id013
-          value: Arm mastLeft
-        Motor1 Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Motor1 Inverted, validators: null, value: false}
-      Base: Dual Speed Controller
-      Name: mast
     - Children:
       - Children: []
         Properties:
@@ -494,34 +432,6 @@ Children:
           name: Motor1 Inverted, validators: null, value: false}
       Base: Dual Speed Controller
       Name: arm
-    - Children: []
-      Properties:
-        Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id014
-          default: '0'
-          name: Forward PCM (Solenoid)
-          validators: *id015
-          value: '0'
-        Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id016
-          default: '0'
-          name: Reverse PCM (Solenoid)
-          validators: *id017
-          value: '0'
-        Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id018
-          default: '0'
-          name: Reverse Channel (Solenoid)
-          validators: *id019
-          value: '6'
-        Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id020
-          default: '0'
-          name: Forward Channel (Solenoid)
-          validators: *id021
-          value: '7'
-      Base: Double Solenoid
-      Name: mastLock
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: ManualArm}
@@ -689,6 +599,102 @@ Children:
         name: Default Command, type: Command, validators: null, value: None}
     Base: Subsystem
     Name: PowerDP
+  - Children:
+    - Children:
+      - Children: []
+        Properties:
+          Type: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id009
+            default: Talon
+            name: Type
+            validators: null
+            value: Talon
+          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id010
+            default: '0'
+            name: Output Channel (PWM)
+            validators: *id011
+            value: '11'
+        Base: Speed Controller
+        Name: mastRight
+      - Children: []
+        Properties:
+          Type: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id009
+            default: Talon
+            name: Type
+            validators: null
+            value: Talon
+          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id010
+            default: '0'
+            name: Output Channel (PWM)
+            validators: *id011
+            value: '10'
+        Base: Speed Controller
+        Name: mastLeft
+      Properties:
+        Motor2 Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
+          name: Motor2 Inverted, validators: null, value: true}
+        Motor2: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 1
+          name: Motor2
+          type: PIDOutput
+          validators: *id012
+          value: Mast mastRight
+        Motor1: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 0
+          name: Motor1
+          type: PIDOutput
+          validators: *id013
+          value: Mast mastLeft
+        Motor1 Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
+          name: Motor1 Inverted, validators: null, value: false}
+      Base: Dual Speed Controller
+      Name: mast
+    - Children: []
+      Properties:
+        Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id022
+          default: '0'
+          name: Input Channel (Analog)
+          validators: *id023
+          value: '2'
+      Base: Analog Input
+      Name: mastPot
+    - Children: []
+      Properties:
+        Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id014
+          default: '0'
+          name: Forward PCM (Solenoid)
+          validators: *id015
+          value: '0'
+        Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id016
+          default: '0'
+          name: Reverse PCM (Solenoid)
+          validators: *id017
+          value: '0'
+        Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id018
+          default: '0'
+          name: Reverse Channel (Solenoid)
+          validators: *id019
+          value: '6'
+        Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id020
+          default: '0'
+          name: Forward Channel (Solenoid)
+          validators: *id021
+          value: '7'
+      Base: Double Solenoid
+      Name: mastLock
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: HoldMast}
+    Base: Subsystem
+    Name: Mast
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -1550,11 +1556,19 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: HandDown
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Mast}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: HoldMast
   Properties: {}
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Joe-XPS13-W7\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\allenpeters\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ..\}
   Default Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {
     default: None, name: Default Autonomous Command, type: Command, validators: null,
