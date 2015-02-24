@@ -44,6 +44,7 @@ public class  KillAll extends BBCommand {
     	Robot.arm.stopArm();
     	Robot.lift.stopLift();
     	Robot.hand.stopHand();
+    	Robot.mast.stopMast();
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -7,9 +7,11 @@ public final class LiftPos {
 	public static final double tolerance =			 1.0;		//JR, SP 2-15
 	
 	// PID Constants
-	public static final double proportional =		 0.3;		//AP, SP 2-14
+	//public static final double proportional =		 0.3;		//AP, SP 2-14
 	public static final double integral =			 0.000;		//AP, SP 2-14
-	public static final double derivitive =			 0.001;		//AP, SP 2-14
+	//public static final double derivitive =			 0.001;		//AP, SP 2-14
+	public static final double proportional =		 0.4;		//AP, SP 2-23
+	public static final double derivitive =			 0.30;		//AP, SP 2-23
 	
 	public static final double lowerLimit = 	0.25;   //JR, SP 2-15
 	public static final double upperLimit = 	37.0;   //AP, SP 2-14
