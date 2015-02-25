@@ -21,8 +21,8 @@ public class ArmSwitchStartPosition extends BBCommand {
     // Called just before this Command runs the first time
     protected void initialize() {
     	cmdsInit = false;
-    	commandOne = new SetArmPosition(ArmPos.frontFlipStart);
-    	commandTwo = new SetArmPosition(ArmPos.rearFlipStart);
+    	commandOne = new SetArmPosition(ArmPos.frontFlipStart, 5.0);
+    	commandTwo = new SetArmPosition(ArmPos.rearFlipStart, 5.0);
     	if(Robot.arm.getIsFront()){
     		commandOne.start();
     	}

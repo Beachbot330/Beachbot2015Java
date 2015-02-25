@@ -220,11 +220,11 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	}
 	
     public void set(double output){
-        if (output < 0 && getAngleFromArm() < (HandConst.frontLimitAngle + 10))
+        if (output < 0 && getAngleFromArm() < (HandConst.frontLimitAngle + 5))
         {
         	wrist.set(0);
         }
-        else if (output > 0 && getAngleFromArm() > (HandConst.rearLimitAngle-10))
+        else if (output > 0 && getAngleFromArm() > (HandConst.rearLimitAngle - 5))
         {
         	wrist.set(0);
         }

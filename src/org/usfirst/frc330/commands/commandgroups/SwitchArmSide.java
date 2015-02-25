@@ -44,7 +44,6 @@ public class SwitchArmSide extends BBCommandGroup {
     	addSequential(new ArmSwitchWristToLimit());
     	addSequential(new ToggleSideSet());
     	addParallel(new ArmSwitchWrist());
-    	//addSequential(new WaitCommand(0.1));
     	addSequential(new ArmSwitchStopPosition());
     }
 }
