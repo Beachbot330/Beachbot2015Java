@@ -10,7 +10,7 @@ public final class HandConst {
 	public static final double tolerance       = 0.1;
 	
 	// PID Constants
-	public static final double proportional    = 0.02;
+	public static final double proportional    = 0.045; //needed to turn this up during auto programming AP 2-24 (was 0.02)
 	public static final double integral        = 0.0;
 	public static final double derivitive      = 0.0;
 	public static final double feedForward     = 4.0;	//value to divide arm by to set wrist speed (feedForward)

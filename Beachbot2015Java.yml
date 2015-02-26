@@ -1564,6 +1564,38 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: HoldMast
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Mast}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: MastPID_on
+  - Children: []
+    Properties:
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Button on SmartDashboard, validators: null, value: false}
+      Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Add to SendableChooser, validators: null, value: true}
+    Base: AutoCommand
+    Name: KitchenSinkConQueso
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Hand}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: WristPID_on
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Arm}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: ArmPID_on
   Properties: {}
   Base: Commands
   Name: Commands

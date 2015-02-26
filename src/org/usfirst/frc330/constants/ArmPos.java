@@ -12,7 +12,7 @@ public final class ArmPos {
 	public static final double tolerance       = 0.5;
 	
 	// PID Constants
-	public static final double proportional    = 0.05;
+	public static final double proportional    = 0.06;  //AP 2-25 (was 0.05) WARNING: Changing this may cause self-destruct in auto
 	public static final double integral        = 0.0;
 	public static final double derivitive      = 0.0;
 	

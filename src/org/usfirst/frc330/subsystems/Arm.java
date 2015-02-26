@@ -316,7 +316,7 @@ public class Arm extends Subsystem {
         {
             armPID.setSetpoint(this.getArmAngle());
             armPID.enable();
-        }  
+        } 
     }
     
     public synchronized boolean isEnable() {

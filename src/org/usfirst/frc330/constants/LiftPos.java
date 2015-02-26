@@ -17,11 +17,12 @@ public final class LiftPos {
 	public static final double upperLimit = 	37.0;   //AP, SP 2-14
 	
 	// Values are in inches from the physical hardstop
-	public static final double dropOff = 		lowerLimit; //JR 2-15
-	public static final double carry =			4.1;  //JR 2-15
-	public static final double load2 = 			11.2; //JR 2-15
-	public static final double intake = 		33.0; //JR 2-15
-	public static final double stack3 = 		39.0;
+	public static final double dropOff = 			lowerLimit; //JR 2-15
+	public static final double carry =				4.1;  //JR 2-15
+	public static final double load2 = 				11.2; //JR 2-15
+	public static final double justOverOneTote = 	17.0; //AP 2-25
+	public static final double intake = 			33.0; //JR 2-15
+	public static final double stack3 = 			39.0;
 	
 	public static final double bottomLimitHeight = 0; //JR 2-14
 	public static final double topLimitHeight = 38.5; //JR 2-14
