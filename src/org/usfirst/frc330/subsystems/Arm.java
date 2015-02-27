@@ -195,6 +195,18 @@ public class Arm extends Subsystem {
         Preferences.getInstance().save();
 	}
 	
+	public void setArmVertical()
+	{
+        String name;
+        
+        if (Robot.isPracticeRobot())
+            name = "PracticeArmVertical";
+        else
+            name = "CompetitionArmVertical";
+        
+        Preferences.getInstance().putDouble(name, armPot.getAverageVoltage());
+        Preferences.getInstance().save();
+	}
 	
 	
 	/////////////////////////////////////////////////////////////
@@ -206,12 +218,21 @@ public class Arm extends Subsystem {
 	
 	public double getArmAngle()
     {
-    	double sensorRange = getArmRearLimit() - getArmFrontLimit();
-    	double angleRange  = ArmPos.rearCalAngle - ArmPos.frontCalAngle;
-    	double angleFromMast = angleRange/sensorRange * (armPot.getAverageVoltage() - getArmFrontLimit()) + ArmPos.frontCalAngle;
-    	double angleFromHorizon = -(180 - Robot.mast.getMastAngle() - angleFromMast);
-    	
-    	return angleFromHorizon;
+		double angleFromMast;
+		if(armPot.getAverageVoltage() < getArmVertical()) //if arm is frontside
+		{
+	    	double sensorRange = getArmVertical() - getArmFrontLimit();
+	    	double angleRange  = ArmPos.verticalAngle - ArmPos.frontCalAngle;
+	    	angleFromMast = ArmPos.verticalAngle - (angleRange/sensorRange) * (getArmVertical() - armPot.getAverageVoltage());
+		}
+		else
+		{
+			double sensorRange = getArmRearLimit() - getArmVertical();
+	    	double angleRange  = ArmPos.rearCalAngle - ArmPos.verticalAngle;
+	    	angleFromMast = ArmPos.verticalAngle - (angleRange/sensorRange) * (getArmVertical() - armPot.getAverageVoltage());	
+		}
+		double angleFromHorizon = Robot.mast.getMastAngle() - angleFromMast;
+	    return angleFromHorizon;
     }
 
     public double getArmFrontLimit() {
@@ -230,6 +251,15 @@ public class Arm extends Subsystem {
         else
             name = "CompetitionArmRearLimit";
 		return Preferences.getInstance().getDouble(name, ArmPos.rearLimit);
+	}
+	
+	public double getArmVertical() {
+		String name;
+        if (Robot.isPracticeRobot())
+            name = "PracticeArmVertical";
+        else
+            name = "CompetitionArmVertical";
+		return Preferences.getInstance().getDouble(name, ArmPos.verticalLimit);
 	}
 	
 	public double getArmPotAvgVoltage() {

@@ -189,6 +189,8 @@ public class OI {
 
         SmartDashboard.putData("CalibrateArmFrontLimit", new CalibrateArmFrontLimit());
 
+        SmartDashboard.putData("CalibrateArmVertical", new CalibrateArmVertical());
+
         SmartDashboard.putData("CalibrateArmRearLimit", new CalibrateArmRearLimit());
 
         SmartDashboard.putData("CalibrateMastFrontLimit", new CalibrateMastFrontLimit());
