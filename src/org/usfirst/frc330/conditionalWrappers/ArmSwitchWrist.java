@@ -13,14 +13,12 @@ public class ArmSwitchWrist extends BBCommand {
 
 	BBCommand commandOne;
 	BBCommand commandTwo;
-	boolean cmdsInit = false;
 	
     public ArmSwitchWrist() {
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	cmdsInit = false;
     	commandOne = new SetWristAngle(0.0, HandConst.tolerance, 3.0);
     	commandTwo = new SetWristAngle(180.0, HandConst.tolerance, 3.0);
     	if(Robot.arm.getIsFront()){
@@ -32,16 +30,10 @@ public class ArmSwitchWrist extends BBCommand {
     }
 
     protected void execute() {
-    	if (commandOne.isInitialized() || commandTwo.isInitialized()){
-    		cmdsInit = true;
-    	}
     }
 
     protected boolean isFinished() {
-    	if (cmdsInit)
-    		return !commandOne.isRunning() && !commandTwo.isRunning();
-    	else
-    		return false;
+    	return commandOne.isCompleted() || commandTwo.isCompleted();
     }
 
     protected void end() {

@@ -10,14 +10,12 @@ public class Template extends BBCommand {
 
 	BBCommand commandOne;
 	BBCommand commandTwo;
-	boolean cmdsInit = false;
 	
     public Template() {
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	cmdsInit = false;
     	commandOne = new DebugOne();
     	commandTwo = new DebugTwo();
     	if(true){
@@ -29,16 +27,10 @@ public class Template extends BBCommand {
     }
 
     protected void execute() {
-    	if (commandOne.isInitialized() || commandTwo.isInitialized()){
-    		cmdsInit = true;
-    	}
     }
 
     protected boolean isFinished() {
-    	if (cmdsInit)
-    		return !commandOne.isRunning() && !commandTwo.isRunning();
-    	else
-    		return false;
+    	return commandOne.isCompleted() || commandTwo.isCompleted();
     }
 
     protected void end() {

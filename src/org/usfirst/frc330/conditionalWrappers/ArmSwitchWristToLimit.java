@@ -13,14 +13,12 @@ public class ArmSwitchWristToLimit extends BBCommand {
 
 	BBCommand commandOne;
 	BBCommand commandTwo;
-	boolean cmdsInit = false;
 	
     public ArmSwitchWristToLimit() {
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	cmdsInit = false;
     	commandOne = new SetWristAngle((HandConst.rearLimitAngle+Robot.arm.getArmAngle()-180), 10.0, 2.0);
     	commandTwo = new SetWristAngle((HandConst.frontLimitAngle+Robot.arm.getArmAngle()-180), 10.0, 2.0);
     	if(Robot.arm.getIsFront()){
@@ -32,16 +30,10 @@ public class ArmSwitchWristToLimit extends BBCommand {
     }
 
     protected void execute() {
-    	if (commandOne.isInitialized() || commandTwo.isInitialized()){
-    		cmdsInit = true;
-    	}
     }
 
     protected boolean isFinished() {
-    	if (cmdsInit)
-    		return !commandOne.isRunning() && !commandTwo.isRunning();
-    	else
-    		return false;
+    	return commandOne.isCompleted() || commandTwo.isCompleted();
     }
 
     protected void end() {

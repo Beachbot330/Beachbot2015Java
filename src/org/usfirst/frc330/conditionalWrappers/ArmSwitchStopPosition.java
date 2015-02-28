@@ -13,14 +13,12 @@ public class ArmSwitchStopPosition extends BBCommand {
 
 	BBCommand commandOne;
 	BBCommand commandTwo;
-	boolean cmdsInit = false;
 	
     public ArmSwitchStopPosition() {
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	cmdsInit = false;
     	commandOne = new SetArmPosition(ArmPos.frontStateRearLimitAngle, 5.0, 2.0);
     	commandTwo = new SetArmPosition(ArmPos.rearStateFrontLimitAngle, 5.0, 2.0);
     	if(Robot.arm.getIsFront()){
@@ -32,16 +30,10 @@ public class ArmSwitchStopPosition extends BBCommand {
     }
 
     protected void execute() {
-    	if (commandOne.isInitialized() || commandTwo.isInitialized()){
-    		cmdsInit = true;
-    	}
     }
 
     protected boolean isFinished() {
-    	if (cmdsInit)
-    		return !commandOne.isRunning() && !commandTwo.isRunning();
-    	else
-    		return false;
+    	return commandOne.isCompleted() || commandTwo.isCompleted();
     }
 
     protected void end() {

@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class BBCommand extends Command {
 	
 	boolean m_initialized = false;
+	boolean m_completed = false;
 	
 	/* (non-Javadoc)
 	 * @see edu.wpi.first.wpilibj.command.Command#initialize()
@@ -64,12 +65,14 @@ public class BBCommand extends Command {
 		super._initialize();
 		Robot.logger.println(this.getClass().getName() + " initialized", false);
 		m_initialized = true;
+		m_completed = false;
 	}
 
 	void _end(){
 		super._end();
 		Robot.logger.println(this.getClass().getName() + " ended", false);
 		m_initialized = false;
+		m_completed = true;
 	}
 	
 	void _interrupted(){
@@ -79,5 +82,11 @@ public class BBCommand extends Command {
 	
 	public boolean isInitialized() {
 		return m_initialized;
+	}
+	
+	public boolean isCompleted(){
+		boolean complete = m_completed;
+		m_completed = false;
+		return complete;
 	}
 }
