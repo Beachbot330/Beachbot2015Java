@@ -35,7 +35,14 @@ public class  HandDown extends BBCommand {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.hand.setHandLevelActivated(true);
-    	Robot.hand.setAngle(HandConst.defaultVerticalHandAngle);
+    	if(Robot.arm.getIsFront())
+    	{
+    		Robot.hand.setAngle(HandConst.defaultFrontVerticalHandAngle);
+    	}
+    	else
+    	{
+    		Robot.hand.setAngle(HandConst.defaultRearVerticalHandAngle);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

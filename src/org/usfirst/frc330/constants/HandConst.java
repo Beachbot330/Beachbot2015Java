@@ -16,7 +16,8 @@ public final class HandConst {
 	public static final double feedForward     = 4.0;	//value to divide arm by to set wrist speed (feedForward)
 	
 	// Vertical Hand
-	public static final double defaultVerticalHandAngle = -90;
+	public static final double defaultFrontVerticalHandAngle = -90;
+	public static final double defaultRearVerticalHandAngle = 275;
 	public static final double vertAdjustRate 			= 1;
 	
 	// Current

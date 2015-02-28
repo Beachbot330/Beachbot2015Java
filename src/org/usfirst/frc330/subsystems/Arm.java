@@ -345,7 +345,10 @@ public class Arm extends Subsystem {
         {
         	if (armPID.isEnable())
                 armPID.disable();
-        	setArm(armCommand);
+        	if (getIsFront()) 
+        		setArm(armCommand);
+        	else
+        		setArm(-armCommand);
         }
         else if (!armPID.isEnable())
         {

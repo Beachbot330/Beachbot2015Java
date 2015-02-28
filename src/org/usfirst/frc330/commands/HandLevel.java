@@ -18,9 +18,9 @@ import org.usfirst.frc330.Robot;
 /**
  *
  */
-public class  handLevel extends BBCommand {
+public class  HandLevel extends BBCommand {
 
-    public handLevel() {
+    public HandLevel() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
@@ -37,7 +37,10 @@ public class  handLevel extends BBCommand {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.hand.setHandLevelActivated(true);
-    	Robot.hand.setAngle(0);
+    	if (Robot.arm.getIsFront())
+    		Robot.hand.setAngle(0);
+    	else
+    		Robot.hand.setAngle(180);
     }
 
     // Make this return true when this Command no longer needs to run execute()

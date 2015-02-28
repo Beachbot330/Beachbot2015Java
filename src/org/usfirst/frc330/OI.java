@@ -97,7 +97,7 @@ public class OI {
         handDown_7 = new JoystickButton(armJoystick, 7);
         handDown_7.whenPressed(new HandDown());
         handLevel_9 = new JoystickButton(armJoystick, 9);
-        handLevel_9.whenPressed(new handLevel());
+        handLevel_9.whenPressed(new HandLevel());
         closeRightGrabber_5 = new JoystickButton(armJoystick, 5);
         closeRightGrabber_5.whenPressed(new RightGrabberClose());
         closeLeftGrabber_4 = new JoystickButton(armJoystick, 4);

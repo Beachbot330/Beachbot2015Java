@@ -1168,7 +1168,7 @@ Children:
           name: Command
           type: Command
           validators: *id025
-          value: handLevel
+          value: HandLevel
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id026
           default: whileHeld
@@ -1285,7 +1285,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
-    Name: handLevel
+    Name: HandLevel
   - Children: []
     Properties:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
