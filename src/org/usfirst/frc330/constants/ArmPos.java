@@ -23,6 +23,7 @@ public final class ArmPos {
 	
 	//Calibration Angles (Relative to Mast)
 	public static final double frontCalAngle = 			49.0; //Angle from the mast     AP 2-14
+	public static final double verticalCalAngle = 		180.0; //Angle from the mast
 	public static final double rearCalAngle  = 			311.0; //Angle from the mast     AP 2-14
 	
 	//Angles

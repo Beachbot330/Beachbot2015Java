@@ -222,16 +222,16 @@ public class Arm extends Subsystem {
 		if(armPot.getAverageVoltage() < getArmVertical()) //if arm is frontside
 		{
 	    	double sensorRange = getArmVertical() - getArmFrontLimit();
-	    	double angleRange  = ArmPos.verticalAngle - ArmPos.frontCalAngle;
-	    	angleFromMast = ArmPos.verticalAngle - (angleRange/sensorRange) * (getArmVertical() - armPot.getAverageVoltage());
+	    	double angleRange  = ArmPos.verticalCalAngle - ArmPos.frontCalAngle;
+	    	angleFromMast = (armPot.getAverageVoltage() - getArmVertical()) * (angleRange/sensorRange);
 		}
 		else
 		{
 			double sensorRange = getArmRearLimit() - getArmVertical();
-	    	double angleRange  = ArmPos.rearCalAngle - ArmPos.verticalAngle;
-	    	angleFromMast = ArmPos.verticalAngle - (angleRange/sensorRange) * (getArmVertical() - armPot.getAverageVoltage());	
+	    	double angleRange  = ArmPos.rearCalAngle - ArmPos.verticalCalAngle;
+	    	angleFromMast = (armPot.getAverageVoltage() - getArmVertical()) * (angleRange/sensorRange);	
 		}
-		double angleFromHorizon = Robot.mast.getMastAngle() - angleFromMast;
+		double angleFromHorizon = Robot.mast.getMastAngle() + angleFromMast;
 	    return angleFromHorizon;
     }
 
@@ -317,6 +317,11 @@ public class Arm extends Subsystem {
 		{
 			armPID.reset();
 		}
+	}
+	
+	public void setPIDConstants (double P, double I, double D, double F)
+	{
+		armPID.setPID(P, I, D, F);
 	}
 
 //	public void pidWrite(double output) {
