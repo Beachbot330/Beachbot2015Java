@@ -158,7 +158,14 @@ public class Mast extends Subsystem {
 		}
 		else
 		{
-			mast.set(-output * MastPos.maxOutput);
+			if (Math.abs(output) > (Math.abs(mast.get()) + 0.09))
+			{
+				mast.set(mast.get() + 0.09 *-(output/Math.abs(output)));
+			}
+			else
+			{
+				mast.set(-output);
+			}
 			//mastRight.set(-output); // Todo: check polarity and then re-enable
 		}
 	}
@@ -261,6 +268,11 @@ public class Mast extends Subsystem {
 	// Method to Disable Arm
 	public synchronized void disableMast() {
 		mastPID.disable();
+	}
+	
+	public double getMastOutput()
+	{
+		return mastPID.get();
 	}
 
 	public void stopMast()

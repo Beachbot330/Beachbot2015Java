@@ -70,7 +70,10 @@ public class BBCommand extends Command {
 
 	void _end(){
 		super._end();
-		Robot.logger.println(this.getClass().getName() + " ended", false);
+		if(this.isTimedOut())
+			Robot.logger.println(this.getClass().getName() + " timed out", false);
+		else
+			Robot.logger.println(this.getClass().getName() + " ended", false);
 		m_initialized = false;
 		m_completed = true;
 	}

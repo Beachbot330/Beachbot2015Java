@@ -13,11 +13,11 @@ public final class LiftPos {
 	public static final double proportional =		 0.4;		//AP, SP 2-23
 	public static final double derivitive =			 0.30;		//AP, SP 2-23
 	
-	public static final double lowerLimit = 	0.25;   //JR, SP 2-15
+	public static final double lowerLimit = 	0.125;   //AP 2-28 Was: 0.250 JR, SP 2-15
 	public static final double upperLimit = 	37.0;   //AP, SP 2-14
 	
 	// Values are in inches from the physical hardstop
-	public static final double dropOff = 			lowerLimit; //JR 2-15
+	public static final double dropOff = 			lowerLimit; // JR 2-15
 	public static final double carry =				4.1;  //JR 2-15
 	public static final double load2 = 				11.2; //JR 2-15
 	public static final double justOverOneTote = 	17.0; //AP 2-25

@@ -8,6 +8,8 @@ public final class ChassisConst {
 	//PID Names
 	public static final String DriveLowName     = "LowGear";
 	public static final String DriveHighName    = "HighGear";
+	public static final String TurnLowName     = "TurnLowGear";
+	public static final String TurnHighName    = "TurnHighGear";
 	
 	// PID MaxOutputs
 	public static final double backupThrottle   = 0.5;

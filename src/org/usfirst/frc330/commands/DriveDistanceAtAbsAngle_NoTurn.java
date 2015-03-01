@@ -19,7 +19,12 @@ public class  DriveDistanceAtAbsAngle_NoTurn extends DriveDistance{
     
     public DriveDistanceAtAbsAngle_NoTurn(double distance, double angle)
     {
-        this(distance, 6, angle, 0, true);
+        this(distance, 6, angle, -1.0, true); //-1 means no timeout
+    }
+    
+    public DriveDistanceAtAbsAngle_NoTurn(double distance, double angle, double tolerance)
+    {
+        this(distance, tolerance, angle, -1.0, true); //-1 means no timeout
     }
     
     public DriveDistanceAtAbsAngle_NoTurn(double distance, double tolerance, double angle, double timeout, boolean stopAtEnd)

@@ -20,6 +20,11 @@ public class DriveDistanceAtRelAngle_NoTurn extends DriveDistanceAtAbsAngle_NoTu
         this(distance, 6, angle, 5, true);
     }
     
+    public DriveDistanceAtRelAngle_NoTurn(double distance, double angle, double tolerance)
+    {
+        this(distance, tolerance, angle, 5, true);
+    }
+    
     public DriveDistanceAtRelAngle_NoTurn(double distance, double tolerance, double angle, double timeout, boolean stopAtEnd)
     {
         super(distance, tolerance, timeout, 0, stopAtEnd);

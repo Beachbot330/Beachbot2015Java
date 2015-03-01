@@ -16,6 +16,7 @@ import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.commands.ManualArm;
 import org.usfirst.frc330.constants.ArmPos;
+import org.usfirst.frc330.constants.HandConst;
 import org.usfirst.frc330.constants.LiftPos;
 import org.usfirst.frc330.constants.MastPos;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
@@ -56,7 +57,7 @@ public class Arm extends Subsystem {
     // Arm PIDController source and output objects
     public PIDOutput armPIDOutput = new PIDOutput()  {
     	public void pidWrite(double output) {
-    		setArm(output);	
+    		setArm(output - (Robot.mast.getMastOutput()-MastPos.softDrive)/ArmPos.feedForward);
     	}
     };
     

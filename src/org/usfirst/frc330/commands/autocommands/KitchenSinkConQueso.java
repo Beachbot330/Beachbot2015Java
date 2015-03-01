@@ -14,6 +14,7 @@ import org.usfirst.frc330.commands.*;
 import org.usfirst.frc330.constants.LiftPos;
 import org.usfirst.frc330.constants.MastPos;
 
+import edu.wpi.first.wpilibj.command.BBCommand;
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
 /**
@@ -39,8 +40,9 @@ public class KitchenSinkConQueso extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	//Hold joint angles, drive forward slightly, close center grabber
+    	//Hold joint angles, open grabbers, close center grabber
     	addSequential(new ShiftLow());
+    	addSequential(new OpenAllGrabbers());
     	//addParallel(new MastPID_on());
     	addParallel(new ArmPID_on());
     	addParallel(new WristPID_on());
@@ -50,33 +52,102 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addSequential(new Wait(0.1));
     	
     	//Adjust the mast to vertical and start raising the arm
-    	addParallel(new SetWristAngle(8.0));
-    	addSequential(new SetArmPosition(-2.0, 1.0, 0.7));
-    	addSequential(new SetMastPosition(MastPos.vertical, 3.0));
-    	addParallel(new SetArmPosition(33.0, 2.0));
     	addParallel(new SetWristAngle(5.0));
-//    	
-//    	//Drive to second station while loading first tote
-//    	addSequential(new SetLiftPosition(LiftPos.dropOff)); //TODO: Try to make it so that we can drive the lift while driving
-//    	addSequential(new SetLiftPosition(LiftPos.justOverOneTote));
-//    	addSequential(new DriveDistance(82.0 , 1.0));  //TODO: Make this parallel
-//    	addSequential(new SetLiftPosition(LiftPos.dropOff));
-//    	addParallel(new SetLiftPosition(LiftPos.carry));
+    	addSequential(new SetArmPosition(-12.9, 1.0, 0.1));  //Plan on it timing out, and the feedforward finishing this
+    	addParallel(new SetMastPosition(MastPos.vertical, 3.0));
+    	addSequential(new Wait(0.4));
+    	addParallel(new SetArmPosition(33.0, 2.0));
+    	//addParallel(new SetWristAngle(5.0));
+    	
+    	//Drive to second station while loading first tote
+    	BBCommand driveCommand = new DriveDistanceAtAbsAngle_NoTurn(80.0 , 0.0, 2.0);  //Dist Angl Tol
+    	addParallel(driveCommand);
+    	addSequential(new SetLiftPosition(LiftPos.dropOff));
+    	addSequential(new SetLiftPosition(LiftPos.justOverOneTote));
+    	addSequential(new CheckDone(driveCommand));
+    	
+    	//Pickup second tote
+    	addSequential(new SetLiftPosition(LiftPos.dropOff));
+    	addParallel(new DriveDistanceAtRelAngle_NoTurn(3.5, 0.0, 0.5));  //Dist Angle Tol
+    	addSequential(new Wait(0.7));
+    	addParallel(new SetLiftPosition(LiftPos.carry));
+    	addSequential(new Wait(0.3));  //could possibly reduce one tenth
+    	
+//    	//Drive back and turn
+//    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(-45 , 0.0, 2.0));  //Dist Angl Tol
+//    	addSequential(new TurnGyroAbs(16.0, 1.0));  //Angle Tol
+//
+//    	//Drop off can
+//    	addSequential(new SetArmPosition(-17, 1.0));
+//    	addParallel(new CenterGrabberOpen());
 //    	addSequential(new Wait(0.1));
 //    	
-//    	//move back 30 degrees
-//    	//rotate +16 degrees
+//    	//Move back 22 inches
+//    	driveCommand = new DriveDistanceAtRelAngle_NoTurn(-22.0 , 0.0, 2.0); //Dist Angl Tol
+//    	addSequential(driveCommand);
 //    	
-//    	//Drop off can
-//    	addSequential(new SetArmPosition(-14, 1.0));
-//    	addSequential(new CenterGrabberOpen());
+//    	//Reaquire first can
+//    	addParallel(new SetArmPosition(-22, 1.0));
+//    	addSequential(new TurnGyroAbs(0.0, 1.0));  //Angle Tol
+//    	driveCommand = new DriveDistanceAtRelAngle_NoTurn(26.0 , 0.0, 2.0); //Dist Angl Tol
+//    	addSequential(driveCommand);
 //    	
-//    	//move back 32 inches
+//    	
+//    	addParallel(new RightGrabberClose());
+//    	addSequential(new Wait(0.2));
     	
+    	//Drive back and turn
+    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-42 , 0.0, 2.0));  //Dist Angl Tol
+    	addSequential(new TurnGyroAbs(14.5, 0.5));  //Angle Tol
+    	addSequential(new Wait(0.3));
     	
+    	//Drive Forward and Swap Cans
+    	addSequential(new SetArmPosition(-17, 1.0));
+    	addSequential(new Wait(0.1));
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(27.0 , 14.5, 2.0));  //Dist Angl Tol
+    	addParallel(new CenterGrabberOpen());
+    	addSequential(new Wait(0.3)); // reduce?
+    	addSequential(new SetArmPosition(-21, 1.0));
+    	addParallel(new LeftGrabberClose());
+    	addSequential(new Wait(0.2));
     	
+    	//Raise arm and drive back
+    	addSequential(new SetArmPosition(-10, 5.0));
+    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-25.0 , 0.0, 2.0));  //Dist Angl Tol
     	
+    	//Straighten Out and pickup left behind can
+    	addSequential(new TurnGyroAbs(0.0, 1.0));  //Angle Tol
+    	addSequential(new Wait(0.3));
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(20.0 , 0.0, 2.0));  //Dist Angl Tol
+    	addSequential(new Wait(0.3));
+    	addParallel(new RightGrabberClose());
+    	addSequential(new Wait(0.1));
     	
+    	//Lift cans
+    	addParallel(new SetArmPosition(20.0, 2.0));
+    	
+    	//Time to clear the field (REMOVE)
+    	addSequential(new Wait(5.0));
+    	
+    	//Drive to last location
+    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(80.0 , 0.0, 2.0);  //Dist Angl Tol
+    	addParallel(driveCommand);
+    	addSequential(new SetLiftPosition(LiftPos.justOverOneTote));
+    	addSequential(new CheckDone(driveCommand));
+    	
+    	//Examine our location (REMOVE)
+    	addSequential(new Wait(5.0));
+    	
+    	//Load third tote
+    	addSequential(new SetLiftPosition(LiftPos.dropOff));
+    	addParallel(new DriveDistanceAtRelAngle_NoTurn(3.5, 0.0, 0.5));  //Dist Angle Tol
+    	addSequential(new Wait(0.7));
+    	addParallel(new SetLiftPosition(LiftPos.carry));
+    	addSequential(new Wait(0.3));  //could possibly reduce one tenth
+    	
+    	//Grab third Can
+    	addParallel(new CenterGrabberClose());
+    	addSequential(new Wait(0.1));
     	
     	
     }

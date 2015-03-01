@@ -256,6 +256,24 @@ public class Chassis extends Subsystem {
         }
     }
     
+    public void pidDriveAuto()
+    {
+        double left, right, gyroValue;
+        if (DriverStation.getInstance().isDisabled())
+        {
+            stopDrive();
+        }
+        else
+        {
+        	gyroValue = Math.signum(gyroOutput.getOutput()) * Math.max(Math.abs(gyroOutput.getOutput()) , 0.5);
+        	left = this.left+leftDriveOutput.getOutput() + gyroValue;
+            right = this.right+rightDriveOutput.getOutput() - gyroValue;
+            drive(left, right);
+            this.left = 0;
+            this.right = 0;
+        }
+    }
+    
     public void stopDrive()
     {
         if (gyroPID.isEnable())

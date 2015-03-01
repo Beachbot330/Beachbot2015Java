@@ -16,7 +16,9 @@ public final class MastPos {
 	
 	// PID Constants
 	public static final double proportional    = 0.2;  //AP 2-25
-	public static final double integral        = 0.05;  //AP 2-25
+	//public static final double integral        = 0.05;  //AP 2-25
+	//public static final double proportional    = 0.1;  //
+	public static final double integral        = 0.0;  //
 	public static final double derivitive      = 0.0;
 
 	// Limits Defaults

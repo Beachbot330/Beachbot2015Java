@@ -9,19 +9,17 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc330.commands.commandgroups;
-import org.usfirst.frc330.commands.CenterGrabberOpen;
-import org.usfirst.frc330.commands.LeftGrabberOpen;
-import org.usfirst.frc330.commands.RightGrabberOpen;
+package org.usfirst.frc330.commands.autocommands;
+import org.usfirst.frc330.commands.*;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
 /**
  *
  */
-public class OpenAllGrabbers extends BBCommandGroup {
+public class TurnFourteen extends BBCommandGroup {
     
-    public  OpenAllGrabbers() {
+    public  TurnFourteen() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -38,8 +36,7 @@ public class OpenAllGrabbers extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new LeftGrabberOpen());
-    	addSequential(new RightGrabberOpen());
-    	addSequential(new CenterGrabberOpen());
+    	addSequential(new ShiftLow());
+    	addSequential(new TurnGyroAbs(14.5, 0.5));
     }
 }

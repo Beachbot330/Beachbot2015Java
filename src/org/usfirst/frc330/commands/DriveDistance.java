@@ -51,7 +51,8 @@ public class  DriveDistance extends BBCommand {
         this.leftDistance = distance;
         this.rightDistance = distance;
         this.tolerance = tolerance;
-        setTimeout(timeout);
+        if (timeout > 0.0)
+        	setTimeout(timeout);
         this.stopAtEnd = stopAtEnd;
         this.maxOutputMax = maxOutput;
         origDistance = distance;
