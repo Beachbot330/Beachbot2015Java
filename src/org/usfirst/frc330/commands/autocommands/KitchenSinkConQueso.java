@@ -43,7 +43,7 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	//Hold joint angles, open grabbers, close center grabber
     	addParallel(new ArmPID_on());
     	addParallel(new WristPID_on());
-    	addParallel(new LiftPID_on());
+    	//addParallel(new LiftPID_on());
     	addSequential(new ShiftLow());
     	addSequential(new OpenAllGrabbers());
     	//addParallel(new MastPID_on());
@@ -116,27 +116,41 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	
     	//Raise arm and drive back
     	addSequential(new SetArmPosition(-12, 5.0));
-    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-28.0 , 0.0, 2.0));  //Dist Angl Tol
+    	addParallel(new CenterGrabberClose());
+    	addSequential(new SetArmPosition(-8, 5.0));
+    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-7.0 , 0.0, 2.0));
+    	addParallel(new CenterGrabberOpen());
+    	addSequential(new Wait(0.2));
+    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-21.0 , 0.0, 2.0));  //Dist Angl Tol
+    	addParallel(new SetArmPosition(-13, 5.0));
     	
     	//Straighten Out and pickup left behind can
     	addSequential(new TurnGyroAbs(0.0, 0.5));  //Angle Tol
     	addSequential(new Wait(0.4));
     	addSequential(new DriveDistanceAtAbsAngle_NoTurn(26.0 , 0.0, 2.0));  //Dist Angl Tol
     	addSequential(new Wait(0.3));
-    	addParallel(new RightGrabberClose());
-    	addSequential(new Wait(0.1));
+    	addParallel(new LeftGrabberOpen());
+    	addSequential(new SetArmPosition(-22, 5.0));
+    	addSequential(new Wait(0.3));
+    	addSequential(new SetWristAngle(-5.0));
+    	addSequential(new RightGrabberClose());
+    	addSequential(new LeftGrabberClose());
+    	addSequential(new Wait(0.3));
+    	addParallel(new SetWristAngle(5.0));
+    	addParallel(new SetArmPosition(-10, 5.0));
     	
     	//Lift cans
     	addParallel(new SetArmPosition(20.0, 2.0));
     	
     	//Time to clear the field (REMOVE)
-    	addSequential(new Wait(5.0));
+    	addSequential(new Wait(1.0));
     	
     	//Drive to last location
     	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(85.0 , 0.0, 2.0);  //Dist Angl Tol
     	addParallel(driveCommand);
-    	addParallel(new SetArmPosition(-13.2, 1.0));
     	addParallel(new SetLiftPosition(LiftPos.justOverOneTote));
+    	addSequential(new Wait(0.6));
+    	addParallel(new SetArmPosition(-10, 1.0));
     	addSequential(new CheckDone(driveCommand));
     	
     	//Grab last can
@@ -145,16 +159,14 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addParallel(new SetArmPosition(-7.0, 1.0));
     	
     	//Drive to last tote
-    	addParallel(new DriveDistanceAtAbsAngle_NoTurn(13.0 , 0.0, 2.0));
-    	
-    	addSequential(new CheckDone(driveCommand));
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(13.0 , 0.0, 2.0));
     	
     	//Examine our location (REMOVE)
     	addSequential(new Wait(5.0));
     	
     	//Load third tote
     	addSequential(new SetLiftPosition(LiftPos.dropOff));
-    	addParallel(new DriveDistanceAtRelAngle_NoTurn(3.5, 0.0, 1.5));  //Dist Angle Tol
+    	addParallel(new DriveDistanceAtRelAngle_NoTurn(6.0, 0.0, 1.5));  //Dist Angle Tol
     	addSequential(new Wait(0.7));
     	addParallel(new SetLiftPosition(LiftPos.carry));
     	addSequential(new Wait(0.3));  //could possibly reduce one tenth
