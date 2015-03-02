@@ -1,5 +1,11 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="ResetGyro" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="417" y="4"/>
+	</widget>
+	<widget field="CalibrateArmVertical" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="18" y="793"/>
+	</widget>
 	<widget field="HandDown" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="226"/>
 	</widget>
@@ -73,7 +79,7 @@
 		<location x="10" y="770"/>
 	</widget>
 	<widget field="CalibrateArmFrontLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="7" y="793"/>
+		<location x="5" y="817"/>
 	</widget>
 	<widget field="CloseZachStacker" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="623" y="592"/>
