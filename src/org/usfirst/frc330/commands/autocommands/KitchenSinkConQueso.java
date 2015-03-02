@@ -56,9 +56,9 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addParallel(new SetWristAngle(5.0));
     	addSequential(new SetArmPosition(-12.9, 1.0, 0.1));  //Plan on it timing out, and the feedforward finishing this
     	addParallel(new SetMastPosition(MastPos.vertical, 3.0));
-    	addSequential(new Wait(0.4));
-    	addParallel(new SetArmPosition(33.0, 2.0));
     	addSequential(new Wait(0.1));
+    	addParallel(new SetArmPosition(33.0, 2.0));
+    	addSequential(new Wait(0.2));
     	//addParallel(new SetWristAngle(5.0));
     	
     	//Drive to second station while loading first tote
@@ -66,43 +66,43 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addParallel(driveCommand);
     	addSequential(new SetLiftPosition(LiftPos.dropOff));
     	addSequential(new SetLiftPosition(LiftPos.justOverOneTote));
-    	addSequential(new CheckDone(driveCommand));
+    	addSequential(new Wait(0.25));
     	
     	//Pickup second tote
     	addSequential(new SetLiftPosition(LiftPos.dropOff), 0.5);
+    	addSequential(new CheckDone(driveCommand));
     	addParallel(new DriveDistanceAtRelAngle_NoTurn(4.5, 0.0, 0.5));  //Dist Angle Tol
-    	addSequential(new Wait(0.4));
+    	addSequential(new Wait(0.7));
     	addParallel(new SetLiftPosition(17.3));
-    	addSequential(new Wait(0.3));  //could possibly reduce one tenth
+    	addSequential(new Wait(0.2));  //could possibly reduce one tenth
     
     	//Drive back from second tote and turn
-    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-42 , 0.0, 2.0));  //Dist Angl Tol
+    	BBCommand moveArm = new SetArmPosition(-15, 4.0);
+    	driveCommand = new DriveDistanceAtRelAngle_NoTurn(-42 , 0.0, 2.0);
+    	addParallel(driveCommand);  //Dist Angl Tol
+    	addSequential(new Wait(1.3));
+    	addParallel(moveArm);
+    	addSequential(new CheckDone(driveCommand));
     	addSequential(new TurnGyroAbs(14.0, 0.5));  //Angle Tol
     	addSequential(new Wait(0.3));
     	
-    	//Drive Forward and Swap Cans
-    	addSequential(new SetArmPosition(-15, 4.0));
+    	//Drive Forward and Grab Can1 and Can2 at angle
+    	addSequential(new CheckDone(moveArm));
     	addSequential(new CenterGrabberOpen());
     	addParallel(new SetWristAngle(0));
-    	addSequential(new SetArmPosition(-35, 1.0));
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(32.0 , 14.0, 1.5));  //Dist Angl Tol
+    	addSequential(new SetArmPosition(-34, 2.0));
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(32.0 , 14.0, 2.0));  //Dist Angl Tol
     	addSequential(new LeftGrabberClose());
     	addSequential(new CenterGrabberClose());
     	addSequential(new Wait(0.1));
     	
-    	//Raise arm and drive back
-    	//addSequential(new SetArmPosition(-25, 5.0));
-    	//TODO: Consider adding a wrist command here
-    	//addSequential(new Wait(2.0));
-    	
-    	//addSequential(new SetArmPosition(-20, 5.0));
-    	//addSequential(new Wait(2.0));
+    	//Backup and leave can1
+    	addSequential(new SetArmPosition(-32, 2.0));
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-6.0 , 0.0, 2.0));
     	addParallel(new CenterGrabberOpen());
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-26.0 , 0.0, 2.0));  //Dist Angl Tol
-    	//addParallel(new SetArmPosition(-30, 5.0));
     	
-    	//Straighten Out and drive to left behind can
+    	//Straighten Out and drive to left behind can1
     	addSequential(new TurnGyroAbs(0.0, 0.5));  //Angle Tol
     	addSequential(new Wait(0.3));
     	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(42.0 , 0.0, 2.0);
@@ -143,9 +143,11 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	
     	
     	//Turn 90
-    	addSequential(new TurnGyroAbs(90.0, 5.0));  //Angle Tol
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(120.0, 90.0, 4.0));  //Dist Angl Tol
+    	addSequential(new TurnAngleAggressive(90.0, 2.0));  //angle, timeout
+    	addSequential(new ShiftHigh());
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(70.0, 90.0, 4.0));  //Dist Angl Tol
     	addSequential(new SetLiftPosition(LiftPos.dropOff));
+    	addSequential(new ShiftLow());
     	addSequential(new DriveDistanceAtAbsAngle_NoTurn(-10.0, 90.0, 4.0));  //Dist Angl Tol
     	addSequential(new BuzzerBeepTimed());
     	addSequential(new BuzzerBeepTimed());

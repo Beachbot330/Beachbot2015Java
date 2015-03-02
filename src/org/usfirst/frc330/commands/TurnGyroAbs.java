@@ -34,6 +34,12 @@ public class  TurnGyroAbs extends BBCommand {
     
     }
     
+    public TurnGyroAbs(double angle, double tolerance, double timeout)
+    {
+        this(angle, tolerance, timeout, false);
+    
+    }
+    
     public TurnGyroAbs(double angle, double tolerance, double timeout, boolean stopAtEnd) {
         this(angle, tolerance, timeout, stopAtEnd, true);
     }

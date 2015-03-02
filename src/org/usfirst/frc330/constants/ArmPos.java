@@ -15,7 +15,7 @@ public final class ArmPos {
 	public static final double proportional    = 0.06;  //AP 2-25 (was 0.05) WARNING: Changing this may cause self-destruct in auto
 	public static final double integral        = 0.0;
 	public static final double derivitive      = 0.0;
-	public static final double feedForward	   = 2.5;  //AP 2-28
+	public static final double feedForward	   = 2.0;  // was: 2.5 AP 2-28
 	
 	// Analog Pot Limits- Defaults
 	public static final double frontLimit      = 1.0;
