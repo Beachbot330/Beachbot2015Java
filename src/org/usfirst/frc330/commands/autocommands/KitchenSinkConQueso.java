@@ -69,26 +69,26 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addSequential(new CheckDone(driveCommand));
     	
     	//Pickup second tote
-    	addSequential(new SetLiftPosition(LiftPos.dropOff));
-    	addParallel(new DriveDistanceAtRelAngle_NoTurn(3.5, 0.0, 0.5));  //Dist Angle Tol
-    	addSequential(new Wait(0.7));
+    	addSequential(new SetLiftPosition(LiftPos.dropOff), 0.5);
+    	addParallel(new DriveDistanceAtRelAngle_NoTurn(4.5, 0.0, 0.5));  //Dist Angle Tol
+    	addSequential(new Wait(0.4));
     	addParallel(new SetLiftPosition(17.3));
     	addSequential(new Wait(0.3));  //could possibly reduce one tenth
     
-    	//Drive back and turn
+    	//Drive back from second tote and turn
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-42 , 0.0, 2.0));  //Dist Angl Tol
     	addSequential(new TurnGyroAbs(14.0, 0.5));  //Angle Tol
     	addSequential(new Wait(0.3));
     	
     	//Drive Forward and Swap Cans
-    	addSequential(new SetArmPosition(-17, 4.0));
-    	addParallel(new CenterGrabberOpen());
+    	addSequential(new SetArmPosition(-15, 4.0));
+    	addSequential(new CenterGrabberOpen());
     	addParallel(new SetWristAngle(0));
     	addSequential(new SetArmPosition(-35, 1.0));
     	addSequential(new DriveDistanceAtAbsAngle_NoTurn(32.0 , 14.0, 1.5));  //Dist Angl Tol
     	addSequential(new LeftGrabberClose());
     	addSequential(new CenterGrabberClose());
-    	addSequential(new Wait(0.2));
+    	addSequential(new Wait(0.1));
     	
     	//Raise arm and drive back
     	//addSequential(new SetArmPosition(-25, 5.0));
@@ -105,36 +105,17 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	//Straighten Out and drive to left behind can
     	addSequential(new TurnGyroAbs(0.0, 0.5));  //Angle Tol
     	addSequential(new Wait(0.3));
-    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(32.0 , 0.0, 2.0);
+    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(42.0 , 0.0, 2.0);
     	addParallel(driveCommand);  //Dist Angl Tol
-    	
-    	//Raise the tote stacker so I can put the arm extra low
-    	//addSequential(new SetArmPosition(-22, 5.0));
-    	//addSequential(new SetLiftPosition(LiftPos.stack3, 3.0));
     	addSequential(new CheckDone(driveCommand));
-    	
-    	//Move arm to setdown totes position
-    	//addSequential(new SetArmPosition(-22, 5.0)); // TODO: Adjust this position
-    	//addSequential(new Wait(3.0));
-    	//addParallel(new LeftGrabberOpen());
-    	//addSequential(new Wait(0.1));
-    	//addSequential(new SetArmPosition(-30, 5.0));
-    	//addSequential(new Wait(0.3));
-    	//addSequential(new SetWristAngle(-5.0));
     	addSequential(new RightGrabberClose());
-    	//addSequential(new LeftGrabberClose());
-    	addSequential(new Wait(0.3));
-    	//addParallel(new SetWristAngle(5.0));
+    	addSequential(new Wait(0.2));
+    	
+    	//Lift Cans
     	addParallel(new SetArmPosition(-10, 5.0));
     	
-    	//Lift cans
-    	//addParallel(new SetArmPosition(-5.0, 2.0));
-    	
-    	//Time to clear the field (REMOVE)
-    	addSequential(new Wait(1.0));
-    	
     	//Drive to last location
-    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(85.0 , 0.0, 2.0);  //Dist Angl Tol
+    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(75.0 , 0.0, 2.0);  //Dist Angl Tol
     	addParallel(driveCommand);
     	addParallel(new SetLiftPosition(LiftPos.justOverOneTote));
     	addSequential(new Wait(0.6));
