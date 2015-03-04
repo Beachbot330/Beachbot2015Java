@@ -10,6 +10,10 @@
 
 
 package org.usfirst.frc330.commands.commandgroups;
+import org.usfirst.frc330.commands.*;
+import org.usfirst.frc330.conditionalWrappers.*;
+import org.usfirst.frc330.constants.*;
+
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
 /**
@@ -34,5 +38,9 @@ public class SetMastStretch extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addSequential(new MoveArmToRear());
+    	addParallel(new SetArmPosition(90.0));
+    	addParallel(new SetWristAngle(180.0));
+    	addSequential(new SetMastPosition(MastPos.rearLimitAngle + 5.0));
     }
 }

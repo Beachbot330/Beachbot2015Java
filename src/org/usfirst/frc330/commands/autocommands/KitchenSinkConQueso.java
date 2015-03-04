@@ -90,15 +90,15 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addSequential(new CheckDone(moveArm));
     	addSequential(new CenterGrabberOpen());
     	addParallel(new SetWristAngle(0));
-    	addSequential(new SetArmPosition(-34, 2.0));
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(32.0 , 14.0, 2.0));  //Dist Angl Tol
+    	addSequential(new SetArmPosition(-35, 2.0));
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(34.0 , 14.0, 2.0));  //Dist Angl Tol  //Matt swears this will work 3/1
     	addSequential(new LeftGrabberClose());
     	addSequential(new CenterGrabberClose());
     	addSequential(new Wait(0.1));
     	
     	//Backup and leave can1
-    	addSequential(new SetArmPosition(-32, 2.0));
-    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-6.0 , 0.0, 2.0));
+    	addSequential(new SetArmPosition(-28, 5.0));
+    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-8.0 , 0.0, 2.0));  //Matt swears this will work 3/1
     	addParallel(new CenterGrabberOpen());
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-26.0 , 0.0, 2.0));  //Dist Angl Tol
     	
