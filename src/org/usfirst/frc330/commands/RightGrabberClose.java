@@ -32,7 +32,14 @@ public class  RightGrabberClose extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.hand.closeHandRight();
+    	if(Robot.arm.getIsFront())
+    	{
+    		Robot.hand.closeHandRight();
+    	}
+    	else
+    	{
+    		Robot.hand.closeHandLeft();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

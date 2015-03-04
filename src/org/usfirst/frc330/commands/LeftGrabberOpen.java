@@ -32,7 +32,12 @@ public class  LeftGrabberOpen extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.hand.openHandLeft();
+    	if(Robot.arm.getIsFront()){
+    		Robot.hand.openHandLeft();
+    	}
+    	else {
+    		Robot.hand.openHandRight();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
