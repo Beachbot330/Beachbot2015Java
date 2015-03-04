@@ -337,7 +337,7 @@ public class Arm extends Subsystem {
     // Other Methods
     //////////////////////////
     public void manualArm() {
-        double armCommand = Robot.oi.armJoystick.getY() * 0.75;
+        double armCommand = Robot.oi.armJoystick.getY();
         if (armCommand < 0) 
             armCommand = -(armCommand*armCommand);
         else
