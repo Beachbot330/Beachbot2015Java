@@ -39,8 +39,9 @@ public class SetMastStretch extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new MoveArmToRear());
-    	addParallel(new SetArmPosition(90.0));
-    	addParallel(new SetWristAngle(180.0));
-    	addSequential(new SetMastPosition(MastPos.rearLimitAngle + 5.0));
+    	addSequential(new SetArmPosition(90.0, 5.0, 3.0));
+    	addSequential(new SetWristAngle(180.0, 5.0, 3.0));
+    	addSequential(new SetMastPosition(MastPos.rearLimitAngle + 5.0, 5.0, 3.0));
+    	addSequential(new SetArmPosition(180.0, 2.0, 3.0));
     }
 }

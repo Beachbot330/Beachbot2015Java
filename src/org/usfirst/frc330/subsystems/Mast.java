@@ -287,6 +287,11 @@ public class Mast extends Subsystem {
 	{
 		mast.set(MastPos.softDrive);
 	}
+
+	public void manualMast() {
+		
+		
+	}
 }
 
 

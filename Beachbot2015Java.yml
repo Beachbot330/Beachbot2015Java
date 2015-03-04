@@ -940,40 +940,6 @@ Children:
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: MastJoystick}
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id024
-          default: '1'
-          name: Button
-          validators: null
-          value: '2'
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id025
-          value: ManualMast
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id026
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whileHeld
-      Base: Joystick Button
-      Name: Joystick Button 1
-    Properties:
-      Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id027
-        default: 1
-        name: Number
-        validators: *id028
-        value: '3'
-    Base: Joystick
-    Name: MastJoystick
-  - Children:
-    - Children: []
-      Properties:
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: ArmJoystick}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id024
@@ -1661,7 +1627,7 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Chassis}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: TurnAngleAggressive
   - Children: []
