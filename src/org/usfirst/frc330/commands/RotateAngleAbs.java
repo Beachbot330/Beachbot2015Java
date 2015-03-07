@@ -38,7 +38,28 @@ public class  RotateAngleAbs extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+        if (!Robot.chassis.isHighGear())
+        {
+            Robot.chassis.leftDrivePID.setGainName(ChassisConst.DriveLowName);
+            Robot.chassis.rightDrivePID.setGainName(ChassisConst.DriveLowName);
+        }
+        else
+        {
+             Robot.chassis.leftDrivePID.setGainName(ChassisConst.DriveHighName);
+             Robot.chassis.rightDrivePID.setGainName(ChassisConst.DriveHighName);
+        }
+		Robot.chassis.gyroPID.disable();
+    	if (angle > 0) {
+    		Robot.chassis.leftDrivePID.disable();
+    		Robot.chassis.rightDrivePID.setSetpoint(Robot.chassis.getRightDistance());
+    		Robot.chassis.rightDrivePID.enable();
+    	}
+    	else {
+    		Robot.chassis.rightDrivePID.disable();
+    		Robot.chassis.leftDrivePID.setSetpoint(Robot.chassis.getRightDistance());
+    		Robot.chassis.leftDrivePID.enable();
+    	}
+    		
     }
 
     // Called repeatedly when this Command is scheduled to run
