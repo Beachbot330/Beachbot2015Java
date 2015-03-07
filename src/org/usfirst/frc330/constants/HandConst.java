@@ -31,4 +31,7 @@ public final class HandConst {
 	//Angles
 	public static final double frontLimitAngle = 72;
 	public static final double rearLimitAngle  = 285.0;
+	
+	//Lengths
+	public static final double handLength       = 20.5; 	//inches  AP 3-7
 }	

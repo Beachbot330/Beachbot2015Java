@@ -16,6 +16,7 @@ import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.commands.*;
 import org.usfirst.frc330.constants.ArmPos;
 import org.usfirst.frc330.constants.HandConst;
+import org.usfirst.frc330.constants.MastPos;
 import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
 
@@ -86,6 +87,11 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     		public double get() { return Robot.powerDP.getWristRightCurrent(); }
     	};
     	Robot.csvLogger.add("WristRightCurrent", temp);
+    	
+    	temp = new CSVLoggable(true){
+    		public double get() {return getHeight();}
+    	};
+    	Robot.csvLogger.add("RobotHeight", temp);
 
     }
     
@@ -228,23 +234,6 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
         {
         	wrist.set(0);
         }
-        //TODO: Update this code for the wrist
-//        if (output > 0 && Robot.powerDP.getWristLeftCurrent() < HandConst.currentLowerLimit)
-//        {
-//        	wrist.set(0);
-//        }
-//        else if (output < 0 && Robot.powerDP.getWristLeftCurrent() > HandConst.currentUpperLimit)
-//        {
-//        	wrist.set(0);
-//        }
-//        else if (output > 0 && Robot.powerDP.getWristRightCurrent() < HandConst.currentLowerLimit)
-//        {
-//        	wrist.set(0);
-//        }
-//        else if (output < 0 && Robot.powerDP.getWristRightCurrent() > HandConst.currentUpperLimit)
-//        {
-//        	wrist.set(0);
-//        }
         else
         {
         	wrist.set(output);
@@ -290,6 +279,14 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	
     public synchronized boolean isEnabled() {
         return wristPID.isEnable();
+    }
+    
+    public double getHeight(){
+    	double height = MastPos.pivotHeight;
+    	height = height + Math.sin(Math.toRadians(Robot.mast.getMastAngle())) * MastPos.mastLength;
+    	height = height + Math.sin(Math.toRadians(Robot.arm.getArmAngle())) * ArmPos.armLength;
+    	height = height + Math.sin(Math.toRadians(Robot.hand.getWristAngle())) * HandConst.handLength;
+    	return height;
     }
 }
 

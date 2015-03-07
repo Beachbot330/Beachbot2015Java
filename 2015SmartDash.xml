@@ -1,5 +1,11 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="ManualMast" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="294"/>
+	</widget>
+	<widget field="SetMastVert" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="260"/>
+	</widget>
 	<widget field="TurnAngleAggressive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="904" y="400"/>
 	</widget>
