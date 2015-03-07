@@ -41,7 +41,8 @@ public final class ArmPos {
 	
 	
 	//Lengths
-	public static final double armLength       = 44.75; 	//inches  AP 3-7
+	//public static final double armLength       = 44.75; 	//inches  AP 3-7
+	public static final double armLength       = 44.75 + 2.0;
 	
 	//Current
 	public static final double currentLowerLimit = -50;

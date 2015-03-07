@@ -282,7 +282,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     }
     
     public double getHeight(){
-    	double height = MastPos.pivotHeight;
+    	double height = MastPos.pivotHeight + 0.5;
     	height = height + Math.sin(Math.toRadians(Robot.mast.getMastAngle())) * MastPos.mastLength;
     	height = height + Math.sin(Math.toRadians(Robot.arm.getArmAngle())) * ArmPos.armLength;
     	height = height + Math.sin(Math.toRadians(Robot.hand.getWristAngle())) * HandConst.handLength;

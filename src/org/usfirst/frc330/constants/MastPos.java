@@ -38,5 +38,6 @@ public final class MastPos {
 	
 	//Lengths
 	public static final double pivotHeight 		= 8.3;  // AP 3-07
-	public static final double mastLength		= 22.5; // AP 3-07
+	//public static final double mastLength		= 22.5; // AP 3-07
+	public static final double mastLength		= 22.5-2.4;
 }
