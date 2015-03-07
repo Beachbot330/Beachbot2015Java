@@ -55,6 +55,9 @@ public class  SetMastPositionThrottle extends BBCommand {
     }
     
     public double calcMastPos() {
-    	return (MastPos.rearLimitAngle-MastPos.frontLimitAngle) * (Robot.oi.getArmJoystick().getAxis(Joystick.AxisType.kZ)+1)/2 + MastPos.frontLimitAngle;
+    	if (Robot.oi.getArmJoystick().getAxisCount() >= 3)
+    		return (MastPos.rearLimitAngle-MastPos.frontLimitAngle) * (Robot.oi.getArmJoystick().getAxis(Joystick.AxisType.kZ)+1)/2 + MastPos.frontLimitAngle;
+    	else
+    		return MastPos.frontLimitAngle;
     }
 }
