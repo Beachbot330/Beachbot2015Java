@@ -44,8 +44,9 @@ public class JoeTest extends BBCommandGroup {
     	addSequential(new ShiftLow());
 //    	addSequential(new DriveDistanceAtAbsAngle(60,2.0,0.0,15,false));
 //    	addSequential(new DriveDistanceAtAbsAngle(36,2,90,15,false));
-    	addSequential(new DriveWaypoint(0,60,3,15,false));
-    	addSequential(new TurnGyroWaypoint(60,60,1));
-    	addSequential(new DriveWaypoint(60,60,1,15,false));
+//    	addSequential(new DriveWaypoint(0,60,3,15,false));
+//    	addSequential(new TurnGyroWaypoint(60,60,1));
+//    	addSequential(new DriveWaypoint(60,60,1,15,false));
+    	addSequential(new TurnGyroAbs(30,5,-1));
     }
 }

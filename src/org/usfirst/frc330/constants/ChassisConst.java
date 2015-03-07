@@ -40,4 +40,7 @@ public final class ChassisConst {
     public static final double encoderGearRatio = 3;
     public static final double gearRatio = 64.0/20.0;
     public static final double Fudgefactor = 1.0;
+    
+    //Turn Gyro 
+    public static final double rotateProportional = 0.20;
 }
