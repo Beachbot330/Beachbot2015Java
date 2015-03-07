@@ -46,9 +46,9 @@ public class  RotateAngleAbs extends BBCommand {
     protected void execute() {
     	error = angle - Robot.chassis.getAngle();
     	if (angle > 0)
-    		Robot.chassis.tankDrive(error*ChassisConst.gyroProportionalLow, 0);
+    		Robot.chassis.tankDrive(error*ChassisConst.rotateProportional, 0);
     	else
-    		Robot.chassis.tankDrive(0, error*ChassisConst.gyroProportionalLow);
+    		Robot.chassis.tankDrive(0, -error*ChassisConst.rotateProportional);
     }
 
     // Make this return true when this Command no longer needs to run execute()

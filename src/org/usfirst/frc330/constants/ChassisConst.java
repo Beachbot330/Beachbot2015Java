@@ -42,5 +42,5 @@ public final class ChassisConst {
     public static final double Fudgefactor = 1.0;
     
     //Turn Gyro 
-    public static final double rotateProportional = 0.20;
+    public static final double rotateProportional = 0.11;
 }

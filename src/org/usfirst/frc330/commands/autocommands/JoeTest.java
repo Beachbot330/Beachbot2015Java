@@ -13,6 +13,7 @@ package org.usfirst.frc330.commands.autocommands;
 import org.usfirst.frc330.commands.DriveDistance;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
 import org.usfirst.frc330.commands.DriveWaypoint;
+import org.usfirst.frc330.commands.RotateAngleAbs;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.TurnGyroAbs;
 import org.usfirst.frc330.commands.TurnGyroWaypoint;
@@ -47,6 +48,6 @@ public class JoeTest extends BBCommandGroup {
 //    	addSequential(new DriveWaypoint(0,60,3,15,false));
 //    	addSequential(new TurnGyroWaypoint(60,60,1));
 //    	addSequential(new DriveWaypoint(60,60,1,15,false));
-    	addSequential(new TurnGyroAbs(30,5,-1));
+    	addSequential(new RotateAngleAbs(-30,0,-1));
     }
 }
