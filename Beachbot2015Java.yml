@@ -692,7 +692,7 @@ Children:
       Name: mastLock
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: HoldMast}
+        name: Default Command, type: Command, validators: null, value: MastDefault}
     Base: Subsystem
     Name: Mast
   Properties: {}
@@ -946,7 +946,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '3'
+          value: '6'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -960,7 +960,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: AdjustHandPositionUp_3
+      Name: AdjustHandPositionUp_6
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -970,7 +970,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '2'
+          value: '7'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -984,7 +984,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: AdjustHandPositionDown_2
+      Name: AdjustHandPositionDown_7
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -994,7 +994,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '6'
+          value: '3'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1008,7 +1008,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: OpenAllGrabbers_6
+      Name: OpenAllGrabbers_3
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1186,7 +1186,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '7'
+          value: '2'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1200,7 +1200,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: HandDown_7
+      Name: HandDown_2
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id027
@@ -1642,7 +1642,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\allenpeters\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Joe-XPS13-W7\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ..\}
   Default Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {
     default: None, name: Default Autonomous Command, type: Command, validators: null,
