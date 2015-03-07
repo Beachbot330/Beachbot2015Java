@@ -14,6 +14,7 @@ package org.usfirst.frc330.commands.commandgroups;
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.commands.*;
 import org.usfirst.frc330.conditionalWrappers.*;
+import org.usfirst.frc330.constants.MastPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -40,8 +41,8 @@ public class SwitchArmSide extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	requires(Robot.mast);
     	
+//    	addSequential(new SetMastPosition(MastPos.frontLimitAngle,2.0,1.0));
     	addSequential(new ArmSwitchStartPosition());
     	addSequential(new ArmSwitchWristToLimit());
     	addSequential(new ToggleSideSet());

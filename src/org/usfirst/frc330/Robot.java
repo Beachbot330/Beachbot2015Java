@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 
 import org.usfirst.frc330.commands.*;
 import org.usfirst.frc330.commands.autocommands.*;
+import org.usfirst.frc330.constants.ArmPos;
 //import org.usfirst.frc330.commands.autocommands.*;
 import org.usfirst.frc330.subsystems.*;
 import org.usfirst.frc330.util.CSVLogger;
@@ -110,6 +111,7 @@ public class Robot extends IterativeRobot {
     public void disabledInit(){
         logger.println("Disabled Init");
     	logger.updateDate();
+    	decideStates();
     }
 
     public void disabledPeriodic() {
@@ -119,6 +121,8 @@ public class Robot extends IterativeRobot {
         chassis.calcXY();
 
         csvLogger.writeData();
+        
+        decideStates();
     }
 
     public void autonomousInit() {
@@ -148,7 +152,6 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
         logger.println("Teleop Init");
     	logger.updateDate();
-    	decideStates();
     	Command beep= new BuzzerBeepTimed(1.25);
     	beep.start();
         // This makes sure that the autonomous stops running when
@@ -158,10 +161,27 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
+    boolean invalidState;
     private void decideStates() {
+    	invalidState = false;
     	double armAngle = arm.getArmAngle();
-    	//double handAngle = hand.getAngle();
-    	if (armAngle > 90) arm.setIsFront(true);
+    	double handAngle = hand.getWristAngle();
+    	if (armAngle < ArmPos.frontStateRearLimitAngle + ArmPos.tolerance*2 && handAngle < 90) {
+    		arm.setIsFront(true);
+    		frills.buzzerOff();
+//    		Robot.logger.println("Arm is in Front",false);
+    	}
+    	else if (armAngle > ArmPos.rearStateFrontLimitAngle - ArmPos.tolerance*2 && handAngle > 90) {
+    		arm.setIsFront(false);
+    		frills.buzzerOff();
+//    		Robot.logger.println("Arm is in Rear", false);
+    	}
+    	else {
+    		arm.setIsFront(true);
+    		frills.buzzerOn();
+    		invalidState = true;
+    		Robot.logger.println("Arm in Invalid State, ArmAngle: " + armAngle + " WristAngle: " + handAngle, true);
+    	}
 	}
 
 	/**
