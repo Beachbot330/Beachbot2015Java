@@ -22,7 +22,7 @@ public class MastDefault extends BBCommand {
     // Called just before this Command runs the first time
     protected void initialize() {
     	commandOne = new HoldMast();
-    	commandTwo = new SetMastPositionThrottle();
+    	commandTwo = new ManualMast();
     	if(Robot.arm.getIsFront()){
     		commandOne.start();
     	}

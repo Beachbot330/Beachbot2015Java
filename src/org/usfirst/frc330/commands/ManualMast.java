@@ -49,6 +49,9 @@ public class  ManualMast extends BBCommand {
 
     // Called once after isFinished returns true
     protected void end() {
+    	if (!Robot.mast.isMastEnable()) {
+            Robot.mast.setMast(0);
+      	}
     }
 
     // Called when another command which requires one or more of the same

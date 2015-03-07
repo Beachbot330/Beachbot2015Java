@@ -970,7 +970,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '9'
+          value: '1'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -984,7 +984,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: CloseCenterGrabber_9
+      Name: CloseCenterGrabber_1
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -994,7 +994,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '8'
+          value: '9'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1008,7 +1008,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: CloseRightGrabber_8
+      Name: CloseRightGrabber_9
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1042,7 +1042,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '6'
+          value: '2'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1056,7 +1056,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: OpenCenterGrabber_6
+      Name: OpenCenterGrabber_2
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1066,7 +1066,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '7'
+          value: '6'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1080,7 +1080,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: OpenRightGrabber_7
+      Name: OpenRightGrabber_6
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1090,7 +1090,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '2'
+          value: '15'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1104,7 +1104,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: OpenAllGrabbers_2
+      Name: OpenAllGrabbers_15
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1114,7 +1114,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '3'
+          value: '16'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1128,7 +1128,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: SetMastStretch_3
+      Name: SetMastStretch_16
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1138,7 +1138,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '4'
+          value: '11'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1152,7 +1152,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: SetMastVertical_4
+      Name: SetMastVertical_11
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1186,7 +1186,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '11'
+          value: '8'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1200,7 +1200,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: AdjustHandPositionUp_11
+      Name: AdjustHandPositionUp_8
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1210,7 +1210,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '16'
+          value: '7'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1224,7 +1224,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: AdjustHandPositionDown_16
+      Name: AdjustHandPositionDown_7
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1258,7 +1258,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '12'
+          value: '3'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1272,7 +1272,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: HandLevel_12
+      Name: HandLevel_3
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1282,7 +1282,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '15'
+          value: '4'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1296,7 +1296,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: HandDown_15
+      Name: HandDown_4
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id027
@@ -1313,7 +1313,7 @@ Children:
   - Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Arm}
+        name: Requires, type: Subsystem, validators: null, value: Mast}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
