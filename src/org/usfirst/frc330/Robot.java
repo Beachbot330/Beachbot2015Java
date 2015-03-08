@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 import org.usfirst.frc330.commands.*;
 import org.usfirst.frc330.commands.autocommands.*;
 import org.usfirst.frc330.constants.ArmPos;
+import org.usfirst.frc330.constants.HandConst;
 //import org.usfirst.frc330.commands.autocommands.*;
 import org.usfirst.frc330.subsystems.*;
 import org.usfirst.frc330.util.CSVLogger;
@@ -168,12 +169,12 @@ public class Robot extends IterativeRobot {
     	invalidState = false;
     	double armAngle = arm.getArmAngle();
     	double handAngle = hand.getWristAngle();
-    	if (armAngle < ArmPos.frontStateRearLimitAngle + ArmPos.tolerance*2 && handAngle < 90) {
+    	if (armAngle < ArmPos.frontStateRearLimitAngle + ArmPos.tolerance*8 && handAngle < 90) {
     		arm.setIsFront(true);
     		frills.buzzerOff();
 //    		Robot.logger.println("Arm is in Front",false);
     	}
-    	else if (armAngle > ArmPos.rearStateFrontLimitAngle - ArmPos.tolerance*2 && handAngle > 90) {
+    	else if (armAngle > ArmPos.rearStateFrontLimitAngle - ArmPos.tolerance*8 && handAngle > 90) {
     		arm.setIsFront(false);
     		frills.buzzerOff();
 //    		Robot.logger.println("Arm is in Rear", false);
@@ -183,6 +184,11 @@ public class Robot extends IterativeRobot {
     		frills.buzzerOn();
     		invalidState = true;
     		Robot.logger.println("Arm in Invalid State, ArmAngle: " + armAngle + " WristAngle: " + handAngle, true);
+    	}
+    	if (Robot.hand.getHeight() > HandConst.handHeightLimit) {
+    		frills.buzzerOn();
+    		invalidState = true;
+    		Robot.logger.println("Hand too high. Hand Height: " + Robot.hand.getHeight());
     	}
 	}
 
