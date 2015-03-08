@@ -52,13 +52,16 @@ public class Logger {
 		
 		try {
 			usbWriter = new BufferedWriter(new FileWriter(usbFile));
-			Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_usbPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.ATOMIC_MOVE);
+			Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_usbPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			usbWorking = false;
 			e.printStackTrace();
 		}
 		try {
 			roboRIOWriter = new BufferedWriter(new FileWriter(roboRIOFile));
+			if (!usbWorking) {
+				Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_roboRIOPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
