@@ -226,7 +226,18 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	}
 	
     public void set(double output){
-        if (output < 0 && getAngleFromArm() < (HandConst.frontLimitAngle + 5))
+    	if (Robot.hand.getHeight() > 76.5)
+    	{
+    		double a = Math.sin(Math.toRadians(Robot.mast.getMastAngle())) * MastPos.mastLength;
+    		double b = Math.sin(Math.toRadians(Robot.arm.getArmAngle())) * ArmPos.armLength;
+    		double c = 76 - a - b - MastPos.pivotHeight - 0.5;
+    		double setpoint = Math.toDegrees(Math.asin(c / HandConst.handLength));
+    		if (!Robot.arm.getIsFront())
+    			setpoint = 180-setpoint;
+    		wristPID.setSetpoint(setpoint);
+    		output = wristPID.getP() * (setpoint - pidGet());
+    	}
+    	if (output < 0 && getAngleFromArm() < (HandConst.frontLimitAngle + 5))
         {
         	wrist.set(0);
         }
