@@ -4,6 +4,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -17,8 +20,8 @@ import edu.wpi.first.wpilibj.Timer;
  * Timestamps all log entries.
  */
 public class Logger {
-	private File roboRIOFile, usbFile;
-	private BufferedWriter roboRIOWriter, usbWriter;
+	private File roboRIOFile, usbFile, roboRIOPref, usbPref, pref;
+	private BufferedWriter roboRIOWriter, usbWriter, roboRIOPrefWriter, usbPrefWriter;
 	private String m_roboRIOPath, m_usbPath, m_filePrefix;
 	private GregorianCalendar calendar = new java.util.GregorianCalendar();
 	private java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS");
@@ -43,10 +46,13 @@ public class Logger {
 
 		roboRIOFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
 		usbFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
+
+		
 		
 		
 		try {
 			usbWriter = new BufferedWriter(new FileWriter(usbFile));
+			Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_usbPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.ATOMIC_MOVE);
 		} catch (IOException e) {
 			usbWorking = false;
 			e.printStackTrace();
