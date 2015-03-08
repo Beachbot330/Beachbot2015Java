@@ -25,7 +25,7 @@ public final class ChassisConst {
     public static final double rotateProportional = 0.11;
     
     public static final PIDGains DriveLow = new PIDGains(0.1,0,0,0,0.8,defaultMaxOutputStep);
-    public static final PIDGains DriveHigh = new PIDGains(0,0,0,0,0.8,defaultMaxOutputStep);
+    public static final PIDGains DriveHigh = new PIDGains(0.04,0,0,0,0.8,defaultMaxOutputStep);
     public static final PIDGains GyroLow = new PIDGains(0.2,0,0,0,1,1);
-    public static final PIDGains GyroHigh = new PIDGains(0,0,0,0,1,1);
+    public static final PIDGains GyroHigh = new PIDGains(0.15,0,0,0,1,1);
 }
