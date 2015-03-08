@@ -17,15 +17,8 @@ import org.usfirst.frc330.commands.commandgroups.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVAnyButton;
-import edu.wpi.first.wpilibj.buttons.TwoJoystickButton;
-
-
-
-//import org.usfirst.frc330.commands.autocommands.*;
-import org.usfirst.frc330.commands.commandgroups.*;
-import org.usfirst.frc330.conditionalWrappers.Template;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import org.usfirst.frc330.commands.autocommands.*;
 
 
 /**

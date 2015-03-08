@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.BBCommand;
 
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
 
 /**
  *
@@ -21,6 +22,7 @@ public class  TurnGyroAbs extends BBCommand {
     double angle, tolerance;
     boolean stopAtEnd = false;
     boolean enable = true;
+    PIDGains highGains, lowGains, gains;
     
     public TurnGyroAbs(double angle) {
         // Use requires() here to declare subsystem dependencies
@@ -45,6 +47,10 @@ public class  TurnGyroAbs extends BBCommand {
     }
     
     public TurnGyroAbs(double angle, double tolerance, double timeout, boolean stopAtEnd, boolean enable) {
+    	this(angle, tolerance, timeout, stopAtEnd, enable, ChassisConst.GyroLow, ChassisConst.GyroHigh);
+    }
+    
+    public TurnGyroAbs(double angle, double tolerance, double timeout, boolean stopAtEnd, boolean enable, PIDGains low, PIDGains high) {
                 // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	
@@ -57,19 +63,20 @@ public class  TurnGyroAbs extends BBCommand {
         	setTimeout(timeout);
         this.stopAtEnd = stopAtEnd;
         this.enable = enable;
+        lowGains = low;
+        highGains = high;
     }
     // Called just before this Command runs the first time
     protected void initialize() {
         Robot.chassis.leftDrivePID.disable();
         Robot.chassis.rightDrivePID.disable();  
-        if (Robot.chassis.isHighGear())
-        {
-            Robot.chassis.gyroPID.setGainName(ChassisConst.TurnHighName);
-        }
+        
+        if (!Robot.chassis.isHighGear())
+        	gains = lowGains;
         else
-        {
-            Robot.chassis.gyroPID.setGainName(ChassisConst.TurnLowName);
-        }
+        	gains = highGains;
+        Robot.chassis.gyroPID.setPID(gains);
+        Robot.chassis.gyroPID.setMaxOutput(gains.getMaxOutput());
         Robot.chassis.gyroPID.setAbsoluteTolerance(tolerance);
         Robot.chassis.gyroPID.setSetpoint(angle);
         Robot.logger.println("TurnGyroAbs Setpoint: " + angle);

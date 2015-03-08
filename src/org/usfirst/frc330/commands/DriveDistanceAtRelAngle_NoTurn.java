@@ -9,6 +9,8 @@
 // it from being updated in the future.
 package org.usfirst.frc330.commands;
 import org.usfirst.frc330.Robot;
+import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
 /**
  *
  */
@@ -17,17 +19,17 @@ public class DriveDistanceAtRelAngle_NoTurn extends DriveDistanceAtAbsAngle_NoTu
     
     public DriveDistanceAtRelAngle_NoTurn(double distance, double angle)
     {
-        this(distance, 6, angle, 5, true);
+        this(distance, 6, angle, 5, true,ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh);
     }
     
     public DriveDistanceAtRelAngle_NoTurn(double distance, double angle, double tolerance)
     {
-        this(distance, tolerance, angle, 5, true);
+        this(distance, tolerance, angle, 5, true,ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh);
     }
     
-    public DriveDistanceAtRelAngle_NoTurn(double distance, double tolerance, double angle, double timeout, boolean stopAtEnd)
+    public DriveDistanceAtRelAngle_NoTurn(double distance, double tolerance, double angle, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh)
     {
-        super(distance, tolerance, timeout, 0, stopAtEnd);
+        super(distance, tolerance, timeout, 0, stopAtEnd, driveLow, driveHigh, gyroLow, gyroHigh);
         this.angle = angle;
     }
         // Called just before this Command runs the first time
