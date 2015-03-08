@@ -12,6 +12,7 @@
 package org.usfirst.frc330.commands.autocommands;
 import org.usfirst.frc330.commands.DriveDistance;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
+import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
 import org.usfirst.frc330.commands.DriveWaypoint;
 import org.usfirst.frc330.commands.RotateAngleAbs;
 import org.usfirst.frc330.commands.SetArmPosition;
@@ -19,6 +20,7 @@ import org.usfirst.frc330.commands.SetWristAngle;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.TurnGyroAbs;
 import org.usfirst.frc330.commands.TurnGyroWaypoint;
+import org.usfirst.frc330.constants.ChassisConst;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -46,14 +48,12 @@ public class JoeTest extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new ShiftLow());
-    	addSequential(new SetArmPosition(0,5,5));
-    	addSequential(new SetWristAngle(0,5,5));
+    	addSequential(new DriveDistance(24,2.0,0.0,false,ChassisConst.DriveLow,ChassisConst.DriveLow));
     	addSequential(new WaitCommand(2));
-//    	addSequential(new DriveDistanceAtAbsAngle(60,2.0,0.0,15,false));
-//    	addSequential(new DriveDistanceAtAbsAngle(36,2,90,15,false));
-//    	addSequential(new DriveWaypoint(0,60,3,15,false));
-//    	addSequential(new TurnGyroWaypoint(60,60,1));
-//    	addSequential(new DriveWaypoint(60,60,1,15,false));
-    	addSequential(new RotateAngleAbs(-30,0,-1));
+    	addSequential(new DriveDistance(-24,2.0,0.0,false,ChassisConst.DriveHigh,ChassisConst.DriveHigh));
+    	addSequential(new WaitCommand(2));
+    	addSequential(new TurnGyroAbs(30,5,0,false, true, ChassisConst.GyroLow, ChassisConst.GyroLow));
+    	addSequential(new WaitCommand(2));
+    	addSequential(new TurnGyroAbs(0,5,0,false, true, ChassisConst.GyroHigh, ChassisConst.GyroHigh));
     }
 }

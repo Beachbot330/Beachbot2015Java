@@ -5,15 +5,16 @@
 package org.usfirst.frc330.commands;
 
 import org.usfirst.frc330.Robot;
+import org.usfirst.frc330.wpilibj.PIDGains;
  
 /**
  * Turn in place towards a waypoint using the gyro.
  */
 public class TurnGyroWaypoint extends TurnGyroAbs {
     double x, y;
-    public TurnGyroWaypoint(double x, double y, double tolerance)
+    public TurnGyroWaypoint(double x, double y, double tolerance, double timeout, PIDGains low, PIDGains high)
     {
-        super(0,tolerance,15,false,true);
+        super(0,tolerance,timeout,false,true, low, high);
         this.x=x;
         this.y=y;
         

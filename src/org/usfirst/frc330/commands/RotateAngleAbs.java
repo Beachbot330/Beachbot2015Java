@@ -40,13 +40,13 @@ public class  RotateAngleAbs extends BBCommand {
     protected void initialize() {
         if (!Robot.chassis.isHighGear())
         {
-            Robot.chassis.leftDrivePID.setGainName(ChassisConst.DriveLowName);
-            Robot.chassis.rightDrivePID.setGainName(ChassisConst.DriveLowName);
+            Robot.chassis.leftDrivePID.setPID(ChassisConst.DriveLow);
+            Robot.chassis.rightDrivePID.setPID(ChassisConst.DriveLow);
         }
         else
         {
-             Robot.chassis.leftDrivePID.setGainName(ChassisConst.DriveHighName);
-             Robot.chassis.rightDrivePID.setGainName(ChassisConst.DriveHighName);
+             Robot.chassis.leftDrivePID.setPID(ChassisConst.DriveHigh);
+             Robot.chassis.rightDrivePID.setPID(ChassisConst.DriveHigh);
         }
 		Robot.chassis.gyroPID.disable();
     	if (angle > 0) {
