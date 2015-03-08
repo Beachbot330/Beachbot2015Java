@@ -10,6 +10,7 @@
 package org.usfirst.frc330.commands;
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
 /**
  *
  */
@@ -19,17 +20,17 @@ public class  DriveDistanceAtAbsAngle_NoTurn extends DriveDistance{
     
     public DriveDistanceAtAbsAngle_NoTurn(double distance, double angle)
     {
-        this(distance, 6, angle, -1.0, true); //-1 means no timeout
+        this(distance, 6, angle, -1.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh); //-1 means no timeout
     }
     
     public DriveDistanceAtAbsAngle_NoTurn(double distance, double angle, double tolerance)
     {
-        this(distance, tolerance, angle, -1.0, true); //-1 means no timeout
+        this(distance, tolerance, angle, -1.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh); //-1 means no timeout
     }
     
-    public DriveDistanceAtAbsAngle_NoTurn(double distance, double tolerance, double angle, double timeout, boolean stopAtEnd)
+    public DriveDistanceAtAbsAngle_NoTurn(double distance, double tolerance, double angle, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh)
     {
-        super(distance, tolerance, timeout, stopAtEnd);
+        super(distance, tolerance, timeout, stopAtEnd, driveLow, driveHigh);
         this.angle = angle;
     }
     // Called just before this Command runs the first time
@@ -39,11 +40,11 @@ public class  DriveDistanceAtAbsAngle_NoTurn extends DriveDistance{
         super.initialize();
         if (Robot.chassis.isHighGear())
         {
-            Robot.chassis.gyroPID.setGainName(ChassisConst.DriveHighName);
+            Robot.chassis.gyroPID.setPID(ChassisConst.GyroHigh);
         }
         else
         {
-            Robot.chassis.gyroPID.setGainName(ChassisConst.DriveLowName);
+            Robot.chassis.gyroPID.setPID(ChassisConst.GyroHigh);
         }
         
         Robot.chassis.gyroPID.setSetpoint(angle);

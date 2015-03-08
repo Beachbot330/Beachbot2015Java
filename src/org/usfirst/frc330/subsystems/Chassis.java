@@ -18,7 +18,7 @@ import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
 import org.usfirst.frc330.wpilibj.DummyPIDOutput;
-import org.usfirst.frc330.wpilibj.MultiPrefPIDController;
+import org.usfirst.frc330.wpilibj.MultiPIDController;
 
 import com.kauailabs.nav6.frc.IMU;
 
@@ -30,7 +30,6 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.SerialPort;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -58,7 +57,7 @@ public class Chassis extends Subsystem {
     IMU imu;
     SerialPort sp;
     
-    public MultiPrefPIDController gyroPID, leftDrivePID, rightDrivePID;
+    public MultiPIDController gyroPID, leftDrivePID, rightDrivePID;
     private DummyPIDOutput gyroOutput, leftDriveOutput, rightDriveOutput;
 
     public Chassis() {
@@ -87,15 +86,9 @@ public class Chassis extends Subsystem {
         leftDriveOutput = new DummyPIDOutput();
         rightDriveOutput = new DummyPIDOutput();
         
-        gyroPID = new MultiPrefPIDController(ChassisConst.gyroProportionalLow,ChassisConst.gyroIntegralLow,ChassisConst.gyroDerivitiveLow,
-        		gyroSource,gyroOutput,"gyro");
-        leftDrivePID = new MultiPrefPIDController(ChassisConst.proportionalLow,ChassisConst.integralLow,ChassisConst.derivitiveLow,
-        		driveTrainEncoderL,leftDriveOutput,"leftDrive");
-        rightDrivePID = new MultiPrefPIDController(ChassisConst.proportionalLow,ChassisConst.integralLow,ChassisConst.derivitiveLow,
-        		driveTrainEncoderR,rightDriveOutput,"rightDrive");
-        
-        leftDrivePID.setOutputRange(-ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutput);
-        rightDrivePID.setOutputRange(-ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutput);
+        gyroPID = new MultiPIDController(ChassisConst.GyroLow, gyroSource,gyroOutput);
+        leftDrivePID = new MultiPIDController(ChassisConst.DriveLow, driveTrainEncoderL,leftDriveOutput);
+        rightDrivePID = new MultiPIDController(ChassisConst.DriveLow, driveTrainEncoderR,rightDriveOutput);
         
         SmartDashboard.putData("gyroPID", gyroPID);
         SmartDashboard.putData("leftDrivePID", leftDrivePID);

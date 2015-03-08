@@ -13,8 +13,10 @@ package org.usfirst.frc330.commands;
 
 
 import edu.wpi.first.wpilibj.command.BBCommand;
+
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
 
 /**
  *
@@ -24,23 +26,24 @@ public class  DriveDistance extends BBCommand {
 	double leftDistance, rightDistance, tolerance, maxOutput, maxOutputStep, maxOutputMax;
 	double origDistance;
     boolean stopAtEnd = false;
+    PIDGains highGains, lowGains, gains;
     
     public DriveDistance(double distance) {
-        this(distance, 0, 15, false, ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutputStep);
+        this(distance, 0, 15, false, ChassisConst.DriveLow, ChassisConst.DriveHigh);
     }
     
     public DriveDistance(double distance, double tolerance)
     {
-        this(distance, tolerance, 15, false, ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutputStep);
-    }
-    
-    public DriveDistance(double distance, double tolerance, double timeout, boolean stopAtEnd)
-    {
-    	this(distance, tolerance, timeout, false, ChassisConst.defaultMaxOutput, ChassisConst.defaultMaxOutputStep);
+        this(distance, tolerance, 15, false, ChassisConst.DriveLow, ChassisConst.DriveHigh);
     }
     
     public DriveDistance(	double distance, double tolerance,
-    						double timeout, boolean stopAtEnd, double maxOutput, double maxOutputStep) {
+			double timeout, boolean stopAtEnd) {
+    	this(distance, tolerance, timeout, false, ChassisConst.DriveLow, ChassisConst.DriveHigh);
+    }
+    
+    public DriveDistance(	double distance, double tolerance,
+    						double timeout, boolean stopAtEnd, PIDGains low, PIDGains high) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	
@@ -54,30 +57,28 @@ public class  DriveDistance extends BBCommand {
         if (timeout > 0.0)
         	setTimeout(timeout);
         this.stopAtEnd = stopAtEnd;
-        this.maxOutputMax = maxOutput;
         origDistance = distance;
-        this.maxOutputStep = maxOutputStep;
-        this.maxOutput = maxOutputStep;
+        lowGains = low;
+        highGains = high;
+        maxOutput = 0;
     }
     // Called just before this Command runs the first time
     protected void initialize() {
         Robot.chassis.gyroPID.disable();
         if (!Robot.chassis.isHighGear())
-        {
-            Robot.chassis.leftDrivePID.setGainName(ChassisConst.DriveLowName);
-            Robot.chassis.rightDrivePID.setGainName(ChassisConst.DriveLowName);
-        }
+        	gains = lowGains;
         else
-        {
-             Robot.chassis.leftDrivePID.setGainName(ChassisConst.DriveHighName);
-             Robot.chassis.rightDrivePID.setGainName(ChassisConst.DriveHighName);
-        }
+        	gains = highGains;
+        
+        Robot.chassis.leftDrivePID.setPID(gains);
+        Robot.chassis.rightDrivePID.setPID(gains);
+        maxOutputMax = gains.getMaxOutput();
+        maxOutputStep = gains.getMaxOutputStep();
+
         Robot.chassis.leftDrivePID.setSetpoint(leftDistance+Robot.chassis.getLeftDistance());
         Robot.chassis.rightDrivePID.setSetpoint(rightDistance+Robot.chassis.getRightDistance());
         Robot.chassis.leftDrivePID.setAbsoluteTolerance(tolerance);
-        Robot.chassis.rightDrivePID.setAbsoluteTolerance(tolerance);
-        Robot.chassis.leftDrivePID.setOutputRange(-maxOutput, maxOutput);
-        Robot.chassis.rightDrivePID.setOutputRange(-maxOutput, maxOutput);    
+        Robot.chassis.rightDrivePID.setAbsoluteTolerance(tolerance);  
         Robot.chassis.leftDrivePID.enable();
         Robot.chassis.rightDrivePID.enable();
     }
@@ -86,8 +87,8 @@ public class  DriveDistance extends BBCommand {
     	maxOutput += maxOutputStep;
     	if (maxOutput >= maxOutputMax) 
     		maxOutput = maxOutputMax;
-    	Robot.chassis.leftDrivePID.setOutputRange(-maxOutput, maxOutput);
-        Robot.chassis.rightDrivePID.setOutputRange(-maxOutput, maxOutput);
+    	Robot.chassis.leftDrivePID.setMaxOutput(maxOutput);
+        Robot.chassis.rightDrivePID.setMaxOutput(maxOutput);
    
     }
     // Make this return true when this Command no longer needs to run execute()

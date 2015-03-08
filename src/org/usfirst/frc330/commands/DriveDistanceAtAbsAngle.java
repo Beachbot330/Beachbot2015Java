@@ -8,6 +8,9 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package org.usfirst.frc330.commands;
+import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
+
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
 /**
@@ -22,13 +25,20 @@ public class  DriveDistanceAtAbsAngle extends BBCommandGroup{
     public DriveDistanceAtAbsAngle(double distance, double angle)
     {
     	addSequential(new TurnGyroAbs(angle, 5));
-        addSequential(new DriveDistanceAtAbsAngle_NoTurn(distance, 6, angle, 5, true));
+        addSequential(new DriveDistanceAtAbsAngle_NoTurn(distance, 6, angle, 5, true,  ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh));
     }
     
     public DriveDistanceAtAbsAngle(double distance, double distanceTolerance, double angle, double timeout, boolean stopAtEnd)
     {
         addSequential(new TurnGyroAbs(angle,5));
-        addSequential(new DriveDistanceAtAbsAngle_NoTurn(distance, distanceTolerance, angle, timeout, stopAtEnd));
+        addSequential(new DriveDistanceAtAbsAngle_NoTurn(distance, distanceTolerance, angle, timeout, stopAtEnd, ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh));
+        this.angle = angle;
+    }
+    
+    public DriveDistanceAtAbsAngle(double distance, double distanceTolerance, double angle, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh)
+    {
+        addSequential(new TurnGyroAbs(angle,5));
+        addSequential(new DriveDistanceAtAbsAngle_NoTurn(distance, distanceTolerance, angle, timeout, stopAtEnd, driveLow, driveHigh, gyroLow, gyroHigh));
         this.angle = angle;
     }
 }

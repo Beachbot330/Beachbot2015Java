@@ -9,6 +9,8 @@
 // it from being updated in th future.
 package org.usfirst.frc330.commands;
 import org.usfirst.frc330.Robot;
+import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
  
 /**
  *
@@ -27,7 +29,11 @@ public class  TurnGyroRel extends TurnGyroAbs{
     }
     
     public TurnGyroRel(double angle, double tolerance, double timeout, boolean stopAtEnd) {
-        super(angle,tolerance,timeout,stopAtEnd,true);
+    	this(angle,tolerance,timeout,stopAtEnd,ChassisConst.GyroLow,ChassisConst.GyroHigh);
+    }
+    
+    public TurnGyroRel(double angle, double tolerance, double timeout, boolean stopAtEnd, PIDGains low, PIDGains high) {
+        super(angle,tolerance,timeout,stopAtEnd,true, low, high);
         origAngle = angle;
     }
     // Called just before this Command runs the first time
