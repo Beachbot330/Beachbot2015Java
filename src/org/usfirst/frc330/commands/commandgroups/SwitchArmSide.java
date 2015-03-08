@@ -42,7 +42,7 @@ public class SwitchArmSide extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-//    	addSequential(new SetMastPosition(MastPos.frontLimitAngle,2.0,1.0));
+    	addSequential(new SetMastPosition(MastPos.frontLimitAngle,2.0,1.0));
     	addSequential(new ArmSwitchStartPosition());
     	addSequential(new ArmSwitchWristToLimit());
     	addSequential(new ToggleSideSet());

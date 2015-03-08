@@ -35,4 +35,9 @@ public final class MastPos {
 	//Current
 	public static final double currentUpperLimit = 50;
 	public static final double currentLowerLimit = -50;
+	
+	//Lengths
+	public static final double pivotHeight 		= 8.3;  // AP 3-07
+	//public static final double mastLength		= 22.5; // AP 3-07
+	public static final double mastLength		= 22.5-2.4;
 }

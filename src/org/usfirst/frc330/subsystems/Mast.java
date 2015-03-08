@@ -47,7 +47,7 @@ public class Mast extends Subsystem {
 	// here. Call these from Commands.
 
 	public void initDefaultCommand() {
-        setDefaultCommand(new MastDefault());
+        setDefaultCommand(new ManualMast());
 
 		// Set the default command for a subsystem here.
 		//setDefaultCommand(new MySpecialCommand());
@@ -287,8 +287,22 @@ public class Mast extends Subsystem {
 	}
 
 	public void manualMast() {
-		
-		
+        double mastCommand = Robot.oi.armJoystick.getZ();
+        if (mastCommand < 0) 
+            mastCommand = -(mastCommand*mastCommand);
+        else
+            mastCommand = mastCommand*mastCommand;
+        if (Math.abs(mastCommand) > 0.05)
+        {
+        	if (mastPID.isEnable())
+                mastPID.disable();
+    		setMast(mastCommand);
+        }
+        else if (!mastPID.isEnable())
+        {
+            mastPID.setSetpoint(this.getMastAngle());
+            mastPID.enable();
+        } 	
 	}
 }
 

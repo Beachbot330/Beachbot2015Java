@@ -338,11 +338,11 @@ public class Arm extends Subsystem {
     //////////////////////////
     public void manualArm() {
         double armCommand = Robot.oi.armJoystick.getY();
-        if (armCommand < 0) 
-            armCommand = -(armCommand*armCommand);
-        else
-            armCommand = armCommand*armCommand;
-        if (Math.abs(armCommand) > 0.10)
+//        if (armCommand < 0) 
+//            armCommand = -(armCommand*armCommand);
+//        else
+//            armCommand = armCommand*armCommand;
+        if (Math.abs(armCommand) > 0.03)
         {
         	if (armPID.isEnable())
                 armPID.disable();

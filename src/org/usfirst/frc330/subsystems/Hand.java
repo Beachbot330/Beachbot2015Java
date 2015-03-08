@@ -16,6 +16,7 @@ import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.commands.*;
 import org.usfirst.frc330.constants.ArmPos;
 import org.usfirst.frc330.constants.HandConst;
+import org.usfirst.frc330.constants.MastPos;
 import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
 
@@ -86,6 +87,11 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     		public double get() { return Robot.powerDP.getWristRightCurrent(); }
     	};
     	Robot.csvLogger.add("WristRightCurrent", temp);
+    	
+    	temp = new CSVLoggable(true){
+    		public double get() {return getHeight();}
+    	};
+    	Robot.csvLogger.add("RobotHeight", temp);
 
     }
     
@@ -220,7 +226,18 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	}
 	
     public void set(double output){
-        if (output < 0 && getAngleFromArm() < (HandConst.frontLimitAngle + 5))
+    	if (Robot.hand.getHeight() > HandConst.handHeightLimit)
+    	{
+    		double a = Math.sin(Math.toRadians(Robot.mast.getMastAngle())) * MastPos.mastLength;
+    		double b = Math.sin(Math.toRadians(Robot.arm.getArmAngle())) * ArmPos.armLength;
+    		double c = 76 - a - b - MastPos.pivotHeight - 0.5;
+    		double setpoint = Math.toDegrees(Math.asin(c / HandConst.handLength));
+    		if (!Robot.arm.getIsFront())
+    			setpoint = 180-setpoint;
+    		wristPID.setSetpoint(setpoint);
+    		output = wristPID.getP() * (setpoint - pidGet());
+    	}
+    	if (output < 0 && getAngleFromArm() < (HandConst.frontLimitAngle + 5))
         {
         	wrist.set(0);
         }
@@ -228,23 +245,6 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
         {
         	wrist.set(0);
         }
-        //TODO: Update this code for the wrist
-//        if (output > 0 && Robot.powerDP.getWristLeftCurrent() < HandConst.currentLowerLimit)
-//        {
-//        	wrist.set(0);
-//        }
-//        else if (output < 0 && Robot.powerDP.getWristLeftCurrent() > HandConst.currentUpperLimit)
-//        {
-//        	wrist.set(0);
-//        }
-//        else if (output > 0 && Robot.powerDP.getWristRightCurrent() < HandConst.currentLowerLimit)
-//        {
-//        	wrist.set(0);
-//        }
-//        else if (output < 0 && Robot.powerDP.getWristRightCurrent() > HandConst.currentUpperLimit)
-//        {
-//        	wrist.set(0);
-//        }
         else
         {
         	wrist.set(output);
@@ -290,6 +290,14 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	
     public synchronized boolean isEnabled() {
         return wristPID.isEnable();
+    }
+    
+    public double getHeight(){
+    	double height = MastPos.pivotHeight + 0.5;
+    	height = height + Math.sin(Math.toRadians(Robot.mast.getMastAngle())) * MastPos.mastLength;
+    	height = height + Math.sin(Math.toRadians(Robot.arm.getArmAngle())) * ArmPos.armLength;
+    	height = height + Math.sin(Math.toRadians(Robot.hand.getWristAngle())) * HandConst.handLength;
+    	return height;
     }
 }
 

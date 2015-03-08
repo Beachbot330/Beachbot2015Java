@@ -40,6 +40,10 @@ public class  ManualMast extends BBCommand {
     	{
     		Robot.mast.manualMast();
     	}
+    	else
+    	{
+    		Robot.mast.softDriveForward();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -49,6 +53,9 @@ public class  ManualMast extends BBCommand {
 
     // Called once after isFinished returns true
     protected void end() {
+    	if (!Robot.mast.isMastEnable()) {
+            Robot.mast.setMast(0);
+      	}
     }
 
     // Called when another command which requires one or more of the same

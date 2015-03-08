@@ -18,7 +18,7 @@ public final class HandConst {
 	// Vertical Hand
 	public static final double defaultFrontVerticalHandAngle = -90;
 	public static final double defaultRearVerticalHandAngle = 270;
-	public static final double vertAdjustRate 			= 2;
+	public static final double vertAdjustRate 			= 10;
 	
 	// Current
 	public static final double currentLowerLimit = -50;
@@ -31,4 +31,11 @@ public final class HandConst {
 	//Angles
 	public static final double frontLimitAngle = 72;
 	public static final double rearLimitAngle  = 285.0;
+	
+	//Lengths
+	//public static final double handLength       = 20.5; 	//inches  AP 3-7
+	public static final double handLength       = 20.5 - 0.4;
+	
+	public static final double handHeightLimit = 76.5;
+	
 }	
