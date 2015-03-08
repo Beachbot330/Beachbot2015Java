@@ -36,4 +36,6 @@ public final class HandConst {
 	//public static final double handLength       = 20.5; 	//inches  AP 3-7
 	public static final double handLength       = 20.5 - 0.4;
 	
+	public static final double handHeightLimit = 76.5;
+	
 }	

@@ -226,7 +226,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	}
 	
     public void set(double output){
-    	if (Robot.hand.getHeight() > 76.5)
+    	if (Robot.hand.getHeight() > HandConst.handHeightLimit)
     	{
     		double a = Math.sin(Math.toRadians(Robot.mast.getMastAngle())) * MastPos.mastLength;
     		double b = Math.sin(Math.toRadians(Robot.arm.getArmAngle())) * ArmPos.armLength;
