@@ -1186,7 +1186,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '8'
+          value: '7'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1200,7 +1200,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: AdjustHandPositionUp_8
+      Name: AdjustHandPositionUp_7
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1210,7 +1210,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '7'
+          value: '8'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1224,7 +1224,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: AdjustHandPositionDown_7
+      Name: AdjustHandPositionDown_8
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,

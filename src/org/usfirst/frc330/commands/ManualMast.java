@@ -40,6 +40,10 @@ public class  ManualMast extends BBCommand {
     	{
     		Robot.mast.manualMast();
     	}
+    	else
+    	{
+    		Robot.mast.softDriveForward();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

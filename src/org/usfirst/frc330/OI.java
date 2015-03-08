@@ -83,8 +83,8 @@ public class OI {
     public JoystickButton setMastStretch_16;
     public JoystickButton setMastVertical_11;
     public JoystickButton switchArmSide_14;
-    public JoystickButton adjustHandPositionUp_8;
-    public JoystickButton adjustHandPositionDown_7;
+    public JoystickButton adjustHandPositionUp_7;
+    public JoystickButton adjustHandPositionDown_8;
     public JoystickButton killAll_13;
     public JoystickButton handLevel_3;
     public JoystickButton handDown_4;
@@ -108,10 +108,10 @@ public class OI {
         handLevel_3.whenPressed(new HandLevel());
         killAll_13 = new JoystickButton(armJoystick, 13);
         killAll_13.whenPressed(new KillAll());
-        adjustHandPositionDown_7 = new JoystickButton(armJoystick, 7);
-        adjustHandPositionDown_7.whileHeld(new AdjustHandPositionDown());
-        adjustHandPositionUp_8 = new JoystickButton(armJoystick, 8);
-        adjustHandPositionUp_8.whileHeld(new AdjustHandPositionUp());
+        adjustHandPositionDown_8 = new JoystickButton(armJoystick, 8);
+        adjustHandPositionDown_8.whileHeld(new AdjustHandPositionDown());
+        adjustHandPositionUp_7 = new JoystickButton(armJoystick, 7);
+        adjustHandPositionUp_7.whileHeld(new AdjustHandPositionUp());
         switchArmSide_14 = new JoystickButton(armJoystick, 14);
         switchArmSide_14.whenPressed(new SwitchArmSide());
         setMastVertical_11 = new JoystickButton(armJoystick, 11);

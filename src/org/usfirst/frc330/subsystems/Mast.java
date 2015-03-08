@@ -47,7 +47,7 @@ public class Mast extends Subsystem {
 	// here. Call these from Commands.
 
 	public void initDefaultCommand() {
-        setDefaultCommand(new MastDefault());
+        setDefaultCommand(new ManualMast());
 
 		// Set the default command for a subsystem here.
 		//setDefaultCommand(new MySpecialCommand());
