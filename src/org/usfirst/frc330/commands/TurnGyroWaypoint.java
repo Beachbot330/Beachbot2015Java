@@ -5,6 +5,7 @@
 package org.usfirst.frc330.commands;
 
 import org.usfirst.frc330.Robot;
+import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.wpilibj.PIDGains;
  
 /**
@@ -12,6 +13,11 @@ import org.usfirst.frc330.wpilibj.PIDGains;
  */
 public class TurnGyroWaypoint extends TurnGyroAbs {
     double x, y;
+    
+    public TurnGyroWaypoint(double x, double y, double tolerance, double timeout) {
+    	this(x, y, tolerance, timeout, ChassisConst.GyroTurnLow, ChassisConst.GyroTurnHigh);
+    }
+    
     public TurnGyroWaypoint(double x, double y, double tolerance, double timeout, PIDGains low, PIDGains high)
     {
         super(0,tolerance,timeout,false,true, low, high);

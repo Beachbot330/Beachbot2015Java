@@ -12,13 +12,18 @@
 package org.usfirst.frc330.commands.autocommands;
 import org.usfirst.frc330.commands.DriveDistance;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
+import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
 import org.usfirst.frc330.commands.DriveWaypoint;
+import org.usfirst.frc330.commands.DriveWaypointBackward;
 import org.usfirst.frc330.commands.RotateAngleAbs;
 import org.usfirst.frc330.commands.SetArmPosition;
 import org.usfirst.frc330.commands.SetWristAngle;
+import org.usfirst.frc330.commands.ShiftHigh;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.TurnGyroAbs;
+import org.usfirst.frc330.commands.TurnGyroRel;
 import org.usfirst.frc330.commands.TurnGyroWaypoint;
+import org.usfirst.frc330.constants.ChassisConst;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -46,14 +51,17 @@ public class JoeTest extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new ShiftLow());
-    	addSequential(new SetArmPosition(0,5,5));
-    	addSequential(new SetWristAngle(0,5,5));
+    	addSequential(new WaitCommand(1));    	
+    	addSequential(new DriveWaypoint(0,24,5,5,false,ChassisConst.DriveLow,ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh));
+    	addSequential(new WaitCommand(1));
+//    	addSequential(new ShiftHigh());
+    	addSequential(new WaitCommand(1));
+    	addSequential(new DriveWaypoint(0,48,5,5,false,ChassisConst.DriveLow,ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh));
+//    	addSequential(new ShiftLow());
     	addSequential(new WaitCommand(2));
-//    	addSequential(new DriveDistanceAtAbsAngle(60,2.0,0.0,15,false));
-//    	addSequential(new DriveDistanceAtAbsAngle(36,2,90,15,false));
-//    	addSequential(new DriveWaypoint(0,60,3,15,false));
-//    	addSequential(new TurnGyroWaypoint(60,60,1));
-//    	addSequential(new DriveWaypoint(60,60,1,15,false));
-    	addSequential(new RotateAngleAbs(-30,0,-1));
+    	addSequential(new TurnGyroWaypoint(48,96,0,5.0,ChassisConst.GyroTurnLow, ChassisConst.GyroTurnHigh));
+//    	addSequential(new ShiftHigh());
+//    	addSequential(new WaitCommand(2));
+//    	addSequential(new TurnGyroWaypoint(0,96.0,5.0,5.0,ChassisConst.GyroLow, ChassisConst.GyroHigh));
     }
 }

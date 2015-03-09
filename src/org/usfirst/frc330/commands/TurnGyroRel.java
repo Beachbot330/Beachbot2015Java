@@ -29,7 +29,7 @@ public class  TurnGyroRel extends TurnGyroAbs{
     }
     
     public TurnGyroRel(double angle, double tolerance, double timeout, boolean stopAtEnd) {
-    	this(angle,tolerance,timeout,stopAtEnd,ChassisConst.GyroLow,ChassisConst.GyroHigh);
+    	this(angle,tolerance,timeout,stopAtEnd,ChassisConst.GyroTurnLow,ChassisConst.GyroTurnHigh);
     }
     
     public TurnGyroRel(double angle, double tolerance, double timeout, boolean stopAtEnd, PIDGains low, PIDGains high) {
