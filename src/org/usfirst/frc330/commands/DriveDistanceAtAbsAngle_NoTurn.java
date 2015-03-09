@@ -16,7 +16,7 @@ import org.usfirst.frc330.wpilibj.PIDGains;
  */
 public class  DriveDistanceAtAbsAngle_NoTurn extends DriveDistance{
     double angle;
-    
+    PIDGains gains, gyroLow, gyroHigh;
     
     public DriveDistanceAtAbsAngle_NoTurn(double distance, double angle)
     {
@@ -32,21 +32,21 @@ public class  DriveDistanceAtAbsAngle_NoTurn extends DriveDistance{
     {
         super(distance, tolerance, timeout, stopAtEnd, driveLow, driveHigh);
         this.angle = angle;
+        this.gyroHigh = gyroHigh;
+        this.gyroLow = gyroLow;
     }
     // Called just before this Command runs the first time
     protected void initialize() {
 //    	leftDistance = leftDistance + Robot.chassis.getLeftDistance();
 //        rightDistance = rightDistance + Robot.chassis.getRightDistance();
         super.initialize();
-        if (Robot.chassis.isHighGear())
-        {
-            Robot.chassis.gyroPID.setPID(ChassisConst.GyroHigh);
+        if (Robot.chassis.isHighGear())         {
+            gains = gyroHigh;
         }
-        else
-        {
-            Robot.chassis.gyroPID.setPID(ChassisConst.GyroHigh);
+        else {
+            gains = gyroLow;
         }
-        
+        Robot.chassis.gyroPID.setPID(gains);
         Robot.chassis.gyroPID.setSetpoint(angle);
         Robot.chassis.gyroPID.enable();  
     }
