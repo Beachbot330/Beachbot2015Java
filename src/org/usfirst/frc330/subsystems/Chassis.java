@@ -372,6 +372,10 @@ public class Chassis extends Subsystem {
     	return driveTrainEncoderR.getDistance();
     }
     
+ 	
+ 	public boolean getGyroReset(){
+ 		return !gyroReset.get();
+ 	}
     
     /////////////////////////////////////////////////////////////
     // Other methods
