@@ -5,6 +5,7 @@
 package org.usfirst.frc330.commands;
 
 import org.usfirst.frc330.Robot;
+import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.wpilibj.PIDGains;
 /*
  * This will drive the robot forwards to a waypoint on the field based on its 
@@ -13,6 +14,10 @@ import org.usfirst.frc330.wpilibj.PIDGains;
 public class DriveWaypoint extends DriveDistanceAtAbsAngle_NoTurn {
     double x,y;
 
+    public DriveWaypoint(double x, double y, double tolerance, double timeout, boolean stopAtEnd) {
+    	this(x,y,tolerance,timeout,stopAtEnd,ChassisConst.DriveLow,ChassisConst.DriveHigh,ChassisConst.GyroLow,ChassisConst.GyroHigh);
+    }
+    
     public DriveWaypoint(double x, double y, double tolerance, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
