@@ -1354,7 +1354,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: OpenLeft_1
+      Name: OpenLeftGrabber_1
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1370,7 +1370,7 @@ Children:
           name: Command
           type: Command
           validators: *id025
-          value: CenterGrabberClose
+          value: CenterGrabberOpen
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id026
           default: whileHeld
@@ -1378,7 +1378,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: CloseCenterGrabber_2
+      Name: CenterGrabberOpen_2
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1394,7 +1394,7 @@ Children:
           name: Command
           type: Command
           validators: *id025
-          value: RightGrabberClose
+          value: RightGrabberOpen
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id026
           default: whileHeld
@@ -1402,7 +1402,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: CloseRightGrabber_3
+      Name: RightGrabberOpen_3
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1424,7 +1424,7 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whenPressed
+          value: whileHeld
       Base: Joystick Button
       Name: AdjustHandPositionUp_4
     - Children: []
@@ -1442,7 +1442,7 @@ Children:
           name: Command
           type: Command
           validators: *id025
-          value: ReceiveTote
+          value: MoveLiftToToteRX
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id026
           default: whileHeld
@@ -1450,7 +1450,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: ReceiveTote_5
+      Name: MoveLiftToToteRX_5
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1538,30 +1538,6 @@ Children:
           name: Command
           type: Command
           validators: *id025
-          value: AdjustHandPositionUp
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id026
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whileHeld
-      Base: Joystick Button
-      Name: AdjustHandPositionUp_10
-    - Children: []
-      Properties:
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: ArmGamepad}
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id024
-          default: '1'
-          name: Button
-          validators: null
-          value: '11'
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id025
           value: HandLevel
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id026
@@ -1570,7 +1546,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: HandLevel_11
+      Name: HandLevel_10
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1730,7 +1706,7 @@ Children:
           name: Command
           type: Command
           validators: *id025
-          value: ReceiveTote
+          value: MoveLiftToToteRX
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id026
           default: whileHeld
@@ -1738,7 +1714,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: ReceiveTote_17
+      Name: MoveLiftToToteRX_17
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id027
@@ -2190,6 +2166,14 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: CloseAllGrabbers
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Lift}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: MoveLiftToToteRX
   Properties: {}
   Base: Commands
   Name: Commands
