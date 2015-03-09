@@ -126,9 +126,21 @@ public class Robot extends IterativeRobot {
         csvLogger.writeData();
         
         decideStates();
+        
+        checkGyroReset();
     }
 
-    public void autonomousInit() {
+    boolean prevGyroReset=false;
+    private void checkGyroReset() {
+    	boolean gyroReset = chassis.getGyroReset();
+		if (gyroReset && !prevGyroReset)
+		{
+			new ResetGyro().start();
+		}
+		prevGyroReset = gyroReset;
+	}
+
+	public void autonomousInit() {
         logger.println("Autonomous Init");
     	logger.updateDate();
     	decideStates();
