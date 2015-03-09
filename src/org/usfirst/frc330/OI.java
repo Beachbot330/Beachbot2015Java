@@ -87,7 +87,7 @@ public class OI {
     public JoystickButton centerGrabberOpen_2;
     public JoystickButton rightGrabberOpen_3;
     public JoystickButton adjustHandPositionUp_9;
-    public JoystickButton moveLiftToToteRX_5;
+    public JoystickButton openAll_5;
     public JoystickButton switchArmSide_7;
     public JoystickButton handLevel_8;
     public JoystickButton adjustHandPositionDown_4;
@@ -132,8 +132,8 @@ public class OI {
         handLevel_8.whenPressed(new HandLevel());
         switchArmSide_7 = new JoystickButton(armGamepad, 7);
         switchArmSide_7.whenPressed(new SwitchArmSide());
-        moveLiftToToteRX_5 = new JoystickButton(armGamepad, 5);
-        moveLiftToToteRX_5.whenPressed(new MoveLiftToToteRX());
+        openAll_5 = new JoystickButton(armGamepad, 5);
+        openAll_5.whenPressed(new OpenAllGrabbers());
         adjustHandPositionUp_9 = new JoystickButton(armGamepad, 9);
         adjustHandPositionUp_9.whileHeld(new AdjustHandPositionUp());
         rightGrabberOpen_3 = new JoystickButton(armGamepad, 3);

@@ -34,7 +34,9 @@ public class  MoveLiftToToteRX extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.lift.setPosition(LiftPos.intake);;
+    	Robot.lift.setPosition(LiftPos.intake);
+    	if(!Robot.lift.isEnable())
+    		Robot.lift.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run

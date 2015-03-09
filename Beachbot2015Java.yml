@@ -1452,7 +1452,7 @@ Children:
           name: Command
           type: Command
           validators: *id027
-          value: MoveLiftToToteRX
+          value: OpenAllGrabbers
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id028
           default: whileHeld
@@ -1460,7 +1460,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: MoveLiftToToteRX_5
+      Name: OpenAll_5
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,

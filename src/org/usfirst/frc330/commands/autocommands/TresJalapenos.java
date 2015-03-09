@@ -11,8 +11,10 @@
 
 package org.usfirst.frc330.commands.autocommands;
 import org.usfirst.frc330.commands.*;
+import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.constants.LiftPos;
 import org.usfirst.frc330.constants.MastPos;
+import org.usfirst.frc330.wpilibj.PIDGains;
 
 import edu.wpi.first.wpilibj.command.BBCommand;
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
@@ -49,16 +51,60 @@ public class TresJalapenos extends BBCommandGroup {
     	addParallel(new SetWristAngle(0.0));
     	addParallel(new SetArmPosition(-35.0, 1.0, 0.1)); //angle tolerance timeout
     	addParallel(new RightGrabberClose());
-    	addSequential(new Wait(0.1));
+    	addSequential(new Wait(0.1));	
     	
-    	//Adjust the mast to vertical and start raising the arm
+    	// Raise the arm
     	addParallel(new SetWristAngle(5.0));
     	addSequential(new SetArmPosition(-22.0, 3.0, 0.3));
     	
-    	//Turn towards second can
-    	addSequential(new TurnGyroAbs(42.0, 0.5));  //Angle Tol
-    	addSequential(new Wait(0.4));
+    	//Reverse to give myself room to work
+    	BBCommand driveCommand = new DriveDistanceAtAbsAngle_NoTurn(-10.0 , 0.0, 2.0);  //Dist Angl Tol
+    	addSequential(driveCommand);
     	
+    	//Drive to second can
+    	addSequential(new TurnGyroWaypoint(-15.0, 15.0, 2.0, 10.0,
+				      ChassisConst.GyroLow, ChassisConst.GyroHigh));
+    	//double x, double y, double tolerance, double timeout, PIDGains low, PIDGains high
+    	addSequential(new DriveWaypoint(-15.0, 15.0, 2.0, 10.0, true,
+    				  ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh));
+    	//double x, double y, double tolerance, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh
+    	
+    	//Grab second can
+    	addSequential(new Wait(3.0));
+    	addSequential(new SetArmPosition(-33.0, 2.0, 0.1)); //angle tolerance timeout
+    	addSequential(new Wait(3.0));
+    	addSequential(new LeftGrabberClose());
+    	addSequential(new Wait(3.0));
+    	
+    	//Lift two cans
+    	addSequential(new SetArmPosition(-20.0, 4.0, 0.3));
+    	addSequential(new Wait(3.0));
+    	
+    	//Drive to third can
+    	addSequential(new TurnGyroWaypoint(-77.0, 43.0, 2.0, 10.0,
+			      ChassisConst.GyroLow, ChassisConst.GyroHigh));
+    	addSequential(new DriveWaypoint(-77.0, 43.0, 2.0, 10.0, true,
+				  ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh));
+    	addSequential(new Wait(3.0));
+    	
+    	//Grab third can
+    	addSequential(new SetArmPosition(-22.0, 3.0, 0.3));
+    	addSequential(new Wait(3.0));
+    	addSequential(new LeftGrabberClose());
+    	addSequential(new Wait(3.0));
+    	
+    	//Drive to Finish
+    	addParallel(new SetArmPosition(90.0, 5.0, 1.0));
+    	addSequential(new Wait(3.0));
+    	addSequential(new TurnGyroWaypoint(-185.0, -4.0, 2.0, 10.0,
+			      ChassisConst.GyroLow, ChassisConst.GyroHigh));
+    	addSequential(new Wait(3.0));
+    	addSequential(new DriveWaypoint(-185.0, -4.0, 2.0, 10.0, true,
+				  ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh));
+    	addSequential(new Wait(3.0));
+    	
+    	
+   
 //    	//Drive to second station while loading first tote
 //    	BBCommand driveCommand = new DriveDistanceAtAbsAngle_NoTurn(80.0 , 0.0, 2.0);  //Dist Angl Tol
 //    	addParallel(driveCommand);
