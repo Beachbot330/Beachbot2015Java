@@ -20,12 +20,12 @@ public class  DriveDistanceAtAbsAngle_NoTurn extends DriveDistance{
     
     public DriveDistanceAtAbsAngle_NoTurn(double distance, double angle)
     {
-        this(distance, 6, angle, -1.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh); //-1 means no timeout
+        this(distance, 6, angle, -1.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh); //-1 means no timeout
     }
     
     public DriveDistanceAtAbsAngle_NoTurn(double distance, double angle, double tolerance)
     {
-        this(distance, tolerance, angle, -1.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroLow, ChassisConst.GyroHigh); //-1 means no timeout
+        this(distance, tolerance, angle, -1.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh); //-1 means no timeout
     }
     
     public DriveDistanceAtAbsAngle_NoTurn(double distance, double tolerance, double angle, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh)

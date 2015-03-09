@@ -15,7 +15,7 @@ public class DriveWaypoint extends DriveDistanceAtAbsAngle_NoTurn {
     double x,y;
 
     public DriveWaypoint(double x, double y, double tolerance, double timeout, boolean stopAtEnd) {
-    	this(x,y,tolerance,timeout,stopAtEnd,ChassisConst.DriveLow,ChassisConst.DriveHigh,ChassisConst.GyroLow,ChassisConst.GyroHigh);
+    	this(x,y,tolerance,timeout,stopAtEnd,ChassisConst.DriveLow,ChassisConst.DriveHigh,ChassisConst.GyroDriveLow,ChassisConst.GyroDriveHigh);
     }
     
     public DriveWaypoint(double x, double y, double tolerance, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh) {

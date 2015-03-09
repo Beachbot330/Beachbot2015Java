@@ -15,7 +15,7 @@ public class TurnGyroWaypoint extends TurnGyroAbs {
     double x, y;
     
     public TurnGyroWaypoint(double x, double y, double tolerance, double timeout) {
-    	this(x, y, tolerance, timeout, ChassisConst.GyroLow, ChassisConst.GyroHigh);
+    	this(x, y, tolerance, timeout, ChassisConst.GyroTurnLow, ChassisConst.GyroTurnHigh);
     }
     
     public TurnGyroWaypoint(double x, double y, double tolerance, double timeout, PIDGains low, PIDGains high)

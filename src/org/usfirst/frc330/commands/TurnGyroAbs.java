@@ -47,7 +47,7 @@ public class  TurnGyroAbs extends BBCommand {
     }
     
     public TurnGyroAbs(double angle, double tolerance, double timeout, boolean stopAtEnd, boolean enable) {
-    	this(angle, tolerance, timeout, stopAtEnd, enable, ChassisConst.GyroLow, ChassisConst.GyroHigh);
+    	this(angle, tolerance, timeout, stopAtEnd, enable, ChassisConst.GyroTurnLow, ChassisConst.GyroTurnHigh);
     }
     
     public TurnGyroAbs(double angle, double tolerance, double timeout, boolean stopAtEnd, boolean enable, PIDGains low, PIDGains high) {

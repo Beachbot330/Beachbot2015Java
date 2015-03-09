@@ -86,7 +86,7 @@ public class Chassis extends Subsystem {
         leftDriveOutput = new DummyPIDOutput();
         rightDriveOutput = new DummyPIDOutput();
         
-        gyroPID = new MultiPIDController(ChassisConst.GyroLow, gyroSource,gyroOutput);
+        gyroPID = new MultiPIDController(ChassisConst.GyroTurnLow, gyroSource,gyroOutput);
         leftDrivePID = new MultiPIDController(ChassisConst.DriveLow, driveTrainEncoderL,leftDriveOutput);
         rightDrivePID = new MultiPIDController(ChassisConst.DriveLow, driveTrainEncoderR,rightDriveOutput);
         

@@ -18,6 +18,7 @@ import org.usfirst.frc330.commands.DriveWaypointBackward;
 import org.usfirst.frc330.commands.RotateAngleAbs;
 import org.usfirst.frc330.commands.SetArmPosition;
 import org.usfirst.frc330.commands.SetWristAngle;
+import org.usfirst.frc330.commands.ShiftHigh;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.TurnGyroAbs;
 import org.usfirst.frc330.commands.TurnGyroRel;
@@ -50,12 +51,17 @@ public class JoeTest extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new ShiftLow());
-    	addSequential(new DriveWaypoint(0,24,5,5,false,ChassisConst.DriveLow,ChassisConst.DriveLow, ChassisConst.GyroLow, ChassisConst.GyroLow));
+    	addSequential(new WaitCommand(1));    	
+    	addSequential(new DriveWaypoint(0,24,5,5,false,ChassisConst.DriveLow,ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh));
+    	addSequential(new WaitCommand(1));
+//    	addSequential(new ShiftHigh());
+    	addSequential(new WaitCommand(1));
+    	addSequential(new DriveWaypoint(0,48,5,5,false,ChassisConst.DriveLow,ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh));
+//    	addSequential(new ShiftLow());
     	addSequential(new WaitCommand(2));
-    	addSequential(new DriveWaypoint(0,48,5,5,false,ChassisConst.DriveHigh,ChassisConst.DriveHigh, ChassisConst.GyroHigh, ChassisConst.GyroHigh));
-    	addSequential(new WaitCommand(2));
-    	addSequential(new TurnGyroWaypoint(48,96,5.0,5.0,ChassisConst.GyroLow, ChassisConst.GyroLow));
-    	addSequential(new WaitCommand(2));
-    	addSequential(new TurnGyroWaypoint(0,96.0,5.0,5.0,ChassisConst.GyroLow, ChassisConst.GyroLow));
+    	addSequential(new TurnGyroWaypoint(48,96,0,5.0,ChassisConst.GyroTurnLow, ChassisConst.GyroTurnHigh));
+//    	addSequential(new ShiftHigh());
+//    	addSequential(new WaitCommand(2));
+//    	addSequential(new TurnGyroWaypoint(0,96.0,5.0,5.0,ChassisConst.GyroLow, ChassisConst.GyroHigh));
     }
 }
