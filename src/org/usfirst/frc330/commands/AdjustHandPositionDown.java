@@ -39,14 +39,14 @@ public class  AdjustHandPositionDown extends BBCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double handAngle = Robot.hand.getSetpoint();
+    	double handAngle = Robot.hand.getWristAngle();
     	if (Robot.arm.getIsFront())
     	{
-    		handAngle = handAngle + HandConst.vertAdjustRate / 2;
+    		handAngle = handAngle + HandConst.vertAdjustRate * (Robot.oi.armJoystick.getRawAxis(3) - 1) /2;
     	}
     	else
     	{
-    		handAngle = handAngle - HandConst.vertAdjustRate / 2;
+    		handAngle = handAngle - HandConst.vertAdjustRate * (Robot.oi.armJoystick.getRawAxis(3) - 1) /2;
     	}
     	Robot.hand.setAngle(handAngle);
     }

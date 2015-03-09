@@ -1,5 +1,12 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="Autonomous mode chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="1095" y="682"/>
+		<property name="Use Radio Buttons" value="false"/>
+	</widget>
+	<widget field="CloseAllGrabbers" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="351"/>
+	</widget>
 	<widget field="RobotHeight" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="328"/>
 	</widget>
@@ -158,9 +165,6 @@
 	</widget>
 	<widget field="DropOffTotes" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="796" y="679"/>
-	</widget>
-	<widget field="Autonomous mode chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="1117" y="646"/>
 	</widget>
 	<widget field="gyroPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
 		<location x="382" y="47"/>
