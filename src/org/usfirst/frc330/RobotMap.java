@@ -31,6 +31,7 @@ public class RobotMap {
     public static DigitalOutput frillslights;
     public static DigitalInput frillspracticeRobot;
     public static DigitalOutput frillsbuzzer;
+    public static DigitalInput chassisGyroReset;
     public static Compressor chassiscompressor;
     public static AnalogInput chassispressureSensor;
     public static Encoder chassisdriveTrainEncoderL;
@@ -77,6 +78,9 @@ public class RobotMap {
         
         frillsbuzzer = new DigitalOutput(2);
         LiveWindow.addActuator("Frills", "buzzer", frillsbuzzer);
+        
+        chassisGyroReset = new DigitalInput(0);
+        LiveWindow.addSensor("Chassis", "GyroReset", chassisGyroReset);
         
         chassiscompressor = new Compressor(0);
         
