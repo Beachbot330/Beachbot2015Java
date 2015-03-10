@@ -64,15 +64,15 @@ public class TresJalapenos extends BBCommandGroup {
     	addSequential(new Wait(0.2));
     	
     	//Drive to second can
-    	addSequential(new TurnGyroWaypoint(-15.0, 15.0, 1.0, 10.0));
-    	addSequential(new Wait(0.7));
+    	addSequential(new TurnGyroWaypoint(-16.0, 16.0, 1.0, 0.9));
+    	addSequential(new Wait(0.2));
     	//double x, double y, double tolerance, double timeout, PIDGains low, PIDGains high
-    	addParallel(new DriveWaypoint(-15.0, 15.0, 2.0, 10.0, true));
+    	addParallel(new DriveWaypoint(-16.0, 16.0, 2.0, 10.0, true));
     	//double x, double y, double tolerance, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh
     	
     	//Grab second can
     	addSequential(new SetArmPosition(-31.0, 2.0, 0.1)); //angle tolerance timeout
-    	addSequential(new Wait(0.7));
+    	addSequential(new Wait(0.9));
     	addSequential(new LeftGrabberClose());
     	addSequential(new Wait(0.2));
     	
@@ -81,44 +81,46 @@ public class TresJalapenos extends BBCommandGroup {
     	addSequential(new Wait(0.2));
     	
     	//Drive to third can
-    	addSequential(new TurnGyroWaypoint(-77.0, 34.0, 1.0, 10.0));
-    	addSequential(new DriveWaypoint(-77.0, 34.0, 2.0, 10.0, true));
+    	addSequential(new TurnGyroWaypoint(-79.0, 34.0, 1.0, 10.0));
+    	addSequential(new DriveWaypoint(-79.0, 34.0, 2.0, 10.0, true));
     	addSequential(new Wait(0.2));
     	
     	//Grab third can
     	addSequential(new SetArmPosition(-22.0, 3.0, 0.3));
-    	addSequential(new Wait(0.2));
+    	addSequential(new Wait(0.4));
     	addSequential(new CenterGrabberClose());
-    	addSequential(new Wait(0.2));
+    	addSequential(new Wait(0.1));
     	
     	//Drive to Start
     	addParallel(new SetArmPosition(90.0, 3.0, 0.3));
-    	addSequential(new Wait(0.8));
-    	addSequential(new DriveWaypointBackward(17.0, 25.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
-    	addSequential(new Wait(3.0));
+    	addSequential(new Wait(0.7));
+    	addSequential(new DriveWaypointBackward(22.0, 30.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
     	
     	//Reset gyro and position
     	addSequential(new ResetGyro());  	
     	
     	//Drive to Finish
-    	addSequential(new TurnGyroWaypoint(-57.0, 0.0, 1.0, 10.0));
-    	addSequential(new Wait(3.0));
-    	addSequential(new DriveWaypointBackward(-57.0, 0.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
-    	addSequential(new Wait(3.0));
+    	addSequential(new TurnGyroWaypoint(-60.0, -50.0, 1.0, 10.0));
+    	addSequential(new Wait(2.0));
+    	addSequential(new DriveWaypoint(-60.0, -50.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
+    	addSequential(new Wait(2.0));
     	
     	//Setdown cans
     	addSequential(new SetArmPosition(-15.0, 3.0, 0.3));
+    	addSequential(new SetWristAngle(5.0));
     	addSequential(new Wait(3.0));
     	addSequential(new OpenAllGrabbers());
     	addSequential(new Wait(3.0));
-    	
-    	//Backup
-    	addSequential(new DriveWaypointBackward(-27.0, 0.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
-    	addParallel(new SetArmPosition(90.0, 3.0, 0.3));
+    	addSequential(new SetArmPosition(-31.0, 3.0, 0.3));
     	addSequential(new Wait(3.0));
     	
+    	//Backup
+    	addSequential(new DriveWaypointBackward(-40.0, -50.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
+    	//addParallel(new SetArmPosition(90.0, 3.0, 0.3));
+    	//addSequential(new Wait(3.0));
+    	
     	//Aim at dest
-    	addSequential(new TurnGyroWaypoint(-57.0, -60.0, 1.0, 10.0));
+    	//addSequential(new TurnGyroWaypoint(-57.0, -45.0, 1.0, 10.0));
     	
     	
 
