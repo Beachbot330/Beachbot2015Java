@@ -62,15 +62,15 @@ public class TurnGyroWaypoint extends TurnGyroAbs {
         }
         else if (robotAngle > calcAngle)
         {
-            while (robotAngle > calcAngle)
+            while (Math.abs(robotAngle-calcAngle)<180)
                 calcAngle += 360;
         }
         else 
         {
-            while (robotAngle < calcAngle)
+            while (Math.abs(robotAngle-calcAngle)<180)
                 calcAngle -= 360;
         }
-//        System.out.println("angle: " + calcAngle);
+       Robot.logger.println("angle: " + calcAngle);
         
         angle = calcAngle;
     }

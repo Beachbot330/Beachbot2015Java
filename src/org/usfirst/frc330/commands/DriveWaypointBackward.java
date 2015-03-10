@@ -13,7 +13,7 @@ import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.wpilibj.PIDGains;
 
 public class DriveWaypointBackward extends DriveWaypoint {
-	double leftDistance, rightDistance;
+//	double leftDistance, rightDistance;
 	
 	public DriveWaypointBackward(double x, double y, double tolerance, double timeout, boolean stopAtEnd) {
 		this(x,y,tolerance,timeout,stopAtEnd, ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh);
@@ -36,6 +36,6 @@ public class DriveWaypointBackward extends DriveWaypoint {
             angle = angle-180;
         else
             angle = angle+180;
-//        System.out.println("Backward Angle: " + angle);
+        Robot.logger.println("Backward Angle: " + angle);
     }
 }

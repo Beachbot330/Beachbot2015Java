@@ -58,45 +58,48 @@ public class TresJalapenos extends BBCommandGroup {
     	addSequential(new SetArmPosition(-22.0, 3.0, 0.3));
     	
     	//Reverse to give myself room to work
-    	BBCommand driveCommand = new DriveDistanceAtAbsAngle_NoTurn(-10.0 , 0.0, 2.0);  //Dist Angl Tol
+    	//BBCommand driveCommand = new DriveDistanceAtAbsAngle_NoTurn(-14.0 , 0.0, 2.0);  //Dist Angl Tol
+    	BBCommand driveCommand = new DriveWaypointBackward(0.0,-10, 2.0, 1.0, false);  //X, Y, Tol, timeout, stop
     	addSequential(driveCommand);
+    	addSequential(new Wait(0.2));
     	
     	//Drive to second can
-    	addSequential(new TurnGyroWaypoint(-15.0, 15.0, 2.0, 10.0));
+    	addSequential(new TurnGyroWaypoint(-15.0, 15.0, 1.0, 10.0));
+    	addSequential(new Wait(0.2));
     	//double x, double y, double tolerance, double timeout, PIDGains low, PIDGains high
-    	addSequential(new DriveWaypoint(-15.0, 15.0, 2.0, 10.0, true));
+    	addParallel(new DriveWaypoint(-15.0, 15.0, 2.0, 10.0, true));
     	//double x, double y, double tolerance, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh
     	
     	//Grab second can
-    	addSequential(new Wait(3.0));
-    	addSequential(new SetArmPosition(-33.0, 2.0, 0.1)); //angle tolerance timeout
-    	addSequential(new Wait(3.0));
+    	addSequential(new SetArmPosition(-31.0, 2.0, 0.1)); //angle tolerance timeout
+    	addSequential(new Wait(0.5));
     	addSequential(new LeftGrabberClose());
-    	addSequential(new Wait(3.0));
+    	addSequential(new Wait(0.2));
     	
     	//Lift two cans
     	addSequential(new SetArmPosition(-20.0, 4.0, 0.3));
-    	addSequential(new Wait(3.0));
+    	addSequential(new Wait(0.2));
     	
     	//Drive to third can
-    	addSequential(new TurnGyroWaypoint(-77.0, 43.0, 2.0, 10.0));
-    	addSequential(new DriveWaypoint(-77.0, 43.0, 2.0, 10.0, true));
-    	addSequential(new Wait(3.0));
+    	addSequential(new TurnGyroWaypoint(-77.0, 34.0, 1.0, 10.0));
+    	addSequential(new DriveWaypoint(-77.0, 34.0, 2.0, 10.0, true));
+    	addSequential(new Wait(1.0));
     	
     	//Grab third can
     	addSequential(new SetArmPosition(-22.0, 3.0, 0.3));
-    	addSequential(new Wait(3.0));
-    	addSequential(new LeftGrabberClose());
+    	addSequential(new Wait(1.0));
+    	addSequential(new CenterGrabberClose());
+    	addSequential(new Wait(1.0));
+    	
+    	//Drive to Start
+    	addParallel(new SetArmPosition(90.0, 3.0, 0.3));
+    	addSequential(new Wait(1.0));
+    	addSequential(new DriveWaypointBackward(15.0, 34.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
     	addSequential(new Wait(3.0));
     	
     	//Drive to Finish
-    	addParallel(new SetArmPosition(90.0, 5.0, 1.0));
-    	addSequential(new Wait(3.0));
-    	addSequential(new TurnGyroWaypoint(-185.0, -4.0, 2.0, 10.0));
-    	addSequential(new Wait(3.0));
-    	addSequential(new DriveWaypoint(-185.0, -4.0, 2.0, 10.0, true));
-    	addSequential(new Wait(3.0));
-    	
+    	addSequential(new TurnGyroWaypoint(29.8, -57, 1.0, 10.0));
+    	addSequential(new DriveWaypoint(29.8, -57, 2.0, 10.0, true));
     	
    
 //    	//Drive to second station while loading first tote
