@@ -94,20 +94,20 @@ public class TresJalapenos extends BBCommandGroup {
     	//Drive to Start
     	addParallel(new SetArmPosition(90.0, 3.0, 0.3));
     	addSequential(new Wait(0.7));
-    	addSequential(new DriveWaypointBackward(22.0, 30.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
+    	addSequential(new DriveWaypointBackward(28.0, 30.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
     	
     	//Reset gyro and position
     	addSequential(new ResetGyro());  	
     	
     	//Drive to Finish
-    	addSequential(new TurnGyroWaypoint(-60.0, -50.0, 1.0, 10.0));
+    	addSequential(new TurnGyroWaypoint(-60.0, -45.0, 1.0, 10.0));
     	addSequential(new Wait(2.0));
-    	addSequential(new DriveWaypoint(-60.0, -50.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
+    	addSequential(new DriveWaypoint(-60.0, -45.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
     	addSequential(new Wait(2.0));
     	
     	//Setdown cans
     	addSequential(new SetArmPosition(-15.0, 3.0, 0.3));
-    	addSequential(new SetWristAngle(5.0));
+    	addSequential(new SetWristAngle(7.0, 3.0));
     	addSequential(new Wait(3.0));
     	addSequential(new OpenAllGrabbers());
     	addSequential(new Wait(3.0));
