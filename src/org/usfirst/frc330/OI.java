@@ -110,7 +110,7 @@ public class OI {
 
         armGamepad = new Joystick(3);
         
-        moveLiftToToteRX_17 = new JoystickButton(armGamepad, 5);
+        moveLiftToToteRX_17 = new JoystickButton(armGamepad, 17);
         moveLiftToToteRX_17.whenPressed(new MoveLiftToToteRX());
         killAll_16 = new JoystickButton(armGamepad, 16);
         killAll_16.whenPressed(new KillAll());
