@@ -27,6 +27,11 @@ public class DriveDistanceAtRelAngle_NoTurn extends DriveDistanceAtAbsAngle_NoTu
         this(distance, tolerance, angle, 5, true,ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh);
     }
     
+    public DriveDistanceAtRelAngle_NoTurn(double distance, double angle, double tolerance, double timeout)
+    {
+        this(distance, tolerance, angle, timeout, true,ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh);
+    }
+    
     public DriveDistanceAtRelAngle_NoTurn(double distance, double tolerance, double angle, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh)
     {
         super(distance, tolerance, timeout, 0, stopAtEnd, driveLow, driveHigh, gyroLow, gyroHigh);

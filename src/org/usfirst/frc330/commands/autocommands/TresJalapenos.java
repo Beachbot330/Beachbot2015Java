@@ -59,35 +59,39 @@ public class TresJalapenos extends BBCommandGroup {
     	
     	//Reverse to give myself room to work
     	//BBCommand driveCommand = new DriveDistanceAtAbsAngle_NoTurn(-14.0 , 0.0, 2.0);  //Dist Angl Tol
-    	BBCommand driveCommand = new DriveWaypointBackward(0.0,-10, 2.0, 1.0, false);  //X, Y, Tol, timeout, stop
+    	BBCommand driveCommand = new DriveWaypointBackward(0.0,-10, 2.0, 0.5, false);  //X, Y, Tol, timeout, stop
     	addSequential(driveCommand);
-    	addSequential(new Wait(0.2));
+    	//addSequential(new Wait(0.2));
     	
     	//Drive to second can
-    	addSequential(new TurnGyroWaypoint(-16.0, 16.0, 1.0, 0.9));
-    	addSequential(new Wait(0.2));
+    	addSequential(new TurnGyroWaypoint(-10.0, 16.0, 1.0, 1.5));
+    	//addSequential(new Wait(0.2));
     	//double x, double y, double tolerance, double timeout, PIDGains low, PIDGains high
-    	addParallel(new DriveWaypoint(-16.0, 16.0, 2.0, 10.0, true));
+    	addParallel(new DriveWaypoint(-12.0, 16.0, 2.0, 2.0, true));
     	//double x, double y, double tolerance, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh
     	
     	//Grab second can
     	addSequential(new SetArmPosition(-31.0, 2.0, 0.1)); //angle tolerance timeout
     	addSequential(new Wait(0.9));
     	addSequential(new LeftGrabberClose());
-    	addSequential(new Wait(0.2));
-    	
+    	addSequential(new Wait(0.1));
+    
     	//Lift two cans
     	addSequential(new SetArmPosition(-20.0, 4.0, 0.3));
     	addSequential(new Wait(0.2));
     	
+    	//Backup from wall
+    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-10.0, 0.0, 2.0, 2.0)); //double distance, double angle, double tolerance, double timeout
+    	
     	//Drive to third can
-    	addSequential(new TurnGyroWaypoint(-79.0, 34.0, 1.0, 1.0));
-    	addSequential(new DriveWaypoint(-79.0, 34.0, 2.0, 10.0, true));
-    	addSequential(new Wait(0.2));
+    	addSequential(new TurnGyroWaypoint(-80.0, 35.0, 1.0, 1.5));
+    	//addSequential(new Wait(2.0));
+    	addSequential(new DriveWaypoint(-80.0, 35.0, 2.0, 10.0, true));
+    	addSequential(new Wait(0.3));
     	
     	//Grab third can
-    	addSequential(new SetArmPosition(-22.0, 3.0, 0.3));
-    	addSequential(new Wait(0.4));
+    	addParallel(new SetArmPosition(-22.0, 3.0, 0.3));
+    	addSequential(new Wait(0.3));
     	addSequential(new CenterGrabberClose());
     	addSequential(new Wait(0.1));
     	
@@ -106,21 +110,24 @@ public class TresJalapenos extends BBCommandGroup {
     	addSequential(new Wait(0.2));
     	
     	//Setdown cans
-    	addSequential(new SetArmPosition(-15.0, 3.0, 0.3));
-    	addSequential(new SetWristAngle(7.0, 3.0, 1.0));
-    	addSequential(new Wait(0.1));
+    	addParallel(new SetWristAngle(7.0, 3.0, 1.0));
+    	addSequential(new SetArmPosition(-20.0, 3.0, 1.0));
+    	addSequential(new Wait(1.0));
     	addSequential(new OpenAllGrabbers());
-    	addSequential(new Wait(0.1));
+    	addSequential(new Wait(0.3));
     	addSequential(new SetArmPosition(-31.0, 3.0, 0.3));
-    	addSequential(new Wait(0.2));
+    	addSequential(new Wait(0.4));
     	
     	//Backup
-    	addSequential(new DriveWaypointBackward(-40.0, -50.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
-    	//addParallel(new SetArmPosition(90.0, 3.0, 0.3));
-    	//addSequential(new Wait(3.0));
+    	addSequential(new DriveWaypointBackward(-28.0, -30.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
+    	addSequential(new Wait(0.5));
+    	addParallel(new SetArmPosition(90.0, 3.0, 0.3));
+    	addSequential(new Wait(1.0));
     	
     	//Aim at dest
-    	//addSequential(new TurnGyroWaypoint(-57.0, -45.0, 1.0, 10.0));
+    	addSequential(new TurnGyroWaypoint(-82.0, -26.0, 1.0, 1.0));
+    	addSequential(new Wait(1.0));
+    	addSequential(new DriveWaypoint(-82.0, -26.0, 1.0, 2.0, true));
     	
     	
 
