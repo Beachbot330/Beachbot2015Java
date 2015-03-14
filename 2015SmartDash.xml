@@ -140,7 +140,7 @@
 		<location x="607" y="199"/>
 	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.RobotPreferences">
-		<location x="1300" y="0"/>
+		<location x="1281" y="1"/>
 		<height>828</height>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">

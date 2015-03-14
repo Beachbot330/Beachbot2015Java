@@ -61,20 +61,28 @@ public class TucanSam extends BBCommandGroup {
     	
     	//Aim hand, lower arm
     	addParallel(new SetWristAngle(227.0));
-    	addSequential(new SetArmPosition(144.5, 1.0, 1.5)); //angle tolerance timeout
-    	addSequential(new Wait(0.2));
+    	addSequential(new SetArmPosition(143.5, 1.0, 1.5)); //angle tolerance timeout
+    	addSequential(new Wait(0.4));
+    	
+    	//Close Grabbers
     	addSequential(new CloseAllGrabbers());
     	addSequential(new Wait(0.2));
+    	
+    	//Lift Cans
     	addSequential(new SetArmPosition(116.0, 5.0, 1.0));
     	addSequential(new Wait(0.2));
+    	
+    	//Move back and drop cans
     	addSequential(new DriveDistanceAtAbsAngle_NoTurn(14.0 , 0.0, 1.0));
-    	addSequential(new Wait(0.1));
+    	addSequential(new Wait(0.3));
     	addSequential(new OpenAllGrabbers());
     	addSequential(new Wait(0.1));
     	addParallel(new SetWristAngle(245.0));
     	addSequential(new SetArmPosition(105.0, 1.0, 1.5));
     	addSequential(new Wait(0.1));
-    	addSequential(new ShiftHigh());
+    	
+    	//Drive Out
+    	//addSequential(new ShiftHigh());
     	addParallel(new SetWristAngle(180.0));
     	addSequential(new SetMastPosition(MastPos.vertical, 5.0, 0.8));  //Angle Tolerance Timeout
     	addParallel(new DriveDistanceAtAbsAngle_NoTurn(72.0 , 0.0, 6.0)); //Dist Angl Tol

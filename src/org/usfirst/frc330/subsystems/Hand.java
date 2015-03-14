@@ -266,7 +266,11 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 
     public double getWristAngle()
     {
-    	return -(180 - getAngleFromArm() - Robot.arm.getArmAngle());
+    	if(Robot.frills.isPracticeRobot()){
+    		return -(180 - getAngleFromArm() - Robot.arm.getArmAngle());
+    	}
+    	else
+    		return -(180 - getAngleFromArm() - Robot.arm.getArmAngle() - 3.5);
     }
     
 	public void manualWrist()

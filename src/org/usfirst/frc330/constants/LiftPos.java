@@ -13,7 +13,8 @@ public final class LiftPos {
 	public static final double proportional =		 0.4;		//AP, SP 2-23
 	public static final double derivitive =			 0.30;		//AP, SP 2-23
 	
-	public static final double lowerLimit = 	0.125;   //AP 2-28 Was: 0.250 JR, SP 2-15
+	//public static final double lowerLimit = 	0.125;   //AP 2-28 Was: 0.250 JR, SP 2-15
+	public static final double lowerLimit = 	0.0;	//AP 3-12 (Per Shane)
 	public static final double upperLimit = 	37.0;   //AP, SP 2-14
 	
 	// Values are in inches from the physical hardstop
