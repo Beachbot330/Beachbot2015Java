@@ -107,12 +107,12 @@ public class TresJalapenos extends BBCommandGroup {
     	
     	//Drive to Finish while lowering arm
     	addSequential(new ShiftLow());
-    	addSequential(new TurnGyroWaypoint(-40.0, -21.0, 1.0, 2.3));
+    	addSequential(new TurnGyroWaypoint(-40.0, -15.0, 1.0, 2.3)); // Y was -19, changing to -15
     	addSequential(new Wait(0.2));
     	//addSequential(new ShiftHigh());
     	addParallel(new SetWristAngle(7.0, 3.0, 1.0));
     	addParallel(new SetArmPosition(-15.0, 3.0, 1.0));
-    	addSequential(new DriveWaypoint(-40.0, -23.0, 2.0, 2.0, false));  //X, Y, Tol, timeout, stop
+    	addSequential(new DriveWaypoint(-40.0, -19.0, 4.0, 2.0, false));  //X, Y, Tol, timeout, stop  - changed -23 to -19
     	addSequential(new Wait(0.2));
     	
     	//Setdown cans
