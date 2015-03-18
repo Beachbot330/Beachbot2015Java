@@ -346,6 +346,7 @@ public class Chassis extends Subsystem {
         setXY(0,0);
         this.prevLeftEncoderDistance = 0;
         this.prevRightEncoderDistance = 0;
+        ctrRollOver = 0;
     }
     
     
@@ -403,10 +404,6 @@ public class Chassis extends Subsystem {
     	// Has gyro_prevVal been previously set?
     	// If not, return do not calculate, return current value
     	if( !fFirstUse ) {
-    		
-    		// Mark gyro_prevVal as being used
-    		fFirstUse = false;
-    		
     		// Determine count for rollover counter
     		difference = yawVal - gyro_prevVal;
 
@@ -417,14 +414,19 @@ public class Chassis extends Subsystem {
 	   		
 	    	// Counter-clockwise past -180 degrees\
 	    	// If difference > 180*, decrement rollover counter
-	    	} else if ( difference > 180.0 ) {
+	    	}
+	    	else if ( difference > 180.0 ) {
 	    		ctrRollOver--;
 	    	} 
     	}
     	
+    	// Mark gyro_prevVal as being used
+    	fFirstUse = false;
+    		
     	// Calculate value to return back to calling function
     	// e.g. +720 degrees or -360 degrees
     	gyroVal = yawVal + (360.0 * ctrRollOver);
+    	gyro_prevVal = yawVal;
     	
     	return gyroVal;
     }
