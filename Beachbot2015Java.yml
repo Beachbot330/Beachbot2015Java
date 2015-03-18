@@ -1860,7 +1860,7 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Arm}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: ManualArm
   - Children: []
@@ -1914,7 +1914,7 @@ Children:
   - Children: []
     Properties:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
     Name: SetMastStretch
   - Children: []
@@ -2048,7 +2048,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Button on SmartDashboard, validators: null, value: false}
       Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Add to SendableChooser, validators: null, value: true}
+        name: Add to SendableChooser, validators: null, value: false}
     Base: AutoCommand
     Name: JoeTest
   - Children: []
@@ -2072,7 +2072,7 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Hand}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: ManualWrist
   - Children: []
@@ -2166,7 +2166,7 @@ Children:
   - Children: []
     Properties:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
     Name: SetMastVert
   - Children: []
@@ -2191,6 +2191,14 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
     Name: CanSnatch
+  - Children: []
+    Properties:
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Button on SmartDashboard, validators: null, value: false}
+      Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Add to SendableChooser, validators: null, value: true}
+    Base: AutoCommand
+    Name: TresNoodles
   Properties: {}
   Base: Commands
   Name: Commands

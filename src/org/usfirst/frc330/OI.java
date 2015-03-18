@@ -217,8 +217,6 @@ public class OI {
 
         SmartDashboard.putData("DropOffTotes", new DropOffTotes());
 
-        SmartDashboard.putData("ManualArm", new ManualArm());
-
         SmartDashboard.putData("LeftGrabberOpen", new LeftGrabberOpen());
 
         SmartDashboard.putData("LeftGrabberClose", new LeftGrabberClose());
@@ -230,8 +228,6 @@ public class OI {
         SmartDashboard.putData("RightGrabberOpen", new RightGrabberOpen());
 
         SmartDashboard.putData("RightGrabberClose", new RightGrabberClose());
-
-        SmartDashboard.putData("SetMastStretch", new SetMastStretch());
 
         SmartDashboard.putData("SwitchArmSide", new SwitchArmSide());
 
@@ -265,8 +261,6 @@ public class OI {
 
         SmartDashboard.putData("CalibrateLiftBottomLimit", new CalibrateLiftBottomLimit());
 
-        SmartDashboard.putData("ManualWrist", new ManualWrist());
-
         SmartDashboard.putData("HandDown", new HandDown());
 
         SmartDashboard.putData("OpenAllGrabbers", new OpenAllGrabbers());
@@ -274,8 +268,6 @@ public class OI {
         SmartDashboard.putData("ResetGyro", new ResetGyro());
 
         SmartDashboard.putData("ManualMast", new ManualMast());
-
-        SmartDashboard.putData("SetMastVert", new SetMastVert());
 
         SmartDashboard.putData("CloseAllGrabbers", new CloseAllGrabbers());
 
