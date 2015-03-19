@@ -100,7 +100,7 @@ public class  TurnGyroAbs extends BBCommand {
         {
             Robot.chassis.stopDrive();
         }
-        Robot.logger.println("TurnGyroAbs Final Angle: " + Robot.chassis.getAngle() + "Setpoint: " + angle, true);
+        Robot.logger.println("TurnGyroAbs Final Angle: " + Robot.chassis.getAngle() + "  Setpoint: " + angle, true);
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run

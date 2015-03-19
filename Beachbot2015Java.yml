@@ -2198,7 +2198,15 @@ Children:
       Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Add to SendableChooser, validators: null, value: true}
     Base: AutoCommand
-    Name: TresNoodles
+    Name: TresFideos
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Mast}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: FrontSideManualMast
   Properties: {}
   Base: Commands
   Name: Commands

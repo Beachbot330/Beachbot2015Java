@@ -1,5 +1,19 @@
 <xml version="1.0">
 <dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.VideoStreamViewerExtension">
+		<location x="817" y="336"/>
+		<width>226</width>
+		<height>164</height>
+	</static-widget>
+	<widget field="Shift" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="487"/>
+	</widget>
+	<widget field="DriveTrainDistanceR" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="462" y="213"/>
+	</widget>
+	<widget field="DriveTrainDistanceL" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="465" y="192"/>
+	</widget>
 	<widget field="ManualWrist" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="453"/>
 	</widget>
@@ -11,12 +25,6 @@
 	</widget>
 	<widget field="SetMastVert" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="176"/>
-	</widget>
-	<widget field="DriveTrainEncoderDistanceL" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="243"/>
-	</widget>
-	<widget field="DriveTrainEncoderDistanceR" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="82"/>
 	</widget>
 	<widget field="CanSnatch" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="142"/>
@@ -31,7 +39,7 @@
 		<location x="0" y="385"/>
 	</widget>
 	<widget field="Autonomous mode chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="972" y="4"/>
+		<location x="657" y="14"/>
 		<property name="Use Radio Buttons" value="false"/>
 	</widget>
 	<widget field="CloseAllGrabbers" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
@@ -226,5 +234,6 @@
 </dashboard>
 <live-window>
 </live-window>
-	<hidden field="ConditoinalWrapperTest"/>
+	<hidden field="DriveTrainEncoderDistanceR"/>
+	<hidden field="DriveTrainEncoderDistanceL"/>
 </xml>

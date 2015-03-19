@@ -10,7 +10,24 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
-import org.usfirst.frc330.commands.*;
+import org.usfirst.frc330.commands.ArmPID_on;
+import org.usfirst.frc330.commands.CenterGrabberClose;
+import org.usfirst.frc330.commands.DriveDistanceAtRelAngle_NoTurn;
+import org.usfirst.frc330.commands.DriveWaypoint;
+import org.usfirst.frc330.commands.DriveWaypointBackward;
+import org.usfirst.frc330.commands.LeftGrabberClose;
+import org.usfirst.frc330.commands.OpenAllGrabbers;
+import org.usfirst.frc330.commands.RightGrabberClose;
+import org.usfirst.frc330.commands.SetArmPosition;
+import org.usfirst.frc330.commands.SetLiftPosition;
+import org.usfirst.frc330.commands.SetMastPosition;
+import org.usfirst.frc330.commands.SetWristAngle;
+import org.usfirst.frc330.commands.ShiftHigh;
+import org.usfirst.frc330.commands.ShiftLow;
+import org.usfirst.frc330.commands.TurnGyroAbs;
+import org.usfirst.frc330.commands.TurnGyroWaypoint;
+import org.usfirst.frc330.commands.Wait;
+import org.usfirst.frc330.commands.WristPID_on;
 import org.usfirst.frc330.constants.LiftPos;
 
 import edu.wpi.first.wpilibj.command.BBCommand;
@@ -19,9 +36,9 @@ import edu.wpi.first.wpilibj.command.BBCommandGroup;
 /**
  *
  */
-public class TresNoodles extends BBCommandGroup {
+public class TresFideos extends BBCommandGroup {
     
-    public  TresNoodles() {
+    public  TresFideos() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -93,7 +110,7 @@ public class TresNoodles extends BBCommandGroup {
     	addSequential(new Wait(0.1));
     	
     	//Drive to Start
-    	addParallel(new SetArmPosition(110.0, 3.0, 0.3));
+    	addParallel(new SetArmPosition(100.0, 3.0, 0.3));
     	addSequential(new ShiftHigh());
     	addSequential(new Wait(0.2));
     	addSequential(new DriveWaypointBackward(20.0, 20.0, 2.0, 2.5, false));  //X, Y, Tol, timeout, stop
@@ -101,9 +118,10 @@ public class TresNoodles extends BBCommandGroup {
     	//Drive to Finish while lowering arm
     	addSequential(new ShiftLow());
     	addSequential(new TurnGyroAbs(0.0, 5.0, 2.5, true)); //angle tolerance timeout stop
+    	addParallel(new SetWristAngle(-10.0));
     	
-    	addSequential(new ShiftHigh());
-    	addSequential(new DriveWaypointBackward(20.0, -45.0, 4.0, 2.0, false));  //X, Y, Tol, timeout, stop  - changed -23 to -19
+    	//addSequential(new ShiftHigh());
+    	addSequential(new DriveWaypointBackward(20.0, -90.0, 4.0, 2.0, true));  //X, Y, Tol, timeout, stop  - changed -23 to -19
     	addSequential(new Wait(0.2));
     }
 }
