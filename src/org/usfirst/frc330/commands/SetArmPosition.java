@@ -62,6 +62,10 @@ public class  SetArmPosition extends BBCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if (isTimedOut())
+    	{
+    		Robot.logger.println("SetArmPosition setpoint: " + this.angle + "   Position at timeout: " + Robot.arm.getArmAngle());
+    	}
     	return (Robot.arm.onArmTarget() || isTimedOut());
     }
 

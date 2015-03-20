@@ -76,18 +76,17 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addParallel(new DriveDistanceAtRelAngle_NoTurn(2.0, 0.0, 0.5));  //Dist Angle Tol
     	addSequential(new Wait(0.7));
     	addParallel(new SetLiftPosition(17.3));
-    	addSequential(new Wait(0.2));
+    	addSequential(new Wait(0.1));  //reduced from 0.2
     
     	//Drive back from second tote and turn
     	BBCommand moveArm = new SetArmPosition(-15, 4.0);
-    	driveCommand = new DriveDistanceAtRelAngle_NoTurn(-42 , 0.0, 2.0);
+    	driveCommand = new DriveDistanceAtRelAngle_NoTurn(-42 , 0.0, 1.5);  //double distance, double angle, double tolerance, double timeout
     	addParallel(driveCommand);  //Dist Angl Tol
     	addSequential(new Wait(1.3));
     	addParallel(moveArm);
     	addSequential(new CheckDone(driveCommand));
     	PIDGains DriveLow = new PIDGains(0.2, 0, 0, 0, 0.6, ChassisConst.defaultMaxOutputStep); //p,  i,  d,  f,  maxOutput, maxOutputStep
     	addSequential(new TurnGyroAbs(14.0, 1.0, 2.0, true, true, DriveLow, ChassisConst.GyroTurnHigh));  //Angle Tol Timeout
-    	addSequential(new Wait(3.30));
     	addSequential(new Wait(0.2));
     	
     	//Drive Forward and Grab Can1 and Can2 at angle
@@ -104,12 +103,14 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addSequential(new SetArmPosition(-28, 5.0));
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-8.0 , 0.0, 2.0));  //Matt swears this will work 3/1
     	addParallel(new CenterGrabberOpen());
-    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-26.0 , 0.0, 2.0));  //Dist Angl Tol
+    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-18.0 , 0.0, 2.0));  //Dist Angl Tol  //Was -26
     	
     	//Straighten Out and drive to left behind can1
-    	addSequential(new TurnGyroAbs(0.0, 0.5, 1.0, true, true, DriveLow, ChassisConst.GyroTurnHigh));  //Angle Tolerance Timeout
+    	double skewedAngle = 3.0;
+    	addSequential(new TurnGyroAbs(skewedAngle, 0.5, 1.0, true, true, DriveLow, ChassisConst.GyroTurnHigh));  //Angle Tolerance Timeout
     	addSequential(new Wait(0.3));
-    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(42.0 , 0.0, 2.0);
+    	addSequential(new Wait(3.30));
+    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(42.0 , skewedAngle, 2.0);
     	addParallel(driveCommand);  //Dist Angl Tol
     	addSequential(new CheckDone(driveCommand));
     	addSequential(new RightGrabberClose());
@@ -119,7 +120,10 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addParallel(new SetArmPosition(-10, 5.0));
     	
     	//Drive to last location
-    	driveCommand = new DriveWaypoint(0.0, 155.0, 4.0, 3.0, true);
+    	PIDGains GyroLow = new PIDGains(0.06,0.00,0,0,1,1); //p,  i,  d,  f,  maxOutput, maxOutputStep
+    	addSequential(new TurnGyroWaypoint(0.0, 155.0, 4.0, 3.0, GyroLow, ChassisConst.GyroDriveHigh));
+    	addSequential(new Wait(3.30));
+    	driveCommand = new DriveWaypoint(0.0, 155.0, 4.0, 3.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, GyroLow, ChassisConst.GyroDriveHigh);
     	addParallel(driveCommand);
     	addParallel(new SetLiftPosition(LiftPos.justOverOneTote));
     	addSequential(new Wait(0.6));

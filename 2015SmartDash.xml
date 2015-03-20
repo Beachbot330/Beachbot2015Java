@@ -1,5 +1,14 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="DriveTrainEncoderDistanceL" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="244"/>
+	</widget>
+	<widget field="DriveTrainEncoderDistanceR" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="82"/>
+	</widget>
+	<widget field="FrontSideManualMast" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="210"/>
+	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.VideoStreamViewerExtension">
 		<location x="817" y="336"/>
 		<width>226</width>
@@ -234,6 +243,4 @@
 </dashboard>
 <live-window>
 </live-window>
-	<hidden field="DriveTrainEncoderDistanceR"/>
-	<hidden field="DriveTrainEncoderDistanceL"/>
 </xml>
