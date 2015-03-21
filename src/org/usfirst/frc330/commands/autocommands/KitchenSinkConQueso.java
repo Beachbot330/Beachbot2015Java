@@ -85,7 +85,7 @@ public class KitchenSinkConQueso extends BBCommandGroup {
     	addSequential(new Wait(1.3));
     	addParallel(moveArm);
     	addSequential(new CheckDone(driveCommand));
-    	PIDGains DriveLow = new PIDGains(0.2, 0, 0, 0, 0.6, ChassisConst.defaultMaxOutputStep); //p,  i,  d,  f,  maxOutput, maxOutputStep
+    	PIDGains DriveLow = new PIDGains(0.2, 0, 0, 0, 0.6, ChassisConst.defaultMaxOutputStep, "SlowDriveLowConQueso"); //p,  i,  d,  f,  maxOutput, maxOutputStep, name
     	addSequential(new TurnGyroAbs(14.0, 1.0, 2.0, true, true, DriveLow, ChassisConst.GyroTurnHigh));  //Angle Tol Timeout
     	addSequential(new Wait(3.30));
     	addSequential(new Wait(0.2));
