@@ -49,4 +49,19 @@ public class SwitchArmSide extends BBCommandGroup {
     	addParallel(new ArmSwitchWrist());
     	addSequential(new ArmSwitchStopPosition());
     }
+    
+    public void initialize() {
+    	Robot.arm.setSwitchingSides(true);
+    	super.initialize();
+    }
+    
+    public void end() {
+    	Robot.arm.setSwitchingSides(false);
+    	super.end();
+    }
+    
+    public void interrupted() {
+    	Robot.arm.setSwitchingSides(false);
+    	super.interrupted();
+    }
 }

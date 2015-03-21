@@ -21,7 +21,9 @@ public class ArmSwitchStartPosition extends BBCommand {
     protected void initialize() {
     	commandOne = new SetArmPosition(ArmPos.frontFlipStart, 5.0);
     	commandTwo = new SetArmPosition(ArmPos.rearFlipStart, 5.0);
-    	if(Robot.arm.getIsFront()){
+    	double frontDiff = Math.abs(Robot.arm.getArmAngle() - ArmPos.frontFlipStart);
+    	double rearDiff = Math.abs(Robot.arm.getArmAngle() - ArmPos.rearFlipStart);
+    	if(frontDiff < rearDiff){
     		commandOne.start();
     	}
     	else{
