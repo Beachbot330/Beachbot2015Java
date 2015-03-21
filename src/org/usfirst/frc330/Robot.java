@@ -11,6 +11,7 @@
 
 package org.usfirst.frc330;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -54,6 +55,7 @@ public class Robot extends IterativeRobot {
     
     public static Logger logger;
     public static CSVLogger csvLogger;
+    private CameraServer server;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -104,6 +106,12 @@ public class Robot extends IterativeRobot {
         
         Command beep = new BuzzerBeepTimed(0.75);
         beep.start();
+        
+        server = CameraServer.getInstance();
+        server.setSize(2);
+        server.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture("cam0");
     }
 
     /**
