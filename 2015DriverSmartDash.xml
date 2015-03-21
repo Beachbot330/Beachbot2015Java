@@ -1,0 +1,99 @@
+<xml version="1.0">
+<dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="567" y="1"/>
+		<width>5</width>
+		<height>480</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="134" y="1"/>
+		<width>5</width>
+		<height>480</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.WebcamViewerExtension">
+		<location x="1" y="1"/>
+		<width>640</width>
+		<height>480</height>
+		<property name="Size" value="160x120"/>
+	</static-widget>
+	<widget field="Pressure" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.SimpleDial">
+		<location x="700" y="100"/>
+		<width>300</width>
+		<height>300</height>
+		<property name="Upper Limit" value="140.0"/>
+	</widget>
+	<widget field="Autonomous mode chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="750" y="50"/>
+		<property name="Use Radio Buttons" value="false"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+	<hidden field="CloseAllGrabbers"/>
+	<hidden field="StackThree"/>
+	<hidden field="LoadSecondTote"/>
+	<hidden field="CanSnatch"/>
+	<hidden field="RightGrabberClose"/>
+	<hidden field="LeftGrabberOpen"/>
+	<hidden field="ReceiveTote"/>
+	<hidden field="KillAll"/>
+	<hidden field="MastOverride"/>
+	<hidden field="ManualLift"/>
+	<hidden field="ArmAngle"/>
+	<hidden field="LeftGrabberClose"/>
+	<hidden field="ShiftHigh"/>
+	<hidden field="ChassisY"/>
+	<hidden field="WristAngle"/>
+	<hidden field="ChassisX"/>
+	<hidden field="MoveLiftToToteRX"/>
+	<hidden field="LiftLeftCurrent"/>
+	<hidden field="ShiftLow"/>
+	<hidden field="BuzzerBeepTimed"/>
+	<hidden field="rightDrivePID"/>
+	<hidden field="WristPID"/>
+	<hidden field="Shift"/>
+	<hidden field="CalibrateWristRearLimit"/>
+	<hidden field="DropOffTotes"/>
+	<hidden field="DriveTrainDistanceR"/>
+	<hidden field="RightDrive1Current"/>
+	<hidden field="MastAngle"/>
+	<hidden field="HandDown"/>
+	<hidden field="CenterGrabberClose"/>
+	<hidden field="DriveTrainDistanceL"/>
+	<hidden field="LiftPID"/>
+	<hidden field="CenterGrabberOpen"/>
+	<hidden field="ToggleSideSet"/>
+	<hidden field="CalibrateLiftTopLimit"/>
+	<hidden field="CalibrateArmRearLimit"/>
+	<hidden field="OpenAllGrabbers"/>
+	<hidden field="CalibrateLiftBottomLimit"/>
+	<hidden field="LiftPosition"/>
+	<hidden field="RightGrabberOpen"/>
+	<hidden field="gyroPID"/>
+	<hidden field="ArmPID"/>
+	<hidden field="CarryTotes"/>
+	<hidden field="AdjustHandPositionDown"/>
+	<hidden field="RobotHeight"/>
+	<hidden field="FrontSideManualMast"/>
+	<hidden field="WristAngleFromArm"/>
+	<hidden field="CalibrateArmFrontLimit"/>
+	<hidden field="LeftDrive1Current"/>
+	<hidden field="ManualMast"/>
+	<hidden field="WristPot"/>
+	<hidden field="MastPID"/>
+	<hidden field="SwitchArmSide"/>
+	<hidden field="CalibrateArmVertical"/>
+	<hidden field="leftDrivePID"/>
+	<hidden field="CalibrateMastRearLimit"/>
+	<hidden field="TotePincher"/>
+	<hidden field="CalibrateMastFrontLimit"/>
+	<hidden field="CalibrateWristFrontLimit"/>
+	<hidden field="OpenZachStacker"/>
+	<hidden field="ArmOverride"/>
+	<hidden field="CloseZachStacker"/>
+	<hidden field="ResetGyro"/>
+	<hidden field="LiftPot"/>
+	<hidden field="WristOverride"/>
+	<hidden field="DB"/>
+	<hidden field="ChassisAngle"/>
+</xml>
