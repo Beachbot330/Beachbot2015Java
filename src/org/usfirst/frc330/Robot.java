@@ -118,7 +118,7 @@ public class Robot extends IterativeRobot {
         	server.startAutomaticCapture("cam0");
         }
         catch (VisionException ex) {
-            DriverStation.reportError("Error when getting starting the camera: " + ex.getMessage(), true);
+            DriverStation.reportError("Error when starting the camera: " + ex.getMessage(), true);
         }
     }
 
