@@ -23,6 +23,7 @@ import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.TurnGyroAbs;
 import org.usfirst.frc330.commands.TurnGyroRel;
 import org.usfirst.frc330.commands.TurnGyroWaypoint;
+import org.usfirst.frc330.commands.TurnGyroWaypointBackward;
 import org.usfirst.frc330.constants.ChassisConst;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
@@ -52,14 +53,14 @@ public class JoeTest extends BBCommandGroup {
         // arm.
     	addSequential(new ShiftLow());
     	addSequential(new WaitCommand(1));    	
-    	addSequential(new DriveWaypoint(0,24,5,5,false,ChassisConst.DriveLow,ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh));
+    	addSequential(new TurnGyroWaypointBackward(-24,-24,5,5));
     	addSequential(new WaitCommand(1));
 //    	addSequential(new ShiftHigh());
     	addSequential(new WaitCommand(1));
-    	addSequential(new DriveWaypoint(0,48,5,5,false,ChassisConst.DriveLow,ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh));
+    	addSequential(new DriveWaypointBackward(-24,-24,5,5,false));
 //    	addSequential(new ShiftLow());
     	addSequential(new WaitCommand(2));
-    	addSequential(new TurnGyroWaypoint(48,96,0,5.0,ChassisConst.GyroTurnLow, ChassisConst.GyroTurnHigh));
+//    	addSequential(new TurnGyroWaypoint(48,96,0,5.0,ChassisConst.GyroTurnLow, ChassisConst.GyroTurnHigh));
 //    	addSequential(new ShiftHigh());
 //    	addSequential(new WaitCommand(2));
 //    	addSequential(new TurnGyroWaypoint(0,96.0,5.0,5.0,ChassisConst.GyroLow, ChassisConst.GyroHigh));
