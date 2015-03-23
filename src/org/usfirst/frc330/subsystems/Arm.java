@@ -130,6 +130,11 @@ public class Arm extends Subsystem {
     	};
     	Robot.csvLogger.add("ArmRightOutput", temp);
     	
+    	temp = new CSVLoggable() {
+    		public double get() { return getArmSetpoint(); }
+    	};
+    	Robot.csvLogger.add("ArmSetpoint", temp);
+    	
     }
     
 	/////////////////////////////////////////////////////////////

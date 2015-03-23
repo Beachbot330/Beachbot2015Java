@@ -49,6 +49,7 @@ public class CanSnatchFinish extends BBCommandGroup {
     	
     	//Raise the mast
     	addSequential(new SetMastPosition(90, 1.0, 1.0)); //angle tol timeout
+    	addSequential(new SetArmPosition(80.0, 1.0, 1.5));
 //    	addSequential(new Wait(3.30));
     }
 }

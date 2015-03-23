@@ -45,7 +45,7 @@ public class CanSnatchStart extends BBCommandGroup {
     	
     	addSequential(new MoveArmToRear());
     	addParallel(new SetArmPosition(90.0, 1.0, 1.5));
-    	addSequential(new Wait(0.5));
+//    	addSequential(new Wait(0.5));
     	
     	//Open Center Grabber
     	addSequential(new CenterGrabberOpen());
@@ -54,10 +54,10 @@ public class CanSnatchStart extends BBCommandGroup {
     	addSequential(new SetMastPosition(MastPos.rearLimitAngle, 1.0, 1.0)); //angle tol timeout
     	
     	//Aim hand, lower arm
-    	addParallel(new SetWristAngle(190.0));
-    	addSequential(new SetArmPosition(170.0, 1.0, 1.5)); //angle tolerance timeout
-    	addSequential(new Wait(0.5));
-    	addParallel(new SetWristAngle(180.0));
-    	addSequential(new SetArmPosition(176.0, 1.0, 1.5));
+    	addParallel(new SetWristAngle(190.0,1.0,1.5));
+    	addSequential(new SetArmPosition(170.0, 1.5, 1.5)); //angle tolerance timeout
+//    	addSequential(new Wait(0.5));
+    	addParallel(new SetWristAngle(180.0,1.0,1.5));
+    	addSequential(new SetArmPosition(175.0, 1.5, 1.5));
     }
 }
