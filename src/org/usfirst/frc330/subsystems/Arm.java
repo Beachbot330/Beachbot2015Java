@@ -341,6 +341,7 @@ public class Arm extends Subsystem {
     //////////////////////////
     // Other Methods
     //////////////////////////
+	double tempSetpoint;
     public void manualArm() {
         double armCommand = Robot.oi.armJoystick.getY();
 //        if (armCommand < 0) 
@@ -358,7 +359,12 @@ public class Arm extends Subsystem {
         }
         else if (!armPID.isEnable())
         {
-            armPID.setSetpoint(this.getArmAngle());
+        	tempSetpoint = this.getArmAngle();
+        	if(tempSetpoint > ArmPos.rearLimitAngle)
+        		tempSetpoint = ArmPos.rearLimitAngle;
+        	else if(tempSetpoint < ArmPos.frontLimitAngle)
+        		tempSetpoint = ArmPos.frontLimitAngle;
+            armPID.setSetpoint(tempSetpoint);
             armPID.enable();
         } 
     }

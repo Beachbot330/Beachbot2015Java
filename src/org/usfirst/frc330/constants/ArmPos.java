@@ -29,7 +29,8 @@ public final class ArmPos {
 	
 	//Angles
 	//public static final double frontWheelLimit =			-43.0; // AP 2-24
-	public static final double frontLimitAngle =			-40.0; // JR 2-22
+	//public static final double frontLimitAngle =			-40.0; // JR 2-22
+	public static final double frontLimitAngle =			-38.0; // AP 3-23
 	//public static final double noVertHandFrontLimit = 		-11.0;  //AP 3-7
 	public static final double frontFlipStart =				29.0;	// AP 2-24
 	//public static final double rearStateFrontLimitAngle = 	78.6; // AP 2-26
@@ -39,7 +40,8 @@ public final class ArmPos {
 	public static final double frontStateRearLimitAngle =	112.0;  //AP 03-03  was: AP 2-14 105.6
 	//public static final double frontStateRearLimitAngle =	140.0;  //AP 03-11
 	public static final double rearFlipStart =				150.0;	// AP 2-24
-	public static final double rearLimitAngle = 			222.5;  //AP 2-14
+	//public static final double rearLimitAngle = 			222.5;  //AP 2-14
+	public static final double rearLimitAngle = 			218.0;  //AP 3-24
 	//public static final double rearWheelLimit =				242.0; // AP 2-24
 	
 	
