@@ -44,9 +44,24 @@ public class SwitchArmSide extends BBCommandGroup {
     	
     	addSequential(new SetMastPosition(MastPos.frontLimitAngle,2.0,1.0));
     	addSequential(new ArmSwitchStartPosition());
-    	addSequential(new ArmSwitchWristToLimit());
+//    	addSequential(new ArmSwitchWristToLimit());
     	addSequential(new ToggleSideSet());
-    	addParallel(new ArmSwitchWrist());
-    	addSequential(new ArmSwitchStopPosition());
+    	addSequential(new ArmSwitchWrist());
+//    	addSequential(new ArmSwitchStopPosition());
+    }
+    
+    public void initialize() {
+    	Robot.arm.setSwitchingSides(true);
+    	super.initialize();
+    }
+    
+    public void end() {
+    	Robot.arm.setSwitchingSides(false);
+    	super.end();
+    }
+    
+    public void interrupted() {
+    	Robot.arm.setSwitchingSides(false);
+    	super.interrupted();
     }
 }

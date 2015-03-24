@@ -16,20 +16,23 @@ import edu.wpi.first.wpilibj.PIDSource;
  * @author joe
  */
 public class MultiPIDController extends PIDController{
+	private String name;
 	
-    public MultiPIDController(PIDGains gains, PIDSource source, PIDOutput output, double period)
+    public MultiPIDController(PIDGains gains, PIDSource source, PIDOutput output, double period, String name)
     {
         super(gains.getP(),gains.getI(),gains.getD(),gains.getF(),source,output,period);
+        this.name = name;
     }
     
-    public MultiPIDController(PIDGains gains, PIDSource source, PIDOutput output)
+    public MultiPIDController(PIDGains gains, PIDSource source, PIDOutput output, String name)
     {
         super(gains.getP(),gains.getI(),gains.getD(),gains.getF(),source,output);
+        this.name = name;
     }
 
     public void setPID(PIDGains gains) {
         setPID(gains.getP(), gains.getI(), gains.getD(), gains.getF());
-        Robot.logger.println("Changing " + this.toString() + " Gains to " + gains.toString() + ". P=" + gains.getP());
+        Robot.logger.println("Changing " + name + " Gains to " + gains.getName() + ". P=" + gains.getP(),false);
         
     }
     

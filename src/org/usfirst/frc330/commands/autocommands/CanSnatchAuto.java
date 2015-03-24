@@ -10,31 +10,29 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
-import org.usfirst.frc330.commands.DriveDistance;
+import org.usfirst.frc330.commands.CenterGrabberClose;
+import org.usfirst.frc330.commands.CenterGrabberOpen;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
-import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
-import org.usfirst.frc330.commands.DriveWaypoint;
-import org.usfirst.frc330.commands.DriveWaypointBackward;
-import org.usfirst.frc330.commands.RotateAngleAbs;
+import org.usfirst.frc330.commands.DriveDistanceAtRelAngle_NoTurn;
 import org.usfirst.frc330.commands.SetArmPosition;
+import org.usfirst.frc330.commands.SetMastPosition;
 import org.usfirst.frc330.commands.SetWristAngle;
-import org.usfirst.frc330.commands.ShiftHigh;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.TurnGyroAbs;
-import org.usfirst.frc330.commands.TurnGyroRel;
-import org.usfirst.frc330.commands.TurnGyroWaypoint;
-import org.usfirst.frc330.commands.TurnGyroWaypointBackward;
-import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.commands.Wait;
+import org.usfirst.frc330.commands.commandgroups.CanSnatchFinish;
+import org.usfirst.frc330.commands.commandgroups.CanSnatchStart;
+import org.usfirst.frc330.conditionalWrappers.MoveArmToRear;
+import org.usfirst.frc330.constants.MastPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
-import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
  */
-public class JoeTest extends BBCommandGroup {
+public class CanSnatchAuto extends BBCommandGroup {
     
-    public  JoeTest() {
+    public  CanSnatchAuto() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -52,17 +50,17 @@ public class JoeTest extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new ShiftLow());
-    	addSequential(new WaitCommand(1));    	
-    	addSequential(new TurnGyroWaypointBackward(-24,-24,5,5));
-    	addSequential(new WaitCommand(1));
-//    	addSequential(new ShiftHigh());
-    	addSequential(new WaitCommand(1));
-    	addSequential(new DriveWaypointBackward(-24,-24,5,5,false));
-//    	addSequential(new ShiftLow());
-    	addSequential(new WaitCommand(2));
-//    	addSequential(new TurnGyroWaypoint(48,96,0,5.0,ChassisConst.GyroTurnLow, ChassisConst.GyroTurnHigh));
-//    	addSequential(new ShiftHigh());
-//    	addSequential(new WaitCommand(2));
-//    	addSequential(new TurnGyroWaypoint(0,96.0,5.0,5.0,ChassisConst.GyroLow, ChassisConst.GyroHigh));
+    	addParallel(new DriveDistanceAtAbsAngle(12, 2, 0, 1, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd    	
+    	addSequential(new CanSnatchStart());
+    	addSequential(new DriveDistanceAtAbsAngle(-18, 2, 0, 1, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
+    	addSequential(new CanSnatchFinish());
+    	addSequential(new DriveDistanceAtAbsAngle(60, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
+    	addSequential(new TurnGyroAbs(-90,5));
+    	addSequential(new SetArmPosition(200.0, 1.0, 2.0));
+    	addSequential(new CenterGrabberOpen());
+    	addSequential(new SetArmPosition(217.0, 1.0, 1.5));
+    	addSequential(new DriveDistanceAtRelAngle_NoTurn(-9.0, 2, 0, 2)); //distance, distanceTolerance, angle, timeout, stopAtEnd
+    	addSequential(new CenterGrabberClose());
+    	
     }
 }
