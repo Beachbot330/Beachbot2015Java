@@ -91,7 +91,6 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("DoNothing", new DoNothing());
         autoChooser.addObject("KitchenSinkConQueso", new KitchenSinkConQueso());
         autoChooser.addObject("TresFideos", new TresFideos());
-        autoChooser.addObject("CanSnatchAuto", new CanSnatchAuto());
         autoChooser.addObject("NoMasQueso", new NoMasQueso());
         autoChooser.addObject("NachoJalepeno", new NachoJalepeno());
 
