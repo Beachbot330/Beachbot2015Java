@@ -41,7 +41,7 @@ public class CanSnatchFinish extends BBCommandGroup {
         // arm.
     	
     	addSequential(new CenterGrabberClose());
-    	addSequential(new Wait(0.5));
+    	addSequential(new Wait(0.1));
     	
     	//Pickup the can
     	addSequential(new SetArmPosition(90.0, 1.0, 1.5));

@@ -1,5 +1,14 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="WristSetpoint" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="265"/>
+	</widget>
+	<widget field="CanSnatchFinish" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="542"/>
+	</widget>
+	<widget field="CanSnatchStart" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="508"/>
+	</widget>
 	<widget field="DriveTrainEncoderDistanceL" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="244"/>
 	</widget>

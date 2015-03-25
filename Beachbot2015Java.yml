@@ -2261,6 +2261,14 @@ Children:
         name: Add to SendableChooser, validators: null, value: true}
     Base: AutoCommand
     Name: NoMasQueso
+  - Children: []
+    Properties:
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Button on SmartDashboard, validators: null, value: false}
+      Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Add to SendableChooser, validators: null, value: true}
+    Base: AutoCommand
+    Name: NachoJalepeno
   Properties: {}
   Base: Commands
   Name: Commands

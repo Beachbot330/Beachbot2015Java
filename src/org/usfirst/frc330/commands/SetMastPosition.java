@@ -53,8 +53,6 @@ public class  SetMastPosition extends BBCommand {
     	Robot.mast.enableMast();
     	String msg = "SetMastPosition--- Angle: " + angle + " Tolerance: " + tolerance;
     	Robot.logger.println(msg, true);
-    	msg = "Is it on?   " + Robot.mast.isMastEnable();
-    	Robot.logger.println(msg, true);
     	if (timeout >= 0.0)
     		{setTimeout(timeout);}
     	else
@@ -67,6 +65,10 @@ public class  SetMastPosition extends BBCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if (isTimedOut())
+    	{
+    		Robot.logger.println("SetMastPosition setpoint: " + this.angle + "   Position at timeout: " + Robot.mast.getMastAngle());
+    	}
     	return (Robot.mast.onMastTarget() || isTimedOut());
     }
 

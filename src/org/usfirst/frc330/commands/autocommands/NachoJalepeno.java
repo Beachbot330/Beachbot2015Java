@@ -10,11 +10,20 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
-import org.usfirst.frc330.commands.*;
-import org.usfirst.frc330.commands.commandgroups.*;
-import org.usfirst.frc330.conditionalWrappers.MoveArmToRear;
+import org.usfirst.frc330.commands.CenterGrabberClose;
+import org.usfirst.frc330.commands.CenterGrabberOpen;
+import org.usfirst.frc330.commands.CheckDone;
+import org.usfirst.frc330.commands.CheckDoneGroup;
+import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
+import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
+import org.usfirst.frc330.commands.DriveDistanceAtRelAngle_NoTurn;
+import org.usfirst.frc330.commands.SetArmPosition;
+import org.usfirst.frc330.commands.ShiftLow;
+import org.usfirst.frc330.commands.TurnGyroAbs;
+import org.usfirst.frc330.commands.Wait;
+import org.usfirst.frc330.commands.commandgroups.CanSnatchFinish;
+import org.usfirst.frc330.commands.commandgroups.CanSnatchStart;
 import org.usfirst.frc330.constants.ChassisConst;
-import org.usfirst.frc330.constants.MastPos;
 import org.usfirst.frc330.wpilibj.PIDGains;
 
 import edu.wpi.first.wpilibj.command.BBCommand;
@@ -23,9 +32,9 @@ import edu.wpi.first.wpilibj.command.BBCommandGroup;
 /**
  *
  */
-public class CanSnatchAuto extends BBCommandGroup {
+public class NachoJalepeno extends BBCommandGroup {
     
-    public  CanSnatchAuto() {
+    public  NachoJalepeno() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -42,6 +51,7 @@ public class CanSnatchAuto extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
     	addSequential(new ShiftLow());
     	BBCommand driveCommand = new DriveDistanceAtAbsAngle_NoTurn(12, 2, 0, 1, false); //  distance, tolerance, angle, timeout, stopAtEnd
     	addParallel(driveCommand); //distance, distanceTolerance, angle, timeout, stopAtEnd    	
@@ -64,20 +74,7 @@ public class CanSnatchAuto extends BBCommandGroup {
     	addSequential(new CenterGrabberOpen());
     	addSequential(new SetArmPosition(217.0, 1.0, 1.5));
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-9.0, 0.0, 2.0, 1.0)); //distance, angle, tolerance, timeout
+    	addSequential(new Wait(0.4));
     	addSequential(new CenterGrabberClose());
-    	
     }
 }
-
-//addSequential(new ShiftLow());
-//addParallel(new DriveDistanceAtAbsAngle(12, 2, 0, 1, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd    	
-//addSequential(new CanSnatchStart());
-//addSequential(new DriveDistanceAtAbsAngle(-18, 2, 0, 1, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
-//addSequential(new CanSnatchFinish());
-//addSequential(new DriveDistanceAtAbsAngle(60, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
-//addSequential(new TurnGyroAbs(90,5));
-//addSequential(new SetArmPosition(200.0, 1.0, 2.0));
-//addSequential(new CenterGrabberOpen());
-//addSequential(new SetArmPosition(217.0, 1.0, 1.5));
-//addSequential(new DriveDistanceAtRelAngle_NoTurn(-9.0, 2, 0, 2)); //distance, distanceTolerance, angle, timeout, stopAtEnd
-//addSequential(new CenterGrabberClose());
