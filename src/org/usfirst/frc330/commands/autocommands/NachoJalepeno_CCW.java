@@ -24,9 +24,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class NachoJalepeno extends BBCommandGroup {
+public class NachoJalepeno_CCW extends BBCommandGroup {
     
-    public  NachoJalepeno() {
+    public  NachoJalepeno_CCW() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -43,10 +43,6 @@ public class NachoJalepeno extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-    	// Put boolean option on Dashboard
-    	String ccw = new String("CCW Rotation");
-    	SmartDashboard.putBoolean(ccw, false);
     	
     	addSequential(new ShiftLow());
     	//BBCommand driveCommand = new DriveDistanceAtAbsAngle_NoTurn(12, 2, 0, 1, false); //  distance, tolerance, angle, timeout, stopAtEnd
@@ -74,11 +70,10 @@ public class NachoJalepeno extends BBCommandGroup {
     	addSequential(new DriveDistanceAtAbsAngle(72, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     	// 72 was 60
     	//addSequential(new NachoJalapenoTurn(ccw));
-    	addSequential(new TurnGyroAbs(90,5));
+    	addSequential(new TurnGyroAbs(-90,5));
     	addSequential(new SetArmPosition(200.0, 1.0, 2.0));
     	addSequential(new CenterGrabberOpen());
     	addSequential(new SetArmPosition(217.0, 1.0, 1.5));
-    	//addSequential(new NachoJalapenoDrive(ccw));
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-9.0, 0.0, 2.0, 1.0));
     	addSequential(new Wait(0.4));
     	addSequential(new CenterGrabberClose());

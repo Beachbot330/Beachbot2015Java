@@ -9,23 +9,24 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc330.commands.commandgroups;
-import org.usfirst.frc330.commands.CenterGrabberOpen;
-import org.usfirst.frc330.commands.SetArmPosition;
-import org.usfirst.frc330.commands.SetMastPosition;
-import org.usfirst.frc330.commands.SetWristAngle;
-import org.usfirst.frc330.commands.Wait;
-import org.usfirst.frc330.conditionalWrappers.MoveArmToRear;
-import org.usfirst.frc330.constants.MastPos;
+package org.usfirst.frc330.commands.autocommands;
+import org.usfirst.frc330.commands.*;
+import org.usfirst.frc330.commands.commandgroups.CanSnatchFinish;
+import org.usfirst.frc330.commands.commandgroups.CanSnatchStart;
+import org.usfirst.frc330.conditionalWrappers.*;
+import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
 
+import edu.wpi.first.wpilibj.command.BBCommand;
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class CanSnatchStart extends BBCommandGroup {
+public class SlicedJalapeno extends BBCommandGroup {
     
-    public  CanSnatchStart() {
+    public  SlicedJalapeno() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -43,23 +44,35 @@ public class CanSnatchStart extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	addSequential(new ShiftLow());
     	addSequential(new MoveArmToRear());
     	addParallel(new SetArmPosition(90.0, 1.0, 1.5));
-//    	addSequential(new Wait(0.5));
     	
     	//Open Center Grabber
     	addSequential(new CenterGrabberOpen());
+    	
+    	addSequential(new TurnGyroAbs(7.0, 3.0, 0.2, false));
+    	//double angle, double tolerance, double timeout, boolean stopAtEnd
+    	
+    	PIDGains DriveLow_sixty = new PIDGains(0.1, 0, 0, 0, 0.6, 0.05, "DriveLow_sixty");
+    	//double p, double i, double d, double f, double maxOutput, double maxOutputStep, String name
+    	
+    	addSequential(new DriveWaypointBackward(-6, -17, 1.0, 1.0, true, DriveLow_sixty, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh));
+    	//x, y, tolerance, timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh
     	
     	//Lower mast
     	//addSequential(new SetMastPosition(MastPos.rearLimitAngle, 1.0, 1.0)); //angle tol timeout
     	addSequential(new SetMastPosition(145.0, 1.0, 1.0)); //angle tol timeout
     	
     	//Aim hand, lower arm
-    	addParallel(new SetWristAngle(190.0,1.0,1.5));
-    	addSequential(new SetArmPosition(175.0, 1.5, 1.5)); //angle tolerance timeout
-    	// was 170
-//    	addSequential(new Wait(0.5));
-    	addParallel(new SetWristAngle(180.0,1.0,1.5));
-    	addSequential(new SetArmPosition(175.0, 1.5, 1.5));
+    	addParallel(new SetWristAngle(205.0,1.0,1.5));
+    	addParallel(new SetArmPosition(165.0, 1.5, 1.5)); //angle tolerance timeout
+    	
+    	addSequential(new Wait(1.00)); //DELETE
+    	
+    	addParallel(new DriveDistanceAtRelAngle_NoTurn(72, 0.0, 2.0, 2.0));
+    	//double distance, double angle, double tolerance, double timeout
+    	addSequential(new Wait(0.2));
+    	addParallel(new SetWristAngle(215.0,1.0,1.5));
     }
 }
