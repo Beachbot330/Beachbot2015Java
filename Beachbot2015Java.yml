@@ -2128,7 +2128,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Button on SmartDashboard, validators: null, value: false}
       Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Add to SendableChooser, validators: null, value: true}
+        name: Add to SendableChooser, validators: null, value: false}
     Base: AutoCommand
     Name: KitchenSinkConQueso
   - Children: []
@@ -2250,7 +2250,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Button on SmartDashboard, validators: null, value: false}
       Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Add to SendableChooser, validators: null, value: true}
+        name: Add to SendableChooser, validators: null, value: false}
     Base: AutoCommand
     Name: NoMasQueso
   - Children: []

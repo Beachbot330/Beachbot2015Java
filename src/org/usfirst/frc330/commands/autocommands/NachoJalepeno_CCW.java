@@ -51,7 +51,7 @@ public class NachoJalepeno_CCW extends BBCommandGroup {
     	addParallel(snatch);
     	//addSequential(new CheckDone(driveCommand));
     	
-    	addSequential(new Wait(1.3));
+    	addSequential(new Wait(1.5));
     	
     	PIDGains DriveLow_forty = new PIDGains(0.1, 0, 0, 0, 0.4, 0.05, "DriveLow_forty");
     	//double p, double i, double d, double f, double maxOutput, double maxOutputStep, String name
