@@ -1,51 +1,60 @@
 <xml version="1.0">
 <dashboard>
 	<widget field="WristSetpoint" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="265"/>
+		<location x="0" y="280"/>
 	</widget>
-	<widget field="CanSnatchFinish" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="542"/>
+	<widget field="AdjustHandPositionDown" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="246"/>
 	</widget>
-	<widget field="CanSnatchStart" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="508"/>
+	<widget field="HandDown" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="212"/>
+	</widget>
+	<widget field="ManualWrist" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="178"/>
+	</widget>
+	<widget field="ManualArm" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="144"/>
+	</widget>
+	<widget field="SetMastVert" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="110"/>
+	</widget>
+	<widget field="SetMastStretch" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="76"/>
+	</widget>
+	<widget field="CanSnatch" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="42"/>
 	</widget>
 	<widget field="DriveTrainEncoderDistanceL" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="244"/>
+		<location x="0" y="21"/>
 	</widget>
 	<widget field="DriveTrainEncoderDistanceR" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="82"/>
+		<location x="0" y="0"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="707" y="55"/>
+		<property name="Text" value="CCW"/>
+		<property name="Horizontal Alignment" value="Left"/>
+	</static-widget>
+	<widget field="CCW Rotation" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.CheckBox">
+		<location x="684" y="51"/>
+	</widget>
+	<widget field="CanSnatchFinish" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="4" y="530"/>
+	</widget>
+	<widget field="CanSnatchStart" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="6" y="508"/>
 	</widget>
 	<widget field="FrontSideManualMast" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="210"/>
+		<location x="696" y="237"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.VideoStreamViewerExtension">
-		<location x="817" y="336"/>
-		<width>226</width>
-		<height>164</height>
-	</static-widget>
 	<widget field="Shift" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="487"/>
+		<location x="262" y="274"/>
 	</widget>
 	<widget field="DriveTrainDistanceR" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="462" y="213"/>
 	</widget>
 	<widget field="DriveTrainDistanceL" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="465" y="192"/>
-	</widget>
-	<widget field="ManualWrist" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="453"/>
-	</widget>
-	<widget field="ManualArm" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="419"/>
-	</widget>
-	<widget field="SetMastStretch" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="349"/>
-	</widget>
-	<widget field="SetMastVert" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="176"/>
-	</widget>
-	<widget field="CanSnatch" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="142"/>
 	</widget>
 	<widget field="Pressure" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.SimpleDial">
 		<location x="1271" y="393"/>
@@ -54,29 +63,26 @@
 		<property name="Upper Limit" value="140.0"/>
 	</widget>
 	<widget field="MoveLiftToToteRX" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="385"/>
+		<location x="769" y="550"/>
 	</widget>
 	<widget field="Autonomous mode chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
 		<location x="657" y="14"/>
 		<property name="Use Radio Buttons" value="false"/>
 	</widget>
 	<widget field="CloseAllGrabbers" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="451" y="530"/>
+		<location x="398" y="502"/>
 	</widget>
 	<widget field="RobotHeight" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="328"/>
+		<location x="679" y="80"/>
 	</widget>
 	<widget field="ManualMast" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="294"/>
+		<location x="743" y="214"/>
 	</widget>
 	<widget field="ResetGyro" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="455" y="3"/>
 	</widget>
 	<widget field="CalibrateArmVertical" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="1075" y="527"/>
-	</widget>
-	<widget field="HandDown" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="767" y="525"/>
 	</widget>
 	<widget field="ChassisX" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="326" y="192"/>
@@ -85,34 +91,34 @@
 		<location x="326" y="216"/>
 	</widget>
 	<widget field="WristPot" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="61"/>
+		<location x="248" y="391"/>
 	</widget>
 	<widget field="LiftPot" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="40"/>
+		<location x="931" y="510"/>
 	</widget>
 	<widget field="WristOverride" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="405" y="377"/>
+		<location x="222" y="413"/>
 	</widget>
 	<widget field="WristAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="620" y="362"/>
+		<location x="427" y="393"/>
 	</widget>
 	<widget field="CalibrateLiftBottomLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="1058" y="388"/>
 	</widget>
 	<widget field="WristPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
-		<location x="631" y="411"/>
+		<location x="557" y="409"/>
 	</widget>
 	<widget field="WristAngleFromArm" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="578" y="384"/>
+		<location x="385" y="414"/>
 	</widget>
 	<widget field="LiftPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="499" y="716"/>
+		<location x="785" y="515"/>
 	</widget>
 	<widget field="CalibrateLiftTopLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="1074" y="367"/>
 	</widget>
 	<widget field="ToggleSideSet" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="108"/>
+		<location x="1086" y="180"/>
 	</widget>
 	<widget field="CalibrateWristRearLimit" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="1059" y="435"/>
@@ -133,25 +139,25 @@
 		<location x="1063" y="547"/>
 	</widget>
 	<widget field="CloseZachStacker" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="623" y="592"/>
+		<location x="843" y="316"/>
 	</widget>
 	<widget field="OpenZachStacker" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="623" y="615"/>
+		<location x="843" y="338"/>
 	</widget>
 	<widget field="ManualLift" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="514" y="672"/>
+		<location x="788" y="483"/>
 	</widget>
 	<widget field="LiftLeftCurrent" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="623" y="791"/>
+		<location x="892" y="532"/>
 	</widget>
 	<widget field="TotePincher" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="812" y="805"/>
+		<location x="1002" y="348"/>
 	</widget>
 	<widget field="RightDrive1Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="533" y="273"/>
+		<location x="452" y="266"/>
 	</widget>
 	<widget field="LeftDrive1Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="536" y="250"/>
+		<location x="458" y="245"/>
 	</widget>
 	<widget field="ChassisAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="306" y="10"/>
@@ -166,13 +172,13 @@
 		<height>16</height>
 	</static-widget>
 	<widget field="RightGrabberOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="248" y="502"/>
+		<location x="216" y="485"/>
 	</widget>
 	<widget field="ShiftLow" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="200" y="209"/>
 	</widget>
 	<widget field="LeftGrabberOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="255" y="442"/>
+		<location x="220" y="441"/>
 	</widget>
 	<widget field="ShiftHigh" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="198" y="186"/>
@@ -181,10 +187,10 @@
 		<location x="905" y="55"/>
 	</widget>
 	<widget field="MastPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
-		<location x="1075" y="200"/>
+		<location x="886" y="159"/>
 	</widget>
 	<widget field="DropOffTotes" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="796" y="679"/>
+		<location x="772" y="390"/>
 	</widget>
 	<widget field="gyroPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
 		<location x="230" y="41"/>
@@ -196,55 +202,52 @@
 		<location x="500" y="41"/>
 	</widget>
 	<widget field="OpenAllGrabbers" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="257" y="529"/>
+		<location x="225" y="507"/>
 	</widget>
 	<widget field="CenterGrabberOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="240" y="473"/>
+		<location x="207" y="463"/>
 	</widget>
 	<widget field="CarryTotes" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="804" y="771"/>
+		<location x="784" y="456"/>
 	</widget>
 	<widget field="ReceiveTote" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="800" y="743"/>
+		<location x="778" y="434"/>
 	</widget>
 	<widget field="LoadSecondTote" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="787" y="711"/>
+		<location x="758" y="412"/>
 	</widget>
 	<widget field="LiftPID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
-		<location x="648" y="651"/>
+		<location x="918" y="373"/>
 	</widget>
 	<widget field="KillAll" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="7" y="6"/>
+		<location x="849" y="-3"/>
 	</widget>
 	<widget field="RightGrabberClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="447" y="502"/>
+		<location x="388" y="481"/>
 	</widget>
 	<widget field="LeftGrabberClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="455" y="444"/>
+		<location x="394" y="439"/>
 	</widget>
 	<widget field="CenterGrabberClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="440" y="471"/>
+		<location x="380" y="460"/>
 	</widget>
 	<widget field="BuzzerBeepTimed" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="15" y="577"/>
-	</widget>
-	<widget field="AdjustHandPositionDown" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="273" y="406"/>
+		<location x="1" y="444"/>
 	</widget>
 	<widget field="StackThree" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="807" y="648"/>
+		<location x="784" y="367"/>
 	</widget>
 	<widget field="leftDrivePID" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
 		<location x="364" y="41"/>
 	</widget>
 	<widget field="MastAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="919" y="286"/>
+		<location x="757" y="196"/>
 	</widget>
 	<widget field="ArmAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="921" y="118"/>
 	</widget>
 	<widget field="MastOverride" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="910" y="258"/>
+		<location x="742" y="174"/>
 	</widget>
 	<widget field="ArmOverride" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="908" y="92"/>

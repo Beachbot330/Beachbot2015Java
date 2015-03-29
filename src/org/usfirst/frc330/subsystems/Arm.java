@@ -105,7 +105,7 @@ public class Arm extends Subsystem {
     	};
     	Robot.csvLogger.add("ArmAngle", temp);
     	
-    	temp = new CSVLoggable() {
+    	temp = new CSVLoggable(true) {
 			public double get() { return getArmPotAvgVoltage(); }
     	};
     	Robot.csvLogger.add("ArmPotAvgVoltage", temp);
