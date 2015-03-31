@@ -98,7 +98,7 @@ public class Robot extends IterativeRobot {
         //autoChooser.addObject("TucanSam", new TucanSam());
         //autoChooser.addObject("JoeTest", new JoeTest());
         autoChooser.addObject("NachoJalepeno_CCW", new NachoJalepeno_CCW());
-        autoChooser.addObject("QuieroUnoJalapeno", new QuieroUnoJalapeno());
+        //autoChooser.addObject("QuieroUnoJalapeno", new QuieroUnoJalapeno());
         //autoChooser.addObject("SlicedJalapeno", new SlicedJalapeno());
         //autoChooser.addObject("NoMasQueso", new NoMasQueso());
         //autoChooser.addObject("KitchenSinkConQueso", new KitchenSinkConQueso());
