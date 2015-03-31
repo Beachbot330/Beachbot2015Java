@@ -76,6 +76,6 @@ public class NachoJalepeno_CCW extends BBCommandGroup {
     	addSequential(new SetArmPosition(217.0, 1.0, 1.5));
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-9.0, 0.0, 2.0, 1.0));
     	addSequential(new Wait(0.4));
-    	addSequential(new CenterGrabberClose());
+    	//addSequential(new CenterGrabberClose());
     }
 }

@@ -81,6 +81,6 @@ public class NachoJalepeno extends BBCommandGroup {
     	//addSequential(new NachoJalapenoDrive(ccw));
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-9.0, 0.0, 2.0, 1.0));
     	addSequential(new Wait(0.4));
-    	addSequential(new CenterGrabberClose());
+    	//addSequential(new CenterGrabberClose());
     }
 }

@@ -1,5 +1,8 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="ArmPotAvgVoltage" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="1063" y="212"/>
+	</widget>
 	<widget field="WristSetpoint" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="280"/>
 	</widget>
