@@ -26,7 +26,8 @@ public final class LiftPos {
 	public static final double stack3 = 			39.0;
 	
 	public static final double bottomLimitHeight = 0; //JR 2-14
-	public static final double topLimitHeight = 38.5; //JR 2-14
+	//public static final double topLimitHeight = 38.5; //JR 2-14
+	public static final double topLimitHeight = 38.5-1.125; //AP 4-1
 	
 	//Current
 	public static final double currentLowerLimit = -30; //JR 2-16 highest current seen was about 18amps

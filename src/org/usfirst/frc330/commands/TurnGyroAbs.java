@@ -80,6 +80,7 @@ public class  TurnGyroAbs extends BBCommand {
         Robot.chassis.gyroPID.setAbsoluteTolerance(tolerance);
         Robot.chassis.gyroPID.setSetpoint(angle);
         Robot.logger.println("TurnGyroAbs Setpoint: " + angle);
+        Robot.logger.println("Max output: " + gains.getMaxOutput());
         if (enable) 
             Robot.chassis.gyroPID.enable();
     }

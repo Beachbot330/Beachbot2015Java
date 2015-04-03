@@ -100,7 +100,7 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("NachoJalepeno_CCW", new NachoJalepeno_CCW());
         //autoChooser.addObject("QuieroUnoJalapeno", new QuieroUnoJalapeno());
         //autoChooser.addObject("SlicedJalapeno", new SlicedJalapeno());
-        //autoChooser.addObject("NoMasQueso", new NoMasQueso());
+        autoChooser.addObject("NoMasQueso", new NoMasQueso());
         //autoChooser.addObject("KitchenSinkConQueso", new KitchenSinkConQueso());
         
         

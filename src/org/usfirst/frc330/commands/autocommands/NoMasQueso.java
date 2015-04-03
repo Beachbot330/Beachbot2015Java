@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
+import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.commands.ArmPID_on;
 import org.usfirst.frc330.commands.BuzzerBeepTimed;
 import org.usfirst.frc330.commands.CenterGrabberClose;
@@ -63,31 +64,26 @@ public class NoMasQueso extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	PIDGains GyroLow = new PIDGains(0.3, 0, 0, 0, 1.0, 0.5, "HardScrub"); //p,  i,  d,  f,  maxOutput, maxOutputStep, name
+    	
     	//Hold joint angles, open grabbers, close center grabber
     	addParallel(new ArmPID_on());
     	addParallel(new WristPID_on());
-    	//addParallel(new LiftPID_on());
     	addSequential(new ShiftLow());
     	addSequential(new OpenAllGrabbers());
-    	//addParallel(new MastPID_on());
-    	addSequential(new SetMastPosition(120.0, 1.0, 0.3));
-    	//addSequential(new DriveDistance(2,0.5,0.5, true));
     	addParallel(new CenterGrabberClose());
     	addSequential(new Wait(0.1));
     	
-    	//Adjust the mast to vertical and start raising the arm
+    	//Start raising the arm
     	addParallel(new SetWristAngle(5.0));
-    	addSequential(new SetArmPosition(-12.9, 1.0, 0.1));  //Plan on it timing out, and the feedforward finishing this
-    	addParallel(new SetMastPosition(MastPos.vertical, 3.0));
-    	addSequential(new Wait(0.1));
     	addParallel(new SetArmPosition(33.0, 2.0));
-    	addSequential(new Wait(0.3));
-    	//addParallel(new SetWristAngle(5.0));
+    	addSequential(new Wait(0.1));
     	
     	//Drive to second station while loading first tote
-    	BBCommand driveCommand = new DriveWaypoint(0.0, 73.0, 4.0, 3.0, true);  //X Y Tol Timeout Stop
+    	BBCommand driveCommand = new DriveWaypoint(0.0, 83.0, 3.0, 3.0, true);  //X Y Tol Timeout Stop
     	addParallel(driveCommand);
     	addSequential(new SetLiftPosition(LiftPos.dropOff));
+    	addSequential(new Wait(0.5));
     	addSequential(new SetLiftPosition(LiftPos.justOverOneTote));
     	addSequential(new Wait(0.25));
     	
@@ -96,7 +92,7 @@ public class NoMasQueso extends BBCommandGroup {
     	addSequential(new CheckDone(driveCommand));
     	addParallel(new DriveDistanceAtRelAngle_NoTurn(2.0, 0.0, 0.5));  //Dist Angle Tol
     	addSequential(new Wait(0.7));
-    	addParallel(new SetLiftPosition(17.3));
+    	addParallel(new SetLiftPosition(3.0));
     	addSequential(new Wait(0.1));  //reduced from 0.2
     
     	//Drive back from second tote and turn
@@ -104,10 +100,10 @@ public class NoMasQueso extends BBCommandGroup {
     	driveCommand = new DriveDistanceAtRelAngle_NoTurn(-42 , 0.0, 1.5);  //double distance, double angle, double tolerance, double timeout
     	addParallel(driveCommand);  //Dist Angl Tol
     	addSequential(new Wait(1.3));
+    	addParallel(new SetLiftPosition(17.3));
     	addParallel(moveArm);
     	addSequential(new CheckDone(driveCommand));
-    	PIDGains DriveLow = new PIDGains(0.2, 0, 0, 0, 0.6, ChassisConst.defaultMaxOutputStep, "SlowDriveLowConQueso"); //p,  i,  d,  f,  maxOutput, maxOutputStep, name
-    	addSequential(new TurnGyroAbs(14.0, 1.0, 2.0, true, true, DriveLow, ChassisConst.GyroTurnHigh));  //Angle Tol Timeout
+    	addSequential(new TurnGyroAbs(14.0, 1.0, 3.0, true, true));  //Angle Tol Timeout
     	addSequential(new Wait(0.2));
     	
     	//Drive Forward and Grab Can1 and Can2 at angle
@@ -115,78 +111,42 @@ public class NoMasQueso extends BBCommandGroup {
     	addSequential(new CenterGrabberOpen());
     	addParallel(new SetWristAngle(0.0, 3.0, 0.5));  //angle tolerance timeout
     	addSequential(new SetArmPosition(-35, 2.0));
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(38.0 , 14.0, 2.0));  //Dist Angl Tol
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(44.0 , 14.0, 2.0));  //Dist Angl Tol
     	addSequential(new LeftGrabberClose());
     	addSequential(new CenterGrabberClose());
     	addSequential(new Wait(0.1));
     	
     	//Raise the Arm and Turn towards the third station
-    	addSequential(new SetArmPosition(-28, 5.0));
-    	addSequential(new TurnGyroAbs(180.0, 2.0, 2.0, true, true, DriveLow, ChassisConst.GyroTurnHigh));  //Angle Tolerance Timeout
+    	addSequential(new SetArmPosition(-20, 5.0));
+    	addSequential(new TurnGyroAbs(165.9, 2.0, 4.0, true, true, GyroLow, ChassisConst.GyroTurnHigh));  //Angle Tolerance Timeout
     	addSequential(new Wait(3.30));
     	
     	//Drive to the third station
-    	PIDGains GyroLow = new PIDGains(0.06, 0.00, 0.0, 0.0, 1.0, 1.0, "GyroLow"); //p,  i,  d,  f,  maxOutput, maxOutputStep
-    	addSequential(new DriveWaypoint(0.0, 155.0, 4.0, 3.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, GyroLow, ChassisConst.GyroDriveHigh));
-    	
-    	//Straighten Out and drive to left behind can1
-    	double skewedAngle = 3.0;
-    	addSequential(new TurnGyroAbs(skewedAngle, 0.5, 1.0, true, true, DriveLow, ChassisConst.GyroTurnHigh));  //Angle Tolerance Timeout
-    	addSequential(new Wait(0.3));
+    	addParallel(new SetArmPosition(-15, 2.0));
+    	addSequential(new DriveWaypoint(9.0, 16.0, 4.0, 3.0, true));
     	addSequential(new Wait(3.30));
-    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(42.0 , skewedAngle, 2.0);
-    	addParallel(driveCommand);  //Dist Angl Tol
-    	addSequential(new CheckDone(driveCommand));
+    	
+    	//Grab the third can, lift arm
     	addSequential(new RightGrabberClose());
-    	addSequential(new Wait(0.2));
-    	
-    	//Lift Cans
-    	addParallel(new SetArmPosition(-10, 5.0));
-    	
-    	//Drive to last location
-    	addSequential(new TurnGyroWaypoint(0.0, 155.0, 4.0, 3.0, GyroLow, ChassisConst.GyroDriveHigh));
-    	addSequential(new Wait(3.30));
-    	driveCommand = new DriveWaypoint(0.0, 155.0, 4.0, 3.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, GyroLow, ChassisConst.GyroDriveHigh);
-    	addParallel(driveCommand);
-    	addParallel(new SetLiftPosition(LiftPos.justOverOneTote));
-    	addSequential(new Wait(0.6));
-    	addParallel(new SetArmPosition(-8.0, 1.0));
-    	addSequential(new CheckDone(driveCommand));
+    	addSequential(new SetArmPosition(90, 2.0));
     	addSequential(new Wait(3.30));
     	
-    	//Grab last can
-    	addParallel(new CenterGrabberClose());
-    	addSequential(new Wait(0.2));
-    	addParallel(new SetArmPosition(90.0, 1.0));
+    	//Drive to third tote
+    	addSequential(new DriveWaypoint(2.0, -50.0, 4.0, 3.0, true, ChassisConst.DriveLow, ChassisConst.DriveHigh, GyroLow, ChassisConst.GyroDriveHigh));
     	addSequential(new Wait(3.30));
     	
-    	//Drive to last tote
-    	addSequential(new DriveWaypoint(0.0, 174.0, 4.0, 3.0, true));
+    	//Pickup Third Tote
+    	addSequential(new SetLiftPosition(LiftPos.dropOff), 0.5);
+    	addSequential(new SetLiftPosition(3.0));
     	addSequential(new Wait(3.30));
     	
-    	//Load third tote
-    	addSequential(new SetLiftPosition(LiftPos.dropOff));
+    	//Turn towards finish (away from)
+    	addSequential(new TurnGyroAbs(360, 2.0, 4.0, true, true, GyroLow, ChassisConst.GyroTurnHigh));  //Angle Tolerance Timeout
     	addSequential(new Wait(3.30));
-    	addParallel(new DriveDistanceAtRelAngle_NoTurn(6.0, 0.0, 1.5));  //Dist Angle Tol
-    	addSequential(new Wait(0.7));
-    	addParallel(new SetLiftPosition(LiftPos.carry));
-    	addSequential(new Wait(0.3));  //could possibly reduce one tenth
-    	
-    	//Grab third Can
-    	addParallel(new CenterGrabberClose());
-    	addSequential(new Wait(0.1));
-    	
-    	
-    	//Turn 90
-    	addSequential(new TurnAngleAggressive(90.0, 2.0));  //angle, timeout
-    	addSequential(new ShiftHigh());
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(70.0, 90.0, 4.0));  //Dist Angl Tol
-    	addSequential(new SetLiftPosition(LiftPos.dropOff));
-    	addSequential(new ShiftLow());
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(-10.0, 90.0, 4.0));  //Dist Angl Tol
-    	addSequential(new BuzzerBeepTimed());
-    	addSequential(new BuzzerBeepTimed());
-    	addSequential(new BuzzerBeepTimed());
-    	
+
+    }
+    
+    protected void end() {
+    	Robot.logger.println("NoMasQueso end time: " + this.timeSinceInitialized());
     }
 }
