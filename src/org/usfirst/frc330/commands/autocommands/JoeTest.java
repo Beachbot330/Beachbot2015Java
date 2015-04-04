@@ -17,6 +17,7 @@ import org.usfirst.frc330.commands.DriveWaypoint;
 import org.usfirst.frc330.commands.DriveWaypointBackward;
 import org.usfirst.frc330.commands.RotateAngleAbs;
 import org.usfirst.frc330.commands.SetArmPosition;
+import org.usfirst.frc330.commands.SetLiftPosition;
 import org.usfirst.frc330.commands.SetWristAngle;
 import org.usfirst.frc330.commands.ShiftHigh;
 import org.usfirst.frc330.commands.ShiftLow;
@@ -25,6 +26,7 @@ import org.usfirst.frc330.commands.TurnGyroRel;
 import org.usfirst.frc330.commands.TurnGyroWaypoint;
 import org.usfirst.frc330.commands.TurnGyroWaypointBackward;
 import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -51,15 +53,21 @@ public class JoeTest extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	PIDGains GyroLow = new PIDGains(0.3, 0, 0, 0, 1.0, 0.02, "HardScrub"); //p,  i,  d,  f,  maxOutput, maxOutputStep, name
+    	
     	addSequential(new ShiftLow());
-    	addSequential(new WaitCommand(1));    	
-    	addSequential(new TurnGyroWaypointBackward(-24,-24,5,5));
-    	addSequential(new WaitCommand(1));
+    	addSequential(new WaitCommand(1));   
+    	addParallel(new SetLiftPosition(17.3));
+    	addParallel(new SetWristAngle(0.0, 3.0, 0.5));  //angle tolerance timeout
+    	addSequential(new SetArmPosition(-20, 5.0));
+    	addSequential(new RotateAngleAbs(165.9, 2.0, 4.0));  //Angle Tolerance Timeout
+//    	addSequential(new TurnGyroWaypointBackward(-24,-24,5,5));
+//    	addSequential(new WaitCommand(1));
 //    	addSequential(new ShiftHigh());
-    	addSequential(new WaitCommand(1));
-    	addSequential(new DriveWaypointBackward(-24,-24,5,5,false));
+//    	addSequential(new WaitCommand(1));
+//    	addSequential(new DriveWaypointBackward(-24,-24,5,5,false));
 //    	addSequential(new ShiftLow());
-    	addSequential(new WaitCommand(2));
+//    	addSequential(new WaitCommand(2));
 //    	addSequential(new TurnGyroWaypoint(48,96,0,5.0,ChassisConst.GyroTurnLow, ChassisConst.GyroTurnHigh));
 //    	addSequential(new ShiftHigh());
 //    	addSequential(new WaitCommand(2));
