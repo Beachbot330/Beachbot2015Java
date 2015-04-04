@@ -20,8 +20,8 @@ import edu.wpi.first.wpilibj.Timer;
  * Timestamps all log entries.
  */
 public class Logger {
-	private File roboRIOFile, usbFile, roboRIOPref, usbPref, pref;
-	private BufferedWriter roboRIOWriter, usbWriter, roboRIOPrefWriter, usbPrefWriter;
+	private File roboRIOFile, usbFile;
+	private BufferedWriter roboRIOWriter, usbWriter;
 	private String m_roboRIOPath, m_usbPath, m_filePrefix;
 	private GregorianCalendar calendar = new java.util.GregorianCalendar();
 	private java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS");
@@ -88,18 +88,18 @@ public class Logger {
 	 */
 	public void updateDate() {
 		boolean success;
-		if (calendar.get(calendar.YEAR) < 2015) {
+		if (calendar.get(GregorianCalendar.YEAR) < 2015) {
 			calendar.setTimeInMillis(System.currentTimeMillis() - (long)(Timer.getFPGATimestamp()*1000));
 			date = calendar.getTime();
 			
-			if (calendar.get(calendar.YEAR) >= 2015) {
-				File tempFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(date));
+			if (calendar.get(GregorianCalendar.YEAR) >= 2015) {
+				File tempFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
 				success = roboRIOFile.renameTo(tempFile);
-				println("RoboRIO File Renamed: " + success + " " + m_filePrefix + "_" + sdf.format(date));
-				tempFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(date));
+				println("RoboRIO File Renamed: " + success + " " + m_filePrefix + "_" + sdf.format(date) + ".txt");
+				tempFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
 				success = usbFile.renameTo(tempFile);
 				usbWorking &= success;
-				println("USB File Renamed: " + success + " " + m_filePrefix + "_" + sdf.format(date));
+				println("USB File Renamed: " + success + " " + m_filePrefix + "_" + sdf.format(date) + ".txt");
 			}
 		}
 	}
