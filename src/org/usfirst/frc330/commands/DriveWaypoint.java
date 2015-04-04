@@ -82,5 +82,13 @@ public class DriveWaypoint extends DriveDistanceAtAbsAngle_NoTurn {
     	Robot.logger.println("DriveWaypoint Final Location   X: " + Robot.chassis.getX() + "  Y: " + Robot.chassis.getY());
         super.end();
     }
+    
+    protected boolean isFinished() {
+        if ((Robot.chassis.leftDrivePID.onTarget() && Robot.chassis.rightDrivePID.onTarget()) || isTimedOut())
+        {
+                return true;            
+        }
+        return false;
+    }
 
 }
