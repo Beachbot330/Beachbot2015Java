@@ -19,7 +19,7 @@ import org.usfirst.frc330.wpilibj.PIDGains;
  *
  */
 public class  TurnGyroAbs extends BBCommand {
-    double angle, tolerance;
+    double angle, tolerance, maxOutput, maxOutputStep, maxOutputMax;
     boolean stopAtEnd = false;
     boolean enable = true;
     PIDGains highGains, lowGains, gains;
@@ -76,9 +76,11 @@ public class  TurnGyroAbs extends BBCommand {
         else
         	gains = highGains;
         Robot.chassis.gyroPID.setPID(gains);
-        Robot.chassis.gyroPID.setMaxOutput(gains.getMaxOutput());
+ //       Robot.chassis.gyroPID.setMaxOutput(gains.getMaxOutput());
         Robot.chassis.gyroPID.setAbsoluteTolerance(tolerance);
         Robot.chassis.gyroPID.setSetpoint(angle);
+        maxOutputMax = gains.getMaxOutput();
+        maxOutputStep = gains.getMaxOutputStep();
         Robot.logger.println("TurnGyroAbs Setpoint: " + angle);
         Robot.logger.println("Max output: " + gains.getMaxOutput());
         if (enable) 
@@ -86,6 +88,11 @@ public class  TurnGyroAbs extends BBCommand {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	maxOutput += maxOutputStep;
+    	if (maxOutput >= maxOutputMax) 
+    		maxOutput = maxOutputMax;
+    	Robot.chassis.leftDrivePID.setMaxOutput(maxOutput);
+        Robot.chassis.rightDrivePID.setMaxOutput(maxOutput);
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
