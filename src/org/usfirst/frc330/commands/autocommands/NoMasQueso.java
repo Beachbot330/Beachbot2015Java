@@ -80,7 +80,7 @@ public class NoMasQueso extends BBCommandGroup {
     	addSequential(new Wait(0.1));
     	
     	//Drive to second station while loading first tote
-    	BBCommand driveCommand = new DriveWaypoint(0.0, 83.0, 3.0, 3.0, true);  //X Y Tol Timeout Stop
+    	BBCommand driveCommand = new DriveWaypoint(0.0, 92.0, 1.5, 3.0, false);  //X Y Tol Timeout Stop
     	addParallel(driveCommand);
     	addSequential(new SetLiftPosition(LiftPos.dropOff));
     	addSequential(new Wait(0.5));
@@ -119,11 +119,11 @@ public class NoMasQueso extends BBCommandGroup {
     	//Raise the Arm and Turn towards the third station
     	addSequential(new SetArmPosition(-20, 5.0));
     	addSequential(new TurnGyroAbs(165.9, 2.0, 4.0, true, true, GyroLow, ChassisConst.GyroTurnHigh));  //Angle Tolerance Timeout
-    	addSequential(new Wait(3.30));
+    	addSequential(new Wait(0.1));
     	
     	//Drive to the third station
     	addParallel(new SetArmPosition(-15, 2.0));
-    	addSequential(new DriveWaypoint(9.0, 16.0, 4.0, 3.0, true));
+    	addSequential(new DriveWaypoint(14.0, 10.0, 2.0, 3.0, false));
     	addSequential(new Wait(3.30));
     	
     	//Grab the third can, lift arm
