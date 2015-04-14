@@ -231,7 +231,13 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 		return getWristAngle();
 	}
 	
-    public void set(double output){
+	boolean wristAtLimit = false;
+	
+    public boolean isWristAtLimit() {
+		return wristAtLimit;
+	}
+
+	public void set(double output){
     	if (Robot.hand.getHeight() > HandConst.handHeightLimit)
     	{
     		double a = Math.sin(Math.toRadians(Robot.mast.getMastAngle())) * MastPos.mastLength;
@@ -246,14 +252,17 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     	if (output < 0 && getAngleFromArm() < (HandConst.frontLimitAngle + 5))
         {
         	wrist.set(0);
+        	wristAtLimit = true;
         }
         else if (output > 0 && getAngleFromArm() > (HandConst.rearLimitAngle - 5))
         {
         	wrist.set(0);
+        	wristAtLimit = true;
         }
         else
         {
         	wrist.set(output);
+        	wristAtLimit = false;
         }
     }
     

@@ -62,7 +62,9 @@ public class  SetWristAngle extends BBCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return (Robot.hand.onTarget() || isTimedOut());
+    	if (Robot.hand.isWristAtLimit())
+    		Robot.logger.println("Wrist At Limit");
+    	return (Robot.hand.onTarget() || isTimedOut() || Robot.hand.isWristAtLimit());
     }
 
     // Called once after isFinished returns true
