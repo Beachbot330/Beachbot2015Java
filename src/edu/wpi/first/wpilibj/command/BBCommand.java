@@ -81,6 +81,8 @@ public class BBCommand extends Command {
 	void _interrupted(){
 		super._interrupted();
 		Robot.logger.println(this.getClass().getName() + " interrupted", false);
+		m_initialized = false;
+		m_completed = true;
 	}
 	
 	public boolean isInitialized() {
