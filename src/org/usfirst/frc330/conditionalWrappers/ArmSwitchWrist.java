@@ -19,8 +19,8 @@ public class ArmSwitchWrist extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	commandOne = new SetWristAngle(0.0, HandConst.tolerance, 3.0);
-    	commandTwo = new SetWristAngle(180.0, HandConst.tolerance, 3.0);
+    	commandOne = new SetWristAngle(0.0, 3.0, 2.0);
+    	commandTwo = new SetWristAngle(180.0, 3.0, 2.0);
     	if(Robot.arm.getIsFront()){
     		commandOne.start();
     	}

@@ -7,7 +7,7 @@ public final class HandConst {
 	private HandConst(){}
 	
 	// Tolerance
-	public static final double tolerance       = 0.1;
+	public static final double tolerance       = 0.5;
 	
 	// PID Constants
 	public static final double proportional    = 0.045; //needed to turn this up during auto programming AP 2-24 (was 0.02)
