@@ -53,6 +53,7 @@ public class  SetArmPosition extends BBCommand {
     		{setTimeout(timeout);}
     	else
     		{setTimeout(9999999);}
+    	Robot.arm.enableArm();
     }
 
     // Called repeatedly when this Command is scheduled to run
