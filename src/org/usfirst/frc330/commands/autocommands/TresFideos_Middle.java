@@ -38,9 +38,9 @@ import edu.wpi.first.wpilibj.command.BBCommandGroup;
 /**
  *
  */
-public class TresFideos extends BBCommandGroup {
+public class TresFideos_Middle extends BBCommandGroup {
     
-    public  TresFideos() {
+    public  TresFideos_Middle() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -116,21 +116,37 @@ public class TresFideos extends BBCommandGroup {
     	addSequential(new CenterGrabberClose());
     	addSequential(new Wait(0.1));
     	
-    	//Drive to Start
-    	addParallel(new SetArmPosition(100.0, 3.0, 0.3));
+    	//Drive halfway to Start
+    	addParallel(new SetArmPosition(75.0, 3.0, 0.3));
     	addSequential(new ShiftHigh());
     	addSequential(new Wait(0.2));
-    	addSequential(new DriveWaypointBackward(20.0, 20.0, 2.0, 2.5, false));  //X, Y, Tol, timeout, stop
+    	addSequential(new DriveWaypointBackward(-63.0, 20.0, 2.0, 2.5, false));  //X, Y, Tol, timeout, stop
     	
-    	//Drive to Finish while lowering arm
+    	//Drive to Finish
     	addSequential(new ShiftLow());
-    	addSequential(new TurnGyroAbs(0.0, 5.0, 2.5, true, true, gyroTurnLow, ChassisConst.GyroTurnHigh)); //angle tolerance timeout stop
-    	addParallel(new SetWristAngle(-10.0));
+    	PIDGains hardScrub = new PIDGains(0.2,0,0,0,0.8,1,"HardScrub");
+    	addSequential(new TurnGyroAbs(0.0, 5.0, 2.5, true, true, hardScrub, ChassisConst.GyroTurnHigh)); //angle tolerance timeout stop
     	
     	//addSequential(new ShiftHigh());
-    	addSequential(new DriveWaypointBackward(20.0, -90.0, 4.0, 2.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));  //X, Y, Tol, timeout, stop  - changed -23 to -19
+    	addSequential(new DriveWaypointBackward(-63.0, -110.0, 4.0, 2.0, true));  //X, Y, Tol, timeout, stop  - changed -23 to -19
     	addSequential(new Wait(0.2));
+    	addParallel(new SetArmPosition(100.0, 3.0, 0.3));
+    	addParallel(new SetWristAngle(-10.0));
     }
 }
 
 
+////Drive to Start
+//addParallel(new SetArmPosition(100.0, 3.0, 0.3));
+//addSequential(new ShiftHigh());
+//addSequential(new Wait(0.2));
+//addSequential(new DriveWaypointBackward(20.0, 20.0, 2.0, 2.5, false));  //X, Y, Tol, timeout, stop
+//
+////Drive to Finish while lowering arm
+//addSequential(new ShiftLow());
+//addSequential(new TurnGyroAbs(0.0, 5.0, 2.5, true)); //angle tolerance timeout stop
+//addParallel(new SetWristAngle(-10.0));
+//
+////addSequential(new ShiftHigh());
+//addSequential(new DriveWaypointBackward(20.0, -90.0, 4.0, 2.0, true));  //X, Y, Tol, timeout, stop  - changed -23 to -19
+//addSequential(new Wait(0.2));
