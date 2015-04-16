@@ -160,7 +160,7 @@ public class Arm extends Subsystem {
         	arm.set(0);
         else if (getArmAngle() < ArmPos.frontLimitAngle && output < 0 && this.getIsFront() == true)
         	arm.set(0);
-        else if (getArmAngle() > ArmPos.rearLimitAngle && output > 0 && this.getIsFront() == false)
+        else if (getArmAngle() > ArmPos.getRearlimitangle() && output > 0 && this.getIsFront() == false)
         	arm.set(0);
         else if (getArmAngle() < ArmPos.rearStateFrontLimitAngle && output < 0 && this.getIsFront() == false && isSwitchingSides() == false)
         	arm.set(0); 
@@ -370,8 +370,8 @@ public class Arm extends Subsystem {
         else if (!armPID.isEnable())
         {
         	tempSetpoint = this.getArmAngle();
-        	if(tempSetpoint > ArmPos.rearLimitAngle)
-        		tempSetpoint = ArmPos.rearLimitAngle;
+        	if(tempSetpoint > ArmPos.getRearlimitangle())
+        		tempSetpoint = ArmPos.getRearlimitangle();
         	else if(tempSetpoint < ArmPos.frontLimitAngle)
         		tempSetpoint = ArmPos.frontLimitAngle;
             armPID.setSetpoint(tempSetpoint);
