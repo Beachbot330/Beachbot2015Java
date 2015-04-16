@@ -2,12 +2,21 @@
 
 package org.usfirst.frc330.constants;
 
+import org.usfirst.frc330.Robot;
+
 public final class ArmPos {
 	
 	// TODO: Units needed for each value
 	
 	private ArmPos(){}
 	
+	public static double getRearlimitangle() {
+		if (Robot.isPracticeRobot())
+			return practiceRearLimitAngle;
+		else
+			return competitionRearLimitAngle;
+	}
+
 	// Tolerance
 	public static final double tolerance       = 0.5;
 	
@@ -42,8 +51,8 @@ public final class ArmPos {
 	//public static final double frontStateRearLimitAngle =	140.0;  //AP 03-11
 	public static final double rearFlipStart =				150.0;	// AP 2-24
 	//public static final double rearLimitAngle = 			222.5;  //AP 2-14
-	//public static final double rearLimitAngle = 			218.0;  //AP 3-24 Practice Robot
-	public static final double rearLimitAngle = 			213.0;  //AP 3-27
+	private static final double practiceRearLimitAngle = 	218.0;  //AP 3-24 Practice Robot
+	private static final double competitionRearLimitAngle = 213.0;  //AP 3-27
 	//public static final double rearWheelLimit =				242.0; // AP 2-24
 	
 	
