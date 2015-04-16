@@ -105,14 +105,12 @@ public class TresFideos extends BBCommandGroup {
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-10.0, 0.0, 2.0, 2.0)); //double distance, double angle, double tolerance, double timeout
     	
     	//Drive to third can
-    	addSequential(new TurnGyroWaypoint(-90.0, 35.0, 1.0, 1.5, gyroTurnLow, ChassisConst.GyroTurnHigh));
+    	addSequential(new TurnGyroWaypoint(-92.0, 37.0, 1.0, 1.5, gyroTurnLow, ChassisConst.GyroTurnHigh));
     	//addSequential(new Wait(2.0));
-    	addSequential(new DriveWaypoint(-90.0, 35.0, 2.0, 4.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
-    	addSequential(new Wait(0.3));
+    	addParallel(new SetArmPosition(-22.0, 3.0, 0.3));
+    	addSequential(new DriveWaypoint(-92.0, 37.0, 2.0, 4.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
     	
     	//Grab third can
-    	addParallel(new SetArmPosition(-22.0, 3.0, 0.3));
-    	addSequential(new Wait(0.3));
     	addSequential(new CenterGrabberClose());
     	addSequential(new Wait(0.1));
     	
@@ -122,13 +120,11 @@ public class TresFideos extends BBCommandGroup {
     	addSequential(new Wait(0.2));
     	addSequential(new DriveWaypointBackward(20.0, 20.0, 2.0, 2.5, false));  //X, Y, Tol, timeout, stop
     	
-    	//Drive to Finish while lowering arm
+    	//Drive to Finish
     	addSequential(new ShiftLow());
     	addSequential(new TurnGyroAbs(0.0, 5.0, 2.5, true, true, gyroTurnLow, ChassisConst.GyroTurnHigh)); //angle tolerance timeout stop
     	addParallel(new SetWristAngle(-10.0));
-    	
-    	//addSequential(new ShiftHigh());
-    	addSequential(new DriveWaypointBackward(20.0, -90.0, 4.0, 2.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));  //X, Y, Tol, timeout, stop  - changed -23 to -19
+    	addSequential(new DriveWaypointBackward(20.0, -90.0, 4.0, 3.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));  //X, Y, Tol, timeout, stop  - changed -23 to -19
     	addSequential(new Wait(0.2));
     }
 }

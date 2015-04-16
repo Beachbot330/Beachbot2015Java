@@ -60,7 +60,7 @@ public class TresFideos_Middle extends BBCommandGroup {
     	
     	PIDGains driveLow = new PIDGains(0.1,0,0,0,0.8,ChassisConst.defaultMaxOutputStep, "DriveLow");
     	PIDGains gyroDriveLow = new PIDGains(0.03,0,0,0,1,1, "GyroDriveLow");
-    	PIDGains gyroTurnLow = new PIDGains(0.03,0,0,0,0.5,1,"GyroTurnLow");
+    	PIDGains gyroTurnLow = new PIDGains(0.027,0,0,0,0.5,1,"GyroTurnLow");
     	
     	//Hold joint angles, open grabbers, close center grabber
     	addParallel(new ArmPID_on());
@@ -105,14 +105,12 @@ public class TresFideos_Middle extends BBCommandGroup {
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-10.0, 0.0, 2.0, 2.0)); //double distance, double angle, double tolerance, double timeout
     	
     	//Drive to third can
-    	addSequential(new TurnGyroWaypoint(-90.0, 35.0, 1.0, 1.5, gyroTurnLow, ChassisConst.GyroTurnHigh));
+    	addSequential(new TurnGyroWaypoint(-92.0, 37.0, 1.0, 1.5, gyroTurnLow, ChassisConst.GyroTurnHigh));
     	//addSequential(new Wait(2.0));
-    	addSequential(new DriveWaypoint(-90.0, 35.0, 2.0, 4.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
-    	addSequential(new Wait(0.3));
+    	addParallel(new SetArmPosition(-22.0, 3.0, 0.3));
+    	addSequential(new DriveWaypoint(-92.0, 37.0, 2.0, 4.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
     	
     	//Grab third can
-    	addParallel(new SetArmPosition(-22.0, 3.0, 0.3));
-    	addSequential(new Wait(0.3));
     	addSequential(new CenterGrabberClose());
     	addSequential(new Wait(0.1));
     	
@@ -120,7 +118,7 @@ public class TresFideos_Middle extends BBCommandGroup {
     	addParallel(new SetArmPosition(75.0, 3.0, 0.3));
     	addSequential(new ShiftHigh());
     	addSequential(new Wait(0.2));
-    	addSequential(new DriveWaypointBackward(-63.0, 20.0, 2.0, 2.5, false));  //X, Y, Tol, timeout, stop
+    	addSequential(new DriveWaypointBackward(-63.0, 20.0, 3.5, 2.5, false));  //X, Y, Tol, timeout, stop
     	
     	//Drive to Finish
     	addSequential(new ShiftLow());
