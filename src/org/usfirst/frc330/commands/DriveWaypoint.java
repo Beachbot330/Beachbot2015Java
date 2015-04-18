@@ -60,17 +60,17 @@ public class DriveWaypoint extends DriveDistanceAtAbsAngle_NoTurn {
         {
             //do nothing
         }
-        else if (robotAngle > calcAngle)
+        else if (robotAngle-calcAngle > 180)
         {
-            while (robotAngle > calcAngle)
+            while (robotAngle-calcAngle > 180)
                 calcAngle += 360;
         }
         else 
         {
-            while (robotAngle < calcAngle)
+            while (robotAngle-calcAngle < -180)
                 calcAngle -= 360;
         }
-        Robot.logger.println("DriveWaypoint x: " + x + " y: " + y + " curX: " + curX + " curY: " + curY);
+        Robot.logger.println("DriveWaypoint x: " + x + " y: " + y + " curX: " + curX + " curY: " + curY + " curAngle: " + robotAngle);
         Robot.logger.println("DriveWaypoint distance: " + calcDistance + " angle: " + calcAngle);
         
         leftDistance = calcDistance;
