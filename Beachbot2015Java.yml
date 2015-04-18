@@ -2261,11 +2261,27 @@ Children:
         name: Add to SendableChooser, validators: null, value: true}
     Base: AutoCommand
     Name: NachoJalepeno
+  - Children: []
+    Properties:
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Button on SmartDashboard, validators: null, value: false}
+      Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Add to SendableChooser, validators: null, value: true}
+    Base: AutoCommand
+    Name: MuchoQueso
+  - Children: []
+    Properties:
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Button on SmartDashboard, validators: null, value: false}
+      Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Add to SendableChooser, validators: null, value: true}
+    Base: AutoCommand
+    Name: LadronJalapeno
   Properties: {}
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\allenpeters\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Joe-XPS13-W7\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ..\}
   Default Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {
     default: None, name: Default Autonomous Command, type: Command, validators: null,
