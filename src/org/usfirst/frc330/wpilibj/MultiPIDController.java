@@ -32,8 +32,7 @@ public class MultiPIDController extends PIDController{
 
     public void setPID(PIDGains gains) {
         setPID(gains.getP(), gains.getI(), gains.getD(), gains.getF());
-        Robot.logger.println("Changing " + name + " Gains to " + gains.getName() + ". P=" + gains.getP(),false);
-        
+        Robot.logger.println("Changing " + name + " Gains to " + gains.getName() + ". P=" + gains.getP() + " MaxOutput=" + gains.getMaxOutput() + " MaxOutputStep=" + gains.getMaxOutputStep(),false);        
     }
     
     public void setMaxOutput(double maxOutput) {
