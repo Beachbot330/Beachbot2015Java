@@ -104,7 +104,7 @@ public class MuchoQueso extends BBCommandGroup {
     
     	//Drive back from second tote
     	BBCommand moveArm = new SetArmPosition(-15, 4.0);
-    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(-28 , 0.0, 1.5, 1.5, false);  //double distance, double angle, double tolerance, double timeout
+    	driveCommand = new DriveDistanceAtAbsAngle_NoTurn(-30 , 0.0, 1.5, 1.5, false);  //double distance, double angle, double tolerance, double timeout
     	addParallel(driveCommand);  //Dist Angl Tol
     	addSequential(new Wait(1.3));
     	addParallel(moveArm);
@@ -126,28 +126,28 @@ public class MuchoQueso extends BBCommandGroup {
     	PIDGains GyroLow = new PIDGains(0.03, 0.00, 0.02, 0.0, 1.0, 1.0, "GyroLow"); //p,  i,  d,  f,  maxOutput, maxOutputStep
 //    	addSequential(new TurnGyroWaypoint(0.0, -155.0, 4.0, 3.0, GyroLow, ChassisConst.GyroDriveHigh));
     	addSequential(new TurnGyroAbs(179.0,5.0, 3.0, false, true, GyroLow, ChassisConst.GyroTurnHigh));
-    	addParallel(new SetArmPosition(-12.0, 1.0));
-    	addSequential(new Wait(3.30));
+    	addParallel(new SetArmPosition(-20.0, 1.0));
+    	addSequential(new Wait(1.00));
     	driveCommand = new DriveWaypoint(0.0, 40.0, 4.0, 3.0, false, ChassisConst.DriveLow, ChassisConst.DriveHigh, GyroLow, ChassisConst.GyroDriveHigh);
     	addParallel(driveCommand);
     	addParallel(new SetLiftPosition(LiftPos.justOverOneTote));
     	addSequential(new Wait(0.2));
     	addSequential(new CheckDone(driveCommand));
-    	addSequential(new Wait(3.30));
+//    	addSequential(new Wait(3.30));
     	
     	//Grab last can
     	addParallel(new CenterGrabberClose());
     	addSequential(new Wait(0.2));
     	addParallel(new SetArmPosition(ArmPos.verticalAngle, 1.0));
-    	addSequential(new Wait(3.30));
+    	addSequential(new Wait(1.00));
     	
     	//Drive to last tote
     	addSequential(new DriveWaypoint(0.0, -10.0, 4.0, 3.0, true));
-    	addSequential(new Wait(3.30));
+//    	addSequential(new Wait(3.30));
     	
     	//Load third tote
     	addSequential(new SetLiftPosition(LiftPos.dropOff));
-    	addSequential(new Wait(3.30));
+//    	addSequential(new Wait(3.30));
     	addParallel(new DriveDistanceAtRelAngle_NoTurn(6.0, 0.0, 1.5));  //Dist Angle Tol
     	addSequential(new Wait(0.7));
     	addParallel(new SetLiftPosition(LiftPos.carry));
