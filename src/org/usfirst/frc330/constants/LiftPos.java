@@ -32,4 +32,8 @@ public final class LiftPos {
 	//Current
 	public static final double currentLowerLimit = -30; //JR 2-16 highest current seen was about 18amps
 	public static final double currentUpperLimit = 30;  //JR 2-16
+	
+	public static final double defaultMaxOutput = 1.0;
+	public static final double slowMaxOutput =    0.66;
+	
 }

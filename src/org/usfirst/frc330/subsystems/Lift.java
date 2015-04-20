@@ -69,6 +69,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
         liftPID = new PIDController(	LiftPos.proportional,
 						        		LiftPos.integral,
 						        		LiftPos.derivitive ,this,this);
+        liftPID.setOutputRange(-1, 1);
         
         liftPID.setAbsoluteTolerance(LiftPos.tolerance);
         SmartDashboard.putData("LiftPID", liftPID);
@@ -264,6 +265,10 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
 	public void openTotePincher()
 	{
 		totePincher.set(DoubleSolenoid.Value.kReverse);
+	}
+	
+	public void setMaxOutput(double maxOutput) {
+		liftPID.setOutputRange(-maxOutput, maxOutput);
 	}
 }
 

@@ -47,6 +47,7 @@ public class  SetLiftPosition extends BBCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.lift.setMaxOutput(LiftPos.defaultMaxOutput);
     	Robot.lift.setPosition(position);
     	Robot.lift.setAbsoluteTolerance(tolerance);
     	if (timeout >= 0.0)

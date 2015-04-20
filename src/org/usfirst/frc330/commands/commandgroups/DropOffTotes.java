@@ -12,6 +12,7 @@
 package org.usfirst.frc330.commands.commandgroups;
 import org.usfirst.frc330.commands.OpenZachStacker;
 import org.usfirst.frc330.commands.SetLiftPosition;
+import org.usfirst.frc330.commands.SetLiftPositionDropOff;
 import org.usfirst.frc330.constants.LiftPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
@@ -39,6 +40,6 @@ public class DropOffTotes extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new OpenZachStacker());
-    	addSequential(new SetLiftPosition(LiftPos.dropOff));
+    	addSequential(new SetLiftPositionDropOff());
     }
 }
