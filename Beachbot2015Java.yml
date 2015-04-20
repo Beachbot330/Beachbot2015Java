@@ -705,6 +705,12 @@ Children:
         name: Default Command, type: Command, validators: null, value: UpdatePDP}
     Base: Subsystem
     Name: PowerDP
+  - Children: []
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+    Base: Subsystem
+    Name: CanBurglar
   Properties: {}
   Base: Subsystems
   Name: Subsystems

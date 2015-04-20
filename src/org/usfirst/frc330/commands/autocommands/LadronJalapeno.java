@@ -11,6 +11,7 @@
 
 package org.usfirst.frc330.commands.autocommands;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
+import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
 import org.usfirst.frc330.commands.LeftGrabberClose;
 import org.usfirst.frc330.commands.OpenAllGrabbers;
 import org.usfirst.frc330.commands.RightGrabberClose;
@@ -42,10 +43,9 @@ public class LadronJalapeno extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new OpenAllGrabbers());
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(0, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     	addSequential(new Wait(3.30));
     	addSequential(new ShiftLow());
-    	addSequential(new DriveDistanceAtAbsAngle(72, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
-    	addSequential(new LeftGrabberClose());
-    	addSequential(new RightGrabberClose());
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(72, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     }
 }
