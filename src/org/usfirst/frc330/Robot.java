@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.BBCommandGroup;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -59,6 +60,8 @@ public class Robot extends IterativeRobot {
     public static Logger logger;
     public static CSVLogger csvLogger;
     private CameraServer server;
+    
+    private boolean ladronJalapenoRun = false;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -160,9 +163,9 @@ public class Robot extends IterativeRobot {
         //However, this saves 40-60ms waiting for a command to run
         if (autoChooser.getSelected() instanceof LadronJalapeno) 
         	canBurglar.extendCanBurglar();
-        else
+        else if (!(autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso))
         	canBurglar.retractCanBurglar();
-        	
+        
     }
 
     boolean prevGyroReset=false;
@@ -204,11 +207,14 @@ public class Robot extends IterativeRobot {
     	logger.updateDate();
     	Command beep= new BuzzerBeepTimed(1.25);
     	beep.start();
+    	if (!(autonomousCommand instanceof LadronJalapeno || autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso))
+    		Robot.canBurglar.retractCanBurglar();
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+
     }
 
     boolean invalidState;
