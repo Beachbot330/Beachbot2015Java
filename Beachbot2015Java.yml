@@ -662,34 +662,6 @@ Children:
           value: '2'
       Base: Analog Input
       Name: mastPot
-    - Children: []
-      Properties:
-        Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id016
-          default: '0'
-          name: Forward PCM (Solenoid)
-          validators: *id017
-          value: '0'
-        Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id018
-          default: '0'
-          name: Reverse PCM (Solenoid)
-          validators: *id019
-          value: '0'
-        Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id020
-          default: '0'
-          name: Reverse Channel (Solenoid)
-          validators: *id021
-          value: '6'
-        Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id022
-          default: '0'
-          name: Forward Channel (Solenoid)
-          validators: *id023
-          value: '7'
-      Base: Double Solenoid
-      Name: mastLock
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
@@ -2266,7 +2238,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Button on SmartDashboard, validators: null, value: false}
       Add to SendableChooser: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Add to SendableChooser, validators: null, value: true}
+        name: Add to SendableChooser, validators: null, value: false}
     Base: AutoCommand
     Name: MuchoQueso
   - Children: []
