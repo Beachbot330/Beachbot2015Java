@@ -160,10 +160,11 @@ public class Robot extends IterativeRobot {
         
         //!!! WARNING will extend CanBurglars in teleop if LadronJalapeno is selected
         //However, this saves 40-60ms waiting for a command to run
-        if (autoChooser.getSelected() instanceof LadronJalapeno) 
-        	canBurglar.extendCanBurglar();
-        else if (!(autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso))
-        	canBurglar.retractCanBurglar();
+// JR 4-20 disabled until a mechanical device to stop accidental deployment is fabricated. See Autonomous Init and Telop Init
+//        if (autoChooser.getSelected() instanceof LadronJalapeno) 
+//        	canBurglar.extendCanBurglar();
+//        else if (!(autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso))
+//        	canBurglar.retractCanBurglar();
         
     }
 
@@ -178,6 +179,11 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
+		
+		//JR 4-20 temporarily add Can Burglar code to auto init to make it safer until mechanical solution is fabricated
+		if (autoChooser.getSelected() instanceof LadronJalapeno) 
+			canBurglar.extendCanBurglar();
+		
         logger.println("Autonomous Init");
     	logger.updateDate();
     	decideStates();
@@ -202,12 +208,16 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+    	
+    	// JR 4/20 disabled until a mechanical device to stop accidental deployment is fabricated. See Autonomous Init and Disabled Periodic
+//    	if (!(autonomousCommand instanceof LadronJalapeno || autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso))
+//    		Robot.canBurglar.retractCanBurglar();
+    	
         logger.println("Teleop Init");
     	logger.updateDate();
     	Command beep= new BuzzerBeepTimed(1.25);
     	beep.start();
-    	if (!(autonomousCommand instanceof LadronJalapeno || autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso))
-    		Robot.canBurglar.retractCanBurglar();
+
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
