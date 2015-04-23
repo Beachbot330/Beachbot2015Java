@@ -15,6 +15,8 @@ import org.usfirst.frc330.commands.CenterGrabberClose;
 import org.usfirst.frc330.commands.DriveDistanceAtRelAngle_NoTurn;
 import org.usfirst.frc330.commands.DriveWaypoint;
 import org.usfirst.frc330.commands.DriveWaypointBackward;
+import org.usfirst.frc330.commands.DriveWaypointBackwardLegacy;
+import org.usfirst.frc330.commands.DriveWaypointLegacy;
 import org.usfirst.frc330.commands.LeftGrabberClose;
 import org.usfirst.frc330.commands.OpenAllGrabbers;
 import org.usfirst.frc330.commands.RightGrabberClose;
@@ -108,7 +110,7 @@ public class TresFideos extends BBCommandGroup {
     	addSequential(new TurnGyroWaypoint(-92.0, 37.0, 1.0, 1.5, gyroTurnLow, ChassisConst.GyroTurnHigh));
     	//addSequential(new Wait(2.0));
     	addParallel(new SetArmPosition(-22.0, 3.0, 0.3));
-    	addSequential(new DriveWaypoint(-92.0, 37.0, 2.0, 4.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
+    	addSequential(new DriveWaypointLegacy(-92.0, 37.0, 2.0, 4.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
     	
     	//Grab third can
     	addSequential(new CenterGrabberClose());
@@ -124,7 +126,7 @@ public class TresFideos extends BBCommandGroup {
     	addSequential(new ShiftLow());
     	addSequential(new TurnGyroAbs(0.0, 5.0, 2.5, true, true, gyroTurnLow, ChassisConst.GyroTurnHigh)); //angle tolerance timeout stop
     	addParallel(new SetWristAngle(-10.0));
-    	addSequential(new DriveWaypointBackward(20.0, -90.0, 4.0, 3.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));  //X, Y, Tol, timeout, stop  - changed -23 to -19
+    	addSequential(new DriveWaypointBackwardLegacy(20.0, -90.0, 4.0, 3.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));  //X, Y, Tol, timeout, stop  - changed -23 to -19
     	addSequential(new Wait(0.2));
     }
 }
