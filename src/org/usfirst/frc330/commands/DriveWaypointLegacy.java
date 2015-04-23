@@ -12,7 +12,6 @@ import org.usfirst.frc330.wpilibj.PIDGains;
  * original starting position.
  */
 public class DriveWaypointLegacy extends DriveWaypoint {
-    double x,y;
 
     public DriveWaypointLegacy(double x, double y, double tolerance, double timeout, boolean stopAtEnd) {
     	this(x,y,tolerance,timeout,stopAtEnd,ChassisConst.DriveLow,ChassisConst.DriveHigh,ChassisConst.GyroDriveLow,ChassisConst.GyroDriveHigh);
