@@ -1,5 +1,11 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="RetractCanBurglar" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="335"/>
+	</widget>
+	<widget field="ExtendCanBurglar" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="301"/>
+	</widget>
 	<widget field="ArmFront" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="1106" y="235"/>
 	</widget>

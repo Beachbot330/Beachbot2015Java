@@ -43,7 +43,7 @@ public class LadronJalapeno extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new ExtendCanBurglar());
+    	//addSequential(new ExtendCanBurglar());
     	addSequential(new ShiftLow());
     	addSequential(new DriveDistanceAtAbsAngle_NoTurn(0, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     	addSequential(new Wait(3.30));
