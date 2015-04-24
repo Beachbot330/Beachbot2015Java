@@ -70,7 +70,8 @@ public class NachoJalepeno_CCW extends BBCommandGroup {
     	addSequential(new DriveDistanceAtAbsAngle(72, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     	// 72 was 60
     	//addSequential(new NachoJalapenoTurn(ccw));
-    	addSequential(new TurnGyroAbs(-90,5));
+    	PIDGains gyroTurnLow = new PIDGains(0.03,0,0,0,0.5,1,"GyroTurnLow");
+    	addSequential(new TurnGyroAbs(-90, 5.0, 2.0, false, true, gyroTurnLow, ChassisConst.GyroTurnHigh));
     	addSequential(new SetArmPosition(200.0, 1.0, 2.0));
     	addSequential(new CenterGrabberOpen());
     	addSequential(new SetArmPosition(217.0, 1.0, 1.5));
