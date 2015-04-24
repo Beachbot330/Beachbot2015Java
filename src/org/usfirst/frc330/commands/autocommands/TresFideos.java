@@ -19,6 +19,7 @@ import org.usfirst.frc330.commands.DriveWaypointBackwardLegacy;
 import org.usfirst.frc330.commands.DriveWaypointLegacy;
 import org.usfirst.frc330.commands.LeftGrabberClose;
 import org.usfirst.frc330.commands.OpenAllGrabbers;
+import org.usfirst.frc330.commands.PrintLine;
 import org.usfirst.frc330.commands.RightGrabberClose;
 import org.usfirst.frc330.commands.SetArmPosition;
 import org.usfirst.frc330.commands.SetLiftPosition;
@@ -90,7 +91,7 @@ public class TresFideos extends BBCommandGroup {
     	addSequential(new TurnGyroWaypoint(-10.0, 16.0, 1.0, 1.5, gyroTurnLow, ChassisConst.GyroTurnHigh));
     	//addSequential(new Wait(0.2));
     	//double x, double y, double tolerance, double timeout, PIDGains low, PIDGains high
-    	addParallel(new DriveWaypoint(-12.0, 16.0, 2.0, 2.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
+    	addParallel(new DriveWaypointLegacy(-12.0, 16.0, 2.0, 2.0, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
     	//double x, double y, double tolerance, double timeout, boolean stopAtEnd, PIDGains driveLow, PIDGains driveHigh, PIDGains gyroLow, PIDGains gyroHigh
     	
     	//Grab second can
@@ -107,6 +108,7 @@ public class TresFideos extends BBCommandGroup {
     	addSequential(new DriveDistanceAtRelAngle_NoTurn(-10.0, 0.0, 2.0, 2.0)); //double distance, double angle, double tolerance, double timeout
     	
     	//Drive to third can
+    	addSequential(new PrintLine("Drive to third can"));
     	addSequential(new TurnGyroWaypoint(-92.0, 37.0, 1.0, 1.5, gyroTurnLow, ChassisConst.GyroTurnHigh));
     	//addSequential(new Wait(2.0));
     	addParallel(new SetArmPosition(-22.0, 3.0, 0.3));

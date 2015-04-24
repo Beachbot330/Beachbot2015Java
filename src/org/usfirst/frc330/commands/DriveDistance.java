@@ -108,6 +108,13 @@ public class  DriveDistance extends BBCommand {
         {
             Robot.chassis.stopDrive();
         }
+        if (isTimedOut())
+        {
+        	Robot.logger.println("Timeout Debug:");
+        	Robot.logger.println("Left Side On Target: " + Robot.chassis.leftDrivePID.onTarget());
+        	Robot.logger.println("Right Side On Target: " + Robot.chassis.rightDrivePID.onTarget());
+        	Robot.logger.println("Tolerance we think we set: " + tolerance);
+        }
         Robot.logger.println("DriveDistance Left Setpoint: " + leftSetpoint + " Left: " + Robot.chassis.getLeftDistance() + " Right Setpoint: " + rightSetpoint + " Right: " + Robot.chassis.getRightDistance(), false);
         this.leftDistance = origDistance;
         this.rightDistance = origDistance;
