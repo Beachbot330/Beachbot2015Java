@@ -24,6 +24,7 @@ import org.usfirst.frc330.wpilibj.PIDGains;
 public class  DriveDistance extends BBCommand {
 
 	double leftDistance, rightDistance, tolerance, maxOutput, maxOutputStep, maxOutputMax;
+	double leftSetpoint, rightSetpoint;
 	double origDistance;
     boolean stopAtEnd = false;
     PIDGains highGains, lowGains, gains;
@@ -75,8 +76,10 @@ public class  DriveDistance extends BBCommand {
         maxOutputMax = gains.getMaxOutput();
         maxOutputStep = gains.getMaxOutputStep();
 
-        Robot.chassis.leftDrivePID.setSetpoint(leftDistance+Robot.chassis.getLeftDistance());
-        Robot.chassis.rightDrivePID.setSetpoint(rightDistance+Robot.chassis.getRightDistance());
+        leftSetpoint = leftDistance+Robot.chassis.getLeftDistance();
+        rightSetpoint = rightDistance+Robot.chassis.getRightDistance();
+        Robot.chassis.leftDrivePID.setSetpoint(leftSetpoint);
+        Robot.chassis.rightDrivePID.setSetpoint(rightSetpoint);
         Robot.chassis.leftDrivePID.setAbsoluteTolerance(tolerance);
         Robot.chassis.rightDrivePID.setAbsoluteTolerance(tolerance);  
         Robot.chassis.leftDrivePID.enable();
@@ -105,7 +108,7 @@ public class  DriveDistance extends BBCommand {
         {
             Robot.chassis.stopDrive();
         }
-        Robot.logger.println("DriveDistance Setpoint: " + leftDistance + "Left: " + Robot.chassis.getLeftDistance() + "Right: " + Robot.chassis.getRightDistance(), false);
+        Robot.logger.println("DriveDistance Left Setpoint: " + leftSetpoint + " Left: " + Robot.chassis.getLeftDistance() + " Right Setpoint: " + rightSetpoint + " Right: " + Robot.chassis.getRightDistance(), false);
         this.leftDistance = origDistance;
         this.rightDistance = origDistance;
     }

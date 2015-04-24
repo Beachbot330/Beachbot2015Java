@@ -109,6 +109,8 @@ public class Robot extends IterativeRobot {
 //        autoChooser.addObject("NoMasQueso", new NoMasQueso());
         //autoChooser.addObject("KitchenSinkConQueso", new KitchenSinkConQueso());
         autoChooser.addObject("TresFideos_Middle", new TresFideos_Middle());
+        autoChooser.addObject("Ladron_6inches", new LadronJalapeno_6inches());
+        autoChooser.addObject("Ladron_complete", new LadronJalapeno_complete());
         
         
         SmartDashboard.putData("Autonomous mode chooser", autoChooser);

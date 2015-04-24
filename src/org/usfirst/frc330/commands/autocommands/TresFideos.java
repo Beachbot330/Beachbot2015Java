@@ -110,7 +110,7 @@ public class TresFideos extends BBCommandGroup {
     	addSequential(new TurnGyroWaypoint(-92.0, 37.0, 1.0, 1.5, gyroTurnLow, ChassisConst.GyroTurnHigh));
     	//addSequential(new Wait(2.0));
     	addParallel(new SetArmPosition(-22.0, 3.0, 0.3));
-    	addSequential(new DriveWaypointLegacy(-92.0, 37.0, 2.5, 3.8, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
+    	addSequential(new DriveWaypointLegacy(-92.0, 37.0, 2.5, 3.5, true, driveLow, ChassisConst.DriveHigh, gyroDriveLow, ChassisConst.GyroDriveHigh));
     	
     	//Grab third can
     	addSequential(new CenterGrabberClose());

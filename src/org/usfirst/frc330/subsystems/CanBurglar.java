@@ -44,14 +44,14 @@ public class CanBurglar extends Subsystem {
     }
     
     public void extendCanBurglar() {
-    	LeftCanBurglarSolenoid.set(Value.kForward);
-    	RightCanBurglarSolenoid.set(Value.kForward);
+    	LeftCanBurglarSolenoid.set(Value.kReverse);
+    	RightCanBurglarSolenoid.set(Value.kReverse);
 //    	Robot.logger.println("Extending Can Burglar", true);
     }
     
     public void retractCanBurglar() {
-    	LeftCanBurglarSolenoid.set(Value.kReverse);
-    	RightCanBurglarSolenoid.set(Value.kReverse);
+    	LeftCanBurglarSolenoid.set(Value.kForward);
+    	RightCanBurglarSolenoid.set(Value.kForward);
 //    	Robot.logger.println("Retracting Can Burglar", true);
     }
 }

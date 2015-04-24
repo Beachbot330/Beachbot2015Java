@@ -24,9 +24,9 @@ import edu.wpi.first.wpilibj.command.BBCommandGroup;
 /**
  *
  */
-public class LadronJalapeno extends BBCommandGroup {
+public class LadronJalapeno_6inches extends BBCommandGroup {
     
-    public  LadronJalapeno() {
+    public  LadronJalapeno_6inches() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -45,8 +45,9 @@ public class LadronJalapeno extends BBCommandGroup {
         // arm.
     	addSequential(new ExtendCanBurglar());
     	addSequential(new ShiftLow());
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(0, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
-    	addSequential(new Wait(3.30));
+    	addSequential(new Wait(0.5));
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(6, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
+    	
 //    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(6, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
 //    	addSequential(new Wait(3.30));
 //    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(72, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
