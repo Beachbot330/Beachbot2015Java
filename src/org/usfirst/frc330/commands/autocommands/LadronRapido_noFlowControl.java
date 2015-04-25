@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
+import org.usfirst.frc330.commands.DriveDistance;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
 import org.usfirst.frc330.commands.ExtendCanBurglar;
@@ -18,15 +19,17 @@ import org.usfirst.frc330.commands.OpenAllGrabbers;
 import org.usfirst.frc330.commands.RightGrabberClose;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.Wait;
+import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
 /**
  *
  */
-public class LadronJalapeno_6inches extends BBCommandGroup {
+public class LadronRapido_noFlowControl extends BBCommandGroup {
     
-    public  LadronJalapeno_6inches() {
+    public  LadronRapido_noFlowControl() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -43,13 +46,12 @@ public class LadronJalapeno_6inches extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	//double p, double i, double d, double f, double maxOutput, double maxOutputStep, String name
+    	PIDGains driveLow = new PIDGains(0.1,0,0,0,1,1, "DriveLowAggressive");
     	addSequential(new ExtendCanBurglar());
     	addSequential(new ShiftLow());
-    	addSequential(new Wait(0.35));
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(6, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
-    	
-//    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(6, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
-//    	addSequential(new Wait(3.30));
-//    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(72, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
+    	addSequential(new Wait(0.28));
+    	addSequential(new DriveDistance(77, 2, 10, false, driveLow, ChassisConst.DriveHigh)); //distance, distanceTolerance, timeout, stopAtEnd, PIDlow, PIDhigh
     }
 }
