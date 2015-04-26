@@ -51,7 +51,7 @@ public class LadronRapido_noFlowControl extends BBCommandGroup {
     	PIDGains driveLow = new PIDGains(0.1,0,0,0,1,1, "DriveLowAggressive");
     	addSequential(new ExtendCanBurglar());
     	addSequential(new ShiftLow());
-    	addSequential(new Wait(0.28));
+    	addSequential(new Wait(0.25));
     	addSequential(new DriveDistance(77, 2, 10, false, driveLow, ChassisConst.DriveHigh)); //distance, distanceTolerance, timeout, stopAtEnd, PIDlow, PIDhigh
     }
 }

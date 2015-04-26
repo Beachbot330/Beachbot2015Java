@@ -45,7 +45,7 @@ public class LadronJalapeno_complete extends BBCommandGroup {
         // arm.
     	addSequential(new ExtendCanBurglar());
     	addSequential(new ShiftLow());
-    	addSequential(new Wait(0.35));
+    	addSequential(new Wait(0.30));
     	addSequential(new DriveDistanceAtAbsAngle_NoTurn(77, 2, 0, 3, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     	//addSequential(new DriveDistanceAtAbsAngle_NoTurn(-12, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
 //    	addSequential(new Wait(3.30));

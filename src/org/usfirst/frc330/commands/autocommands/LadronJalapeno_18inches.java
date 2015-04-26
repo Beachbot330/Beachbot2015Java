@@ -18,15 +18,17 @@ import org.usfirst.frc330.commands.OpenAllGrabbers;
 import org.usfirst.frc330.commands.RightGrabberClose;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.Wait;
+import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
 /**
  *
  */
-public class LadronJalapeno_6inches extends BBCommandGroup {
+public class LadronJalapeno_18inches extends BBCommandGroup {
     
-    public  LadronJalapeno_6inches() {
+    public  LadronJalapeno_18inches() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -43,13 +45,14 @@ public class LadronJalapeno_6inches extends BBCommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	PIDGains driveLow = new PIDGains(0.1,0,0,0,1,1, "DriveLowAggressive");
+    	
     	addSequential(new ExtendCanBurglar());
     	addSequential(new ShiftLow());
     	addSequential(new Wait(0.30));
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(6, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
-    	
-//    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(6, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
-//    	addSequential(new Wait(3.30));
-//    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(72, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(8, 2, 0, 3, false, driveLow, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh)); //distance, distanceTolerance, angle, timeout, stopAtEnd
+
+    	//distance, tolerance, angle, timeout, stopAtEnd, ChassisConst.DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh
     }
 }
