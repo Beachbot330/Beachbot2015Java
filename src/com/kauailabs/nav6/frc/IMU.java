@@ -12,6 +12,8 @@ package com.kauailabs.nav6.frc;
 
 import java.util.Arrays;
 
+import org.usfirst.frc330.Robot;
+
 import com.kauailabs.nav6.IMUProtocol;
 
 import edu.wpi.first.wpilibj.PIDSource;
@@ -86,7 +88,7 @@ public class IMU extends SensorBase implements PIDSource, LiveWindowSendable, Ru
         try {
             serial_port.reset();
         } catch (RuntimeException ex) {
-            ex.printStackTrace();
+            Robot.logger.printStackTrace(ex);
         }
         initIMU();
         m_thread = new Thread(this);
@@ -123,7 +125,7 @@ public class IMU extends SensorBase implements PIDSource, LiveWindowSendable, Ru
         try {
             serial_port.write( stream_command_buffer, packet_length );
         } catch (RuntimeException ex) {
-        	ex.printStackTrace();
+        	Robot.logger.printStackTrace(ex);
         }
     }
 
@@ -351,7 +353,7 @@ public class IMU extends SensorBase implements PIDSource, LiveWindowSendable, Ru
             serial_port.flush();
             serial_port.reset();
         } catch (RuntimeException ex) {
-            ex.printStackTrace();
+            Robot.logger.printStackTrace(ex);
         }
                 
         IMUProtocol.StreamResponse response = new IMUProtocol.StreamResponse();
@@ -365,7 +367,7 @@ public class IMU extends SensorBase implements PIDSource, LiveWindowSendable, Ru
             serial_port.flush();
             last_stream_command_sent_timestamp = Timer.getFPGATimestamp();
         } catch (RuntimeException ex) {
-        	ex.printStackTrace();
+        	Robot.logger.printStackTrace(ex);
         }
         
         while (!stop) {
@@ -430,7 +432,7 @@ public class IMU extends SensorBase implements PIDSource, LiveWindowSendable, Ru
                             serial_port.write( stream_command, cmd_packet_length );
                             serial_port.flush();
                         } catch (RuntimeException ex2) {
-                        	ex2.printStackTrace();
+                        	Robot.logger.printStackTrace(ex2);
                         }                                                    
                     }
                     else {                        
@@ -443,7 +445,7 @@ public class IMU extends SensorBase implements PIDSource, LiveWindowSendable, Ru
             } catch (RuntimeException ex) {
                 // This exception typically indicates a Timeout
                 stream_response_received = false;
-                ex.printStackTrace();
+                Robot.logger.printStackTrace(ex);
             }
         }
     }

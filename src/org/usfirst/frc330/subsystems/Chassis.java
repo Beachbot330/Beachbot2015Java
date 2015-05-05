@@ -11,6 +11,8 @@
 
 package org.usfirst.frc330.subsystems;
 
+import java.util.Arrays;
+
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.commands.TankDrive;
@@ -79,7 +81,7 @@ public class Chassis extends Subsystem {
 	    	sp = new SerialPort(57600,SerialPort.Port.kMXP);
 			imu = new IMU(sp,(byte) 50);
 	    	} catch( Exception ex ) {
-	    		ex.printStackTrace();
+	    		Robot.logger.printStackTrace(ex);
 	    	}
         if ( imu != null ) {
             LiveWindow.addSensor("Chassis", "Gyro", imu);
@@ -153,6 +155,11 @@ public class Chassis extends Subsystem {
 			public double get() { return getAngle(); }  		
     	};    	
     	Robot.csvLogger.add("ChassisAngle", temp);
+    	
+    	temp = new CSVLoggable(true) {
+			public double get() { return imu.isConnected() ? 1: 0; }  		
+    	};    	
+    	Robot.csvLogger.add("GyroIsConnected", temp);
     	
     	temp = new CSVLoggable(true) {
 			public double get() { return getX(); }  		
