@@ -7,8 +7,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import org.usfirst.frc330.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 
@@ -134,10 +137,19 @@ public class Logger {
 	}
 	
 	/**
-	 * Print a string to both the log file and Robot.Logger.
+	 * Print a string to both the log file and System.out
 	 * @param data string to write.
 	 */
 	public void println(String data) {
 		println(data, true);
+	}
+	
+	/**
+	 * Print the stack trace of the exception to the log.
+	 * Goes to both the log file and System.out
+	 * @param ex exception to print the stacktrace of
+	 */
+	public void printStackTrace(Throwable ex) {
+		println(Arrays.toString(ex.getStackTrace()), true);
 	}
 }
