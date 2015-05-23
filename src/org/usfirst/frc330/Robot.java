@@ -165,11 +165,11 @@ public class Robot extends IterativeRobot {
         
         //!!! WARNING will extend CanBurglars in teleop if LadronJalapeno is selected
         //However, this saves 40-60ms waiting for a command to run
-// JR 4-20 disabled until a mechanical device to stop accidental deployment is fabricated. See Autonomous Init and Telop Init
-        if (autoChooser.getSelected() instanceof LadronJalapeno || autoChooser.getSelected() instanceof LadronJalapeno_6inches || autoChooser.getSelected() instanceof LadronJalapeno_complete || autoChooser.getSelected() instanceof LadronRapido_noFlowControl || autoChooser.getSelected() instanceof LadronRapido || autoChooser.getSelected() instanceof LadronJalapeno_18inches) 
-        	canBurglar.extendCanBurglar();
-        else if (!(autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso))
-        	canBurglar.retractCanBurglar();
+// JR 5-22 disabled for safety. See Autonomous Init and Telop Init
+//        if (autoChooser.getSelected() instanceof LadronJalapeno || autoChooser.getSelected() instanceof LadronJalapeno_6inches || autoChooser.getSelected() instanceof LadronJalapeno_complete || autoChooser.getSelected() instanceof LadronRapido_noFlowControl || autoChooser.getSelected() instanceof LadronRapido || autoChooser.getSelected() instanceof LadronJalapeno_18inches) 
+//        	canBurglar.extendCanBurglar();
+//        else if (!(autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso))
+//        	canBurglar.retractCanBurglar();
         
     }
 
@@ -185,9 +185,9 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		
-		//JR 4-20 temporarily add Can Burglar code to auto init to make it safer until mechanical solution is fabricated
-//        if (autoChooser.getSelected() instanceof LadronJalapeno || autoChooser.getSelected() instanceof LadronJalapeno_6inches || autoChooser.getSelected() instanceof LadronJalapeno_complete || autoChooser.getSelected() instanceof LadronRapido_noFlowControl || autoChooser.getSelected() instanceof LadronRapido) 
-//			canBurglar.extendCanBurglar();
+		//JR 5/22 add Can Burglar code to auto init for safety instead of DisabledPeriodic
+        if (autoChooser.getSelected() instanceof LadronJalapeno || autoChooser.getSelected() instanceof LadronJalapeno_6inches || autoChooser.getSelected() instanceof LadronJalapeno_complete || autoChooser.getSelected() instanceof LadronRapido_noFlowControl || autoChooser.getSelected() instanceof LadronRapido || autoChooser.getSelected() instanceof LadronJalapeno_18inches) 
+			canBurglar.extendCanBurglar();
 		
         logger.println("Autonomous Init");
     	logger.updateDate();
@@ -214,9 +214,9 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {
     	
-    	// JR 4/20 disabled until a mechanical device to stop accidental deployment is fabricated. See Autonomous Init and Disabled Periodic
-    	if (!(autonomousCommand instanceof LadronJalapeno || autonomousCommand instanceof LadronJalapeno || autonomousCommand instanceof LadronJalapeno_6inches || autonomousCommand instanceof LadronJalapeno_complete || autonomousCommand instanceof LadronRapido_noFlowControl || autonomousCommand instanceof LadronRapido || autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso || autonomousCommand instanceof LadronJalapeno_18inches))
-    		Robot.canBurglar.retractCanBurglar();
+    	// JR 5-22 disabled for safety. See Autonomous Init and Telop Init
+//    	if (!(autonomousCommand instanceof LadronJalapeno || autonomousCommand instanceof LadronJalapeno || autonomousCommand instanceof LadronJalapeno_6inches || autonomousCommand instanceof LadronJalapeno_complete || autonomousCommand instanceof LadronRapido_noFlowControl || autonomousCommand instanceof LadronRapido || autonomousCommand instanceof TresFideos || autonomousCommand instanceof TresFideos_Middle || autonomousCommand instanceof TresJalapenos || autonomousCommand instanceof KitchenSinkConQueso || autonomousCommand instanceof LadronJalapeno_18inches))
+//   		Robot.canBurglar.retractCanBurglar();
     	
         logger.println("Teleop Init");
     	logger.updateDate();
