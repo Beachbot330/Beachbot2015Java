@@ -114,8 +114,11 @@ public class Robot extends IterativeRobot {
 //        autoChooser.addObject("Ladron_77inches", new LadronJalapeno_complete());
 //        autoChooser.addObject("LadronRapido", new LadronRapido());
 //        autoChooser.addObject("LadronRapido_noFlowControl", new LadronRapido_noFlowControl());
-        autoChooser.addObject("IRILadronJalapeno", new IRILadronJalapeno());        
-        
+        autoChooser.addObject("IRILadronJalapenoRobotInZone", new IRILadronJalapenoRobot());
+        autoChooser.addObject("IRILadronJalapenoCansInZone", new IRILadronJalapenoCans());
+        autoChooser.addObject("IRISingleGripper2CansMiddle", new IRISingleGripper2CansMiddle());
+//        autoChooser.addObject("IRITripleGripper3CansMiddle", new IRITripleGripper3CansMiddle());
+        autoChooser.addObject("IRISingleGripper2CansStacked", new IRISingleGripper2CansStacked());
         
         
         SmartDashboard.putData("Autonomous mode chooser", autoChooser);
