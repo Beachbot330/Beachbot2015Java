@@ -48,12 +48,12 @@ public class IRILadronJalapenoRobot extends BBCommandGroup {
         // arm.
     	addSequential(new ExtendCanBurglar());
     	addSequential(new ShiftLow());
-    	addSequential(new HandLevel());
+    	addParallel(new HandLevel());
     	addSequential(new DriveDistanceAtAbsAngle_NoTurn(0, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     	addSequential(new Wait(3.30));
 //    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(6, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
 //    	addSequential(new Wait(3.30));
     	PIDGains DriveLow = new PIDGains(0.1,0,0,0,0.4,0.05, "DriveLow");
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(77, 2, 0, 5, false, DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh)); //distance, distanceTolerance, angle, timeout, stopAtEnd
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(77, 2, 0, 5, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     }
 }

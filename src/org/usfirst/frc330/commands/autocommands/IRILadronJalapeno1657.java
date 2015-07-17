@@ -48,7 +48,7 @@ public class IRILadronJalapeno1657 extends BBCommandGroup {
         // arm.
     	addSequential(new ExtendCanBurglar());
     	addSequential(new ShiftLow());
-    	addSequential(new HandLevel());
+    	addParallel(new HandLevel());
     	addSequential(new DriveDistanceAtAbsAngle_NoTurn(0, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     	addSequential(new Wait(3.30));
 //    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(6, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
