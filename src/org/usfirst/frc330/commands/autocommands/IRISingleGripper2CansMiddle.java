@@ -59,7 +59,7 @@ public class IRISingleGripper2CansMiddle extends BBCommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-        final PIDGains DriveLow = new PIDGains(0.1,0,0,0,0.4,0.05, "DriveLow");
+        final PIDGains DriveLow = new PIDGains(0.1,0,0,0,0.6,0.05, "DriveLow");
     	
     	//Hold joint angles, open grabbers, close center grabber
     	addParallel(new ArmPID_on());
