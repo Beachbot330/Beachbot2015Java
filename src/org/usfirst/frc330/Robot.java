@@ -119,6 +119,7 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("IRISingleGripper2CansMiddle", new IRISingleGripper2CansMiddle());
 //        autoChooser.addObject("IRITripleGripper3CansMiddle", new IRITripleGripper3CansMiddle());
         autoChooser.addObject("IRISingleGripper2CansStacked", new IRISingleGripper2CansStacked());
+        autoChooser.addObject("IRILadronJalapeno1657", new IRILadronJalapeno1657());
         
         
         SmartDashboard.putData("Autonomous mode chooser", autoChooser);
