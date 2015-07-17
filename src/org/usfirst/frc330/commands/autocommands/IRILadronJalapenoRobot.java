@@ -13,11 +13,14 @@ package org.usfirst.frc330.commands.autocommands;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
 import org.usfirst.frc330.commands.ExtendCanBurglar;
+import org.usfirst.frc330.commands.HandLevel;
 import org.usfirst.frc330.commands.LeftGrabberClose;
 import org.usfirst.frc330.commands.OpenAllGrabbers;
 import org.usfirst.frc330.commands.RightGrabberClose;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.Wait;
+import org.usfirst.frc330.constants.ChassisConst;
+import org.usfirst.frc330.wpilibj.PIDGains;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 
@@ -45,10 +48,12 @@ public class IRILadronJalapenoRobot extends BBCommandGroup {
         // arm.
     	addSequential(new ExtendCanBurglar());
     	addSequential(new ShiftLow());
+    	addSequential(new HandLevel());
     	addSequential(new DriveDistanceAtAbsAngle_NoTurn(0, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     	addSequential(new Wait(3.30));
 //    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(6, 2, 0, 2, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
 //    	addSequential(new Wait(3.30));
-    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(77, 2, 0, 5, false)); //distance, distanceTolerance, angle, timeout, stopAtEnd
+    	PIDGains DriveLow = new PIDGains(0.1,0,0,0,0.4,0.05, "DriveLow");
+    	addSequential(new DriveDistanceAtAbsAngle_NoTurn(77, 2, 0, 5, false, DriveLow, ChassisConst.DriveHigh, ChassisConst.GyroDriveLow, ChassisConst.GyroDriveHigh)); //distance, distanceTolerance, angle, timeout, stopAtEnd
     }
 }
