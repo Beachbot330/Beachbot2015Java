@@ -134,7 +134,7 @@ public class OI {
         switchArmSide_7 = new JoystickButton(armGamepad, 7);
         switchArmSide_7.whenPressed(new SwitchArmSide());
         openAll_5 = new JoystickButton(armGamepad, 5);
-        openAll_5.whenPressed(new OpenAllGrabbers());
+        openAll_5.whenPressed(new RetractCanBurglar());
         adjustHandPositionUp_9 = new JoystickButton(armGamepad, 9);
         adjustHandPositionUp_9.whileHeld(new AdjustHandPositionUp());
         rightGrabberOpen_3 = new JoystickButton(armGamepad, 3);
