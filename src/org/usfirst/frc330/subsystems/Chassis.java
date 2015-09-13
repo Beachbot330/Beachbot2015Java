@@ -33,6 +33,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -61,6 +62,16 @@ public class Chassis extends Subsystem {
     
     AHRS        imu;
     
+    // For getAngle() function for Gyro 
+    //    gyro_prevVal - previous gyro value
+    //    ctrRollOver  - Counter for rollovers (every -/+180 degrees)
+    //    fFirstUse    - Flag for initial use of gyro_prevVal
+    //       Note: needed to distinguish value from gyro before rolling over
+    double     gyro_prevVal = 0.0;
+    int        ctrRollOver  = 0;
+    boolean    fFirstUse    = true;
+    
+    
     public MultiPIDController gyroPID, leftDrivePID, rightDrivePID;
     private DummyPIDOutput gyroOutput, leftDriveOutput, rightDriveOutput;
 
@@ -68,7 +79,7 @@ public class Chassis extends Subsystem {
     	super();
     	
     	try {
-			imu = new AHRS(SerialPort.Port.kMXP);
+			imu = new AHRS(SPI.Port.kMXP);
 	    	} catch( Exception ex ) {
 	    		Robot.logger.printStackTrace(ex);
 	    	}
@@ -370,7 +381,61 @@ public class Chassis extends Subsystem {
     // Purpose: Return angle relative to 0 instead of -/+ 180 degrees
     public double getAngle() {
 
-    	return imu.getAngle();
+    	// First case
+    	// Old reading: +150 degrees
+    	// New reading: +170 degrees
+    	// Difference:  (170 - 150) = +20 degrees
+    	
+    	// Second case
+    	// Old reading: -20 degrees
+    	// New reading: -50 degrees
+    	// Difference : (-50 - -20) = -30 degrees 
+    	
+    	// Third case
+    	// Old reading: +179 degrees
+    	// New reading: -179 degrees
+    	// Difference:  (-179 - 179) = -358 degrees
+    	
+    	// Fourth case
+    	// Old reading: -179  degrees
+    	// New reading: +179 degrees
+    	// Difference:  (+150 - -60) = +358 degrees
+    	
+    	// Declare variables
+    	double difference = 0.0;
+    	double gyroVal    = 0.0;
+    	
+    	// Retrieve current yaw value from gyro
+    	double yawVal     = imu.getYaw();
+        
+    	// Has gyro_prevVal been previously set?
+    	// If not, return do not calculate, return current value
+    	if( !fFirstUse ) {
+    		// Determine count for rollover counter
+    		difference = yawVal - gyro_prevVal;
+
+	    	// Clockwise past +180 degrees
+    		// If difference > 180*, increment rollover counter
+	    	if( difference < -180.0 ) {
+	    		ctrRollOver++;
+	   		
+	    	// Counter-clockwise past -180 degrees\
+	    	// If difference > 180*, decrement rollover counter
+	    	}
+	    	else if ( difference > 180.0 ) {
+	    		ctrRollOver--;
+	    	} 
+    	}
+    	
+    	// Mark gyro_prevVal as being used
+    	fFirstUse = false;
+    		
+    	// Calculate value to return back to calling function
+    	// e.g. +720 degrees or -360 degrees
+    	gyroVal = yawVal + (360.0 * ctrRollOver);
+    	gyro_prevVal = yawVal;
+    	
+    	return gyroVal;
     }
     
     public double getLeftDistance() {
