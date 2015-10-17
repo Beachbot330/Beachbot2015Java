@@ -7,8 +7,6 @@ import edu.wpi.first.wpilibj.tables.ITableListener;
 
 public class DualSpeedController implements SpeedController, LiveWindowSendable {
 	SpeedController motor1, motor2;
-	double invert1 = 1;
-	double invert2 = 1;
 	
 	public DualSpeedController(SpeedController motor1, SpeedController motor2) {
 		this(motor1, motor2, false, false);
@@ -17,10 +15,8 @@ public class DualSpeedController implements SpeedController, LiveWindowSendable 
 	public DualSpeedController(SpeedController motor1, SpeedController motor2, boolean invert1, boolean invert2) {
 		this.motor1 = motor1;
 		this.motor2 = motor2;
-		if (invert1)
-			this.invert1 = -1;
-		if (invert2)
-			this.invert2 = -1;
+		this.motor1.setInverted(invert1);
+		this.motor2.setInverted(invert2);
 	}
 
 	@Override
@@ -30,7 +26,7 @@ public class DualSpeedController implements SpeedController, LiveWindowSendable 
 
 	@Override
 	public double get() {
-		return motor1.get()*invert1;
+		return motor1.get();
 	}
 
 	@Override
@@ -41,8 +37,8 @@ public class DualSpeedController implements SpeedController, LiveWindowSendable 
 
 	@Override
 	public void set(double speed) {
-		motor1.set(speed*invert1);
-		motor2.set(speed*invert2);
+		motor1.set(speed);
+		motor2.set(speed);
 	}
 
 	@Override
@@ -104,6 +100,17 @@ public class DualSpeedController implements SpeedController, LiveWindowSendable 
 	@Override
 	public void stopLiveWindowMode() {
 		set(0);
+	}
+
+	@Override
+	public void setInverted(boolean isInverted) {
+		motor1.setInverted(isInverted);
+		motor2.setInverted(isInverted);
+	}
+
+	@Override
+	public boolean getInverted() {
+		return motor1.getInverted();
 	}
 
 }

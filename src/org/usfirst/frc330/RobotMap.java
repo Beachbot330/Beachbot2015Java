@@ -11,15 +11,23 @@
 
 package org.usfirst.frc330;
     
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-
-import java.util.Vector;
-
 import org.usfirst.frc330.wpilibj.BBDoubleSolenoid;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
+
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.PIDSourceType;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -91,11 +99,11 @@ public class RobotMap {
         chassisdriveTrainEncoderL = new Encoder(4, 5, false, EncodingType.k4X);
         LiveWindow.addSensor("Chassis", "driveTrainEncoderL", chassisdriveTrainEncoderL);
         chassisdriveTrainEncoderL.setDistancePerPulse(1.0);
-        chassisdriveTrainEncoderL.setPIDSourceParameter(PIDSourceParameter.kDistance);
+        chassisdriveTrainEncoderL.setPIDSourceType(PIDSourceType.kDisplacement);
         chassisdriveTrainEncoderR = new Encoder(6, 7, true, EncodingType.k4X);
         LiveWindow.addSensor("Chassis", "driveTrainEncoderR", chassisdriveTrainEncoderR);
         chassisdriveTrainEncoderR.setDistancePerPulse(1.0);
-        chassisdriveTrainEncoderR.setPIDSourceParameter(PIDSourceParameter.kDistance);
+        chassisdriveTrainEncoderR.setPIDSourceType(PIDSourceType.kDisplacement);
         chassischassisLeftDrive1 = new VictorSP(0);
         LiveWindow.addActuator("Chassis", "chassisLeftDrive1", (VictorSP) chassischassisLeftDrive1);
         

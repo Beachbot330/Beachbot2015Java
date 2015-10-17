@@ -66,6 +66,15 @@ public class Arm extends Subsystem {
     	public double pidGet() {
     		return getArmAngle();
     	}
+
+		@Override
+		public void setPIDSourceType(PIDSourceType pidSource) {
+		}
+
+		@Override
+		public PIDSourceType getPIDSourceType() {
+			return PIDSourceType.kDisplacement;
+		}
     };
     
 

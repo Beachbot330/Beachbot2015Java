@@ -318,5 +318,14 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     	height = height + Math.sin(Math.toRadians(Robot.hand.getWristAngle())) * HandConst.handLength;
     	return height;
     }
+
+	@Override
+	public void setPIDSourceType(PIDSourceType pidSource) {
+	}
+
+	@Override
+	public PIDSourceType getPIDSourceType() {
+		return PIDSourceType.kDisplacement;
+	}
 }
 

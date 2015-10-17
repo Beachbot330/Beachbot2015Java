@@ -63,6 +63,15 @@ public class Mast extends Subsystem {
 		public double pidGet() {
 			return getMastAngle();
 		}
+
+		@Override
+		public void setPIDSourceType(PIDSourceType pidSource) {
+		}
+
+		@Override
+		public PIDSourceType getPIDSourceType() {
+			return PIDSourceType.kDisplacement;
+		}
 	};
 
 	public Mast()

@@ -27,13 +27,7 @@ public class BBDoubleSolenoid extends DoubleSolenoid {
 	}
 	
 	public int getInt() {
-		if (value == Value.kOff)
-			return Value.kOff_val;
-		else if (value == Value.kForward)
-			return Value.kForward_val;
-		else if (value == Value.kReverse)
-			return Value.kReverse_val;
-		return -1;
+		return value.kOff.ordinal();
 	}
 
 }
