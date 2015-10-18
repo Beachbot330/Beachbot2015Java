@@ -184,7 +184,7 @@ public class AHRS extends SensorBase implements PIDSource, LiveWindowSendable {
     IOCompleteNotification  io_complete_sink;
     IOThread                io_thread;
     
-    private PIDSourceType   m_pidSource;
+    private PIDSourceType   m_pidSource = PIDSourceType.kDisplacement;
     
     /***********************************************************/
     /* Public Interface Implementation                         */
@@ -824,7 +824,7 @@ public class AHRS extends SensorBase implements PIDSource, LiveWindowSendable {
         case kRate:
           return getRate();
         case kDisplacement:
-          return getYaw();
+        return getYaw();
         default:
           return 0.0;
       }
