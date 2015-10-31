@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
@@ -49,18 +50,15 @@ public class Logger {
 
 		roboRIOFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
 		usbFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
-
-		
-		
-		
+	
 		try {
 			usbWriter = new BufferedWriter(new FileWriter(usbFile));
-			Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_usbPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			usbWorking = false;
 			e.printStackTrace();
 		}
 		try {
+			Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_usbPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
 			roboRIOWriter = new BufferedWriter(new FileWriter(roboRIOFile));
 			if (!usbWorking) {
 				Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_roboRIOPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
@@ -74,6 +72,7 @@ public class Logger {
 		
 		println("Logger filename: " + m_filePrefix + "_" + sdf.format(date));
 		println("Program date: " + sdf.format(programFile.lastModified()));
+
 	}
 	
 	/**
