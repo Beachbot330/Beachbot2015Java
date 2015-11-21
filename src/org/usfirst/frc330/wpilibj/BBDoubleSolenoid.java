@@ -27,7 +27,7 @@ public class BBDoubleSolenoid extends DoubleSolenoid {
 	}
 	
 	public int getInt() {
-		return value.kOff.ordinal();
+		return value.ordinal();
 	}
 
 }
