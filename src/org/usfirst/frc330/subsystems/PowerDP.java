@@ -46,6 +46,7 @@ public class PowerDP extends Subsystem {
     double currents[] = new double[16];
     double totalCurrent = 0;
     double totalPower = 0;
+    double voltage = 0;
     int counter = 0;
     
     public PowerDP() {
@@ -59,6 +60,11 @@ public class PowerDP extends Subsystem {
 			public double get() { return getTotalPower(); }
     	};
     	Robot.csvLogger.add("PDPTotalPower", temp);
+    	
+    	temp = new CSVLoggable() {
+			public double get() { return getVoltage(); }
+    	};
+    	Robot.csvLogger.add("PDPVoltage", temp);
     }
 
     /////////////////////////////////////////////////////////////
@@ -81,6 +87,11 @@ public class PowerDP extends Subsystem {
     public double getTotalPower() {
     	return totalPower;
     }
+    
+    public double getVoltage() {
+    	return voltage;
+    }
+    
     
     //Get motor current methods
     
@@ -143,7 +154,11 @@ public class PowerDP extends Subsystem {
     	}
     	else if (counter == 17) {
     		totalPower = pDP.getTotalPower();
-    		counter =0;
+    		counter++;
+    	}
+    	else if (counter == 18) {
+    		voltage = pDP.getVoltage();
+    		counter = 0;
     	}
     }
     
