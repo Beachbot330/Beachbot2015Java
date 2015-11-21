@@ -113,6 +113,11 @@ public class Mast extends Subsystem {
 			public double get() { return getMastAngle(); }
 		};
 		Robot.csvLogger.add("MastAngle", temp);
+		
+		temp = new CSVLoggable(true) {
+			public double get() { return getMastSetpoint(); }
+		};
+		Robot.csvLogger.add("MastSetpoint", temp);
 
 		temp = new CSVLoggable() {
 			public double get() { return getMastPotAvgVoltage(); }
