@@ -27,7 +27,11 @@ public class BBDoubleSolenoid extends DoubleSolenoid {
 	}
 	
 	public int getInt() {
-		return value.ordinal();
+		try {
+			return value.ordinal(); 
+		} catch (NullPointerException ex) {
+			return -1;
+		}
 	}
 
 }
