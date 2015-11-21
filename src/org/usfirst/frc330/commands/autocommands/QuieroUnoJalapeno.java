@@ -10,16 +10,18 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
-import org.usfirst.frc330.commands.*;
+import org.usfirst.frc330.commands.CheckDoneGroup;
+import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
+import org.usfirst.frc330.commands.SetWristAngle;
+import org.usfirst.frc330.commands.ShiftLow;
+import org.usfirst.frc330.commands.TurnGyroAbs;
+import org.usfirst.frc330.commands.Wait;
 import org.usfirst.frc330.commands.commandgroups.CanSnatchFinish;
 import org.usfirst.frc330.commands.commandgroups.CanSnatchStart;
-import org.usfirst.frc330.conditionalWrappers.*;
 import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.wpilibj.PIDGains;
 
-import edu.wpi.first.wpilibj.command.BBCommand;
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *

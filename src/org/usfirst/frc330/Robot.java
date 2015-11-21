@@ -11,26 +11,49 @@
 
 package org.usfirst.frc330;
 
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.BBCommandGroup;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.*;
-
-import org.usfirst.frc330.commands.*;
-import org.usfirst.frc330.commands.autocommands.*;
+import org.usfirst.frc330.commands.BuzzerBeepTimed;
+import org.usfirst.frc330.commands.ResetGyro;
+import org.usfirst.frc330.commands.autocommands.DoNothing;
+import org.usfirst.frc330.commands.autocommands.IRILadronJalapeno1657;
+import org.usfirst.frc330.commands.autocommands.IRILadronJalapenoCans;
+import org.usfirst.frc330.commands.autocommands.IRILadronJalapenoRobot;
+import org.usfirst.frc330.commands.autocommands.IRINachoJalepeno_CCW;
+import org.usfirst.frc330.commands.autocommands.IRISingleGripper2CansMiddle;
+import org.usfirst.frc330.commands.autocommands.IRISingleGripper2CansStacked;
+import org.usfirst.frc330.commands.autocommands.LadronJalapeno;
+import org.usfirst.frc330.commands.autocommands.LadronJalapeno_18inches;
+import org.usfirst.frc330.commands.autocommands.LadronJalapeno_6inches;
+import org.usfirst.frc330.commands.autocommands.LadronJalapeno_complete;
+import org.usfirst.frc330.commands.autocommands.LadronRapido;
+import org.usfirst.frc330.commands.autocommands.LadronRapido_noFlowControl;
+import org.usfirst.frc330.commands.autocommands.NachoJalepeno;
+import org.usfirst.frc330.commands.autocommands.NachoJalepeno_CCW;
+import org.usfirst.frc330.commands.autocommands.TresFideos;
+import org.usfirst.frc330.commands.autocommands.TresFideos_Middle;
 import org.usfirst.frc330.constants.ArmPos;
 import org.usfirst.frc330.constants.HandConst;
 //import org.usfirst.frc330.commands.autocommands.*;
-import org.usfirst.frc330.subsystems.*;
+import org.usfirst.frc330.subsystems.Arm;
+import org.usfirst.frc330.subsystems.CanBurglar;
+import org.usfirst.frc330.subsystems.Chassis;
+import org.usfirst.frc330.subsystems.Frills;
+import org.usfirst.frc330.subsystems.Hand;
+import org.usfirst.frc330.subsystems.Lift;
+import org.usfirst.frc330.subsystems.Mast;
+import org.usfirst.frc330.subsystems.PowerDP;
 import org.usfirst.frc330.util.CSVLogger;
 import org.usfirst.frc330.util.Logger;
 
 import com.ni.vision.VisionException;
+
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the

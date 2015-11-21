@@ -12,7 +12,6 @@
 package org.usfirst.frc330.commands.autocommands;
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.commands.ArmPID_on;
-import org.usfirst.frc330.commands.BuzzerBeepTimed;
 import org.usfirst.frc330.commands.CenterGrabberClose;
 import org.usfirst.frc330.commands.CenterGrabberOpen;
 import org.usfirst.frc330.commands.CheckDone;
@@ -24,18 +23,13 @@ import org.usfirst.frc330.commands.OpenAllGrabbers;
 import org.usfirst.frc330.commands.RightGrabberClose;
 import org.usfirst.frc330.commands.SetArmPosition;
 import org.usfirst.frc330.commands.SetLiftPosition;
-import org.usfirst.frc330.commands.SetMastPosition;
 import org.usfirst.frc330.commands.SetWristAngle;
-import org.usfirst.frc330.commands.ShiftHigh;
 import org.usfirst.frc330.commands.ShiftLow;
-import org.usfirst.frc330.commands.TurnAngleAggressive;
 import org.usfirst.frc330.commands.TurnGyroAbs;
-import org.usfirst.frc330.commands.TurnGyroWaypoint;
 import org.usfirst.frc330.commands.Wait;
 import org.usfirst.frc330.commands.WristPID_on;
 import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.constants.LiftPos;
-import org.usfirst.frc330.constants.MastPos;
 import org.usfirst.frc330.wpilibj.PIDGains;
 
 import edu.wpi.first.wpilibj.command.BBCommand;

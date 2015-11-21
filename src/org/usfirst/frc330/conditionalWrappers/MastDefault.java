@@ -3,12 +3,10 @@
 package org.usfirst.frc330.conditionalWrappers;	
 
 import org.usfirst.frc330.Robot;
+import org.usfirst.frc330.commands.HoldMast;
+import org.usfirst.frc330.commands.ManualMast;
 
 import edu.wpi.first.wpilibj.command.BBCommand;
-
-import org.usfirst.frc330.commands.*;
-import org.usfirst.frc330.constants.ArmPos;
-import org.usfirst.frc330.constants.MastPos;
 
 public class MastDefault extends BBCommand {
 

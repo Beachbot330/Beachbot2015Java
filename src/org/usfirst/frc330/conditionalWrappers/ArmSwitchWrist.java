@@ -3,11 +3,9 @@
 package org.usfirst.frc330.conditionalWrappers;	
 
 import org.usfirst.frc330.Robot;
+import org.usfirst.frc330.commands.SetWristAngle;
 
 import edu.wpi.first.wpilibj.command.BBCommand;
-
-import org.usfirst.frc330.commands.*;
-import org.usfirst.frc330.constants.HandConst;
 
 public class ArmSwitchWrist extends BBCommand {
 

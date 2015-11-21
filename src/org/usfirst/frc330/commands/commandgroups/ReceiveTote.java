@@ -13,7 +13,6 @@ package org.usfirst.frc330.commands.commandgroups;
 import org.usfirst.frc330.commands.DriveDistance;
 import org.usfirst.frc330.commands.OpenZachStacker;
 import org.usfirst.frc330.commands.SetLiftPosition;
-import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.constants.LiftPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;

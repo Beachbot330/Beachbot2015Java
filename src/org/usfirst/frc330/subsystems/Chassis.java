@@ -11,8 +11,6 @@
 
 package org.usfirst.frc330.subsystems;
 
-import java.util.Arrays;
-
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.commands.TankDrive;
@@ -35,7 +33,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -299,11 +296,11 @@ public class Chassis extends Subsystem {
     
     public void stopDrive()
     {
-        if (gyroPID.isEnable())
+        if (gyroPID.isEnabled())
             gyroPID.reset();
-        if (leftDrivePID.isEnable())
+        if (leftDrivePID.isEnabled())
             leftDrivePID.reset();
-        if (rightDrivePID.isEnable())
+        if (rightDrivePID.isEnabled())
             rightDrivePID.reset();        
         tankDrive(0, 0);  
     }

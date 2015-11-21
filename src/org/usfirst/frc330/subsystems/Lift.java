@@ -154,7 +154,6 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
             name = "CompetitionLiftBottomLimit";
         
         Preferences.getInstance().putDouble(name, liftPot.getAverageVoltage());
-        Preferences.getInstance().save();
     }
 	
 	public void setLiftTopLimit()
@@ -167,7 +166,6 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
             name = "CompetitionLiftTopLimit";
         
         Preferences.getInstance().putDouble(name, liftPot.getAverageVoltage());
-        Preferences.getInstance().save();
 	}
     
     public void setPosition(double position)
@@ -196,7 +194,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     }
     
     public synchronized boolean isEnable() {
-        return liftPID.isEnable();
+        return liftPID.isEnabled();
     }
     
     public synchronized void enable() {
@@ -251,7 +249,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
 
 	public void stopLift() 
 	{
-		if (liftPID.isEnable())
+		if (liftPID.isEnabled())
 		{
 			liftPID.reset();
 		}

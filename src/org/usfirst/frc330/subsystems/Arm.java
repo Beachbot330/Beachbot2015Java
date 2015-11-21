@@ -11,17 +11,21 @@
 
 package org.usfirst.frc330.subsystems;
 
-import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.Robot;
-import org.usfirst.frc330.util.CSVLoggable;
+import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.commands.ManualArm;
 import org.usfirst.frc330.constants.ArmPos;
-import org.usfirst.frc330.constants.HandConst;
-import org.usfirst.frc330.constants.LiftPos;
 import org.usfirst.frc330.constants.MastPos;
+import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
 
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
+import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -204,7 +208,6 @@ public class Arm extends Subsystem {
             name = "CompetitionArmFrontLimit";
         
         Preferences.getInstance().putDouble(name, armPot.getAverageVoltage());
-        Preferences.getInstance().save();
     }
 	
 	public void setArmRearLimit()
@@ -217,7 +220,6 @@ public class Arm extends Subsystem {
             name = "CompetitionArmRearLimit";
         
         Preferences.getInstance().putDouble(name, armPot.getAverageVoltage());
-        Preferences.getInstance().save();
 	}
 	
 	public void setArmVertical()
@@ -230,7 +232,6 @@ public class Arm extends Subsystem {
             name = "CompetitionArmVertical";
         
         Preferences.getInstance().putDouble(name, armPot.getAverageVoltage());
-        Preferences.getInstance().save();
 	}
 	
 	
@@ -321,7 +322,7 @@ public class Arm extends Subsystem {
   
     // Method returns if Arm is enabled
     public synchronized boolean isArmEnable() {
-        return armPID.isEnable();
+        return armPID.isEnabled();
     }
     
     
@@ -338,7 +339,7 @@ public class Arm extends Subsystem {
 
 	public void stopArm()
 	{
-		if (armPID.isEnable())
+		if (armPID.isEnabled())
 		{
 			armPID.reset();
 		}
@@ -369,14 +370,14 @@ public class Arm extends Subsystem {
 //            armCommand = armCommand*armCommand;
         if (Math.abs(armCommand) > 0.03)
         {
-        	if (armPID.isEnable())
+        	if (armPID.isEnabled())
                 armPID.disable();
         	if (getIsFront()) 
         		setArm(armCommand);
         	else
         		setArm(-armCommand);
         }
-        else if (!armPID.isEnable())
+        else if (!armPID.isEnabled())
         {
         	tempSetpoint = this.getArmAngle();
         	if(tempSetpoint > ArmPos.getRearlimitangle())
@@ -389,7 +390,7 @@ public class Arm extends Subsystem {
     }
     
     public synchronized boolean isEnable() {
-        return armPID.isEnable();
+        return armPID.isEnabled();
     }
 
 	public boolean isSwitchingSides() {

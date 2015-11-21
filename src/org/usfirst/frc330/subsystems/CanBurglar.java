@@ -11,13 +11,10 @@
 
 package org.usfirst.frc330.subsystems;
 
-import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.RobotMap;
-import org.usfirst.frc330.commands.*;
 import org.usfirst.frc330.wpilibj.BBDoubleSolenoid;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 

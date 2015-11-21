@@ -14,9 +14,7 @@ import org.usfirst.frc330.commands.CenterGrabberOpen;
 import org.usfirst.frc330.commands.SetArmPosition;
 import org.usfirst.frc330.commands.SetMastPosition;
 import org.usfirst.frc330.commands.SetWristAngle;
-import org.usfirst.frc330.commands.Wait;
 import org.usfirst.frc330.conditionalWrappers.MoveArmToRear;
-import org.usfirst.frc330.constants.MastPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 

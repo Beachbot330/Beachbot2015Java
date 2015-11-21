@@ -5,14 +5,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
-import org.usfirst.frc330.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 

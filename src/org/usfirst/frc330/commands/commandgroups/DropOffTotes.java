@@ -11,9 +11,7 @@
 
 package org.usfirst.frc330.commands.commandgroups;
 import org.usfirst.frc330.commands.OpenZachStacker;
-import org.usfirst.frc330.commands.SetLiftPosition;
 import org.usfirst.frc330.commands.SetLiftPositionDropOff;
-import org.usfirst.frc330.constants.LiftPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 

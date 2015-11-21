@@ -14,7 +14,6 @@ package org.usfirst.frc330.subsystems;
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.RobotMap;
 import org.usfirst.frc330.commands.*;
-import org.usfirst.frc330.conditionalWrappers.MastDefault;
 import org.usfirst.frc330.constants.MastPos;
 
 import edu.wpi.first.wpilibj.*;
@@ -194,7 +193,6 @@ public class Mast extends Subsystem {
 			name = "CompetitionMastFrontLimit";
 
 		Preferences.getInstance().putDouble(name, mastPot.getAverageVoltage());
-		Preferences.getInstance().save();
 	}
 
 	public double getMastFrontLimit() {
@@ -216,7 +214,6 @@ public class Mast extends Subsystem {
 			name = "CompetitionMastRearLimit";
 
 		Preferences.getInstance().putDouble(name, mastPot.getAverageVoltage());
-		Preferences.getInstance().save();
 	}
 
 	public double getMastRearLimit() {
@@ -260,7 +257,7 @@ public class Mast extends Subsystem {
 
 	// Method returns if Arm is enabled
 	public synchronized boolean isMastEnable() {
-		return mastPID.isEnable();
+		return mastPID.isEnabled();
 	}
 	// Method to Enable Mast
 	public synchronized void enableMast() {
@@ -278,7 +275,7 @@ public class Mast extends Subsystem {
 
 	public void stopMast()
 	{
-		if (mastPID.isEnable())
+		if (mastPID.isEnabled())
 		{
 			mastPID.reset();
 		}
@@ -297,11 +294,11 @@ public class Mast extends Subsystem {
             mastCommand = mastCommand*mastCommand;
         if (Math.abs(mastCommand) > 0.05)
         {
-        	if (mastPID.isEnable())
+        	if (mastPID.isEnabled())
                 mastPID.disable();
     		setMast(mastCommand);
         }
-        else if (!mastPID.isEnable())
+        else if (!mastPID.isEnabled())
         {
             mastPID.setSetpoint(this.getMastAngle());
             mastPID.enable();
