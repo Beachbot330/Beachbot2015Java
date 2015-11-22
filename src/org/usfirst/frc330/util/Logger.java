@@ -55,10 +55,10 @@ public class Logger {
 			e.printStackTrace();
 		}
 		try {
-			Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_usbPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
+			Files.copy(Paths.get("/networktables.ini"), Paths.get(m_usbPath + "/" + "networktables" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
 			roboRIOWriter = new BufferedWriter(new FileWriter(roboRIOFile));
 			if (!usbWorking) {
-				Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_roboRIOPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
+				Files.copy(Paths.get("/networktables.ini"), Paths.get(m_roboRIOPath + "/" + "networktables" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
