@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.wpilibj.tables.ITable;
-import edu.wpi.first.wpilibj.tables.ITableListener;
 
 /*
  * $Log: PrefSendablePIDController.java,v $
@@ -102,8 +100,6 @@ public class PrefPIDController extends PIDController{
     
     protected void readPIDPref(double p, double i, double d, double f)
     {
-        boolean saveNeeded = false;
-        
         if (Preferences.getInstance().containsKey(name + "P"))
         {
             
@@ -113,7 +109,6 @@ public class PrefPIDController extends PIDController{
         else 
         {
             Preferences.getInstance().putDouble(name+"P", p);
-            saveNeeded = true;
 //            Robot.Logger.println(name+"P does not exist.");
         }
         
@@ -124,7 +119,6 @@ public class PrefPIDController extends PIDController{
         else 
         {
             Preferences.getInstance().putDouble(name+"I", i);
-            saveNeeded = true;
         } 
         
         if (Preferences.getInstance().containsKey(name + "D"))
@@ -134,7 +128,6 @@ public class PrefPIDController extends PIDController{
         else 
         {
             Preferences.getInstance().putDouble(name+"D", d);
-            saveNeeded = true;
         }
         
         if (Preferences.getInstance().containsKey(name + "F"))
@@ -144,16 +137,9 @@ public class PrefPIDController extends PIDController{
         else 
         {
             Preferences.getInstance().putDouble(name+"F", f);
-            saveNeeded = true;
         }
         
-        setPID(p,i,d, f);
-        
-        if (saveNeeded)
-        {
-            Preferences.getInstance().save();
-        }        
-        
+        setPID(p,i,d, f);      
     }
     
     protected void savePIDPref()
@@ -162,7 +148,6 @@ public class PrefPIDController extends PIDController{
         Preferences.getInstance().putDouble(name+"I", getI());
         Preferences.getInstance().putDouble(name+"D", getD());
         Preferences.getInstance().putDouble(name+"F", getF());
-        Preferences.getInstance().save();
 //        Robot.Logger.println("Saved PID Preferences: " + this.name);
     }
     

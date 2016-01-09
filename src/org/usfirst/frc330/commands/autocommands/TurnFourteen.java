@@ -10,7 +10,8 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
-import org.usfirst.frc330.commands.*;
+import org.usfirst.frc330.commands.ShiftLow;
+import org.usfirst.frc330.commands.TurnGyroAbs;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
 

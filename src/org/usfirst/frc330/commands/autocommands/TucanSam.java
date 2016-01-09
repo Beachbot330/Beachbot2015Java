@@ -10,8 +10,17 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
-import org.usfirst.frc330.commands.*;
-import org.usfirst.frc330.constants.LiftPos;
+import org.usfirst.frc330.commands.ArmPID_on;
+import org.usfirst.frc330.commands.CheckDone;
+import org.usfirst.frc330.commands.CloseAllGrabbers;
+import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
+import org.usfirst.frc330.commands.OpenAllGrabbers;
+import org.usfirst.frc330.commands.SetArmPosition;
+import org.usfirst.frc330.commands.SetMastPosition;
+import org.usfirst.frc330.commands.SetWristAngle;
+import org.usfirst.frc330.commands.ShiftLow;
+import org.usfirst.frc330.commands.Wait;
+import org.usfirst.frc330.commands.WristPID_on;
 import org.usfirst.frc330.constants.MastPos;
 
 import edu.wpi.first.wpilibj.command.BBCommand;

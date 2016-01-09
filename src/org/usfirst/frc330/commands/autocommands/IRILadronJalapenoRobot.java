@@ -10,16 +10,11 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
-import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
 import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
 import org.usfirst.frc330.commands.ExtendCanBurglar;
 import org.usfirst.frc330.commands.HandLevel;
-import org.usfirst.frc330.commands.LeftGrabberClose;
-import org.usfirst.frc330.commands.OpenAllGrabbers;
-import org.usfirst.frc330.commands.RightGrabberClose;
 import org.usfirst.frc330.commands.ShiftLow;
 import org.usfirst.frc330.commands.Wait;
-import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.wpilibj.PIDGains;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;

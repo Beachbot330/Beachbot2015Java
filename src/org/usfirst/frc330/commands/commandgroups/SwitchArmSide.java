@@ -12,12 +12,13 @@
 package org.usfirst.frc330.commands.commandgroups;
 
 import org.usfirst.frc330.Robot;
-import org.usfirst.frc330.commands.*;
-import org.usfirst.frc330.conditionalWrappers.*;
+import org.usfirst.frc330.commands.SetMastPosition;
+import org.usfirst.frc330.commands.ToggleSideSet;
+import org.usfirst.frc330.conditionalWrappers.ArmSwitchStartPosition;
+import org.usfirst.frc330.conditionalWrappers.ArmSwitchWrist;
 import org.usfirst.frc330.constants.MastPos;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;
-import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *

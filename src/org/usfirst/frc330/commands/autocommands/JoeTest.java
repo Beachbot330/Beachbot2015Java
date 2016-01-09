@@ -10,22 +10,11 @@
 
 
 package org.usfirst.frc330.commands.autocommands;
-import org.usfirst.frc330.commands.DriveDistance;
-import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle;
-import org.usfirst.frc330.commands.DriveDistanceAtAbsAngle_NoTurn;
-import org.usfirst.frc330.commands.DriveWaypoint;
-import org.usfirst.frc330.commands.DriveWaypointBackward;
 import org.usfirst.frc330.commands.RotateAngleAbs;
 import org.usfirst.frc330.commands.SetArmPosition;
 import org.usfirst.frc330.commands.SetLiftPosition;
 import org.usfirst.frc330.commands.SetWristAngle;
-import org.usfirst.frc330.commands.ShiftHigh;
 import org.usfirst.frc330.commands.ShiftLow;
-import org.usfirst.frc330.commands.TurnGyroAbs;
-import org.usfirst.frc330.commands.TurnGyroRel;
-import org.usfirst.frc330.commands.TurnGyroWaypoint;
-import org.usfirst.frc330.commands.TurnGyroWaypointBackward;
-import org.usfirst.frc330.constants.ChassisConst;
 import org.usfirst.frc330.wpilibj.PIDGains;
 
 import edu.wpi.first.wpilibj.command.BBCommandGroup;

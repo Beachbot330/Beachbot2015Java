@@ -7,16 +7,7 @@ package org.usfirst.frc330.wpilibj;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.tables.ITable;
-import edu.wpi.first.wpilibj.tables.ITableListener;
-/*
- * $Log: MultiPrefSendablePIDController.java,v $
- * Revision 1.3  2013-03-15 02:51:54  echan
- * added cvs log comments
- *
- */
  
 /**
  *
@@ -58,7 +49,6 @@ public class MultiPrefPIDController extends PrefPIDController{
         Preferences.getInstance().putDouble(name+gainName+"I", getI());
         Preferences.getInstance().putDouble(name+gainName+"D", getD());
         Preferences.getInstance().putDouble(name+gainName+"F", getF());
-        Preferences.getInstance().save();
 //        Robot.Logger.println("Saved PID Preferences: " + this.name);
     }
 

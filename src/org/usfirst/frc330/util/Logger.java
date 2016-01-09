@@ -11,8 +11,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.usfirst.frc330.Robot;
-
 import edu.wpi.first.wpilibj.Timer;
 
 
@@ -49,24 +47,24 @@ public class Logger {
 
 		roboRIOFile = new File(m_roboRIOPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
 		usbFile = new File(m_usbPath + "/" + m_filePrefix + "_" + sdf.format(date) + ".txt");
-
-		
-		
-		
+	
 		try {
 			usbWriter = new BufferedWriter(new FileWriter(usbFile));
-			Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_usbPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			usbWorking = false;
 			e.printStackTrace();
 		}
 		try {
 			roboRIOWriter = new BufferedWriter(new FileWriter(roboRIOFile));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			Files.copy(Paths.get("/home/lvuser/networktables.ini"), Paths.get(m_usbPath + "/" + "networktables" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
 			if (!usbWorking) {
-				Files.copy(Paths.get("/home/lvuser/wpilib-preferences.ini"), Paths.get(m_roboRIOPath + "/" + "wpilib-preferences" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
+				Files.copy(Paths.get("/home/lvuser/networktables.ini"), Paths.get(m_roboRIOPath + "/" + "networktables" + "_" + sdf.format(date) + ".ini"), StandardCopyOption.REPLACE_EXISTING);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -74,6 +72,7 @@ public class Logger {
 		
 		println("Logger filename: " + m_filePrefix + "_" + sdf.format(date));
 		println("Program date: " + sdf.format(programFile.lastModified()));
+
 	}
 	
 	/**

@@ -13,19 +13,19 @@ package org.usfirst.frc330.subsystems;
 
 import org.usfirst.frc330.Robot;
 import org.usfirst.frc330.RobotMap;
-import org.usfirst.frc330.commands.*;
-import org.usfirst.frc330.constants.ArmPos;
 import org.usfirst.frc330.constants.LiftPos;
-import org.usfirst.frc330.constants.MastPos;
-
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
-
 import org.usfirst.frc330.util.CSVLoggable;
 import org.usfirst.frc330.wpilibj.BBDoubleSolenoid;
 import org.usfirst.frc330.wpilibj.DualSpeedController;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
+import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -154,7 +154,6 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
             name = "CompetitionLiftBottomLimit";
         
         Preferences.getInstance().putDouble(name, liftPot.getAverageVoltage());
-        Preferences.getInstance().save();
     }
 	
 	public void setLiftTopLimit()
@@ -167,7 +166,6 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
             name = "CompetitionLiftTopLimit";
         
         Preferences.getInstance().putDouble(name, liftPot.getAverageVoltage());
-        Preferences.getInstance().save();
 	}
     
     public void setPosition(double position)
@@ -196,7 +194,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
     }
     
     public synchronized boolean isEnable() {
-        return liftPID.isEnable();
+        return liftPID.isEnabled();
     }
     
     public synchronized void enable() {
@@ -251,7 +249,7 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
 
 	public void stopLift() 
 	{
-		if (liftPID.isEnable())
+		if (liftPID.isEnabled())
 		{
 			liftPID.reset();
 		}
@@ -269,6 +267,15 @@ public class Lift extends Subsystem implements PIDSource, PIDOutput
 	
 	public void setMaxOutput(double maxOutput) {
 		liftPID.setOutputRange(-maxOutput, maxOutput);
+	}
+
+	@Override
+	public void setPIDSourceType(PIDSourceType pidSource) {
+	}
+
+	@Override
+	public PIDSourceType getPIDSourceType() {
+		return PIDSourceType.kDisplacement;
 	}
 }
 

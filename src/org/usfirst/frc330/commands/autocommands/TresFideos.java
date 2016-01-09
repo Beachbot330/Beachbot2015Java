@@ -13,7 +13,6 @@ package org.usfirst.frc330.commands.autocommands;
 import org.usfirst.frc330.commands.ArmPID_on;
 import org.usfirst.frc330.commands.CenterGrabberClose;
 import org.usfirst.frc330.commands.DriveDistanceAtRelAngle_NoTurn;
-import org.usfirst.frc330.commands.DriveWaypoint;
 import org.usfirst.frc330.commands.DriveWaypointBackward;
 import org.usfirst.frc330.commands.DriveWaypointBackwardLegacy;
 import org.usfirst.frc330.commands.DriveWaypointLegacy;

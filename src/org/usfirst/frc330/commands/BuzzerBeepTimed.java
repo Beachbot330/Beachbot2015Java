@@ -12,10 +12,10 @@
 package org.usfirst.frc330.commands;	
 
 
+import org.usfirst.frc330.Robot;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.BBCommand;
-
-import org.usfirst.frc330.Robot;
 
 /**
  *

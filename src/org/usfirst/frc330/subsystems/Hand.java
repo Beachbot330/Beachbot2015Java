@@ -115,7 +115,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     
     public void setAngle(double angle)
     {
-    	if (!wristPID.isEnable())
+    	if (!wristPID.isEnabled())
     		wristPID.enable();
     	wristPID.setSetpoint(angle);
     }
@@ -137,7 +137,6 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
             name = "CompetitionHandFrontLimit";
         
         Preferences.getInstance().putDouble(name, wristPot.getAverageVoltage());
-        Preferences.getInstance().save();
     }
 	
 	public void setHandRearLimit()
@@ -150,7 +149,6 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
             name = "CompetitionHandRearLimit";
         
         Preferences.getInstance().putDouble(name, wristPot.getAverageVoltage());
-        Preferences.getInstance().save();
 	}
 	
     public double getHandFrontLimit() {
@@ -217,7 +215,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 
 	public void stopHand() 
 	{
-		if(wristPID.isEnable())
+		if(wristPID.isEnabled())
 		{
 			wristPID.disable();
 		}
@@ -296,11 +294,11 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
             wristCommand = wristCommand*wristCommand;
         if (Math.abs(wristCommand) > 0.05)
         {
-        	if (wristPID.isEnable())
+        	if (wristPID.isEnabled())
                 wristPID.disable();
         	set(wristCommand);
         }
-        else if (!wristPID.isEnable())
+        else if (!wristPID.isEnabled())
         {
             wristPID.setSetpoint(this.getWristAngle());
             wristPID.enable();
@@ -308,7 +306,7 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
 	}
 	
     public synchronized boolean isEnabled() {
-        return wristPID.isEnable();
+        return wristPID.isEnabled();
     }
     
     public double getHeight(){
@@ -318,5 +316,14 @@ public class Hand extends Subsystem implements PIDSource, PIDOutput{
     	height = height + Math.sin(Math.toRadians(Robot.hand.getWristAngle())) * HandConst.handLength;
     	return height;
     }
+
+	@Override
+	public void setPIDSourceType(PIDSourceType pidSource) {
+	}
+
+	@Override
+	public PIDSourceType getPIDSourceType() {
+		return PIDSourceType.kDisplacement;
+	}
 }
 

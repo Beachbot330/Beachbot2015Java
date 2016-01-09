@@ -12,7 +12,6 @@
 package org.usfirst.frc330.subsystems;
 
 import org.usfirst.frc330.RobotMap;
-import org.usfirst.frc330.commands.*;
 import edu.wpi.first.wpilibj.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
