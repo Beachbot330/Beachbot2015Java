@@ -82,7 +82,6 @@ public class Robot extends IterativeRobot {
     
     public static Logger logger;
     public static CSVLogger csvLogger;
-    private CameraServer server;
     
     private boolean ladronJalapenoRun = false;
 
@@ -158,16 +157,6 @@ public class Robot extends IterativeRobot {
         Command beep = new BuzzerBeepTimed(0.75);
         beep.start();
         
-        server = CameraServer.getInstance();
-        server.setSize(2);
-        server.setQuality(50);
-        //the camera name (ex "cam0") can be found through the roborio web interface
-        try {
-        	server.startAutomaticCapture("cam0");
-        }
-        catch (VisionException ex) {
-            DriverStation.reportError("Error when starting the camera: " + ex.getMessage(), true);
-        }
     }
 
     /**
