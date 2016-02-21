@@ -113,4 +113,10 @@ public class DualSpeedController implements SpeedController, LiveWindowSendable 
 		return motor1.getInverted();
 	}
 
+	@Override
+	public void stopMotor() {
+		motor1.stopMotor();
+		motor2.stopMotor();
+	}
+
 }
